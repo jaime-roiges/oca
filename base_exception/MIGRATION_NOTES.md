@@ -7,3 +7,5 @@
 - Grupos XML al inicio de `data`; `ir.access.csv` al final.
 - Python ya usaba `from odoo.fields import Domain` (válido en 20).
 - Depende solo de `base_setup` (core 20).
+
+- `env.registry.clear_cache()` no existe en 20 → `env.transaction.invalidate_ormcache()`.
