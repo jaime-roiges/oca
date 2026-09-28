@@ -55,17 +55,18 @@ class StockMoveLine(models.Model):
         self.sale_price_tax = False
         self.sale_price_total = False
         self.sale_price_unit = False
+        precision = self.env["decimal.precision"].precision_get("Product Unit")
         for line in self:
             valued_line = line.sale_line
             if not valued_line:
                 continue
             quantity = line._get_report_valued_quantity()
             different_uom = valued_line.product_uom_id != line.uom_id
-            # If order line quantity don't match with move line quantity compute values
+            # Odoo 20: uom.uom has no `rounding`; use Product Unit digits
             different_qty = float_compare(
                 quantity,
                 line.sale_line.product_uom_qty,
-                precision_rounding=line.uom_id.rounding,
+                precision_digits=precision,
             )
             if different_uom or different_qty:
                 # Force read to cache M2M field for get values with _convert_to_write
