@@ -1,0 +1,12 @@
+id,name,model_id,group_id/id,operation,domain
+access_account_payment_order,Full access on account.payment.order to Payment Manager,account.payment.order,account_payment_order.group_account_payment,crud,
+access_account_payment_order_readonly,Readonly access on account.payment.order to group_account_readonly,account.payment.order,account.group_account_readonly,r,
+access_account_payment_line,Full access on account.payment.line to Payment Manager,account.payment.line,account_payment_order.group_account_payment,crud,
+access_account_payment_line_readonly,Readonly access on account.payment.line to group_account_readonly,account.payment.line,account.group_account_readonly,r,
+access_bank_payment_line,Full access on account.payment to Payment Manager,account.payment,account_payment_order.group_account_payment,crud,
+access_res_partner_bank_group_account_payment,Full access on res.partner.bank to Account Payment group,res.partner.bank,account_payment_order.group_account_payment,crud,
+access_account_payment_line_create,access_account_payment_line_create,account.payment.line.create,account_payment_order.group_account_payment,crud,
+access_account_invoice_payment_line_multi,access_account_invoice_payment_line_multi,account.invoice.payment.line.multi,account_payment_order.group_account_payment,crud,
+access_account_payment_update,access_account_payment_update,account.payment.update,account_payment_order.group_account_payment,crud,
+account_payment_order_company_rule,Payment order multi-company rule,account.payment.order,,crud,"[('company_id', 'in', company_ids + [False])]"
+account_payment_line_company_rule,Payment line multi-company rule,account.payment.line,,crud,"[('company_id', 'in', company_ids + [False])]"
