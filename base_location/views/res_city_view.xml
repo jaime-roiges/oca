@@ -52,9 +52,6 @@
             to enforce any address of it to have a city in this list.
         </field>
     </record>
-    <record model="ir.ui.menu" id="base_address_extended.menu_res_city">
-        <field name="active" eval="False" />
-    </record>
     <menuitem
         name="Cities"
         id="locations_menu_cities"
