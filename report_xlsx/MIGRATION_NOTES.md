@@ -6,3 +6,5 @@
 - JS handler xlsx sin reescritura OWL.
 - Depende de base, web + pip xlsxwriter/xlrd.
 - Fuente OCA/reporting-engine 19.0.
+
+- 20.0: content_disposition → odoo.http.stream; serialize_exception → odoo.http.dispatcher.
