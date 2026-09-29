@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- 19.0 debranded sale_portal_connect_software_modal.
+         That modal does not exist on sale.sale_order_portal_template in Odoo 20.0.
+         Empty inherit so the module installs; no new debrand targets. -->
+    <template
+        id="sale_brand_promotion_debrand"
+        inherit_id="sale.sale_order_portal_template"
+        priority="99"
+    />
+</odoo>

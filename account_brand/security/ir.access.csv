@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+res_partner_account_brand_access,res.partner.account.brand access,res.partner.account.brand,,r,
+res_partner_account_brand_group_account_invoice_user_access,res.partner.account.brand invoice user access,res.partner.account.brand,account.group_account_invoice,crud,
