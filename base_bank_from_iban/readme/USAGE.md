@@ -1,9 +1,9 @@
-To use this module, you need to:
+To use this module:
 
-1.  Go to Partner
-2.  Click *Bank Account(s)* in "Invoicing" page.
-3.  Create/modify IBAN bank account.
-4.  When you put the bank account number, module extracts bank digits
-    from the format of the country, and try to match an existing bank by
-    country and code.
-5.  If there's a match, the bank is selected automatically.
+1. Open a partner and create or edit a bank account.
+2. Enter a valid IBAN in **Account Number**.
+3. Odoo formats and validates the account number.
+4. The module fills missing **Bank Name**, **BIC/SWIFT**, **Country**, and
+   **Bank Code** values from Schwifty when metadata is available.
+
+Values entered explicitly by the user are not overwritten.
