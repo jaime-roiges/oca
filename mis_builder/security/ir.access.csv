@@ -19,7 +19,7 @@ manage_mis_report_subreport,access_mis_report_subreport,mis.report.subreport,acc
 access_mis_report_subreport,access_mis_report_subreport,mis.report.subreport,base.group_user,r,
 manage_mis_report_style,access_mis_report_style,mis.report.style,account.group_account_manager,crud,
 access_mis_report_style,access_mis_report_style,mis.report.style,base.group_user,r,
-access_add_to_dashboard_wizard,access_add_to_dashboard_wizard,add.mis.report.instance.dashboard.wizard,base.group_user,crw,
+access_add_to_dashboard_wizard,access_add_to_dashboard_wizard,add.mis.report.instance.dashboard.wizard,base.group_user,cru,
 access_read_mis_report_annotation,access_read_mis_report_annotation,mis.report.instance.annotation,mis_builder.group_read_annotation,r,
 access_edit_mis_report_annotation,access_edit_mis_report_annotation,mis.report.instance.annotation,mis_builder.group_edit_annotation,crud,
 mis_builder_multi_company_rule,Mis Report Instance multi company,mis.report.instance,,crud,"['|',('company_id','=',False),('company_id','in',company_ids), '|', ('company_ids', '=', False), ('company_ids', 'in', company_ids)]"

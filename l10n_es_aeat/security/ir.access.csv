@@ -15,8 +15,8 @@ access_model_l10n_es_aeat_tax_line_aeat,l10n.es.aeat.tax.line aeat,l10n.es.aeat.
 access_l10n_es_aeat_certificate_manager,l10n_es_aeat_certificate manager,l10n.es.aeat.certificate,account.group_account_manager,crud,
 access_aeat_tax_agency_account,access_aeat_tax_agency_account,aeat.tax.agency,base.group_user,r,
 access_aeat_tax_agency_system,access_aeat_tax_agency_system,aeat.tax.agency,base.group_system,crud,
-access_l10n_es_aeat_report_compare_boe_file,access_l10n_es_aeat_report_compare_boe_file,l10n.es.aeat.report.compare.boe.file,group_account_aeat,crw,
-access_l10n_es_aeat_report_compare_boe_file_line,access_l10n_es_aeat_report_compare_boe_file_line,l10n.es.aeat.report.compare.boe.file.line,group_account_aeat,crw,
-access_l10n_es_aeat_report_export_to_boe,access_l10n_es_aeat_report_export_to_boe,l10n.es.aeat.report.export.to.boe,group_account_aeat,crw,
-access_l10n_es_aeat_certificate_password,access_l10n_es_aeat_certificate_password,l10n.es.aeat.certificate.password,group_account_aeat,crw,
+access_l10n_es_aeat_report_compare_boe_file,access_l10n_es_aeat_report_compare_boe_file,l10n.es.aeat.report.compare.boe.file,group_account_aeat,cru,
+access_l10n_es_aeat_report_compare_boe_file_line,access_l10n_es_aeat_report_compare_boe_file_line,l10n.es.aeat.report.compare.boe.file.line,group_account_aeat,cru,
+access_l10n_es_aeat_report_export_to_boe,access_l10n_es_aeat_report_export_to_boe,l10n.es.aeat.report.export.to.boe,group_account_aeat,cru,
+access_l10n_es_aeat_certificate_password,access_l10n_es_aeat_certificate_password,l10n.es.aeat.certificate.password,group_account_aeat,cru,
 l10n_es_aeat_certificate_rule,AEAT Certificate multi-company,l10n.es.aeat.certificate,,crud,"[('company_id', 'in', company_ids)]"

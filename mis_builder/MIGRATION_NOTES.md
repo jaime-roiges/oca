@@ -1,5 +1,8 @@
 # mis_builder 19.0 → 20.0
 
-- Version `20.0.1.2.1`.
-- XPath internos + report_file quitado. ir.rule multi-company → ir.access restricción global. Depende aún de OCA report_xlsx y date_range (no en este lote).
+- Version `20.0.1.2.1`. Fuente OCA/mis-builder 19.0.
+- `ir.model.access.csv` → `ir.access.csv` (al final de `data`).
+- `ir.rule` multi-compañía → restricción global `ir.access` (sin grupo).
+- Quitado `report_file` de `ir.actions.report`.
+- Depende de `account`, `board` (core) y OCA `report_xlsx` + `date_range` (ya en este lote).
 - Sin rediseño.
