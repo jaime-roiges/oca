@@ -6,3 +6,5 @@
 - Quitado `report_file` de `ir.actions.report`.
 - Depende de `account`, `board` (core) y OCA `report_xlsx` + `date_range` (ya en este lote).
 - Sin rediseño.
+
+- 20.0: compile_codeobj no está en odoo.tools.safe_eval.__all__; import desde odoo.tools.safe_eval.evaluation.
