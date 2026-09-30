@@ -60,7 +60,7 @@ class SaleOrder(models.Model):
     def _get_risk_states(self):
         risk_states = ["sale"]
         ICP = self.env["ir.config_parameter"].sudo()
-        if ICP.get_param("sale_financial_risk.include_risk_sale_order_done"):
+        if ICP.get_bool("sale_financial_risk.include_risk_sale_order_done"):
             risk_states.append("done")
         return risk_states
 

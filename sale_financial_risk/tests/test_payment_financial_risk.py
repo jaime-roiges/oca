@@ -24,7 +24,8 @@ class TestRiskSalePayment(AccountPaymentCommon, PaymentHttpCommon):
         payment_method_record.active = True  # Ahora esto funciona
         cls.provider.write(
             {
-                "state": "test",
+                "active": True,
+                "is_live": False,
                 "is_published": True,
                 "available_currency_ids": [Command.set([cls.currency.id])],
                 "available_country_ids": [Command.clear()],

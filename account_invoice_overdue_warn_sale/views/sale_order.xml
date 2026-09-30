@@ -28,9 +28,9 @@
                     for a total residual of <field name="overdue_invoice_amount" />
                 </div>
             </xpath>
-            <field name="currency_id" position="after">
+            <xpath expr="//group[@name='order_details']/field[@name='currency_id']" position="after">
                 <field name="company_currency_id" invisible="1" />
-            </field>
+            </xpath>
         </field>
     </record>
 </odoo>

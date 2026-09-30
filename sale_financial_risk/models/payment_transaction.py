@@ -7,10 +7,12 @@ from odoo import models
 class PaymentTransaction(models.Model):
     _inherit = "payment.transaction"
 
-    def _set_authorized(self, **kwargs):
-        """Bypass risk for sale confirmation triggered by this method"""
+    def _set_authorized(self, *, state_message=None, extra_allowed_states=()):
+        """Bypass risk for sale confirmation triggered by this method."""
         self = self.with_context(bypass_risk=True)
-        return super()._set_authorized(**kwargs)
+        return super()._set_authorized(
+            state_message=state_message, extra_allowed_states=extra_allowed_states
+        )
 
     def _post_process(self):
         """Bypass risk for sale confirmation and invoice creation triggered

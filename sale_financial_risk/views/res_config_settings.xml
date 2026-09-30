@@ -9,7 +9,7 @@
         />
         <field name="arch" type="xml">
             <xpath
-                expr="//field[@name='allow_overrisk_invoice_validation']/../.."
+                expr="//block[@id='partner_financial_risk_setting_container']"
                 position="inside"
             >
                 <setting

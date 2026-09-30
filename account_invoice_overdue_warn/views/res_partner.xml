@@ -4,7 +4,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <div role="alert" position="after">
+            <xpath expr="//form/div[@role='alert' and @name='warning_tax']" position="after">
                 <div
                     class="alert alert-warning"
                     groups="account.group_account_invoice,account.group_account_readonly"
@@ -18,7 +18,7 @@
                     class="oe_link"
                 />for a total residual of <field name="overdue_invoice_amount" />
                 </div>
-            </div>
+            </xpath>
         </field>
     </record>
 </odoo>

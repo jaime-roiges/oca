@@ -4,7 +4,7 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='validity_date']" position="before">
+            <xpath expr="//group[@name='order_details']/field[@name='validity_date']" position="before">
                 <field name="risk_info" readonly="1" />
             </xpath>
         </field>
