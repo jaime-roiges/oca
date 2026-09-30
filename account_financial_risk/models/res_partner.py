@@ -7,7 +7,6 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.fields import Domain
-from odoo.tools.misc import str2bool
 
 
 class ResPartner(models.Model):
@@ -193,9 +192,9 @@ class ResPartner(models.Model):
         global_enabled = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("account_financial_risk.portal_show_financial_risk")
+            .get_bool("account_financial_risk.portal_show_financial_risk")
         )
-        self.portal_show_financial_risk_visible = str2bool(global_enabled)
+        self.portal_show_financial_risk_visible = global_enabled
 
     @api.depends("credit_limit")
     def _compute_date_credit_limit(self):

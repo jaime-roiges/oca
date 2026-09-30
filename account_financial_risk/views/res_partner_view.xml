@@ -8,9 +8,9 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="priority" eval="20" />
         <field name="arch" type="xml">
-            <field name="is_company" position="after">
+            <xpath expr="//form/sheet" position="inside">
                 <field name="portal_show_financial_risk_visible" invisible="1" />
-            </field>
+            </xpath>
             <xpath
                 expr="//notebook/page/field/form//field[@name='comment']/parent::group"
                 position="before"
