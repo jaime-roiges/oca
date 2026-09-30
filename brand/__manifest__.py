@@ -13,9 +13,9 @@
     "website": "https://github.com/OCA/brand",
     "depends": ["base_setup"],
     "data": [
-        "security/ir.access.csv",
         "views/res_config_settings.xml",
         "views/res_brand.xml",
+        "security/ir.access.csv",
     ],
     "maintainers": ["sbejaoui"],
 }

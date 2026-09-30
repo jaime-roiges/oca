@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
+from odoo.models import TableSQL
 from odoo.tools import SQL
 
 
@@ -10,10 +11,16 @@ class PurchaseReport(models.Model):
 
     product_brand_id = fields.Many2one(comodel_name="product.brand", string="Brand")
 
-    def _select(self):
-        select_str = super()._select()
-        return SQL("%s, t.product_brand_id as product_brand_id", select_str)
+    def _select_list(self, table: TableSQL):
+        res = super()._select_list(table)
+        return [
+            *res,
+            SQL(
+                "%s AS product_brand_id",
+                table.product_id.product_tmpl_id.product_brand_id,
+            ),
+        ]
 
-    def _group_by(self):
-        group_by_str = super()._group_by()
-        return SQL("%s, t.product_brand_id", group_by_str)
+    def _groupby_list(self, table: TableSQL):
+        res = super()._groupby_list(table)
+        return [*res, table.product_id.product_tmpl_id.product_brand_id]

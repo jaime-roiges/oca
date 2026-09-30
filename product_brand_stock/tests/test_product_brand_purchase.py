@@ -27,7 +27,7 @@ class TestStockMove(BaseCommon):
             {
                 "product_id": self.product.id,
                 "product_uom_qty": 10,
-                "product_uom": self.product.uom_id.id,
+                "uom_id": self.product.uom_id.id,
                 "location_id": self.env.ref("stock.stock_location_stock").id,
                 "location_dest_id": self.env.ref("stock.stock_location_customers").id,
             }
@@ -48,7 +48,7 @@ class TestStockMove(BaseCommon):
             {
                 "move_id": self.stock_move.id,
                 "product_id": self.product.id,
-                "product_uom_id": self.product.uom_id.id,
+                "uom_id": self.product.uom_id.id,
                 "location_id": self.env.ref("stock.stock_location_stock").id,
                 "location_dest_id": self.env.ref("stock.stock_location_customers").id,
             }

@@ -20,10 +20,10 @@
     "license": "AGPL-3",
     "depends": ["sale"],
     "data": [
-        "security/ir.access.csv",
         "views/product_brand_view.xml",
         "reports/sale_report_view.xml",
         "reports/account_invoice_report_view.xml",
+        "security/ir.access.csv",
     ],
     "installable": True,
     "auto_install": False,

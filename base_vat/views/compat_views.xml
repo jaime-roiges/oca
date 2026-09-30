@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Odoo 20 moved the VIES partner extension to l10n_eu_account_vies.
+        Keep the legacy XML-ID as a real inherited view so addons inheriting
+        base_vat.view_partner_base_vat_form still have a valid parent.
+    -->
+    <record id="view_partner_base_vat_form" model="ir.ui.view">
+        <field name="name">view.partner.base.vat.form.compat</field>
+        <field name="model">res.partner</field>
+        <field name="priority">16</field>
+        <field name="inherit_id" ref="l10n_eu_account_vies.view_partner_l10n_eu_account_vies_form"/>
+        <field name="arch" type="xml">
+            <field name="vies_valid" position="attributes">
+                <attribute name="invisible">not perform_vies_validation</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!--
+        The VIES setting itself is now directly present in account's settings
+        view with the same node id (vies_service_setting).  Keep the old
+        base_vat XML-ID as a compatibility parent without duplicating the UI.
+    -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.base.vat.compat</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority">41</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <setting id="vies_service_setting" position="attributes">
+                <attribute name="id">vies_service_setting</attribute>
+            </setting>
+        </field>
+    </record>
+</odoo>

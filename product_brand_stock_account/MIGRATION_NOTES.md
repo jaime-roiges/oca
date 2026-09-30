@@ -1,6 +1,4 @@
-# product_brand_stock_account 19.0 → 20.0
+# Odoo 20 migration
 
-- Rama OCA/brand 19.0.
-- ACL XML/CSV → ir.access.csv; reglas a domain.
-- t-esc→t-out; report_file fuera.
-- Sin rediseño.
+- Reviewed against the Odoo 20 stock product list view.
+- No model rewrite is required; the addon only extends the stock product list view with the related brand field.

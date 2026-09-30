@@ -1,6 +1,6 @@
-# brand 19.0 → 20.0
+# Odoo 20 migration
 
-- Rama OCA/brand 19.0.
-- ACL XML/CSV → ir.access.csv; reglas a domain.
-- t-esc→t-out; report_file fuera.
-- Sin rediseño.
+- Version bumped to 20.0.1.0.0.
+- Security converted to `ir.access.csv`.
+- The former group-less read ACL is represented by read permissions for internal, portal and public users; the multi-company rule remains a group-less restriction.
+- `ir.access.csv` is loaded after views, following Odoo 20 core ordering.

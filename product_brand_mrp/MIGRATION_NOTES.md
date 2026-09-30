@@ -1,6 +1,4 @@
-# product_brand_mrp 19.0 → 20.0
+# Odoo 20 migration
 
-- Rama OCA/brand 19.0.
-- ACL XML/CSV → ir.access.csv; reglas a domain.
-- t-esc→t-out; report_file fuera.
-- Sin rediseño.
+- Reviewed against Odoo 20 MRP model/view API.
+- No Python API rewrite is required for the stored related brand field.

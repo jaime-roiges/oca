@@ -1,6 +1,4 @@
-# product_brand_stock 19.0 → 20.0
+# Odoo 20 migration
 
-- Rama OCA/brand 19.0.
-- ACL XML/CSV → ir.access.csv; reglas a domain.
-- t-esc→t-out; report_file fuera.
-- Sin rediseño.
+- Stock test fixtures migrated from `stock.move.product_uom` and `stock.move.line.product_uom_id` to `uom_id`.
+- Stored related brand fields and stock view extensions retained.
