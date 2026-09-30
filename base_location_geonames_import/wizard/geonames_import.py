@@ -97,7 +97,7 @@ class CityZipGeonamesImport(models.TransientModel):
     @api.model
     def get_and_parse_csv(self, country):
         country_code = country.code
-        config_url = self.env["ir.config_parameter"].get_param(
+        config_url = self.env["ir.config_parameter"].get_str(
             "geonames.url", default="http://download.geonames.org/export/zip/%s.zip"
         )
         url = config_url % country_code
