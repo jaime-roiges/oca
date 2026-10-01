@@ -11,15 +11,17 @@
     "installable": True,
     "depends": ["web"],
     "data": [
-        "data/ir_cron_data.xml",
         "security/ir.access.csv",
-        "security/date_range_security.xml",
+        "data/ir_cron_data.xml",
         "views/date_range_view.xml",
         "wizard/date_range_generator.xml",
     ],
     "assets": {
         "web.assets_backend": [
             "date_range/static/src/js/*",
+        ],
+        "web.assets_unit_tests": [
+            "date_range/static/tests/**/*.test.js",
         ],
     },
     "development_status": "Mature",
