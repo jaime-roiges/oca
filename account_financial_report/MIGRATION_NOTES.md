@@ -7,3 +7,13 @@
 - Depende de account, date_range y report_xlsx (estos dos ya migrados antes).
 - OWL/JS sin reescritura.
 - Sin rediseño.
+- Odoo 20 elimina `account.group`; la jerarquía del plan contable vive ahora en
+  `account.account.parent_id` / `parent_ids` y expone `code_path` / `name_path`.
+  Se eliminó la extensión `models/account_group.py` y el balance de sumas y saldos
+  usa la jerarquía nativa de `account.account`.
+- Los enlaces QWeb de filas jerárquicas abren ahora `account.account`.
+- `security/ir.access.csv` se carga al final de `data`, siguiendo el orden de Odoo 20.
+- Frontend OWL 3: `useEffect` se sustituye por `useLayoutEffect` desde
+  `@web/owl2/utils`, según la capa de compatibilidad de Odoo 20.
+- `ReportAction` de Odoo 20 ya no expone `report_file`; la acción XLSX se construye
+  únicamente con `report_name`.

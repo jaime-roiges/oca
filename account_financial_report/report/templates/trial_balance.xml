@@ -285,20 +285,20 @@
                 </t>
                 <t t-if="balance['type'] == 'group_type'">
                     <div class="act_as_cell left" t-att-style="style">
-                        <t t-set="res_model" t-value="'account.group'" />
+                        <t t-set="res_model" t-value="'account.account'" />
                         <span
                             t-att-res-id="balance['id']"
-                            res-model="account.group"
+                            res-model="account.account"
                             view-type="form"
                         >
                             <t t-out="balance['code']" />
                         </span>
                     </div>
                     <div class="act_as_cell left" t-att-style="style">
-                        <t t-set="res_model" t-value="'account.group'" />
+                        <t t-set="res_model" t-value="'account.account'" />
                         <span
                             t-att-res-id="balance['id']"
-                            res-model="account.group"
+                            res-model="account.account"
                             view-type="form"
                         >
                             <t t-out="balance['name']" />

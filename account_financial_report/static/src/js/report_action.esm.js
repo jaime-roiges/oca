@@ -20,7 +20,6 @@ patch(ReportAction.prototype, {
             type: "ir.actions.report",
             report_type: "xlsx",
             report_name: this._get_xlsx_name(this.props.report_name),
-            report_file: this._get_xlsx_name(this.props.report_file),
             data: this.props.data || {},
             context: this.props.context || {},
             display_name: this.title,
