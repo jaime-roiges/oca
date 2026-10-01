@@ -33,6 +33,6 @@ def mis_safe_eval(expr, locals_dict):
         val = NameDataError("#NAME", traceback.format_exc())
     except ZeroDivisionError:
         val = DataError("#DIV/0", traceback.format_exc())
-    except Exception:
+    except Exception:  # noqa: BLE001
         val = DataError("#ERR", traceback.format_exc())
     return val

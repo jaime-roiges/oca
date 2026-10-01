@@ -11,6 +11,7 @@ manage_mis_report_instance_period_sum,manage_mis_report_instance_period_sum,mis.
 access_mis_report_instance_period_sum,access_mis_report_instance_period_sum,mis.report.instance.period.sum,base.group_user,r,
 manage_mis_report_instance,manage_mis_report_instance,mis.report.instance,account.group_account_manager,crud,
 access_mis_report_instance,access_mis_report_instance,mis.report.instance,base.group_user,r,
+mis_builder_multi_company_rule,Mis Report Instance multi company,mis.report.instance,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids), '|', ('company_ids', '=', False), ('company_ids', 'in', company_ids)]"
 manage_mis_report_subkpi,access_mis_report_subkpi,mis.report.subkpi,account.group_account_manager,crud,
 access_mis_report_subkpi,access_mis_report_subkpi,mis.report.subkpi,base.group_user,r,
 manage_mis_report_kpi_expression,access_mis_report_kpi_expression,mis.report.kpi.expression,account.group_account_manager,crud,
@@ -20,6 +21,5 @@ access_mis_report_subreport,access_mis_report_subreport,mis.report.subreport,bas
 manage_mis_report_style,access_mis_report_style,mis.report.style,account.group_account_manager,crud,
 access_mis_report_style,access_mis_report_style,mis.report.style,base.group_user,r,
 access_add_to_dashboard_wizard,access_add_to_dashboard_wizard,add.mis.report.instance.dashboard.wizard,base.group_user,cru,
-access_read_mis_report_annotation,access_read_mis_report_annotation,mis.report.instance.annotation,mis_builder.group_read_annotation,r,
-access_edit_mis_report_annotation,access_edit_mis_report_annotation,mis.report.instance.annotation,mis_builder.group_edit_annotation,crud,
-mis_builder_multi_company_rule,Mis Report Instance multi company,mis.report.instance,,crud,"['|',('company_id','=',False),('company_id','in',company_ids), '|', ('company_ids', '=', False), ('company_ids', 'in', company_ids)]"
+access_read_mis_report_annotation, access_read_mis_report_annotation,mis.report.instance.annotation,mis_builder.group_read_annotation,r,
+access_edit_mis_report_annotation, access_edit_mis_report_annotation,mis.report.instance.annotation,mis_builder.group_edit_annotation,crud,
