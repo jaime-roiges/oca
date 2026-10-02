@@ -1,2 +1,1 @@
-Este módulo depende de *base_bank_from_iban* que se encuentra en el
-repositorio <https://github.com/OCA/community-data-files>
+No requiere módulos OCA adicionales. La dependencia funcional es `account` de Odoo 20.
