@@ -2,16 +2,18 @@
 # Copyright 2017 Tecnativa - Carlos Dauden <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3).
 
+import requests
+
 from odoo.tests import common
 
 
 class TestL10nEsPartner(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
+        cls._super_send = requests.Session.send
         super().setUpClass()
-        cls.env["ir.config_parameter"].sudo().set_str(
-            "l10n_es_partner.name_pattern", ""
-        )
+        # Make sure there's no commercial name on display_name field
+        cls.env["ir.config_parameter"].set_param("l10n_es_partner.name_pattern", "")
         cls.country_spain = cls.env.ref("base.es")
         cls.partner = cls.env["res.partner"].create(
             {
@@ -21,7 +23,16 @@ class TestL10nEsPartner(common.TransactionCase):
                 "country_id": cls.country_spain.id,
             }
         )
+        cls.wizard = cls.env["l10n.es.partner.import.wizard"].create({})
         cls.env.user.company_id.country_id = cls.country_spain.id
+        cls.bank_obj = cls.env["res.partner.bank"].with_context(
+            default_partner_id=cls.partner.id
+        )
+
+    @classmethod
+    def _request_handler(cls, s, r, /, **kw):
+        """Don't block external requests."""
+        return cls._super_send(s, r, **kw)
 
     def test_search_commercial(self):
         partner_obj = self.env["res.partner"]
@@ -45,23 +56,20 @@ class TestL10nEsPartner(common.TransactionCase):
             ),
         )
 
-    def test_partner_bank_extra_fields(self):
-        bank = self.env["res.partner.bank"].create(
-            {
-                "account_number": "1234567890",
-                "partner_id": self.partner.id,
-                "bank_name": "Banco de prueba",
-                "bank_long_name": "Banco de prueba, S.A.",
-                "bank_vat": "ESA00000000",
-                "bank_website": "https://example.com",
-            }
-        )
-        self.assertEqual(bank.bank_long_name, "Banco de prueba, S.A.")
-        self.assertEqual(bank.bank_vat, "ESA00000000")
-        self.assertEqual(bank.bank_website, "https://example.com")
+    def test_import_banks(self):
+        # Then import banks
+        self.wizard.import_local()
+        bank = self.env["res.bank"].search([("code", "=", "0182")])
+        self.assertTrue(bank)
+        # Make sure the bank doesn't exist
+        bank.unlink()
+        # Import banks again but now from Internet
+        self.wizard.execute()
+        bank = self.env["res.bank"].search([("code", "=", "0182")])
+        self.assertTrue(bank)
 
     def test_name(self):
-        self.env["ir.config_parameter"].sudo().set_str(
+        self.env["ir.config_parameter"].set_param(
             "l10n_es_partner.name_pattern", "%(comercial_name)s (%(name)s)"
         )
         partner2 = self.env["res.partner"].create(
@@ -77,14 +85,21 @@ class TestL10nEsPartner(common.TransactionCase):
             partner2.with_context(show_address=True).display_name,
             "Nombre comercial (Empresa de prueba)\nMy street",
         )
+        # We will enforce the computation
         partner2.with_context(
             show_address=True, display_commercial=True
         )._compute_complete_name()
         partner2.write({"comercial": "Nuevo nombre"})
         self.assertEqual(partner2.display_name, "Nuevo nombre (Empresa de prueba)")
         self.assertEqual(partner2.complete_name, "Nuevo nombre (Empresa de prueba)")
-        self.assertEqual(
-            partner2.with_context(no_display_commercial=True).display_name,
-            "Empresa de prueba",
+        names = dict(
+            [
+                (
+                    partner2.id,
+                    partner2.with_context(no_display_commercial=True).display_name,
+                )
+            ]
         )
-        self.assertEqual(partner2.display_name, "Nuevo nombre (Empresa de prueba)")
+        self.assertEqual(names.get(partner2.id), "Empresa de prueba")
+        names = dict([(partner2.id, partner2.display_name)])
+        self.assertEqual(names.get(partner2.id), "Nuevo nombre (Empresa de prueba)")

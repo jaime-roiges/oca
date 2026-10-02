@@ -1,9 +1,12 @@
-Incluye la siguiente funcionalidad en Odoo 20:
+Incluye la siguiente funcionalidad:
 
-- Añade el campo *Nombre comercial* a las empresas y permite buscar por él.
-- Permite definir un patrón del nombre mostrado a partir del nombre y el nombre comercial.
-- Añade nombre largo, NIF y web de la entidad bancaria a `res.partner.bank`.
-
-Odoo 20 ya no dispone del modelo maestro `res.bank`. Por ello se ha retirado el antiguo
-asistente de importación del directorio de bancos del Banco de España, que en Odoo 19
-creaba registros `res.bank`.
+- Añade el campo *Nombre comercial* a las empresas y permite buscar por
+  él.
+- Permite definir un patrón del nombre a mostrar a partir del nombre y
+  el nombre comercial de la empresa.
+- Añade los campos nombre largo, NIF y web a los bancos.
+- Añade los datos de los bancos españoles extraídos del registro oficial
+  del Banco de España (<http://goo.gl/mtx6ic>). El asistente realiza la
+  descarga automática de Internet, pero si por cualquier razón hay algún
+  problema, existe una copia local cuya última actualización fue el
+  26/10/2017.

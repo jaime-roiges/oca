@@ -14,11 +14,14 @@
     "license": "AGPL-3",
     "development_status": "Mature",
     "maintainers": ["pedrobaeza"],
-    "depends": ["account"],
+    "depends": ["account", "base_bank_from_iban", "base_vat"],
     "data": [
         "data/l10n_es_partner_data.xml",
         "views/res_bank_view.xml",
         "views/res_partner_view.xml",
+        "wizard/l10n_es_partner_wizard.xml",
+        "security/ir.model.access.csv",
     ],
+    "oca_data_manual": ["wizard/data_banks.csv"],
     "installable": True,
 }
