@@ -1,11 +1,12 @@
-# Copyright 2009 Jordi Esteve
-# Copyright 2012-2014 Ignacio Ibeas
+# Copyright 2009 Jordi Esteve <jesteve@zikzakmedia.com>
+# Copyright 2012-2014 Ignacio Ibeas <ignacio@acysos.com>
 # Copyright 2016 Tecnativa - Carlos Dauden
 # Copyright 2016,2022,2025 Tecnativa - Pedro M. Baeza
-# Copyright 2025 Studio73 - Pablo Cortes
+# Copyright 2025 Studio73 - Pablo Cortés <pablo.cortes@studio73.es>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3).
 
 from odoo import api, fields, models
+from odoo.fields import Domain
 
 
 class ResPartner(models.Model):
@@ -27,7 +28,7 @@ class ResPartner(models.Model):
         name_pattern = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_str("l10n_es_partner.name_pattern", default="")
+            .get_param("l10n_es_partner.name_pattern", default="")
         )
         if not name_pattern:
             return
@@ -44,7 +45,7 @@ class ResPartner(models.Model):
             name_pattern = (
                 self.env["ir.config_parameter"]
                 .sudo()
-                .get_str("l10n_es_partner.name_pattern", default="")
+                .get_param("l10n_es_partner.name_pattern", default="")
             )
             if name_pattern:
                 name = name_pattern % {
@@ -55,24 +56,34 @@ class ResPartner(models.Model):
 
     @api.depends("comercial")
     def _compute_complete_name(self):
-        super()._compute_complete_name()
+        # We are enforcing the new context,
+        # because complete name field will remove the context
+        res = super()._compute_complete_name()
         for partner in self:
             partner.complete_name = partner.with_context(
                 display_commercial=not self.env.context.get(
                     "no_display_commercial", False
                 )
             )._get_complete_name()
+        return res
 
     @api.model
     def _commercial_fields(self):
-        return super()._commercial_fields() + ["comercial"]
+        res = super()._commercial_fields()
+        res += ["comercial"]
+        return res
 
     @api.model
-    @api.readonly
-    def name_search(self, name="", domain=None, operator="ilike", limit=100):
-        rec_names = list(self._rec_names_search)
-        if "comercial" not in rec_names:
-            self._rec_names_search = [*rec_names, "comercial"]
-        return super().name_search(
-            name=name, domain=domain, operator=operator, limit=limit
-        )
+    def _search_display_name(self, operator, value):
+        """Include the Spanish trade name in partner name searches.
+
+        In Odoo 20 ``_rec_names_search`` is read-only model metadata.  The
+        search criteria must therefore be extended through this hook instead
+        of mutating or assigning ``self._rec_names_search`` from
+        ``name_search``.
+        """
+        domain = super()._search_display_name(operator, value)
+        comercial_domain = Domain("comercial", operator, value)
+        if operator in Domain.NEGATIVE_OPERATORS:
+            return Domain.AND([domain, comercial_domain])
+        return Domain.OR([domain, comercial_domain])

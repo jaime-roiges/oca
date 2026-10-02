@@ -2,6 +2,7 @@
 # Copyright 2017 ForgeFlow, S.L.
 # Copyright 2021 Jacques-Etienne Baudoux (BCIM) <je@bcim.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
 {
     "name": "Purchase Delivery Split Date",
     "version": "20.0.1.0.0",
@@ -14,6 +15,5 @@
     "category": "Purchase Management",
     "license": "AGPL-3",
     "depends": ["purchase_stock"],
-    "installable": True,
     "application": False,
 }

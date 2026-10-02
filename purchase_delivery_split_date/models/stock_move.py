@@ -11,22 +11,20 @@ class StockMove(models.Model):
     _inherit = "stock.move"
 
     def _purchase_split_date_get_group_keys(self):
-        self.ensure_one()
         tz = self.picking_type_id.warehouse_id.partner_id.tz
         wh_tz = pytz.timezone(tz) if tz else self.env.tz
-        date_tz = self.date.astimezone(pytz.utc).astimezone(wh_tz)
-        return (("date_planned", date_tz.date()),)
-
-    def _key_assign_picking(self):
-        """Include the receipt date in Odoo 20's initial picking grouping key."""
-        key = super()._key_assign_picking()
-        if self.env.context.get("purchase_delivery_split_date") and self.purchase_line_id:
-            key += (self._purchase_split_date_get_group_keys(),)
+        # In Odoo 20 the planned date of an incoming move is stored in ``date``.
+        # ``date_deadline`` is the promised/deadline date and must not be used
+        # to determine the reception picking day.
+        date_planned_tz = self.date.astimezone(pytz.utc).astimezone(wh_tz)
+        date = date_planned_tz.date()
+        # Split date value to obtain only the attributes year, month and day
+        key = (("date_planned", date),)
         return key
 
     def _search_picking_for_assignation_domain(self):
         domain = super()._search_picking_for_assignation_domain()
-        if self.env.context.get("purchase_delivery_split_date") and self.purchase_line_id:
+        if self.env.context.get("purchase_delivery_split_date"):
             key = self._purchase_split_date_get_group_keys()
             tz = self.picking_type_id.warehouse_id.partner_id.tz
             domain = Domain.AND(
@@ -36,30 +34,39 @@ class StockMove(models.Model):
 
     def write(self, vals):
         res = super().write(vals)
-        # In Odoo 20 purchase_stock updates move.date when date_planned changes on
-        # an incoming purchase move. date_deadline is reserved for date_promised.
-        if "date" in vals:
+        # purchase_stock in Odoo 20 updates ``date`` when a purchase line's
+        # planned date changes (Odoo 19 used ``date_deadline`` for this).
+        if "date" in vals and not self.env.context.get(
+            "purchase_delivery_split_date_update"
+        ):
             self._purchase_split_by_date(vals["date"])
         return res
 
     def _purchase_split_by_date(self, new_date):
         po_moves = self.filtered(
-            lambda move: move.purchase_line_id and move.state not in ("done", "cancel")
+            lambda m: m.purchase_line_id and m.state not in ("done", "cancel")
         )
         if not po_moves:
             return
-
-        # ``new_date`` has already been written by ``super().write``. Do not write it
-        # again here or this method would recurse through ``write``.
+        # The date has already been written by the caller in Odoo 20.  Keep
+        # this guarded write for callers that invoke the helper directly and
+        # prevent it from recursively triggering the split logic.
+        po_moves.with_context(
+            purchase_delivery_split_date_update=True
+        ).write({"date": new_date})
         for picking, moves in po_moves.grouped("picking_id").items():
-            if not picking or picking.printed:
+            if picking.printed:
+                # Do not split by date anymore
                 continue
+            # the picking is not valid anymore
             reserved_moves = moves.filtered(
-                lambda move: move.state in ("partially_available", "assigned")
+                lambda m: m.state in ("partially_available", "assigned")
             )
             reserved_moves._do_unreserve()
             moves.picking_id = False
             if picking.move_ids:
+                # recompute the picking dates as some moves have been
+                # removed
                 picking._compute_scheduled_date()
                 picking._compute_date_deadline()
             else:
@@ -70,7 +77,7 @@ class StockMove(models.Model):
     def _get_new_picking_values(self):
         vals = super()._get_new_picking_values()
         if self.env.context.get("purchase_delivery_split_date"):
-            is_dropship = all(move._is_dropshipped() for move in self)
+            is_dropship = all([move._is_dropshipped() for move in self])
             if not vals.get("partner_id") or is_dropship:
                 partners = self.purchase_line_id.partner_id
                 vals["partner_id"] = next(iter(partners), partners).id
@@ -78,8 +85,10 @@ class StockMove(models.Model):
 
     def _assign_picking_values(self, picking):
         vals = super()._assign_picking_values(picking)
-        # Core may remove the partner when move destination addresses differ. Keep
-        # the purchase/drop-shipping partner in the split-date flow.
+        # The core function will remove the partner from the picking if it is
+        # different than the one on the moves (Destination Address).
+        # For dropshipping the partner on the pick is the contact !
         if self.env.context.get("purchase_delivery_split_date"):
-            vals.pop("partner_id", None)
+            if "partner_id" in vals.keys():
+                vals.pop("partner_id")
         return vals

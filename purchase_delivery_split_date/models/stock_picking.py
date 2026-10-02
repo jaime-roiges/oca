@@ -15,6 +15,7 @@ class StockPicking(models.Model):
     def _purchase_split_date_assign_domain(self, key, tz):
         date = key[0][1]
         wh_tz = pytz.timezone(tz) if tz else self.env.tz
+        # The date is in local time
         dt_start_tz = wh_tz.localize(fields.Datetime.to_datetime(date))
         dt_start = dt_start_tz.astimezone(pytz.utc).replace(tzinfo=None)
         dt_end = fields.Datetime.add(dt_start, days=1)

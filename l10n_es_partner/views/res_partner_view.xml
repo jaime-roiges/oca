@@ -2,21 +2,28 @@
 <odoo>
     <record id="view_partner_form" model="ir.ui.view">
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="//form/sheet//field[@name='parent_id'][1]" position="after">
-                <field name="comercial" placeholder="Trade name" invisible="not is_company"/>
-            </xpath>
+            <field name="parent_id" position="after">
+                <field
+                    name="comercial"
+                    placeholder="Trade name"
+                    invisible="not is_company"
+                />
+            </field>
         </field>
     </record>
-
     <record id="view_partner_simple_form" model="ir.ui.view">
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_simple_form"/>
+        <field name="inherit_id" ref="base.view_partner_simple_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='parent_id']" position="after">
-                <field name="comercial" placeholder="Trade name" invisible="not is_company"/>
-            </xpath>
+            <field name="parent_id" position="after">
+                <field
+                    name="comercial"
+                    placeholder="Trade name"
+                    invisible="not is_company"
+                />
+            </field>
         </field>
     </record>
 </odoo>
