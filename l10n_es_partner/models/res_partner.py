@@ -28,7 +28,7 @@ class ResPartner(models.Model):
         name_pattern = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_str("l10n_es_partner.name_pattern", default="")
+            .get_param("l10n_es_partner.name_pattern", default="")
         )
         if not name_pattern:
             return
@@ -45,7 +45,7 @@ class ResPartner(models.Model):
             name_pattern = (
                 self.env["ir.config_parameter"]
                 .sudo()
-                .get_str("l10n_es_partner.name_pattern", default="")
+                .get_param("l10n_es_partner.name_pattern", default="")
             )
             if name_pattern:
                 name = name_pattern % {
