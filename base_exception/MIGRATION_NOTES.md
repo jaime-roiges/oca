@@ -1,11 +1,6 @@
-# Migración 19.0 → 20.0
+# Odoo 20 migration notes
 
-- Versión: `20.0.1.0.0`.
-- `ir.model.access.csv` → `ir.access.csv`:
-  - `exception.rule`: `base.group_user` = `r`; `group_exception_rule_manager` = `crud`
-  - `base.exception`: mismos grupos/operaciones
-- Grupos XML al inicio de `data`; `ir.access.csv` al final.
-- Python ya usaba `from odoo.fields import Domain` (válido en 20).
-- Depende solo de `base_setup` (core 20).
-
-- `env.registry.clear_cache()` no existe en 20 → `env.transaction.invalidate_ormcache()`.
+- Updated module version to `20.0.1.0.1`.
+- Converted the four ACL rows from `ir.model.access` into `ir.access` using Odoo 20's `operation` letters. Internal users retain read access; the exception manager group retains create, read, write, and unlink.
+- The security XML only defines the `base_exception.group_exception_rule_manager` group; this addon contains no `ir.rule` records to convert.
+- The `ir.access.csv` is loaded after the module's views, following the Odoo 20 data-loading convention.
