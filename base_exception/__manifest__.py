@@ -19,9 +19,9 @@
     "license": "AGPL-3",
     "data": [
         "security/base_exception_security.xml",
+        "security/ir.model.access.csv",
         "wizard/base_exception_confirm_view.xml",
         "views/base_exception_view.xml",
-        "security/ir.access.csv",
     ],
     "installable": True,
 }
