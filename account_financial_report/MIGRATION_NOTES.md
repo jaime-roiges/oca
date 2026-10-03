@@ -17,3 +17,10 @@
   `@web/owl2/utils`, según la capa de compatibilidad de Odoo 20.
 - `ReportAction` de Odoo 20 ya no expone `report_file`; la acción XLSX se construye
   únicamente con `report_name`.
+
+## 2026-10-03 - Odoo 20 ReportAction iframe lifecycle
+
+- Fixed the Odoo 20 frontend crash `Cannot read properties of undefined (reading 'el')`.
+- Odoo 20 `web.ReportAction` no longer exposes an iframe `useRef` (`this.iframe`).
+- The AFR patch now extends `onIframeLoaded(ev)` and enriches `ev.currentTarget` after the core handler runs.
+- Removed the obsolete OWL hook/ref based integration from `static/src/js/report.esm.js`.

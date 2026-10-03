@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="report_saleorder_document_triple_discount"
+        inherit_id="sale.report_saleorder_document"
+    >
+        <!-- Odoo 20 reports only the lines returned by _get_order_lines_to_report(). -->
+        <xpath expr="//t[@t-set='display_discount']" position="attributes">
+            <attribute name="t-value">False</attribute>
+        </xpath>
+        <xpath expr="//t[@t-set='display_discount']" position="after">
+            <t
+                t-set="display_discount1"
+                t-value="any(line.discount1 for line in lines_to_report)"
+            />
+            <t
+                t-set="display_discount2"
+                t-value="any(line.discount2 for line in lines_to_report)"
+            />
+            <t
+                t-set="display_discount3"
+                t-value="any(line.discount3 for line in lines_to_report)"
+            />
+        </xpath>
+
+        <!-- The core report maintains a dynamic colspan counter for sections. -->
+        <xpath expr="//th[@name='th_discount']" position="before">
+            <th
+                t-if="display_discount1"
+                name="th_discount1"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            >
+                <t t-set="colspan_count" t-value="colspan_count + 1" />
+                <span>Disc. 1 (%)</span>
+            </th>
+            <th
+                t-if="display_discount2"
+                name="th_discount2"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            >
+                <t t-set="colspan_count" t-value="colspan_count + 1" />
+                <span>Disc. 2 (%)</span>
+            </th>
+            <th
+                t-if="display_discount3"
+                name="th_discount3"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            >
+                <t t-set="colspan_count" t-value="colspan_count + 1" />
+                <span>Disc. 3 (%)</span>
+            </th>
+        </xpath>
+
+        <xpath expr="//td[@name='td_product_discount']" position="before">
+            <td
+                t-if="display_discount1"
+                name="td_product_discount1"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            >
+                <t t-if="not collapse_prices">
+                    <span t-field="line.discount1" />
+                </t>
+            </td>
+            <td
+                t-if="display_discount2"
+                name="td_product_discount2"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            >
+                <t t-if="not collapse_prices">
+                    <span t-field="line.discount2" />
+                </t>
+            </td>
+            <td
+                t-if="display_discount3"
+                name="td_product_discount3"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            >
+                <t t-if="not collapse_prices">
+                    <span t-field="line.discount3" />
+                </t>
+            </td>
+        </xpath>
+
+        <!-- Collapsed Odoo 20 sections aggregate prices by taxes, not individual
+             line discounts. Keep the three columns aligned, intentionally blank. -->
+        <xpath expr="//td[@name='td_section_group_discount']" position="before">
+            <td
+                t-if="display_discount1"
+                name="td_section_group_discount1"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            />
+            <td
+                t-if="display_discount2"
+                name="td_section_group_discount2"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            />
+            <td
+                t-if="display_discount3"
+                name="td_section_group_discount3"
+                class="text-end"
+                groups="sale.group_discount_per_so_line"
+            />
+        </xpath>
+    </template>
+</odoo>

@@ -1,6 +1,3 @@
-import {useComponent} from "@odoo/owl";
-import {useLayoutEffect} from "@web/owl2/utils";
-
 function toTitleCase(str) {
     return str
         .replaceAll(".", " ")
@@ -10,37 +7,42 @@ function toTitleCase(str) {
         );
 }
 
-function enrich(component, targetElement, selector, isIFrame = false) {
-    let doc = window.document;
-    let contentDocument = targetElement;
-
-    // If we are in an iframe, we need to take the right document
-    // both for the element and the doc
-    if (isIFrame) {
-        contentDocument = targetElement.contentDocument;
-        if (!contentDocument) {
-            return;
-        }
-        doc = contentDocument;
+/**
+ * Enrich an HTML report iframe with links that open records matching the
+ * domain declared by the report template.
+ *
+ * Odoo 20's ReportAction no longer exposes an iframe useRef. The iframe is
+ * provided by ReportAction.onIframeLoaded(ev), so callers must pass the
+ * iframe element received through ev.currentTarget.
+ *
+ * @param {import("@odoo/owl").Component} component
+ * @param {HTMLIFrameElement} iframe
+ * @param {String|null} selector
+ */
+export function enrichWithActionLinks(component, iframe, selector = null) {
+    const contentDocument = iframe?.contentDocument;
+    if (!contentDocument) {
+        return;
     }
 
-    // If there are selector, we may have multiple blocks of code to enrich
-    const targets = [];
-    if (selector) {
-        targets.push(...contentDocument.querySelectorAll(selector));
-    } else {
-        targets.push(contentDocument);
-    }
+    const targets = selector
+        ? [...contentDocument.querySelectorAll(selector)]
+        : [contentDocument];
 
-    // Search the elements with the selector, update them and bind an action.
     for (const currentTarget of targets) {
         const elementsToWrap = currentTarget.querySelectorAll("[res-model][domain]");
-        for (const element of elementsToWrap.values()) {
-            const wrapper = doc.createElement("a");
-            wrapper.setAttribute("href", "#");
+        for (const element of elementsToWrap) {
+            // Avoid wrapping the same node twice if another customization invokes
+            // onIframeLoaded more than once for the same document.
+            if (element.parentElement?.dataset?.afrActionLink === "1") {
+                continue;
+            }
+            const wrapper = contentDocument.createElement("a");
+            wrapper.href = "#";
+            wrapper.dataset.afrActionLink = "1";
             wrapper.addEventListener("click", (ev) => {
                 ev.preventDefault();
-                component.env.services.action.doAction({
+                component.action.doAction({
                     type: "ir.actions.act_window",
                     res_model: element.getAttribute("res-model"),
                     domain: element.getAttribute("domain"),
@@ -55,21 +57,4 @@ function enrich(component, targetElement, selector, isIFrame = false) {
             wrapper.appendChild(element);
         }
     }
-}
-
-export function useEnrichWithActionLinks(ref, selector = null) {
-    const comp = useComponent();
-    useLayoutEffect(
-        (element) => {
-            // If we get an iframe, we need to wait until everything is loaded
-            if (element.matches("iframe")) {
-                element.addEventListener("load", () =>
-                    enrich(comp, element, selector, true)
-                );
-            } else {
-                enrich(comp, element, selector);
-            }
-        },
-        () => [ref.el]
-    );
 }

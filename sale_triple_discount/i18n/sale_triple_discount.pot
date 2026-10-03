@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sale_triple_discount
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: sale_triple_discount
+msgid "Additive"
+msgstr ""
+
+#. module: sale_triple_discount
+msgid "Multiplicative"
+msgstr ""
+
+#. module: sale_triple_discount
+msgid "Disc. 1 (%)"
+msgstr ""
+
+#. module: sale_triple_discount
+msgid "Disc. 2 (%)"
+msgstr ""
+
+#. module: sale_triple_discount
+msgid "Disc. 3 (%)"
+msgstr ""
+
+#. module: sale_triple_discount
+msgid "Total Disc (%)"
+msgstr ""
+
+#. module: sale_triple_discount
+msgid "Sale order line %(name)s has unknown discounting type %(disc_type)s"
+msgstr ""
