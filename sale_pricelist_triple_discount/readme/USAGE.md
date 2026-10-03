@@ -1,0 +1,1 @@
+Create a quotation with a product matching a configured pricelist rule. For a plain discount rule the three percentages are copied to the sales order line. For complex price rules the combined effect is included in the unit price, following Odoo 20 standard behavior.

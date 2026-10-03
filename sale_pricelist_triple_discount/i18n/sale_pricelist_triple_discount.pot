@@ -1,0 +1,29 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sale_pricelist_triple_discount
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+
+#. module: sale_pricelist_triple_discount
+#: model:ir.model.fields,field_description:sale_pricelist_triple_discount.field_product_pricelist_item__discount2
+msgid "Discount 2 (%)"
+msgstr ""
+
+#. module: sale_pricelist_triple_discount
+#: model:ir.model.fields,field_description:sale_pricelist_triple_discount.field_product_pricelist_item__discount3
+msgid "Discount 3 (%)"
+msgstr ""
+
+#. module: sale_pricelist_triple_discount
+#: model:ir.model.fields,help:sale_pricelist_triple_discount.field_product_pricelist_item__discount2
+msgid "Second discount applied on a sale order line."
+msgstr ""
+
+#. module: sale_pricelist_triple_discount
+#: model:ir.model.fields,help:sale_pricelist_triple_discount.field_product_pricelist_item__discount3
+msgid "Third discount applied on a sale order line."
+msgstr ""

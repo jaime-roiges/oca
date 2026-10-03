@@ -1,0 +1,4 @@
+- Simone Rubino <simone.rubino@agilebg.com>
+- Simone Rubino <simone.rubino@aion-tech.it>
+- Open Source Integrators
+- Daniel Reis <dreis@opensourceintegrators.com>

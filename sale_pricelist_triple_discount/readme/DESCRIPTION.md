@@ -1,0 +1,1 @@
+This module lets pricelist rules define a second and third sequential discount. The effective price is computed from the three percentages and, when Odoo exposes a plain discount on a sales order line, the original three percentages are preserved on that line.
