@@ -17,3 +17,15 @@ Source: `ursais/sale-workflow`, branch `19.0-mig-sale_pricelist_triple_discount`
 ## Static validation
 
 The delivered archive is checked for Python syntax, XML well-formedness, manifest syntax/data references, obsolete Odoo 19 pricelist APIs, and ZIP integrity. Runtime installation and functional tests still require an Odoo 20 database with `sale_triple_discount` installed.
+
+## 20.0.1.0.1 runtime fix
+
+- Removed `pricelist_item_id` and `pricelist_item_id.*` from the dependencies of the
+  stored `discount1`/`discount2`/`discount3` compute. In Odoo 20
+  `sale.order.line.pricelist_item_id` is computed and not stored, so reverse dependency
+  invalidation from `product.pricelist.item` attempted an SQL domain on a field without
+  SQL representation.
+- The compute now depends on `discount`, `product_id`, `product_uom_id` and
+  `product_uom_qty`, and reads `pricelist_item_id` only while computing.
+- Restored the `sale.order._recompute_prices()` hook so changing a pricelist explicitly
+  refreshes the three displayed discount fields after the core price recomputation.

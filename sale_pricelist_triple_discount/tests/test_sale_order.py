@@ -75,6 +75,26 @@ class TestSalePrices(SaleCommon):
         # +10%, then -20%, then -30% => factor 0.616
         self.assertAlmostEqual(line.price_unit, self.product.list_price * 0.616)
 
+    def test_pricelist_rule_write_does_not_search_nonstored_rule_field(self):
+        """Editing a pricelist rule must not SQL-search SOL.pricelist_item_id."""
+        rule = self._add_rule(
+            compute_price="markup",
+            price_markup=10,
+            discount2=20,
+            discount3=30,
+        )
+        rule.write({"price_markup": 12})
+        self.assertEqual(rule.price_markup, 12)
+
+    def test_recompute_prices_refreshes_three_discounts(self):
+        rule = self._add_rule(price_discount=10, discount2=20, discount3=30)
+        line = self._new_order_line()
+        self.assertEqual((line.discount1, line.discount2, line.discount3), (10, 20, 30))
+
+        rule.write({"discount2": 5, "discount3": 0})
+        line.order_id._recompute_prices()
+        self.assertEqual((line.discount1, line.discount2, line.discount3), (10, 5, 0))
+
     def test_pricelist_readonly(self):
         rule = self._add_rule(price_discount=10, discount2=20, discount3=30)
         readonly_pricelist = rule.pricelist_id.with_user(self.sale_user)
