@@ -716,23 +716,28 @@ class AccountPaymentOrder(models.Model):
             party_type_label = self.env._("Debtor name")
         # Odoo 20: safe_eval cannot access record attributes. Compute the name
         # in pure Python (holder_name was acc_holder_name before 20).
+        # Fall back to the payment line partner if the bank account is empty.
         party_name_value = ""
         if partner_bank:
-            try:
-                party_name_value = partner_bank.holder_name or ""
-            except Exception:
-                party_name_value = ""
-            if not party_name_value:
-                try:
-                    party_name_value = partner_bank.partner_id.name or ""
-                except Exception:
-                    party_name_value = ""
+            party_name_value = (partner_bank.holder_name or "") or (
+                partner_bank.partner_id.name or ""
+            )
+        if not party_name_value and bank_line and getattr(bank_line, "partner_id", None):
+            party_name_value = bank_line.partner_id.name or ""
         if not party_name_value:
+            bank_info = ""
+            if partner_bank:
+                bank_info = " (%s)" % (partner_bank.display_name or partner_bank.id)
+            line_info = ""
+            if bank_line and getattr(bank_line, "name", None):
+                line_info = " on payment line %s" % bank_line.name
             raise UserError(
                 self.env._(
-                    "Cannot compute the field '%(field_name)s'. "
-                    "Partner bank account has no holder name and no partner name.",
+                    "Cannot compute the field '%(field_name)s'%(line)s%(bank)s. "
+                    "No holder name and no partner name available.",
                     field_name=party_type_label,
+                    line=line_info,
+                    bank=bank_info,
                 )
             )
         party_name = self._prepare_field(
