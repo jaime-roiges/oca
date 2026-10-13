@@ -574,13 +574,26 @@ class AccountPaymentOrder(models.Model):
     ):
         party_account = etree.SubElement(parent_node, f"{party_type}Acct")
         party_account_id = etree.SubElement(party_account, "Id")
+        # Odoo 20: sanitized_account_number can be False. Always use a string.
+        acc_number = (
+            partner_bank.sanitized_account_number
+            or partner_bank.account_number
+            or ""
+        )
+        if not acc_number:
+            raise UserError(
+                self.env._(
+                    "Missing account number on bank account used for %(party)s.",
+                    party=party_type,
+                )
+            )
         if partner_bank.account_type == "iban":
             party_account_iban = etree.SubElement(party_account_id, "IBAN")
-            party_account_iban.text = partner_bank.sanitized_account_number
+            party_account_iban.text = str(acc_number)
         else:
             party_account_other = etree.SubElement(party_account_id, "Othr")
             party_account_other_id = etree.SubElement(party_account_other, "Id")
-            party_account_other_id.text = partner_bank.sanitized_account_number
+            party_account_other_id.text = str(acc_number)
         return True
 
     @api.model

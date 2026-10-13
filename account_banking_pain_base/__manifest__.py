@@ -8,7 +8,7 @@
 {
     "name": "Account Banking PAIN Base Module",
     "summary": "Base module for PAIN file generation",
-    "version": "20.0.1.1.3",
+    "version": "20.0.1.1.4",
     "license": "AGPL-3",
     "author": "Akretion, Noviat, Tecnativa, Therp BV, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/bank-payment",
