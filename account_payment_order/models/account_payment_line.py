@@ -233,11 +233,15 @@ class AccountPaymentLine(models.Model):
                 vals["destination_account_id"] = (
                     self.partner_id.property_account_payable_id.id
                 )
-        # Odoo 20 EE: without outstanding_account_id no move is generated on post.
-        pay = self.env["account.payment"].new(vals)
-        outstanding = pay._get_outstanding_account(vals["payment_type"])
-        if outstanding:
-            vals["outstanding_account_id"] = outstanding.id
+        # Odoo 20: prefer the account configured on the journal payment method
+        # line. Fall back to the generic chart outstanding account if empty.
+        if line and line.payment_account_id:
+            vals["outstanding_account_id"] = line.payment_account_id.id
+        else:
+            pay = self.env["account.payment"].new(vals)
+            outstanding = pay._get_outstanding_account(vals["payment_type"])
+            if outstanding:
+                vals["outstanding_account_id"] = outstanding.id
         return vals
 
     def action_open_business_doc(self):
