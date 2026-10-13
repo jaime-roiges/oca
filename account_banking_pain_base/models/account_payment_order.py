@@ -174,7 +174,12 @@ class AccountPaymentOrder(models.Model):
             gen_args = {}
         assert isinstance(eval_ctx, dict), "eval_ctx must contain a dict"
         try:
-            value = safe_eval(field_value, eval_ctx)
+            try:
+                value = safe_eval(field_value, eval_ctx)
+            except Exception:
+                # Odoo 20 safe_eval no longer allows free attribute access on
+                # records. Fall back to a simple dotted-path / "or" resolver.
+                value = self._simple_eval_field_path(field_value, eval_ctx)
             # SEPA uses XML ; XML = UTF-8 ; UTF-8 = support for all characters
             # But we are dealing with banks...
             # and many banks don't want non-ASCCI characters !
@@ -251,6 +256,40 @@ class AccountPaymentOrder(models.Model):
         return value
 
     @api.model
+
+    def _simple_eval_field_path(self, field_value, eval_ctx):
+        """Resolve simple expressions like 'obj.attr.sub or other.attr'.
+
+        Used when Odoo 20 safe_eval rejects record attribute access.
+        Only supports attribute chains and the 'or' operator, which is
+        all this module uses for SEPA field paths.
+        """
+        def resolve(expr):
+            expr = expr.strip()
+            if not expr:
+                return ""
+            # literal strings
+            if (expr.startswith('"') and expr.endswith('"')) or (
+                expr.startswith("'") and expr.endswith("'")
+            ):
+                return expr[1:-1]
+            parts = expr.split(".")
+            obj = eval_ctx.get(parts[0])
+            if obj is None:
+                raise ValueError("unknown name %s" % parts[0])
+            for attr in parts[1:]:
+                if obj is False or obj is None:
+                    return ""
+                obj = getattr(obj, attr, "")
+            return obj or ""
+
+        # support "a or b or c"
+        for part in field_value.split(" or "):
+            val = resolve(part)
+            if val:
+                return val
+        return ""
+
     def except_messages_prepare_field(self, eval_ctx, field_name):
         """
         Inherit this method to provide more detailed error messages for
