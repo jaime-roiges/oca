@@ -197,9 +197,7 @@ class AccountPaymentLine(models.Model):
             "date": fields.Date.context_today(self),
             "currency_id": self.currency_id.id,
             "memo": self.order_id.name,
-            # Put the name as the wildcard for forcing a unique name. If not, Odoo gets
-            # the sequence for all the payment at the same time
-            "name": "/",
+            # Odoo 20: name is computed/stored without inverse. Do not write it.
             "payment_reference": " - ".join([line.communication for line in self]),
             "journal_id": journal.id,
             "partner_bank_id": self.partner_bank_id.id,
@@ -235,6 +233,11 @@ class AccountPaymentLine(models.Model):
                 vals["destination_account_id"] = (
                     self.partner_id.property_account_payable_id.id
                 )
+        # Odoo 20 EE: without outstanding_account_id no move is generated on post.
+        pay = self.env["account.payment"].new(vals)
+        outstanding = pay._get_outstanding_account(vals["payment_type"])
+        if outstanding:
+            vals["outstanding_account_id"] = outstanding.id
         return vals
 
     def action_open_business_doc(self):
