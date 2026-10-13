@@ -371,11 +371,10 @@ class AccountPaymentOrder(models.Model):
                         )
                     )
                 payment_vals.append(paydict["paylines"]._prepare_account_payment_vals())
-            # Odoo 20 Enterprise does not generate the payment move unless
-            # outstanding_account_id is set (or force_payment_move context).
-            self.env["account.payment"].with_context(
-                force_payment_move=True
-            ).create(payment_vals)
+            # outstanding_account_id is set in the vals (method line account,
+            # or chart fallback). Do NOT use force_payment_move: that context
+            # overwrites the account with the generic chart one.
+            self.env["account.payment"].create(payment_vals)
         self.write({"state": "open"})
         return True
 
