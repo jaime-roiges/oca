@@ -278,9 +278,15 @@ class AccountPaymentOrder(models.Model):
             if obj is None:
                 raise ValueError("unknown name %s" % parts[0])
             for attr in parts[1:]:
-                if obj is False or obj is None:
+                if obj is False or obj is None or obj == "":
                     return ""
-                obj = getattr(obj, attr, "")
+                try:
+                    obj = getattr(obj, attr, "")
+                except Exception:
+                    return ""
+                if hasattr(obj, "__bool__") and not obj and not isinstance(obj, (str, int, float)):
+                    # empty recordset
+                    return ""
             return obj or ""
 
         # support "a or b or c"
@@ -708,12 +714,31 @@ class AccountPaymentOrder(models.Model):
             party_type_label = self.env._("Creditor name")
         elif party_type == "Dbtr":
             party_type_label = self.env._("Debtor name")
-        name = "partner_bank.holder_name or partner_bank.partner_id.name"
-        eval_ctx = {"partner_bank": partner_bank}
+        # Odoo 20: safe_eval cannot access record attributes. Compute the name
+        # in pure Python (holder_name was acc_holder_name before 20).
+        party_name_value = ""
+        if partner_bank:
+            try:
+                party_name_value = partner_bank.holder_name or ""
+            except Exception:
+                party_name_value = ""
+            if not party_name_value:
+                try:
+                    party_name_value = partner_bank.partner_id.name or ""
+                except Exception:
+                    party_name_value = ""
+        if not party_name_value:
+            raise UserError(
+                self.env._(
+                    "Cannot compute the field '%(field_name)s'. "
+                    "Partner bank account has no holder name and no partner name.",
+                    field_name=party_type_label,
+                )
+            )
         party_name = self._prepare_field(
             party_type_label,
-            name,
-            eval_ctx,
+            "party_name",
+            {"party_name": party_name_value},
             gen_args.get("name_maxsize"),
             gen_args=gen_args,
         )
