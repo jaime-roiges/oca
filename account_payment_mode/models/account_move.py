@@ -90,12 +90,7 @@ class AccountMove(models.Model):
                             partner.supplier_payment_mode_id.refund_payment_mode_id
                         )
 
-    @api.depends(
-        "bank_partner_id",
-        "currency_id",
-        "preferred_payment_method_line_id",
-        "payment_mode_id",
-    )
+    @api.depends("bank_partner_id", "payment_mode_id")
     def _compute_partner_bank_id(self):
         res = super()._compute_partner_bank_id()
         for move in self:
@@ -129,8 +124,10 @@ class AccountMove(models.Model):
     def _compute_has_reconciled_items(self):
         for record in self:
             lines_to_consider = record.line_ids.filtered(
-                lambda x: x.account_id.account_type
-                in ("asset_receivable", "liability_payable")
+                lambda x: (
+                    x.account_id.account_type
+                    in ("asset_receivable", "liability_payable")
+                )
             )
             record.has_reconciled_items = bool(
                 lines_to_consider.matched_credit_ids

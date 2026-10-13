@@ -11,6 +11,9 @@ from odoo.addons.base.tests.common import BaseCommon
 
 @tagged("-at_install", "post_install")
 class TestAccountPaymentPartner(BaseCommon):
+    # Keep running the tests as the environment user, like account's own tests
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -153,14 +156,10 @@ class TestAccountPaymentPartner(BaseCommon):
         )
         cls.journal_bank = cls.env["res.partner.bank"].create(
             {
-                "account_number": "GB95LOYD87430237296288",
-                "partner_id": cls.env.user.company_id.partner_id.id,
                 "bank_name": "Fiducial Banque",
                 "bank_bic": "FIDCFR21XXX",
-                "street": "38 rue Sergent Michel Berthet",
-                "zip": "69009",
-                "city": "Lyon",
-                "country_id": cls.env.ref("base.fr").id,
+                "account_number": "GB95LOYD87430237296288",
+                "partner_id": cls.env.user.company_id.partner_id.id,
             }
         )
         cls.journal = cls.env["account.journal"].create(
@@ -368,11 +367,9 @@ class TestAccountPaymentPartner(BaseCommon):
         refund_invoice_wizard = (
             self.env["account.move.reversal"]
             .with_context(
-                **{
-                    "active_ids": [invoice.id],
-                    "active_id": invoice.id,
-                    "active_model": "account.move",
-                }
+                active_ids=[invoice.id],
+                active_id=invoice.id,
+                active_model="account.move",
             )
             .create(
                 {
@@ -402,11 +399,9 @@ class TestAccountPaymentPartner(BaseCommon):
         refund_invoice_wizard = (
             self.env["account.move.reversal"]
             .with_context(
-                **{
-                    "active_ids": [invoice.id],
-                    "active_id": invoice.id,
-                    "active_model": "account.move",
-                }
+                active_ids=[invoice.id],
+                active_id=invoice.id,
+                active_model="account.move",
             )
             .create(
                 {

@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
-from odoo.models import TableSQL
-from odoo.tools import SQL
 
 
 class AccountInvoiceReport(models.Model):
@@ -15,8 +13,5 @@ class AccountInvoiceReport(models.Model):
         readonly=True,
     )
 
-    def _select_list(self, table: TableSQL):
-        return [
-            *super()._select_list(table),
-            SQL("%s AS payment_mode_id", table.move_id.payment_mode_id),
-        ]
+    def _select_list(self, table):
+        return super()._select_list(table) + [table.move_id.payment_mode_id]
