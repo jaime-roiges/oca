@@ -1,0 +1,39 @@
+# Copyright 2026 Tecniloop
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+{
+    "name": "TL Construction Work Certifications",
+    "version": "20.0.1.54.0",
+    "category": "Construction",
+    "summary": "Work certifications (Certificaciones de Obra) and origin invoicing (Facturación a Origen)",
+    "author": "Tecniloop",
+    "website": "https://www.tecniloop.es",
+    "license": "AGPL-3",
+    "depends": [
+        "construction_developer",
+        "sale_management",
+        "account",
+        "project",
+    ],
+    "data": [
+        "security/ir.access.csv",
+        "data/sequence_data.xml",
+        "report/construction_certification_report.xml",
+        "report/construction_certification_templates.xml",
+        "report/origin_invoice_report.xml",
+        "report/origin_invoice_templates.xml",
+        "report/retention_liquidation_report.xml",
+        "report/retention_liquidation_templates.xml",
+        "views/construction_certification_views.xml",
+        "views/construction_advance_views.xml",
+        "views/res_company_views.xml",
+        "wizard/create_certification_wizard_views.xml",
+        "views/sale_order_views.xml",
+        "views/project_views.xml",
+    ],
+    "demo": [],
+    "installable": True,
+    "application": False,
+    "development_status": "Beta",
+    "maintainers": ["tecniloop"],
+}

@@ -1,0 +1,3 @@
+In construction projects, billing is rarely based on simple delivery of goods. Instead, the contractor and the client periodically agree on the amount of work executed (certification). The invoice is then issued on the cumulative certified value from the start of the contract ("a origen"), deducting what has already been invoiced in previous certifications.
+
+This module implements that standard construction billing process while reusing the progress tracking (MRP-based Delivery Progress) and budget structure (sale order lines with `x_reference`) already provided by the `construction_developer` industry module.

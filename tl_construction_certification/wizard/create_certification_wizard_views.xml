@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_create_certification_wizard_form" model="ir.ui.view">
+        <field name="name">create.certification.wizard.form</field>
+        <field name="model">create.certification.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Work Certification">
+                <group>
+                    <field name="sale_order_id"/>
+                    <field name="date"/>
+                    <field name="import_from_progress"/>
+                </group>
+                <footer>
+                    <button name="action_create_certification" string="Create" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_certification_wizard" model="ir.actions.act_window">
+        <field name="name">Create Work Certification</field>
+        <field name="res_model">create.certification.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_sale_order_id': active_id}</field>
+    </record>
+</odoo>

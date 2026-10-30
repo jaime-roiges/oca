@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_certification_list" model="ir.ui.view">
+        <field name="name">construction.certification.list</field>
+        <field name="model">construction.certification</field>
+        <field name="arch" type="xml">
+            <list string="Work Certifications" default_order="date desc">
+                <field name="name"/>
+                <field name="sale_order_id"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <field name="date"/>
+                <field name="amount_certified_origin" sum="Total Origin"/>
+                <field name="amount_to_invoice" sum="To Invoice"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-warning="state == 'measured'"
+                       decoration-success="state in ('approved', 'invoiced')"
+                       decoration-danger="state == 'cancel'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_certification_form" model="ir.ui.view">
+        <field name="name">construction.certification.form</field>
+        <field name="model">construction.certification</field>
+        <field name="arch" type="xml">
+            <form string="Work Certification">
+                <header>
+                    <button name="action_measure" string="Confirm Measurement" type="object"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve" string="Approve" type="object"
+                            class="btn-primary" invisible="state != 'measured'"/>
+                    <button name="action_create_invoice" string="Create Invoice (Origin)" type="object"
+                            class="btn-primary" invisible="state != 'approved'"
+                            groups="account.group_account_invoice"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                            invisible="state == 'cancel'"/>
+                    <button name="action_draft" string="Set to Draft" type="object"
+                            invisible="state not in ('cancel', 'measured')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,measured,approved,invoiced"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoice" type="object"
+                                class="oe_stat_button" icon="fa-pencil-square-o"
+                                invisible="not invoice_id">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Invoice</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sale_order_id" readonly="state != 'draft'"/>
+                            <field name="project_id"/>
+                            <field name="partner_id"/>
+                            <field name="progress_approver_id"/>
+                        </group>
+                        <group>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="certification_number"/>
+                            <field name="reversal_invoice_id" invisible="not reversal_invoice_id"/>
+                            <field name="retention_percent" readonly="state not in ('draft', 'measured')"/>
+                            <field name="is_retention_liquidation" readonly="state not in ('draft', 'measured')"/>
+                            <field name="retention_to_release" readonly="state not in ('draft', 'measured')"/>
+                            <field name="amount_advance_applied" readonly="state not in ('draft', 'measured')"/>
+                            <button name="action_apply_advance" string="Apply Pending Advance" type="object"
+                                    class="btn-link" invisible="state not in ('draft', 'measured')"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Certification Lines" name="lines">
+                            <field name="line_ids" readonly="state in ('approved', 'invoiced', 'cancel')">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="reference"/>
+                                    <field name="sale_line_id"/>
+                                    <field name="product_id"/>
+                                    <field name="product_uom_qty"/>
+                                    <field name="mrp_cumulated_qty" optional="show"/>
+                                    <field name="mrp_cumulated_percent" optional="show" widget="percentage"/>
+                                    <field name="qty_period"/>
+                                    <field name="percent_period" widget="percentage"/>
+                                    <field name="qty_origin"/>
+                                    <field name="percent_origin" widget="percentage"/>
+                                    <field name="amount_origin" sum="Origin"/>
+                                    <field name="qty_origin_net" optional="show"/>
+                                    <field name="percent_origin_net" widget="percentage" optional="show"/>
+                                    <field name="amount_origin_net" optional="show" sum="Net Origin"/>
+                                    <field name="price_unit"/>
+                                    <field name="amount_period" sum="Period"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Advances" name="advances">
+                            <field name="application_ids" readonly="state not in ('draft', 'measured')">
+                                <list editable="bottom">
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="advance_id"
+                                           domain="[('sale_order_id', '=', parent.sale_order_id), ('state', 'in', ('confirmed', 'applied'))]"/>
+                                    <field name="amount" sum="Applied"/>
+                                    <field name="certification_state" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                    <group class="oe_subtotal_footer">
+                        <field name="amount_certified_origin" class="oe_subtotal_footer_separator"/>
+                        <field name="amount_certified_origin_net"/>
+                        <field name="amount_previously_invoiced"/>
+                        <field name="amount_to_invoice"/>
+                        <field name="amount_retention"/>
+                        <field name="amount_advance_applied"/>
+                        <field name="amount_net_to_invoice"/>
+                        <field name="amount_final_to_invoice" class="oe_subtotal_footer_separator"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_construction_certification_search" model="ir.ui.view">
+        <field name="name">construction.certification.search</field>
+        <field name="model">construction.certification</field>
+        <field name="arch" type="xml">
+            <search string="Work Certifications">
+                <field name="name"/>
+                <field name="sale_order_id"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="To Approve" name="measured" domain="[('state', '=', 'measured')]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Invoiced" name="invoiced" domain="[('state', '=', 'invoiced')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Sales Order" name="group_so" context="{'group_by': 'sale_order_id'}"/>
+                    <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_construction_certification" model="ir.actions.act_window">
+        <field name="name">Work Certifications</field>
+        <field name="res_model">construction.certification</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_construction_certification_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first work certification
+            </p>
+            <p>
+                Certifications allow you to measure progress and invoice by origin.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_construction_certification_root"
+              name="Work Certifications"
+              parent="sale.sale_menu_root"
+              sequence="50"/>
+
+    <menuitem id="menu_construction_certification"
+              name="Certifications"
+              parent="menu_construction_certification_root"
+              action="action_construction_certification"
+              sequence="10"/>
+</odoo>

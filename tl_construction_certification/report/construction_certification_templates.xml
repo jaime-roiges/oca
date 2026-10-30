@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_certification_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Work Certification</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Reference:</strong> <span t-field="doc.name"/><br/>
+                                <strong>Date:</strong> <span t-field="doc.date"/><br/>
+                                <strong>Sales Order:</strong> <span t-field="doc.sale_order_id.name"/><br/>
+                                <strong>Project:</strong> <span t-field="doc.project_id.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Customer:</strong> <span t-field="doc.partner_id.name"/><br/>
+                                <strong>Status:</strong> <span t-field="doc.state"/><br/>
+                                <strong>Approver:</strong> <span t-field="doc.progress_approver_id.name"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Ref</th>
+                                    <th>Description</th>
+                                    <th class="text-end">Budget Qty</th>
+                                    <th class="text-end">Period Qty</th>
+                                    <th class="text-end">% Period</th>
+                                    <th class="text-end">Origin Qty</th>
+                                    <th class="text-end">% Origin</th>
+                                    <th class="text-end">Amount Period</th>
+                                    <th class="text-end">Amount Origin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.line_ids" t-as="line">
+                                    <td><span t-field="line.reference"/></td>
+                                    <td><span t-field="line.name"/></td>
+                                    <td class="text-end"><span t-field="line.product_uom_qty"/></td>
+                                    <td class="text-end"><span t-field="line.qty_period"/></td>
+                                    <td class="text-end"><t t-esc="'%.2f' % ((line.percent_period or 0.0) * 100)"/>%</td>
+                                    <td class="text-end"><span t-field="line.qty_origin"/></td>
+                                    <td class="text-end"><t t-esc="'%.2f' % ((line.percent_origin or 0.0) * 100)"/>%</td>
+                                    <td class="text-end"><span t-field="line.amount_period" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                    <td class="text-end"><span t-field="line.amount_origin" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row mt32">
+                            <div class="col-6"/>
+                            <div class="col-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <td><strong>Certified to Origin</strong></td>
+                                        <td class="text-end"><span t-field="doc.amount_certified_origin" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Previously Certified</td>
+                                        <td class="text-end"><span t-field="doc.amount_previously_invoiced" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amount to Invoice</td>
+                                        <td class="text-end"><span t-field="doc.amount_to_invoice" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Retention (<span t-field="doc.retention_percent"/>%)</td>
+                                        <td class="text-end"><span t-field="doc.amount_retention" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Advance Applied</td>
+                                        <td class="text-end"><span t-field="doc.amount_advance_applied" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                    </tr>
+                                    <tr class="border-black">
+                                        <td><strong>Final to Invoice</strong></td>
+                                        <td class="text-end"><strong><span t-field="doc.amount_final_to_invoice" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div t-if="doc.notes" class="mt32">
+                            <strong>Notes:</strong>
+                            <p t-field="doc.notes"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

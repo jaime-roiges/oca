@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_retention_liquidation_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Retention Liquidation</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Reference:</strong> <span t-field="doc.name"/><br/>
+                                <strong>Date:</strong> <span t-field="doc.date"/><br/>
+                                <strong>Sales Order:</strong> <span t-field="doc.sale_order_id.name"/><br/>
+                                <strong>Project:</strong> <span t-field="doc.project_id.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Customer:</strong> <span t-field="doc.partner_id.name"/><br/>
+                                <strong>Type:</strong>
+                                <span t-if="doc.is_retention_liquidation">Full / Dedicated Liquidation</span>
+                                <span t-else="">Partial Release on Certification</span><br/>
+                                <strong>Status:</strong> <span t-field="doc.state"/>
+                            </div>
+                        </div>
+
+                        <div class="mt32">
+                            <h3>Retention Summary</h3>
+                            <table class="table table-sm">
+                                <tr>
+                                    <td>Certified to Origin</td>
+                                    <td class="text-end"><span t-field="doc.amount_certified_origin" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                </tr>
+                                <tr>
+                                    <td>Previously Certified</td>
+                                    <td class="text-end"><span t-field="doc.amount_previously_invoiced" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                </tr>
+                                <tr>
+                                    <td>Retention to Release</td>
+                                    <td class="text-end"><span t-field="doc.retention_to_release" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                </tr>
+                                <tr>
+                                    <td>Retention of this Period</td>
+                                    <td class="text-end"><span t-field="doc.amount_retention" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                </tr>
+                                <tr>
+                                    <td>Advance Applied</td>
+                                    <td class="text-end"><span t-field="doc.amount_advance_applied" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
+                                </tr>
+                                <tr class="border-black">
+                                    <td><strong>Final Amount to Invoice</strong></td>
+                                    <td class="text-end"><strong><span t-field="doc.amount_final_to_invoice" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></strong></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div t-if="doc.notes" class="mt32">
+                            <strong>Notes:</strong>
+                            <p t-field="doc.notes"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

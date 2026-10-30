@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_construction_advance_list" model="ir.ui.view">
+        <field name="name">construction.advance.list</field>
+        <field name="model">construction.advance</field>
+        <field name="arch" type="xml">
+            <list string="Advances">
+                <field name="name"/>
+                <field name="sale_order_id"/>
+                <field name="partner_id"/>
+                <field name="date"/>
+                <field name="amount" sum="Total"/>
+                <field name="amount_pending" sum="Pending"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_advance_form" model="ir.ui.view">
+        <field name="name">construction.advance.form</field>
+        <field name="model">construction.advance</field>
+        <field name="arch" type="xml">
+            <form string="Construction Advance">
+                <header>
+                    <button name="action_confirm" string="Confirm" type="object"
+                            class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_create_invoice" string="Create Invoice" type="object"
+                            class="btn-primary" invisible="state != 'confirmed' or invoice_id"
+                            groups="account.group_account_invoice"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                            invisible="state in ('cancel',)"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,applied"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sale_order_id" readonly="state != 'draft'"/>
+                            <field name="partner_id"/>
+                            <field name="date" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="amount" readonly="state != 'draft'"/>
+                            <field name="tax_ids" widget="many2many_tags" readonly="state != 'draft'"/>
+                            <field name="amount_applied"/>
+                            <field name="amount_pending"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Applications" name="applications">
+                            <field name="application_ids" readonly="1">
+                                <list>
+                                    <field name="certification_id"/>
+                                    <field name="certification_state"/>
+                                    <field name="amount" sum="Applied"/>
+                                    <field name="invoice_id" optional="show"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                    <field name="notes"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_construction_advance" model="ir.actions.act_window">
+        <field name="name">Advances</field>
+        <field name="res_model">construction.advance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_construction_advance"
+              name="Advances"
+              parent="menu_construction_certification_root"
+              action="action_construction_advance"
+              sequence="20"/>
+</odoo>

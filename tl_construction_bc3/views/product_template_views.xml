@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_bc3" model="ir.ui.view">
+        <field name="name">product.template.form.bc3</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="BC3" name="bc3" invisible="not bc3_code">
+                    <group>
+                        <group>
+                            <field name="bc3_code"/>
+                            <field name="bc3_catalog_id"/>
+                            <field name="bc3_concept_type"/>
+                            <field name="bc3_unit"/>
+                        </group>
+                        <group>
+                            <field name="bc3_text"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_bc3" model="ir.ui.view">
+        <field name="name">product.template.search.bc3</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter name="bc3" string="BC3" domain="[('bc3_code', '!=', False)]"/>
+                <field name="bc3_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

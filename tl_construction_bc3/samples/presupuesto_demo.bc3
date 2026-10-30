@@ -1,0 +1,23 @@
+~V|Propiedad de prueba|FIEBDC-3/2024\15062024|Odoo BC3|Presupuesto demo|ANSI|Obra ejemplo|2|||
+~K|2\2\2\3\2\2\2\2\eur\|6\13\6\0\21|
+~C|OBRA##||Reforma local||||
+~C|01#||Demoliciones||||
+~C|01.01#||Demolicion interior||||
+~C|DEM01|m2|Demolicion tabique|25.5|01012024|0|
+~T|DEM01|Demolicion de tabique de ladrillo
+incluyendo carga a contenedor.|
+~C|02#||Albañileria||||
+~C|TAB01|m2|Tabique ladrillo hueco|40|01012024|0|
+~C|MO01|h|Oficial primera|20||1|
+~C|MAT01|ud|Ladrillo hueco|0,3||3|
+~C|%AUX|%|Medios auxiliares|||
+~D|OBRA##|01#\1\1\02#\1\1\|
+~D|01#|01.01#\1\1\|
+~D|01.01#|DEM01\1\12.5\|
+~D|02#|TAB01\1\30\|
+~D|TAB01|MO01\1\0.8\MAT01\1\18\%AUX\1\0.02\|
+~M|01.01#\DEM01|1\1\1\|12.5|\ zona A \ 10 \ 1.25 \ \ \ 1 \ subtotal \ \ \ \ \|2.1|
+~M|02#\TAB01||30|\ zona \ 30 \ \ \ \|
+~C|PA01|pa|Partida alzada|500||0|
+~Y|02#|PA01\1\1\|
+~M|02#\PA01|2\2\|1|||

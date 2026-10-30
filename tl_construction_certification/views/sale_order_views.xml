@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_certification" model="ir.ui.view">
+        <field name="name">sale.order.form.certification</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_certifications" type="object"
+                        class="oe_stat_button" icon="fa-check-square-o"
+                        invisible="certification_count == 0">
+                    <field name="certification_count" widget="statinfo" string="Certifications"/>
+                </button>
+                <button name="action_view_advances" type="object"
+                        class="oe_stat_button" icon="fa-money"
+                        invisible="advance_count == 0">
+                    <field name="advance_count" widget="statinfo" string="Advances"/>
+                </button>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="%(action_create_certification_wizard)d" type="action"
+                        string="Create Certification" class="btn-secondary"
+                        invisible="state not in ('sale', 'done')"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

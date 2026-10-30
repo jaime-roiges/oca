@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+access_construction_certification_user,construction.certification.user,construction.certification,sales_team.group_sale_salesman,crud,
+construction_certification_rule_company,Construction Certification multi-company,construction.certification,,crud,"[('company_id', 'in', company_ids)]"
+access_construction_certification_line_user,construction.certification.line.user,construction.certification.line,sales_team.group_sale_salesman,crud,
+construction_certification_line_rule_company,Construction Certification Line multi-company,construction.certification.line,,crud,"[('company_id', 'in', company_ids)]"
+access_construction_advance_user,construction.advance.user,construction.advance,sales_team.group_sale_salesman,crud,
+construction_advance_rule_company,Construction Advance multi-company,construction.advance,,crud,"[('company_id', 'in', company_ids)]"
+access_construction_advance_application_user,construction.advance.application.user,construction.advance.application,sales_team.group_sale_salesman,crud,
+construction_advance_application_rule_company,Construction Advance Application multi-company,construction.advance.application,,crud,"[('company_id', 'in', company_ids)]"
+access_create_certification_wizard,create.certification.wizard,create.certification.wizard,sales_team.group_sale_salesman,crud,

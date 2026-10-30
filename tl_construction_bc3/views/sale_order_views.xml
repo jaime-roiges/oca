@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_form_view_bc3" model="ir.ui.view">
+        <field name="name">sale.order.form.bc3</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="%(tl_construction_bc3.action_bc3_import_wizard)d"
+                    type="action"
+                    string="Import BC3"
+                    invisible="not id or state not in ('draft', 'sent', 'sale', 'done')"
+                    context="{'default_sale_order_id': id, 'default_partner_id': partner_id, 'default_import_mode': 'budget'}"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="BC3" name="bc3" invisible="not bc3_filename">
+                    <group>
+                        <group>
+                            <field name="bc3_filename"/>
+                            <field name="bc3_catalog_id"/>
+                            <field name="bc3_info_type"/>
+                            <field name="bc3_currency"/>
+                        </group>
+                        <group>
+                            <field name="bc3_ci"/>
+                            <field name="bc3_gg"/>
+                            <field name="bc3_bi"/>
+                            <field name="bc3_baja"/>
+                            <field name="bc3_iva"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="bc3_comment"/>
+                        <field name="bc3_import_summary" readonly="1"/>
+                        <field name="bc3_import_ids" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/list/column[@name='product_and_description']" position="after">
+                <field name="bc3_code" optional="hide"/>
+                <field name="bc3_path" optional="hide"/>
+                <field name="bc3_label" optional="hide"/>
+                <field name="bc3_unit" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

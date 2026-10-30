@@ -1,0 +1,7 @@
+id,name,model_id,group_id/id,operation,domain
+access_bc3_import_wizard_salesman,bc3.import.wizard.salesman,bc3.import.wizard,sales_team.group_sale_salesman,crud,
+access_bc3_catalog_salesman,bc3.catalog.salesman,bc3.catalog,sales_team.group_sale_salesman,crud,"[('company_id', 'in', company_ids)]"
+access_bc3_history_salesman,bc3.import.history.salesman,bc3.import.history,sales_team.group_sale_salesman,cr,"[('company_id', 'in', company_ids), '|', ('user_id', '=', user.id), ('sale_order_id.user_id', '=', user.id)]"
+access_bc3_history_manager,bc3.import.history.manager,bc3.import.history,sales_team.group_sale_manager,cr,"[('company_id', 'in', company_ids)]"
+access_bc3_catalog_company,bc3.catalog company restriction,bc3.catalog,,crud,"[('company_id', 'in', company_ids)]"
+access_bc3_history_company,bc3.import.history company restriction,bc3.import.history,,crud,"[('company_id', 'in', company_ids)]"
