@@ -4,14 +4,15 @@
 
 These are deliberately separate from the standalone parser test suite.
 """
-import base64
 import unittest
 
 try:
+    from odoo.tools.binary import BinaryBytes
     from odoo.tests import tagged
     from odoo.tests.common import TransactionCase
     from odoo.exceptions import UserError
 except ImportError:  # standalone unittest execution (no Odoo installed)
+    BinaryBytes = None
     tagged = lambda *args: lambda cls: cls
     TransactionCase = unittest.TestCase
     UserError = ValueError
@@ -39,7 +40,7 @@ class TestBc3Odoo(TransactionCase):
     def _wizard(self, source=BC3_BUDGET, order=None):
         return self.env["bc3.import.wizard"].create({
             "filename": "test.bc3",
-            "data_file": base64.b64encode(source.encode("cp850")),
+            "data_file": BinaryBytes(source.encode("cp850")),
             "import_mode": "budget",
             "partner_id": self.partner.id,
             "sale_order_id": order.id if order else False,

@@ -3,7 +3,7 @@
 
 {
     "name": "Construction BC3 Import",
-    "version": "20.0.1.5.0",
+    "version": "20.0.1.6.0",
     "category": "Construction",
     "summary": "Import FIEBDC-3/2024 BC3 price catalogues and budgets",
     "author": "Tecniloop",

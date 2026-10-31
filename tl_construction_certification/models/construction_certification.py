@@ -214,17 +214,34 @@ class ConstructionCertification(models.Model):
                 continue
             if sale_order_id not in next_number:
                 self.env.cr.execute(
-                    "SELECT id FROM sale_order WHERE id = %s FOR UPDATE",
+                    "SELECT construction_last_certification_number FROM sale_order "
+                    "WHERE id = %s FOR UPDATE",
                     [sale_order_id],
                 )
+                locked_row = self.env.cr.fetchone()
+                if locked_row is None:
+                    raise UserError(_("The sale order no longer exists."))
                 self.env.cr.execute(
                     "SELECT COALESCE(MAX(certification_number), 0) "
                     "FROM %s WHERE sale_order_id = %%s" % self._table,
                     [sale_order_id],
                 )
-                next_number[sale_order_id] = self.env.cr.fetchone()[0]
+                # On existing databases seed the counter from issued rows.
+                # Thereafter it survives unlink and remains monotone.
+                existing_max = self.env.cr.fetchone()[0]
+                next_number[sale_order_id] = max(locked_row[0] or 0, existing_max)
             next_number[sale_order_id] += 1
             vals["certification_number"] = next_number[sale_order_id]
+        if next_number:
+            for sale_order_id, last_number in next_number.items():
+                self.env.cr.execute(
+                    "UPDATE sale_order SET construction_last_certification_number = %s "
+                    "WHERE id = %s",
+                    [last_number, sale_order_id],
+                )
+            self.env["sale.order"].browse(list(next_number)).invalidate_recordset(
+                ["construction_last_certification_number"]
+            )
 
     @api.model_create_multi
     def create(self, vals_list):

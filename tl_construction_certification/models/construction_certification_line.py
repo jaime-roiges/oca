@@ -300,6 +300,9 @@ class ConstructionCertificationLine(models.Model):
         "invoice_line_ids.move_id.reversed_entry_id",
     )
     def _compute_origin(self):
+        # Odoo 20 may call write when assigning a stored computed field. Only
+        # this compute's known fields may bypass the business edit lock.
+        self = self.with_context(tl_cert_internal_compute=True)
         frozen = self.filtered(lambda line: line.id and line.certification_id._amounts_are_frozen())
         stored = frozen._stored_values(["qty_origin", "percent_origin"])
         for line in frozen:
@@ -464,6 +467,7 @@ class ConstructionCertificationLine(models.Model):
         "qty_origin_net",
     )
     def _compute_amounts(self):
+        self = self.with_context(tl_cert_internal_compute=True)
         frozen = self.filtered(lambda line: line.id and line.certification_id._amounts_are_frozen())
         stored = frozen._stored_values(["amount_period", "amount_origin"])
         for line in frozen:
@@ -800,7 +804,20 @@ class ConstructionCertificationLine(models.Model):
         return vals
 
     def write(self, vals):
-        self._check_editable()
+        # Only the explicitly computed snapshot columns may be updated by
+        # internal computes. This never unlocks period qty, prices, or links.
+        computed_columns = {
+            "qty_origin", "qty_origin_net", "percent_origin",
+            "percent_origin_net", "amount_period", "amount_origin",
+            "amount_origin_net",
+        }
+        internal_computed_only = (
+            self.env.context.get("tl_cert_internal_compute")
+            and bool(vals)
+            and set(vals).issubset(computed_columns)
+        )
+        if not internal_computed_only:
+            self._check_editable()
         if {"qty_period", "percent_period", "sale_line_id"} & set(vals):
             for line in self:
                 super(ConstructionCertificationLine, line).write(line._sync_measurement(vals))

@@ -59,7 +59,8 @@ class TestTaxRegression(TransactionCase):
         })
 
     def test_tax_compute_does_not_depend_on_product_taxes_or_fiscal_position(self):
-        depends = self.env["account.move.line"]._fields["tax_ids"].depends
+        model = self.env["account.move.line"]
+        depends, _context_deps = model._fields["tax_ids"].get_depends(model)
         self.assertIn("product_id", depends)
         self.assertNotIn("product_id.taxes_id", depends)
         self.assertNotIn("move_id.fiscal_position_id", depends)

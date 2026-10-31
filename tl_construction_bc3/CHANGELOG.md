@@ -78,3 +78,11 @@
 - Soporte parcial FIEBDC-3/2024, sin importación completa de documentos, BIM o residuos, ni exportación BC3.
 - La importación de certificaciones necesita `tl_construction_certification` compatible.
 - La base `construction_developer` no se ha instalado ni probado en este entorno.
+
+## QA 20.0.1.6.0 - Odoo 20 binary compatibility (31 Oct 2026)
+
+- Read original BC3 upload via `BinaryValue.content`; keep exact bytes for SHA-256 and archive history.
+- Accept native `BinaryValue` as well as RPC base64 strings in import history validation.
+- ORM test input now uses `BinaryBytes` rather than raw `bytes`; parser-only tests preserved.
+- Removed import of tests from the main addon initializer.
+- QA-only sales action menu remains in the manifest; original sales view is kept but not loaded.

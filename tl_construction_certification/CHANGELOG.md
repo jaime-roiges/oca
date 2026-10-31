@@ -62,3 +62,13 @@
 2. Install with the exact Odoo 20 core + Enterprise + industry versions used by production.
 3. Run `--test-enable` (module tests) and reconcile invoice totals, VAT and customer payments for normal, partially refunded and fully refunded certifications.
 4. Verify any existing certifications already marked cancelled after partial refunds before enabling the corrected logic in production.
+
+## QA 20.0.1.58.0 - Regressions (31 Oct 2026)
+
+- Odoo 20 computed snapshots are permitted through the controlled internal compute context without unlocking business edits on approved lines.
+- Persistent per-sale certification number counter survives deletion, with existing-DB seed from current rows.
+- ORM tests inspect Odoo 20 `get_depends(model)`, MRO-wrapped methods, and either the normal sales view or QA menu action.
+- Corrected two internally inconsistent advance-allocation test expectations; business allocation code unchanged.
+- Accumulated invoicing, monetary snapshots, tax totals, and refund logic are NOT marked fixed; QA ORM retest required.
+- QA-only manifests still exclude the inherited sales order form because of the Odoo Industry manual-field issue.
+

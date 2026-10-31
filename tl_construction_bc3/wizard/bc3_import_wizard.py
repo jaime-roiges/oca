@@ -10,6 +10,7 @@ from dataclasses import asdict
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
+from odoo.tools.binary import BinaryValue
 
 from ..lib.bc3_parser import Bc3Error, coefficient_amounts, parse_bc3
 from ..lib.import_logic import (
@@ -162,13 +163,27 @@ class Bc3ImportWizard(models.TransientModel):
         if self.sale_order_id:
             self.partner_id = self.sale_order_id.partner_id
 
+    def _bc3_source_bytes(self):
+        """Return the original bytes of an Odoo 20 binary upload.
+
+        The ORM returns BinaryValue; an RPC payload can still be a base64
+        string before field conversion. Never decode raw BinaryValue again.
+        """
+        self.ensure_one()
+        payload = self.data_file
+        if isinstance(payload, BinaryValue):
+            return payload.content
+        if isinstance(payload, str):
+            return base64.b64decode(payload, validate=True)
+        raise UserError(_("Invalid BC3 binary upload."))
+
     def _load_and_validate(self):
         """Parse and validate everything possible before the first ORM write."""
         self.ensure_one()
         if not self.data_file:
             raise UserError(_("Upload a BC3 file."))
         try:
-            raw = base64.b64decode(self.data_file, validate=True)
+            raw = self._bc3_source_bytes()
             if len(raw) > 40 * 1024 * 1024:
                 raise Bc3Error("El BC3 supera el límite de seguridad de 40 MiB.")
             document = parse_bc3(
@@ -389,7 +404,7 @@ class Bc3ImportWizard(models.TransientModel):
 
     def _archive_import(self, order, document, mode, warnings):
         """Immutable audit snapshot, including original BC3 bytes."""
-        raw = base64.b64decode(self.data_file, validate=True)
+        raw = self._bc3_source_bytes()
         self.env["bc3.import.history"].create({
             "name": self.filename or "BC3",
             "file_data": self.data_file,

@@ -7,6 +7,15 @@ from odoo import api, fields, models
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    # Highest number ever issued, including certifications later deleted.
+    # Stored under the existing sale-order row lock during assignment.
+    construction_last_certification_number = fields.Integer(
+        string="Last Issued Construction Certification Number",
+        readonly=True,
+        copy=False,
+        default=0,
+    )
+
     certification_ids = fields.One2many(
         comodel_name="construction.certification",
         inverse_name="sale_order_id",

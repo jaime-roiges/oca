@@ -8,6 +8,7 @@ represent unrelated materials across budgets, publishers and companies.
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
+from odoo.tools.binary import BinaryValue
 
 
 class Bc3Catalog(models.Model):
@@ -78,7 +79,12 @@ class Bc3ImportHistory(models.Model):
             if not encoded:
                 raise UserError(_("Original BC3 bytes must be archived."))
             try:
-                original = base64.b64decode(encoded, validate=True)
+                if isinstance(encoded, BinaryValue):
+                    original = encoded.content
+                elif isinstance(encoded, str):
+                    original = base64.b64decode(encoded, validate=True)
+                else:
+                    raise TypeError("BC3 source must be BinaryValue or RPC base64 string")
             except (ValueError, TypeError, binascii.Error) as error:
                 raise UserError(_("Invalid BC3 archive payload.")) from error
             digest = hashlib.sha256(original).hexdigest()
