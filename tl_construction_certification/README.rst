@@ -1,5 +1,5 @@
 TL Construction Work Certifications
-===============================
+===================================
 
 .. image:: https://img.shields.io/badge/maturity-Beta-yellow.png
    :alt: Beta
@@ -30,7 +30,7 @@ Configuration and usage
 =======================
 
 Refer to ``readme/USAGE.md`` for a detailed workflow and to
-``CHANGELOG.md`` for the changes in version 20.0.1.54.0.
+``CHANGELOG.md`` for the changes in version 20.0.1.55.0.
 
 Accounting safeguards
 =====================

@@ -1,3 +1,12 @@
+# 20.0.1.55.0 - Odoo 20 report registration and test isolation
+
+- Remove the obsolete `report_file` field from all three `ir.actions.report` actions.
+- Keep the existing `report_name`, report bindings and external IDs.
+- Avoid loading `odoo.tests` in normal runtime by removing the root `tests` import.
+- Preserve imports inside `tests/__init__.py` for Odoo test discovery.
+- Correct the README title underline for reStructuredText parsing.
+- Static verification only: integration tests must be run on Odoo 20 QA.
+
 # 20.0.1.54.0 — revisión económica conjunta (30-10-2026)
 
 - Una certificación sin líneas de trabajo y sin liberación de retención no puede pasar a `measured` ni `approved`, tampoco por RPC o importación directa.
