@@ -1,3 +1,8 @@
+## 20.0.1.5.0 (QA isolation variant, not production)
+
+- Replace inherited sale.order view with a contextual BC3 import server action in QA only.
+- Preserve BC3 catalog, import wizard and import logic unmodified.
+
 # 20.0.1.4.0 — revisión económica conjunta (30-10-2026)
 
 - El factor de `~D` multiplica también la medición `~M` cuando existe: factor 2 × rendimiento 5 = 10 unidades; se propaga además el factor de capítulos ascendentes y se conservan factor y rendimiento para auditoría.

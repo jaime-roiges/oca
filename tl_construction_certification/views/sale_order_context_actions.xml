@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- QA-only alternative to inheriting sale.view_order_form. -->
+    <record id="server_action_create_certification_from_sale" model="ir.actions.server">
+        <field name="name">Crear certificación de obra</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+orders = records or record
+if not orders or len(orders) != 1:
+    raise UserError("Selecciona un único pedido de venta.")
+order = orders[0]
+if order.state not in ('sale', 'done'):
+    raise UserError("La certificación requiere un pedido confirmado.")
+action = env.ref('tl_construction_certification.action_create_certification_wizard').read()[0]
+action['context'] = dict(env.context, default_sale_order_id=order.id, active_id=order.id, active_model='sale.order')
+]]></field>
+    </record>
+    <record id="server_action_view_certifications_from_sale" model="ir.actions.server">
+        <field name="name">Ver certificaciones de obra</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+orders = records or record
+if not orders or len(orders) != 1:
+    raise UserError("Selecciona un único pedido de venta.")
+action = orders[0].action_view_certifications()
+]]></field>
+    </record>
+    <record id="server_action_view_advances_from_sale" model="ir.actions.server">
+        <field name="name">Ver anticipos de obra</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+orders = records or record
+if not orders or len(orders) != 1:
+    raise UserError("Selecciona un único pedido de venta.")
+action = orders[0].action_view_advances()
+]]></field>
+    </record>
+</odoo>

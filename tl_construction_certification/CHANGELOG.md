@@ -1,3 +1,8 @@
+## 20.0.1.57.0 (QA isolation variant, not production)
+
+- Replace the sale.order inherited view with contextual server actions in QA only, avoiding the `x_total_discount_amount` view validation failure caused during registry rebuild.
+- Preserve original sales view source, fields and all business logic unmodified.
+
 # 20.0.1.56.0 - Odoo 20 search-view schema correction
 
 - Make `construction.certification.search` valid in Odoo 20 by removing unsupported attributes from `<search>` and the search `<group>` element.

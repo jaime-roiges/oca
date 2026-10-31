@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- QA-only alternative to inheriting sale.view_order_form. -->
+    <record id="server_action_import_bc3_from_sale" model="ir.actions.server">
+        <field name="name">Importar BC3 al pedido</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+orders = records or record
+if not orders or len(orders) != 1:
+    raise UserError("Selecciona un único pedido de venta.")
+order = orders[0]
+if order.state not in ('draft', 'sent', 'sale', 'done'):
+    raise UserError("Este pedido no admite importación BC3 en su estado actual.")
+action = env.ref('tl_construction_bc3.action_bc3_import_wizard').read()[0]
+action['context'] = dict(env.context, default_sale_order_id=order.id, default_partner_id=order.partner_id.id, default_import_mode='budget', active_model='sale.order', active_id=order.id)
+]]></field>
+    </record>
+</odoo>
