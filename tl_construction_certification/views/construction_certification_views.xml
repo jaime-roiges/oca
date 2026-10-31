@@ -136,7 +136,7 @@
         <field name="name">construction.certification.search</field>
         <field name="model">construction.certification</field>
         <field name="arch" type="xml">
-            <search string="Work Certifications">
+            <search>
                 <field name="name"/>
                 <field name="sale_order_id"/>
                 <field name="project_id"/>
@@ -145,7 +145,7 @@
                 <filter string="To Approve" name="measured" domain="[('state', '=', 'measured')]"/>
                 <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
                 <filter string="Invoiced" name="invoiced" domain="[('state', '=', 'invoiced')]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Sales Order" name="group_so" context="{'group_by': 'sale_order_id'}"/>
                     <filter string="Project" name="group_project" context="{'group_by': 'project_id'}"/>
                     <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>

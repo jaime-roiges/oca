@@ -1,3 +1,9 @@
+# 20.0.1.56.0 - Odoo 20 search-view schema correction
+
+- Make `construction.certification.search` valid in Odoo 20 by removing unsupported attributes from `<search>` and the search `<group>` element.
+- Keep existing filter names, domains and grouping contexts, view XML IDs and actions unchanged.
+- Regression-checked statically; the module must still be installed and its ORM tests executed on Odoo 20 QA before production use.
+
 # 20.0.1.55.0 - Odoo 20 report registration and test isolation
 
 - Remove the obsolete `report_file` field from all three `ir.actions.report` actions.
