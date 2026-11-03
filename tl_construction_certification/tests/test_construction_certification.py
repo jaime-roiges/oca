@@ -72,6 +72,45 @@ class TestConstructionCertification(TransactionCase):
         self.assertEqual(cert2.amount_previously_invoiced, 300.0)
         self.assertEqual(cert2.amount_to_invoice, 200.0)
 
+    def test_approval_persists_origin_snapshot_before_state_freeze(self):
+        """SQL snapshot must be complete before Odoo recomputes approved rows."""
+        cert = self.env["construction.certification"].create({
+            "sale_order_id": self.sale_order.id, "retention_percent": 0.0,
+        })
+        line = self.env["construction.certification.line"].create({
+            "certification_id": cert.id,
+            "sale_line_id": self.sale_line.id,
+            "qty_period": 3.0,
+        })
+        self.assertEqual(cert.amount_to_invoice, 300.0)
+        cert.action_approve()
+        self.env.cr.execute(
+            "SELECT qty_origin, amount_period, amount_origin "
+            "FROM construction_certification_line WHERE id = %s", [line.id],
+        )
+        snapshot = self.env.cr.fetchone()
+        self.assertEqual(snapshot, (3.0, 300.0, 300.0))
+        self.assertEqual(line.amount_period, 300.0)
+        self.assertEqual(cert.amount_to_invoice, 300.0)
+
+    def test_direct_invoiced_transition_keeps_origin_snapshot(self):
+        """An import may attach an existing invoice and commit in one write."""
+        cert = self.env["construction.certification"].create({
+            "sale_order_id": self.sale_order.id, "retention_percent": 0.0,
+        })
+        line = self.env["construction.certification.line"].create({
+            "certification_id": cert.id,
+            "sale_line_id": self.sale_line.id,
+            "qty_period": 2.0,
+        })
+        mark_invoiced(cert)
+        self.env.cr.execute(
+            "SELECT qty_origin, amount_period, amount_origin "
+            "FROM construction_certification_line WHERE id = %s", [line.id],
+        )
+        self.assertEqual(self.env.cr.fetchone(), (2.0, 200.0, 200.0))
+        self.assertEqual(cert.amount_to_invoice, 200.0)
+
     def test_same_day_origin_uses_sequence(self):
         cert1 = self.env["construction.certification"].create({
             "sale_order_id": self.sale_order.id,

@@ -271,6 +271,37 @@ class ConstructionCertification(models.Model):
                 record._allocate_advances(amount)
         return records
 
+    def _persist_approval_snapshot(self):
+        """Persist the complete monetary snapshot BEFORE leaving an open state.
+
+        Odoo 20 delays writing computed stored fields.  Once the state changes
+        to ``approved``, our frozen-field computes deliberately read the SQL
+        snapshot.  Without flushing first, the SQL columns may still be NULL
+        even though draft values were correct in the ORM cache; the approved
+        certification would then lose both its origin and its period amounts.
+
+        This is also required for direct ORM/RPC ``write({'state': 'approved'})``.
+        Only open certifications are computed; historic approved rows are never
+        recalculated or revalued here.
+        """
+        for cert in self.filtered(lambda item: item.state in self._open_states):
+            lines = cert.line_ids
+            if lines:
+                lines._compute_origin()
+                lines._compute_amounts()
+                lines.flush_recordset([
+                    "qty_origin", "qty_origin_net", "percent_origin",
+                    "percent_origin_net", "amount_period", "amount_origin",
+                    "amount_origin_net",
+                ])
+            cert._compute_amounts()
+            cert.flush_recordset([
+                "amount_certified_origin", "amount_certified_origin_net",
+                "amount_previously_invoiced", "amount_to_invoice",
+                "amount_retention", "amount_net_to_invoice",
+                "amount_final_to_invoice",
+            ])
+
     def write(self, vals):
         """Guard financial transitions also when invoked through RPC/imports.
 
@@ -358,6 +389,24 @@ class ConstructionCertification(models.Model):
             cert.state in self._locked_states for cert in self
         ):
             raise UserError(_("Approved or invoiced certifications cannot be modified."))
+        if vals.get("state") in self._committed_states:
+            # A single RPC cannot update financial inputs and commit a snapshot
+            # simultaneously: the pending values would not yet be persisted.
+            # Save the editable work first, then approve in a separate write.
+            simultaneous_inputs = {
+                "line_ids", "sale_order_id", "date", "retention_percent",
+                "retention_to_release", "is_retention_liquidation",
+                "amount_advance_applied", "application_ids",
+            } & set(vals)
+            if simultaneous_inputs:
+                raise UserError(_(
+                    "Save the certification's work, retentions and advances "
+                    "before approving or invoicing it."
+                ))
+            # Also cover direct draft/measured -> invoiced ORM writes (e.g. an
+            # existing import that attaches its invoice in the same write).
+            # Once committed, computed snapshots must already be in SQL.
+            self._persist_approval_snapshot()
         if vals.get("state") in self._committed_states:
             self = self.with_context(construction_committing=True)
         # Lines win over a total sent in the same write: keep manual allocation.

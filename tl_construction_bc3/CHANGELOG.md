@@ -86,3 +86,12 @@
 - ORM test input now uses `BinaryBytes` rather than raw `bytes`; parser-only tests preserved.
 - Removed import of tests from the main addon initializer.
 - QA-only sales action menu remains in the manifest; original sales view is kept but not loaded.
+
+## QA 20.0.1.7.0 - Stateless Odoo 20 import wizard (31 Oct 2026)
+
+- Replace dynamic recordset attributes ``_uom_cache``, ``_active_catalog`` and
+  ``_source_currency`` with explicit per-import parameters.
+- Keep the unit cache as a local dictionary passed to nested helpers, preserving
+  per-import performance, transaction isolation and deterministic catalog scope.
+- Keep original binary-field compatibility, checksum and parser validations.
+- Retains the QA-only Action-menu fallback: sale order form view not loaded.

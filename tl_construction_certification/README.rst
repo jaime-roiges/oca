@@ -30,7 +30,7 @@ Configuration and usage
 =======================
 
 Refer to ``readme/USAGE.md`` for a detailed workflow and to
-``CHANGELOG.md`` for the changes in version 20.0.1.56.0.
+``CHANGELOG.md`` for the changes in version 20.0.1.60.0.
 
 Accounting safeguards
 =====================

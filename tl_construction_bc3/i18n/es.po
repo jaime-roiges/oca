@@ -1,0 +1,594 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tl_construction_bc3 20.0.1.15.0\n"
+"PO-Revision-Date: 2026-10-31 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:695
+msgid "A certification requires a confirmed sales order."
+msgstr "Una certificación requiere un pedido de venta confirmado."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__allow_unknown_units
+msgid "Allow unknown BC3 units"
+msgstr "Permitir unidades BC3 desconocidas"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__apply_coefficients
+msgid "Apply coefficients"
+msgstr "Aplicar coeficientes"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__import_mode__auto
+msgid "Automatic"
+msgstr "Automático"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_baja
+msgid "Award Discount %"
+msgstr "% de baja de adjudicación"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:629
+msgid "Award discount (%s%%)"
+msgstr "Baja de adjudicación (%s%%)"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:631
+msgid "Award increase (%s%%)"
+msgstr "Incremento de adjudicación (%s%%)"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_product_template__bc3_code
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_code
+msgid "BC3 Code"
+msgstr "Código BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_comment
+msgid "BC3 Comment"
+msgstr "Comentario BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_product_template__bc3_concept_type
+msgid "BC3 Concept Type"
+msgstr "Tipo de concepto BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_currency
+msgid "BC3 Currency"
+msgstr "Moneda BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_product_template__bc3_text
+msgid "BC3 Description"
+msgstr "Descripción BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_factor
+msgid "BC3 Factor"
+msgstr "Factor BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__data_file
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_filename
+msgid "BC3 File"
+msgstr "Archivo BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_is_measured
+msgid "BC3 Has Measurement"
+msgstr "BC3 tiene medición"
+
+#. module: tl_construction_bc3
+#: model:ir.actions.act_window,name:tl_construction_bc3.action_bc3_import_history
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_import_ids
+msgid "BC3 Import History"
+msgstr "Historial de importaciones BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_import_summary
+msgid "BC3 Import Summary"
+msgstr "Resumen de importación BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_info_type
+msgid "BC3 Information"
+msgstr "Información BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_label
+msgid "BC3 Label"
+msgstr "Etiqueta BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_measured_qty
+msgid "BC3 Measured Qty"
+msgstr "Cantidad medida BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_measurement_data
+msgid "BC3 Measurement Detail"
+msgstr "Detalle de medición BC3"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.view_bc3_import_history_form
+msgid "BC3 Original Import"
+msgstr "Importación original BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__preview_result
+msgid "BC3 Preview"
+msgstr "Vista previa del BC3"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.view_bc3_catalog_form
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__bc3_catalog_id
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_product_template__bc3_catalog_id
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_catalog_id
+msgid "BC3 Source Catalog"
+msgstr "Catálogo de origen BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.actions.act_window,name:tl_construction_bc3.action_bc3_catalog
+msgid "BC3 Source Catalogs"
+msgstr "Catálogos de origen BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_path
+msgid "BC3 Tree Position"
+msgstr "Posición en el árbol BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_product_template__bc3_unit
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_unit
+msgid "BC3 Unit"
+msgstr "Unidad BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order_line__bc3_yield
+msgid "BC3 Yield"
+msgstr "Rendimiento BC3"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/models/bc3_catalog.py:92
+msgid "BC3 archive digest does not match the file."
+msgstr "La huella del archivo BC3 no coincide con el archivo."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:388
+msgid "BC3 catalog belongs to another company."
+msgstr "El catálogo BC3 pertenece a otra compañía."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:390
+msgid "BC3 catalog differs from the one assigned to this order."
+msgstr "El catálogo BC3 difiere del asignado a este pedido."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:737
+msgid "BC3 code mismatch at position %s."
+msgstr "El código BC3 no coincide en la posición %s."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:970
+msgid "BC3 coefficient"
+msgstr "Coeficiente BC3"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:657
+msgid "BC3 coefficients"
+msgstr "Coeficientes BC3"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:910
+msgid "BC3 concept %s has unknown unit %s."
+msgstr "El concepto BC3 %s tiene una unidad desconocida: %s."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:583
+msgid ""
+"BC3 currency %s is different from quotation currency %s. Choose a compatible "
+"pricelist; automatic conversion is not supported."
+msgstr ""
+"La moneda BC3 %s es distinta de la moneda del presupuesto %s. Elija una "
+"tarifa compatible; no se admite conversión automática."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1072
+msgid "BC3 currency is %s and the order currency is %s."
+msgstr "La moneda BC3 es %s y la moneda del pedido es %s."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1058
+msgid "BC3 file: %s"
+msgstr "Archivo BC3: %s"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1087
+msgid "BC3 import (%(mode)s): %(products)s products, %(lines)s order lines."
+msgstr ""
+"Importación BC3 (%(mode)s): %(products)s productos, %(lines)s líneas de "
+"pedido."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/models/bc3_catalog.py:99
+msgid "BC3 import history cannot be deleted through the user interface."
+msgstr "El historial de importación BC3 no puede eliminarse desde la interfaz."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/models/bc3_catalog.py:96
+msgid "BC3 import history is immutable. Create a new import instead."
+msgstr ""
+"El historial de importación BC3 es inmutable. Cree una nueva importación."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:471
+msgid "BC3 path %s changed concept from %s to %s. Review manually."
+msgstr ""
+"La posición BC3 %s ha cambiado de concepto de %s a %s. Revísela manualmente."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1112
+msgid "BC3 products"
+msgstr "Productos BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__import_mode__budget
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__sale_order__bc3_info_type__2
+msgid "Budget"
+msgstr "Presupuesto"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__import_mode__both
+msgid "Catalog and budget"
+msgstr "Catálogo y presupuesto"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__sale_order__bc3_info_type__3
+msgid "Certification"
+msgstr "Certificación"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:845
+msgid "Certification no. %s already exists in a committed state."
+msgstr "La certificación n.º %s ya existe en un estado comprometido."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1076
+msgid "Coefficients were added as extra lines. VAT was not."
+msgstr "Los coeficientes se añadieron como líneas adicionales. El IVA no."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__validation_mode__compatible
+msgid "Compatible with incomplete/legacy BC3 (warnings)"
+msgstr "Compatible con BC3 incompletos o antiguos (avisos)"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__create_certification
+msgid "Create certification"
+msgstr "Crear certificación"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__sale_order__bc3_info_type__1
+msgid "Database"
+msgstr "Base de datos"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__sale_order__bc3_info_type__4
+msgid "Database update"
+msgstr "Actualización de base de datos"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:451
+msgid "Duplicate BC3 positions on the destination order."
+msgstr "Hay posiciones BC3 duplicadas en el pedido de destino."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:758
+msgid "Duplicate measured item %s."
+msgstr "Partida medida duplicada: %s."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__validation_mode__strict
+msgid "FIEBDC-3/2024 strict"
+msgstr "FIEBDC-3/2024 estricto"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__filename
+msgid "Filename"
+msgstr "Nombre del archivo"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.bc3_import_wizard_view_form
+msgid "Import"
+msgstr "Importar"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.sale_order_form_view_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.bc3_import_wizard_view_form
+#: model:ir.actions.act_window,name:tl_construction_bc3.action_bc3_import_wizard
+msgid "Import BC3"
+msgstr "Importar BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__import_mode
+msgid "Import Mode"
+msgstr "Modo de importación"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__import_breakdown
+msgid "Import price justification"
+msgstr "Importar justificación de precios"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.view_bc3_catalog_form
+msgid "Imports"
+msgstr "Importaciones"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:504
+msgid "Incompatible measurement units for %s: product %s vs BC3 %s."
+msgstr "Unidades de medida incompatibles para %s: producto %s frente a BC3 %s."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_ci
+msgid "Indirect Costs %"
+msgstr "% de costes indirectos"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:626
+msgid "Indirect costs (%s%%)"
+msgstr "Costes indirectos (%s%%)"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_bi
+msgid "Industrial Profit %"
+msgstr "% de beneficio industrial"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:636
+msgid "Industrial profit (%s%%)"
+msgstr "Beneficio industrial (%s%%)"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1059
+msgid "Information: %s"
+msgstr "Información: %s"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:693
+msgid "Install tl_construction_certification first."
+msgstr "Instale primero tl_construction_certification."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/models/bc3_catalog.py:89
+msgid "Invalid BC3 archive payload."
+msgstr "El contenido archivado del BC3 no es válido."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:178
+msgid "Invalid BC3 binary upload."
+msgstr "El archivo BC3 cargado no es válido."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1060
+msgid "Material budget (PEM): %s"
+msgstr "Presupuesto de ejecución material (PEM): %s"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:904
+msgid "Multiple products have BC3 code %s; resolve the ambiguity first."
+msgstr ""
+"Varios productos tienen el código BC3 %s; resuelva primero la ambigüedad."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:756
+msgid "Negative cumulative BC3 quantity for %s."
+msgstr "Cantidad acumulada BC3 negativa para %s."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:705
+msgid "No measured BC3 work items to certify."
+msgstr "No hay partidas BC3 medidas para certificar."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:488
+msgid "No product found for BC3 code %s."
+msgstr "No se ha encontrado ningún producto para el código BC3 %s."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:501
+msgid "No product variant for %s."
+msgstr "No hay variante de producto para %s."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_history__file_data
+msgid "Original BC3"
+msgstr "BC3 original"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/models/bc3_catalog.py:80
+msgid "Original BC3 bytes must be archived."
+msgstr "Debe archivarse el archivo BC3 original."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_gg
+msgid "Overheads %"
+msgstr "% de gastos generales"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:634
+msgid "Overheads (%s%%)"
+msgstr "Gastos generales (%s%%)"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.bc3_import_wizard_view_form
+msgid "Preview"
+msgstr "Vista previa"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:256
+msgid "Preview BC3 import"
+msgstr "Vista previa de importación BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__price_scope
+msgid "Price scope (1-based)"
+msgstr "Ámbito de precio (desde 1)"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__import_mode__catalog
+msgid "Product catalog"
+msgstr "Catálogo de productos"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.view_bc3_catalog_form
+msgid "Products"
+msgstr "Productos"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__reimport_policy__reject
+msgid "Reject existing BC3 lines"
+msgstr "Rechazar líneas BC3 existentes"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__sale_order_id
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__catalog_edition
+msgid "Source Catalog Edition"
+msgstr "Edición del catálogo de origen"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_catalog__edition
+msgid "Source Edition"
+msgstr "Edición de origen"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:862
+msgid "The BC3 certificate adds no quantity above the committed net origin."
+msgstr ""
+"La certificación BC3 no añade cantidad sobre el origen neto comprometido."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:605
+msgid "The existing BC3 section is a work item."
+msgstr "La sección BC3 existente es una partida de obra."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:301
+msgid "Unimported BC3 records: %s"
+msgstr "Registros BC3 no importados: %s"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:497
+msgid "Unit %s on %s replaced with Units."
+msgstr "La unidad %s en %s se ha sustituido por Unidades."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:493
+msgid ""
+"Unknown BC3 unit '%s' on %s; configure a UoM or explicitly allow a fallback."
+msgstr ""
+"Unidad BC3 desconocida '%s' en %s; configure una unidad de medida o permita "
+"expresamente una alternativa."
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1056
+msgid "Unspecified"
+msgstr "Sin especificar"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields.selection,name:tl_construction_bc3.selection__bc3_import_wizard__reimport_policy__update
+msgid "Update BC3 lines"
+msgstr "Actualizar líneas BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__update_existing
+msgid "Update existing products"
+msgstr "Actualizar productos existentes"
+
+#. module: tl_construction_bc3
+#. odoo-python
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:184
+msgid "Upload a BC3 file."
+msgstr "Cargue un archivo BC3."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__prefer_decomposition_price
+msgid "Use decomposition price"
+msgstr "Usar precio de la descomposición"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_iva
+msgid "VAT %"
+msgstr "% de IVA"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__validation_mode
+msgid "Validation policy"
+msgstr "Política de validación"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__reimport_policy
+msgid "When order already contains BC3"
+msgstr "Cuando el pedido ya contiene BC3"

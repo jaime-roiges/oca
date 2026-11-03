@@ -72,3 +72,23 @@
 - Accumulated invoicing, monetary snapshots, tax totals, and refund logic are NOT marked fixed; QA ORM retest required.
 - QA-only manifests still exclude the inherited sales order form because of the Odoo Industry manual-field issue.
 
+
+## QA 20.0.1.59.0 - Approval snapshot flush (31 Oct 2026)
+
+- Force the stored certification line and header snapshots through Odoo 20's
+  documented ``flush_recordset`` API **before** the state becomes approved.
+- Prevent successful draft values being lost when approved-state computes
+  restore still-NULL SQL columns (as observed in the QA finance probe).
+- Works for action approval and direct ORM writes; no changes to existing
+  approved/invoiced rows and no automatic historic repricing.
+- Retains the QA-only Action-menu fallback: sale order form view not loaded.
+
+## 20.0.1.60.0 (QA v8) - Fractional test precision on Odoo 20
+
+- Test-only correction: `test_last_cent_of_negative_contract_coefficient_is_preserved`
+  now derives three measured quantities from the installed `Product Unit of Measure`
+  precision, guaranteeing that they total exactly one work unit.
+- The last period assertion now follows the cumulative monetary rounding
+  algorithm, rather than assuming a fixed -33.35 amount across all precisions.
+- No changes to models, views, accounting or BC3 business logic from QA v7.
+- Only QA fallback menus are loaded, not original inherited sale order views.

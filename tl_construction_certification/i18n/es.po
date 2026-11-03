@@ -1,0 +1,1298 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tl_construction_certification 20.0.1.71.0\n"
+"PO-Revision-Date: 2026-10-31 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "% Origin"
+msgstr "% a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "% Period"
+msgstr "% del periodo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__percent_period
+msgid "% This Period"
+msgstr "% del periodo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__percent_origin
+msgid "% to Origin"
+msgstr "% a origen"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:374
+msgid "A cancelled certification can only return to draft."
+msgstr "Una certificación cancelada solo puede volver a borrador."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:380
+msgid "A certification cannot be invoiced without an invoice."
+msgstr "Una certificación no puede marcarse como facturada sin una factura."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:838
+msgid ""
+"A certification without work lines or a retention release cannot be measured "
+"or approved."
+msgstr ""
+"No se puede medir ni aprobar una certificación sin líneas de obra ni "
+"liberación de retención."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:175
+msgid "A fully applied advance cannot be marked pending."
+msgstr "Un anticipo totalmente aplicado no puede marcarse como pendiente."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/res_company.py:65
+msgid "Account %(account)s must have the accounting type %(type)s."
+msgstr "La cuenta %(account)s debe tener el tipo contable %(type)s."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/res_company.py:48
+#: code:addons/tl_construction_certification/models/res_company.py:70
+msgid "Account %s does not belong to company %s."
+msgstr "La cuenta %s no pertenece a la compañía %s."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:808
+msgid "Add certification lines or a retention release before confirming."
+msgstr ""
+"Añada líneas de certificación o una liberación de retención antes de "
+"confirmar."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance_application__advance_id
+msgid "Advance"
+msgstr "Anticipo"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:443
+msgid "Advance %s does not belong to the certification sales order."
+msgstr "El anticipo %s no pertenece al pedido de venta de la certificación."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:448
+msgid "Advance %s must be confirmed before it can be applied."
+msgstr "El anticipo %s debe confirmarse antes de aplicarlo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/account_move_line.py:460
+#: code:addons/tl_construction_certification/models/construction_advance.py:341
+msgid "Advance - %s"
+msgstr "Anticipo - %s"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__amount
+msgid "Advance Amount"
+msgstr "Importe del anticipo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_account_move_line__construction_advance_application_id
+msgid "Advance Application"
+msgstr "Aplicación de anticipo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__application_ids
+msgid "Advance Applications"
+msgstr "Aplicaciones de anticipos"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_advance_applied
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__account_move_line__construction_adjustment_type__advance
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Advance Applied"
+msgstr "Anticipo aplicado"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__invoice_id
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__account_move_line__construction_adjustment_type__advance_invoice
+msgid "Advance Invoice"
+msgstr "Factura de anticipo"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:187
+#: code:addons/tl_construction_certification/models/construction_advance.py:255
+#: code:addons/tl_construction_certification/models/construction_advance.py:287
+msgid "Advance amount must be strictly positive."
+msgstr "El importe del anticipo debe ser mayor que cero."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:471
+msgid ""
+"Advance applications can only be changed while the certification is draft or "
+"measured."
+msgstr ""
+"Las aplicaciones de anticipos solo pueden modificarse mientras la "
+"certificación esté en borrador o medida."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/account_move_line.py:458
+#: code:addons/tl_construction_certification/models/construction_certification.py:1089
+msgid "Advance applied: %s"
+msgstr "Anticipo aplicado: %s"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:327
+msgid "Advance payment for construction works - %s"
+msgstr "Anticipo de obras - %s"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_sale_order_form_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_list
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+#: model:ir.actions.act_window,name:tl_construction_certification.action_construction_advance
+#: model:ir.model.fields,field_description:tl_construction_certification.field_sale_order__advance_ids
+msgid "Advances"
+msgstr "Anticipos"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:726
+#: code:addons/tl_construction_certification/models/construction_certification.py:917
+msgid "Advances can only be applied on draft or measured certifications."
+msgstr ""
+"Los anticipos solo pueden aplicarse a certificaciones en borrador o medidas."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance_application__amount
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Amount"
+msgstr "Importe"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__amount_applied
+msgid "Amount Applied"
+msgstr "Importe aplicado"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Amount Origin"
+msgstr "Importe a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Amount Period"
+msgstr "Importe del periodo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__amount_period
+msgid "Amount This Period"
+msgstr "Importe del periodo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_to_invoice
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Amount to Invoice"
+msgstr "Importe a facturar"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__amount_origin
+msgid "Amount to Origin"
+msgstr "Importe a origen"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:170
+msgid "An advance with a pending balance cannot be fully applied."
+msgstr ""
+"Un anticipo con saldo pendiente no puede marcarse como totalmente aplicado."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:203
+msgid "An advance with a posted invoice cannot return to draft."
+msgstr "Un anticipo con factura contabilizada no puede volver a borrador."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:356
+msgid "An invoiced certification can only be cancelled."
+msgstr "Una certificación facturada solo puede cancelarse."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_form
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__application_ids
+msgid "Applications"
+msgstr "Aplicaciones"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:440
+msgid "Applied advance amount must be strictly positive."
+msgstr "El importe del anticipo aplicado debe ser mayor que cero."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:859
+msgid "Applied advance cannot be greater than the net amount to invoice."
+msgstr "El anticipo aplicado no puede superar el importe neto a facturar."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:673
+#: code:addons/tl_construction_certification/models/construction_certification.py:731
+msgid "Applied advance cannot be negative."
+msgstr "El anticipo aplicado no puede ser negativo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:463
+msgid "Applied amount exceeds the pending balance of advance %s."
+msgstr "El importe aplicado supera el saldo pendiente del anticipo %s."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+msgid "Apply Pending Advance"
+msgstr "Aplicar anticipo pendiente"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_search
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_certification__state__approved
+msgid "Approved"
+msgstr "Aprobada"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:391
+msgid "Approved or invoiced certifications cannot be modified."
+msgstr "Las certificaciones aprobadas o facturadas no pueden modificarse."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Approver:"
+msgstr "Aprobador:"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Budget Qty"
+msgstr "Cantidad presupuestada"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__product_uom_qty
+msgid "Budgeted Qty"
+msgstr "Cantidad presupuestada"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:196
+msgid "Cancel the draft advance invoice first."
+msgstr "Cancele primero la factura de anticipo en borrador."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:359
+msgid "Cancel the draft invoice before cancelling the certification."
+msgstr "Cancele la factura en borrador antes de cancelar la certificación."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_advance__state__cancel
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_certification__state__cancel
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:735
+msgid "Cannot apply %(target)s of advances; only %(available)s is pending."
+msgstr ""
+"No se pueden aplicar %(target)s de anticipos; solo quedan pendientes "
+"%(available)s."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:297
+msgid "Cannot cancel advance %s because it is applied on certifications."
+msgstr ""
+"No se puede cancelar el anticipo %s porque está aplicado a certificaciones."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance_application__certification_id
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__certification_id
+msgid "Certification"
+msgstr "Certificación"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__date
+#: model:ir.model.fields,field_description:tl_construction_certification.field_create_certification_wizard__date
+msgid "Certification Date"
+msgstr "Fecha de certificación"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_account_move_line__construction_certification_line_id
+msgid "Certification Line"
+msgstr "Línea de certificación"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__line_ids
+#: model:ir.model.fields,field_description:tl_construction_certification.field_sale_order_line__certification_line_ids
+msgid "Certification Lines"
+msgstr "Líneas de certificación"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__certification_number
+msgid "Certification Number"
+msgstr "Número de certificación"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance_application__certification_state
+msgid "Certification Status"
+msgstr "Estado de la certificación"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Certification:"
+msgstr "Certificación:"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_sale_order_form_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_project_form_certification
+#: model:ir.ui.menu,name:tl_construction_certification.menu_construction_certification
+msgid "Certifications"
+msgstr "Certificaciones"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:439
+msgid "Certifications with an invoice history cannot be deleted."
+msgstr "No se pueden eliminar certificaciones con historial de facturación."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification_line.py:363
+msgid "Certified quantity cannot be negative."
+msgstr "La cantidad certificada no puede ser negativa."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification_line.py:408
+msgid ""
+"Certified quantity to origin (%(origin)s) exceeds the budgeted quantity "
+"(%(budget)s) on %(name)s."
+msgstr ""
+"La cantidad certificada a origen (%(origin)s) supera la cantidad "
+"presupuestada (%(budget)s) en %(name)s."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_certified_origin
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Certified to Origin"
+msgstr "Certificado a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+msgid "Confirm Measurement"
+msgstr "Confirmar medición"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_advance__state__confirmed
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:137
+msgid ""
+"Confirmed, applied or cancelled advances cannot be edited. Use an accounting "
+"adjustment or create a new advance."
+msgstr ""
+"Los anticipos confirmados, aplicados o cancelados no pueden modificarse. "
+"Utilice un ajuste contable o cree un nuevo anticipo."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_company_form_construction_certification
+msgid "Construction"
+msgstr "Construcción"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_account_move_line__construction_adjustment_type
+msgid "Construction Adjustment"
+msgstr "Ajuste de obra"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_form
+#: model:ir.model.fields,field_description:tl_construction_certification.field_account_move_line__construction_advance_id
+msgid "Construction Advance"
+msgstr "Anticipo de obra"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_res_company__construction_advance_account_id
+msgid "Construction Advance Account"
+msgstr "Cuenta de anticipos de obra"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_res_company__construction_approval_policy
+msgid "Construction Certification Approval"
+msgstr "Aprobación de certificaciones de obra"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_account_move_line__construction_price_adjust
+msgid "Construction Price Adjustment"
+msgstr "Ajuste de precio de obra"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_res_company__construction_retention_account_id
+msgid "Construction Retention Account"
+msgstr "Cuenta de retenciones de obra"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:766
+msgid "Could not allocate the full advance amount."
+msgstr "No se ha podido asignar el importe completo del anticipo."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_sale_order_form_certification
+msgid "Create Certification"
+msgstr "Crear certificación"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+msgid "Create Invoice (Origin)"
+msgstr "Crear factura a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_create_certification_wizard_form
+#: model:ir.actions.act_window,name:tl_construction_certification.action_create_certification_wizard
+msgid "Create Work Certification"
+msgstr "Crear certificación de obra"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__reversal_invoice_id
+msgid "Credit Note"
+msgstr "Factura rectificativa"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Customer:"
+msgstr "Cliente:"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__name
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Description"
+msgstr "Descripción"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_advance__state__draft
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_certification__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Final Amount"
+msgstr "Importe final"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Final Amount to Invoice"
+msgstr "Importe final a facturar"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_final_to_invoice
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Final to Invoice"
+msgstr "Total final a facturar"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Full / Dedicated Liquidation"
+msgstr "Liquidación completa / específica"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_advance__state__applied
+msgid "Fully Applied"
+msgstr "Aplicado por completo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__account_move_line__construction_adjustment_type__retention
+msgid "Guarantee Retention"
+msgstr "Retención de garantía"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/account_move_line.py:454
+#: code:addons/tl_construction_certification/models/construction_certification.py:1080
+msgid "Guarantee Retention (%s%%)"
+msgstr "Retención de garantía (%s%%)"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_create_certification_wizard__import_from_progress
+msgid "Import quantities from Delivery Progress (MRP)"
+msgstr "Importar cantidades del avance de entrega (MRP)"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:168
+msgid "Invalid advance state transition."
+msgstr "El cambio de estado del anticipo no está permitido."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance_application__invoice_line_ids
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__invoice_line_ids
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Invoice by Origin"
+msgstr "Factura a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Invoice:"
+msgstr "Factura:"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_search
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_certification__state__invoiced
+msgid "Invoiced"
+msgstr "Facturada"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:901
+msgid "Invoiced certifications cannot be reset to draft."
+msgstr "Las certificaciones facturadas no pueden volver a borrador."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:253
+msgid "Invoices can only be linked to an existing certification."
+msgstr "Las facturas solo pueden vincularse a una certificación existente."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification_line.py:162
+msgid "Lines of an approved or invoiced certification cannot be modified."
+msgstr ""
+"Las líneas de una certificación aprobada o facturada no pueden modificarse."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__mrp_cumulated_percent
+msgid "MRP Cumulated %"
+msgstr "% acumulado MRP"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__mrp_cumulated_qty
+msgid "MRP Cumulated Qty"
+msgstr "Cantidad acumulada MRP"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__construction_certification__state__measured
+msgid "Measured"
+msgstr "Medida"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__percent_origin_net
+msgid "Net % to Origin"
+msgstr "% neto a origen"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__amount_origin_net
+msgid "Net Amount to Origin"
+msgstr "Importe neto a origen"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_certified_origin_net
+msgid "Net Origin"
+msgstr "Neto a origen"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__qty_origin_net
+msgid "Net Quantity to Origin"
+msgstr "Cantidad neta a origen"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_net_to_invoice
+msgid "Net to Invoice"
+msgstr "Neto a facturar"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:123
+#: code:addons/tl_construction_certification/models/construction_advance.py:126
+#: code:addons/tl_construction_certification/models/construction_advance.py:20
+#: code:addons/tl_construction_certification/models/construction_certification.py:261
+#: code:addons/tl_construction_certification/models/construction_certification.py:264
+#: code:addons/tl_construction_certification/models/construction_certification.py:30
+msgid "New"
+msgstr "Nuevo"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:122
+msgid "New advances must start as draft without an invoice."
+msgstr "Los anticipos nuevos deben comenzar en borrador y sin factura."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:251
+msgid "New certifications must start as draft."
+msgstr "Las certificaciones nuevas deben comenzar en borrador."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__notes
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Notes:"
+msgstr "Notas:"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:822
+msgid ""
+"Only a Sales Manager or the designated project progress approver can approve "
+"this construction certification."
+msgstr ""
+"Solo un responsable de ventas o el aprobador designado del proyecto puede "
+"aprobar esta certificación de obra."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:935
+msgid "Only approved certifications can be invoiced."
+msgstr "Solo se pueden facturar certificaciones aprobadas."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:323
+msgid "Only billing users can attach a certification invoice."
+msgstr ""
+"Solo los usuarios de facturación pueden vincular una factura de "
+"certificación."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:155
+msgid "Only billing users can attach an advance invoice."
+msgstr ""
+"Solo los usuarios de facturación pueden vincular una factura de anticipo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:867
+msgid "Only billing users can cancel a certification that has an invoice."
+msgstr ""
+"Solo los usuarios de facturación pueden cancelar una certificación con "
+"factura."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:302
+msgid "Only billing users can cancel an advance that has an invoice."
+msgstr ""
+"Solo los usuarios de facturación pueden cancelar un anticipo con factura."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:937
+msgid "Only billing users can create the origin invoice."
+msgstr "Solo los usuarios de facturación pueden crear la factura a origen."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:314
+msgid "Only billing users can invoice an advance."
+msgstr "Solo los usuarios de facturación pueden facturar un anticipo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:382
+msgid "Only billing users can mark certifications invoiced."
+msgstr ""
+"Solo los usuarios de facturación pueden marcar certificaciones como "
+"facturadas."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:310
+msgid "Only confirmed advances can be invoiced."
+msgstr "Solo se pueden facturar anticipos confirmados."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:285
+msgid "Only draft advances can be confirmed."
+msgstr "Solo pueden confirmarse anticipos en borrador."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:376
+msgid ""
+"Only draft advances without applications or an invoice history can be "
+"deleted."
+msgstr ""
+"Solo pueden eliminarse anticipos en borrador sin aplicaciones ni historial "
+"de facturas."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:348
+msgid "Only draft certifications can be measured."
+msgstr "Solo pueden medirse certificaciones en borrador."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:350
+msgid "Only draft or measured certifications can be approved."
+msgstr "Solo pueden aprobarse certificaciones en borrador o medidas."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Origin Breakdown"
+msgstr "Desglose a origen"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance_application__invoice_id
+msgid "Origin Invoice"
+msgstr "Factura a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Origin Qty"
+msgstr "Cantidad a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Partial Release on Certification"
+msgstr "Liberación parcial en certificación"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_sale_order__amount_advance_pending
+msgid "Pending Advances"
+msgstr "Anticipos pendientes"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__amount_pending
+msgid "Pending Amount"
+msgstr "Importe pendiente"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Period Qty"
+msgstr "Cantidad del periodo"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_previously_invoiced
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Previously Certified"
+msgstr "Certificado anteriormente"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__progress_approver_id
+msgid "Progress Approver"
+msgstr "Responsable de aprobación del avance"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__project_id
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Project:"
+msgstr "Proyecto:"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__qty_period
+msgid "Qty This Period"
+msgstr "Cantidad del periodo"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__qty_origin
+msgid "Quantity to Origin"
+msgstr "Cantidad a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Ref"
+msgstr "Ref."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__name
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__name
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__reference
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Reference:"
+msgstr "Referencia:"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Retention"
+msgstr "Retención"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__retention_percent
+msgid "Retention %"
+msgstr "% de retención"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__amount_retention
+msgid "Retention Amount"
+msgstr "Importe de la retención"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__is_retention_liquidation
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Retention Liquidation"
+msgstr "Liquidación de retenciones"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__account_move_line__construction_adjustment_type__retention_release
+#: code:addons/tl_construction_certification/models/account_move_line.py:456
+#: code:addons/tl_construction_certification/models/construction_certification.py:1099
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Retention Released"
+msgstr "Retención liberada"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Retention Summary"
+msgstr "Resumen de retenciones"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Retention of this Period"
+msgstr "Retención del periodo"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:669
+msgid "Retention percent must be between 0 and 100."
+msgstr "El porcentaje de retención debe estar entre 0 y 100."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__retention_to_release
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Retention to Release"
+msgstr "Retención a liberar"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:847
+msgid ""
+"Retention to release (%(release)s) exceeds the retention still held "
+"(%(available)s)."
+msgstr ""
+"La retención que se quiere liberar (%(release)s) supera la retención "
+"pendiente (%(available)s)."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:671
+msgid "Retention to release cannot be negative."
+msgstr "La retención a liberar no puede ser negativa."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__account_move_line__construction_adjustment_type__rounding
+msgid "Rounding"
+msgstr "Redondeo"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/account_move_line.py:450
+#: code:addons/tl_construction_certification/models/construction_certification_line.py:752
+msgid "Rounding: %s"
+msgstr "Redondeo: %s"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__sale_line_id
+msgid "Sale Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__sale_order_id
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__sale_order_id
+#: model:ir.model.fields,field_description:tl_construction_certification.field_create_certification_wizard__sale_order_id
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Sales Order:"
+msgstr "Pedido de venta:"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__res_company__construction_approval_policy__restricted
+msgid "Sales managers or designated project approver"
+msgstr "Responsables de ventas o aprobador designado del proyecto"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields.selection,name:tl_construction_certification.selection__res_company__construction_approval_policy__open
+msgid "Sales users (legacy behaviour)"
+msgstr "Usuarios de ventas (comportamiento anterior)"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification_line.py:373
+msgid "Section and note lines cannot be certified."
+msgstr "Las secciones y notas no pueden certificarse."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/res_company.py:85
+msgid "Set the construction advance account on company %s."
+msgstr "Configure la cuenta de anticipos de obra en la compañía %s."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/res_company.py:94
+msgid "Set the construction retention account on company %s."
+msgstr "Configure la cuenta de retenciones de obra en la compañía %s."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+msgid "Set to Draft"
+msgstr "Restablecer a borrador"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Status:"
+msgstr "Estado:"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__tax_ids
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:201
+msgid "The advance invoice must be fully reversed before cancellation."
+msgstr ""
+"La factura del anticipo debe rectificarse por completo antes de cancelarlo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:153
+msgid ""
+"The advance invoice must belong to the same company and billing customer."
+msgstr ""
+"La factura de anticipo debe pertenecer a la misma compañía y al mismo "
+"cliente de facturación."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:145
+msgid "The advance's linked invoice cannot be replaced or removed."
+msgstr "La factura vinculada al anticipo no puede sustituirse ni eliminarse."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/res_company.py:55
+msgid "The construction advance account must be a current liability."
+msgstr "La cuenta de anticipos de obra debe ser de pasivo corriente."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/res_company.py:60
+msgid "The construction retention account must be a current asset."
+msgstr "La cuenta de retenciones de obra debe ser de activo corriente."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:862
+msgid "The final amount to invoice cannot be negative."
+msgstr "El importe final a facturar no puede ser negativo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:953
+msgid ""
+"The invoice untaxed amount (%(invoice)s) does not match the certification "
+"(%(cert)s)."
+msgstr ""
+"La base imponible de la factura (%(invoice)s) no coincide con la "
+"certificación (%(cert)s)."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:321
+msgid ""
+"The linked invoice must belong to the same company and billing customer."
+msgstr ""
+"La factura vinculada debe pertenecer a la misma compañía y al mismo cliente "
+"de facturación."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:223
+msgid "The sale order no longer exists."
+msgstr "El pedido de venta ya no existe."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification_line.py:370
+msgid "The sales order line does not belong to this certification's order."
+msgstr "La línea de venta no pertenece al pedido de esta certificación."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:1105
+msgid "There are no invoiceable lines on this certification."
+msgstr "Esta certificación no tiene líneas facturables."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:942
+msgid "There is nothing to invoice."
+msgstr "No hay nada que facturar."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:312
+msgid "This advance already has an invoice."
+msgstr "Este anticipo ya tiene una factura."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:939
+msgid "This certification is already invoiced."
+msgstr "Esta certificación ya está facturada."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_search
+msgid "To Approve"
+msgstr "Pendiente de aprobación"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "Type:"
+msgstr "Tipo:"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification_line__price_unit
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:342
+msgid "Unknown certification state."
+msgstr "Estado de certificación desconocido."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+#: model:ir.model.fields,field_description:tl_construction_certification.field_account_move_line__construction_certification_id
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Work Certification"
+msgstr "Certificación de obra"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_list
+#: model:ir.actions.act_window,name:tl_construction_certification.action_construction_certification
+#: model:ir.ui.menu,name:tl_construction_certification.menu_construction_certification_root
+#: model:ir.model.fields,field_description:tl_construction_certification.field_sale_order__certification_ids
+msgid "Work Certifications"
+msgstr "Certificaciones de obra"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<strong>Reference:</strong>"
+msgstr "<strong>Referencia:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<strong>Customer:</strong>"
+msgstr "<strong>Cliente:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "<strong>Invoice:</strong>"
+msgstr "<strong>Factura:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "<strong>Certification:</strong>"
+msgstr "<strong>Certificación:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<strong>Notes:</strong>"
+msgstr "<strong>Notas:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "<strong>Certified to Origin</strong>"
+msgstr "<strong>Certificado a origen</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "<strong>Final to Invoice</strong>"
+msgstr "<strong>Total final a facturar</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "<strong>Final Amount</strong>"
+msgstr "<strong>Importe final</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<strong>Final Amount to Invoice</strong>"
+msgstr "<strong>Importe final a facturar</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<br/>\n                                <strong>Date:</strong>"
+msgstr "<br/>\n                                <strong>Fecha:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<br/>\n                                <strong>Sales Order:</strong>"
+msgstr "<br/>\n                                <strong>Pedido de venta:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<br/>\n                                <strong>Project:</strong>"
+msgstr "<br/>\n                                <strong>Proyecto:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<br/>\n                                <strong>Status:</strong>"
+msgstr "<br/>\n                                <strong>Estado:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "<br/>\n                                <strong>Approver:</strong>"
+msgstr "<br/>\n                                <strong>Aprobador:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "<br/>\n                                <strong>Customer:</strong>"
+msgstr "<br/>\n                                <strong>Cliente:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "<br/>\n                                    <strong>Sales Order:</strong>"
+msgstr "<br/>\n                                    <strong>Pedido de venta:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+msgid "<br/>\n                                    <strong>Project:</strong>"
+msgstr "<br/>\n                                    <strong>Proyecto:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_retention_liquidation_document
+msgid "<br/>\n                                <strong>Type:</strong>"
+msgstr "<br/>\n                                <strong>Tipo:</strong>"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_certification_document
+msgid "Retention ("
+msgstr "Retención ("
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_certification.py:1122
+#, python-format
+msgid "Certification %s\nCertified to Origin: %s\nPreviously Certified: %s\nAmount to Invoice: %s\nRetention (%s%%): %s\nAdvance Applied: %s\nRetention Released: %s\nFinal to Invoice: %s"
+msgstr "Certificación %s\nCertificado a origen: %s\nCertificado anteriormente: %s\nImporte a facturar: %s\nRetención (%s%%): %s\nAnticipo aplicado: %s\nRetención liberada: %s\nTotal final a facturar: %s"

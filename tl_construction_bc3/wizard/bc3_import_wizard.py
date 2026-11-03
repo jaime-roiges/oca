@@ -262,9 +262,9 @@ class Bc3ImportWizard(models.TransientModel):
 
     def action_import(self):
         document, mode, budget_lines = self._load_and_validate()
-        self._uom_cache = {}
-        self._active_catalog = self._ensure_catalog(document)
-        self._source_currency = document.currency
+        catalog = self._ensure_catalog(document)
+        source_currency = document.currency
+        uom_cache = {}  # Local to this import; never attached to an ORM recordset.
         warnings = []
         templates = self.env["product.template"]
         order = self.env["sale.order"]
@@ -278,14 +278,18 @@ class Bc3ImportWizard(models.TransientModel):
                 mode in ("catalog", "both")
                 or (mode == "budget" and self.import_breakdown)
             ):
-                templates = self._import_catalog(document, document.catalog_concepts(), warnings)
+                templates = self._import_catalog(
+                    document, document.catalog_concepts(), warnings,
+                    catalog, uom_cache, source_currency,
+                )
             if mode in ("budget", "both"):
                 if is_certificate:
                     order = self.sale_order_id
                     self._create_certification(order, document, budget_lines, warnings)
                 else:
                     order, budget_templates = self._import_budget(
-                        document, budget_lines, warnings, templates
+                        document, budget_lines, warnings, templates,
+                        catalog, uom_cache, source_currency,
                     )
                     templates |= budget_templates
             warnings.extend(document.warnings)
@@ -296,7 +300,7 @@ class Bc3ImportWizard(models.TransientModel):
                 )
                 warnings.append(_("Unimported BC3 records: %s") % ignored)
             unique_warnings = list(dict.fromkeys(warnings))
-            self._archive_import(order, document, mode, unique_warnings)
+            self._archive_import(order, document, mode, unique_warnings, catalog)
             self._post_log(order, templates, document, mode, unique_warnings)
             return self._open_result(order, templates)
         except Bc3Error as error:
@@ -402,7 +406,7 @@ class Bc3ImportWizard(models.TransientModel):
             "company_id": company.id,
         })
 
-    def _archive_import(self, order, document, mode, warnings):
+    def _archive_import(self, order, document, mode, warnings, catalog):
         """Immutable audit snapshot, including original BC3 bytes."""
         raw = self._bc3_source_bytes()
         self.env["bc3.import.history"].create({
@@ -411,7 +415,7 @@ class Bc3ImportWizard(models.TransientModel):
             "checksum_sha256": hashlib.sha256(raw).hexdigest(),
             "file_size": len(raw),
             "sale_order_id": order.id if order else False,
-            "catalog_id": self._active_catalog.id,
+            "catalog_id": catalog.id,
             "company_id": self._company().id,
             "user_id": self.env.user.id,
             "info_type": str(document.info_type) if document.info_type else False,
@@ -423,17 +427,23 @@ class Bc3ImportWizard(models.TransientModel):
                        ("%s conceptos del catálogo" % len(document.concepts)),
         })
 
-    def _import_catalog(self, document, concepts, warnings):
+    def _import_catalog(self, document, concepts, warnings, catalog, uom_cache, source_currency):
         templates = self.env["product.template"]
         company = self._company()
         for concept in concepts:
             price = document.unit_price(concept, self.prefer_decomposition_price)
-            templates |= self._get_or_create_product(concept, price, company, warnings)
+            templates |= self._get_or_create_product(
+                concept, price, company, warnings,
+                catalog, uom_cache, source_currency,
+            )
         return templates
 
-    def _import_budget(self, document, budget_lines, warnings, existing_templates):
+    def _import_budget(
+        self, document, budget_lines, warnings, existing_templates,
+        catalog, uom_cache, source_currency,
+    ):
         company = self._company()
-        order = self._prepare_order(document)
+        order = self._prepare_order(document, catalog)
         # Lock the target order while matching/replacing BC3 positions.
         self.env.cr.execute("SELECT id FROM sale_order WHERE id = %s FOR UPDATE", [order.id])
         current = {line.bc3_path: line for line in order.order_line if line.bc3_path}
@@ -470,13 +480,14 @@ class Bc3ImportWizard(models.TransientModel):
             )[:1]
             if not product and concept is not None:
                 product = self._get_or_create_product(
-                    concept, budget_line.price, company, warnings
+                    concept, budget_line.price, company, warnings,
+                    catalog, uom_cache, source_currency,
                 )
                 existing_templates |= product
             if not product:
                 raise UserError(_("No product found for BC3 code %s.") % budget_line.code)
             name = self._line_name(budget_line, concept)
-            uom, exact = self._uom_for(budget_line.unit)
+            uom, exact = self._uom_for(budget_line.unit, uom_cache)
             if not exact and budget_line.unit and not self.allow_unknown_units:
                 raise UserError(
                     _("Unknown BC3 unit '%s' on %s; configure a UoM or explicitly allow a fallback.")
@@ -533,11 +544,11 @@ class Bc3ImportWizard(models.TransientModel):
                   "Review or remove them before reimporting.")
             )
         if self.apply_coefficients:
-            self._add_coefficient_lines(order, document, item_lines, sequence)
+            self._add_coefficient_lines(order, document, item_lines, sequence, catalog)
         self._write_note(order, document, item_lines)
         return order, existing_templates
 
-    def _prepare_order(self, document):
+    def _prepare_order(self, document, catalog):
         root = document.root_concept()
         title = ((root.summary if root else "") or document.header or document.comment or self.filename or "BC3")
         info = str(document.info_type) if document.info_type in (1, 2, 3, 4) else False
@@ -551,7 +562,7 @@ class Bc3ImportWizard(models.TransientModel):
             "bc3_iva": document.iva,
             "bc3_currency": document.currency or False,
             "bc3_comment": document.comment or document.property or False,
-            "bc3_catalog_id": self._active_catalog.id,
+            "bc3_catalog_id": catalog.id,
         }
         if self.sale_order_id:
             order = self.sale_order_id
@@ -605,7 +616,7 @@ class Bc3ImportWizard(models.TransientModel):
             return "line_subsection"
         return "line_section"
 
-    def _add_coefficient_lines(self, order, document, item_lines, sequence):
+    def _add_coefficient_lines(self, order, document, item_lines, sequence, catalog):
         pem = sum((line.product_uom_qty or 0.0) * (line.price_unit or 0.0) for line in item_lines)
         ci_amount, baja_amount, gg_amount, bi_amount = coefficient_amounts(
             pem, document.ci, document.gg, document.bi, document.baja
@@ -649,7 +660,7 @@ class Bc3ImportWizard(models.TransientModel):
             "product_uom_qty": 0.0,
         }
         section.write(section_vals) if section else self.env["sale.order.line"].create(section_vals)
-        product = self._coefficient_product()
+        product = self._coefficient_product(catalog)
         for label, amount, code in rows:
             sequence += 10
             amount = order.currency_id.round(amount) if order.currency_id else amount
@@ -875,12 +886,15 @@ class Bc3ImportWizard(models.TransientModel):
                 "qty_period": qty_period,
             })
 
-    def _get_or_create_product(self, concept, price, company, warnings):
+    def _get_or_create_product(
+        self, concept, price, company, warnings,
+        catalog, uom_cache, source_currency,
+    ):
         """Never silently alter an ordinary product with a matching SKU."""
         Template = self.env["product.template"]
         domain = [
             ("bc3_code", "=", concept.code),
-            ("bc3_catalog_id", "=", self._active_catalog.id),
+            ("bc3_catalog_id", "=", catalog.id),
         ]
         if "company_id" in Template._fields and company:
             domain += ["|", ("company_id", "=", False), ("company_id", "=", company.id)]
@@ -891,15 +905,15 @@ class Bc3ImportWizard(models.TransientModel):
                 % concept.code
             )
         template = candidates[:1]
-        uom, exact = self._uom_for(concept.unit)
+        uom, exact = self._uom_for(concept.unit, uom_cache)
         if not exact and concept.unit and not self.allow_unknown_units:
             raise UserError(_("BC3 concept %s has unknown unit %s.") % (concept.code, concept.unit))
         foreign_price = bool(
-            getattr(self, "_source_currency", False)
-            and self._source_currency.upper() != company.currency_id.name.upper()
+            source_currency
+            and source_currency.upper() != company.currency_id.name.upper()
         )
         vals = {
-            "bc3_catalog_id": self._active_catalog.id,
+            "bc3_catalog_id": catalog.id,
             "bc3_code": concept.code,
             "bc3_unit": concept.unit or False,
             "bc3_text": concept.text or False,
@@ -945,10 +959,10 @@ class Bc3ImportWizard(models.TransientModel):
                 vals["uom_po_id"] = uom.id
         return Template.with_company(company).create(vals)
 
-    def _coefficient_product(self):
+    def _coefficient_product(self, catalog):
         template = self.env["product.template"].search([
             ("bc3_code", "=", "BC3-COEF"),
-            ("bc3_catalog_id", "=", self._active_catalog.id),
+            ("bc3_catalog_id", "=", catalog.id),
         ], limit=1)
         if template:
             return template.product_variant_id
@@ -956,7 +970,7 @@ class Bc3ImportWizard(models.TransientModel):
             "name": _("BC3 coefficient"),
             "default_code": "BC3-COEF",
             "bc3_code": "BC3-COEF",
-            "bc3_catalog_id": self._active_catalog.id,
+            "bc3_catalog_id": catalog.id,
             "sale_ok": True,
             "purchase_ok": False,
             "list_price": 0.0,
@@ -975,14 +989,10 @@ class Bc3ImportWizard(models.TransientModel):
             return self.sale_order_id.company_id
         return self.env.company
 
-    def _uom_for(self, unit):
+    def _uom_for(self, unit, cache):
         key = _normalize_unit(unit)
         if not key:
             return self.env.ref("uom.product_uom_unit", raise_if_not_found=False), True
-        cache = getattr(self, "_uom_cache", None)
-        if cache is None:
-            cache = {}
-            self._uom_cache = cache
         if key in cache:
             return cache[key]
         uom = self.env["uom.uom"]

@@ -5,6 +5,7 @@ from unittest.mock import patch
 
 from odoo.exceptions import UserError, ValidationError
 from odoo.tests import tagged
+from odoo.tools import float_round
 from odoo.tests.common import TransactionCase
 
 from .common import configure_construction_accounts
@@ -99,11 +100,24 @@ class TestCriticalConstructionFixes(TransactionCase):
             "tax_ids": [(6, 0, [])],
         })
         order.action_confirm()
+        # Odoo 20 rounds fields.Float on assignment according to the decimal
+        # precision configured on the field.  The old test always passed four
+        # decimals even when Product Unit of Measure allowed only two: each
+        # 0.3333 / 0.3334 was stored as 0.33, so only 0.99 was certified.
+        # Use representable quantities and put the remaining quantity into
+        # the last period; this checks the final cent at ANY configured scale.
+        precision = self.env["decimal.precision"].precision_get(
+            "Product Unit of Measure"
+        )
+        self.assertGreaterEqual(precision, 1)
+        first_qty = float_round(1.0 / 3.0, precision_digits=precision)
+        last_qty = float_round(1.0 - 2.0 * first_qty, precision_digits=precision)
+        self.assertAlmostEqual(2 * first_qty + last_qty, 1.0, places=precision)
         periods = []
         for date_value, quantity in (
-            ("2026-06-01", 0.3333),
-            ("2026-07-01", 0.3333),
-            ("2026-08-01", 0.3334),
+            ("2026-06-01", first_qty),
+            ("2026-07-01", first_qty),
+            ("2026-08-01", last_qty),
         ):
             cert = self.env["construction.certification"].create({
                 "sale_order_id": order.id,
@@ -118,10 +132,17 @@ class TestCriticalConstructionFixes(TransactionCase):
                 "certification_id": cert.id, "sale_line_id": negative.id,
                 "qty_period": quantity,
             })
+            self.assertAlmostEqual(debit.qty_period, quantity, places=precision)
             periods.append(debit.amount_period)
             cert.action_approve()
         self.assertAlmostEqual(sum(periods), -100.01, places=2)
-        self.assertAlmostEqual(periods[-1], -33.35, places=2)
+        # The engine rounds the cumulative origin, not each isolated period.
+        # Therefore the last period is the remaining rounded contract amount:
+        # e.g. -34.00 for 2-decimal quantities, -33.34 for 4-decimal quantities.
+        currency = order.currency_id
+        previous_cumulative = currency.round(-100.01 * (2.0 * first_qty))
+        expected_last = currency.round(-100.01 - previous_cumulative)
+        self.assertAlmostEqual(periods[-1], expected_last, places=2)
 
     def _certify(self, sale_line=None, qty=1.0, date="2026-06-01", retention=0.0):
         cert = self.env["construction.certification"].create({
