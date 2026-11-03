@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--
-        Override the Cost Nature spreadsheet dashboard with the corrected version.
-        The original recalculates Total Price using average margin %, which is wrong
-        when different work items have different margins.
-        This version sums the pre-computed Total Price column (which is correct per line).
-    -->
     <record id="construction_developer.spreadsheet_dashboard_cost_nature" model="spreadsheet.dashboard">
+        <field name="name">Cost Nature</field>
         <field name="spreadsheet_binary_data" type="bytes"
                file="tl_que/static/src/binary/spreadsheet_dashboard/CostNature.osheet.json"/>
     </record>
+
+    <!-- Runs on every install and module upgrade, so a new JSON is not ignored. -->
+    <function model="spreadsheet.dashboard" name="_tl_que_reload_cost_nature"/>
 </odoo>

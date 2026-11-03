@@ -20,10 +20,11 @@
       },
       "merges": [],
       "cells": {
-        "B7": "Cost Nature Break Down",
+        "B7": "Cost Nature Break Down (TL 1.0.2)",
         "B8": "=PIVOT(6)",
         "B27": "Category and Product Break Down",
-        "B28": "=pivot(7)"
+        "B28": "=pivot(7)",
+        "B6": "TL QUE 1.0.2"
       },
       "styles": {
         "B7:H7": 1,
@@ -473,7 +474,7 @@
       }
     }
   },
-  "revisionId": "ffc0aecf-e36f-4d5b-ae33-d49ee83eeefa",
+  "revisionId": "tl-que-1.0.2",
   "uniqueFigureIds": true,
   "settings": {
     "locale": {
@@ -493,10 +494,10 @@
       "dataSet": {
         "sheetId": "7f50a450-d391",
         "zone": {
-          "right": 9,
-          "top": 0,
           "left": 0,
-          "bottom": 99
+          "right": 10,
+          "top": 0,
+          "bottom": 10099
         }
       },
       "columns": [],
@@ -533,18 +534,18 @@
           "aggregator": "sum",
           "userDefinedName": "Margin",
           "computedBy": {
-            "formula": "='Total Price:sum'-'Total Cost:sum'",
-            "sheetId": "c4236b3e-e0fd"
+            "sheetId": "c4236b3e-e0fd",
+            "formula": "='Total Price:sum'-'Total Cost:sum'"
           }
         },
         {
           "id": "Margin (%):computed",
           "fieldName": "Margin (%)",
-          "aggregator": "sum",
+          "aggregator": "avg",
           "userDefinedName": "Margin (%)",
           "computedBy": {
-            "formula": "=IF('Total Price:sum'=0,0,'Margin:sum'/'Total Price:sum')",
-            "sheetId": "c4236b3e-e0fd"
+            "sheetId": "c4236b3e-e0fd",
+            "formula": "=IF('Total Price:sum'=0,0,('Total Price:sum'-'Total Cost:sum')/'Total Price:sum')"
           }
         },
         {
@@ -553,8 +554,8 @@
           "aggregator": "sum",
           "userDefinedName": "Margin Share",
           "computedBy": {
-            "formula": "='Margin:sum'",
-            "sheetId": "c4236b3e-e0fd"
+            "sheetId": "c4236b3e-e0fd",
+            "formula": "='Total Price:sum'-'Total Cost:sum'"
           },
           "display": {
             "type": "%_of_grand_total"
@@ -585,9 +586,9 @@
       "dataSet": {
         "sheetId": "7f50a450-d391",
         "zone": {
+          "left": 0,
           "right": 10,
           "top": 0,
-          "left": 0,
           "bottom": 10099
         }
       },
@@ -629,18 +630,18 @@
           "aggregator": "sum",
           "userDefinedName": "Margin",
           "computedBy": {
-            "formula": "='Total Price:sum'-'Total Cost:sum'",
-            "sheetId": "da4eca5b-d124"
+            "sheetId": "da4eca5b-d124",
+            "formula": "='Total Price:sum'-'Total Cost:sum'"
           }
         },
         {
           "id": "Margin (%):computed",
           "fieldName": "Margin (%)",
-          "aggregator": "sum",
+          "aggregator": "avg",
           "userDefinedName": "Margin (%)",
           "computedBy": {
-            "formula": "=IF('Total Price:sum'=0,0,'Margin:sum'/'Total Price:sum')",
-            "sheetId": "da4eca5b-d124"
+            "sheetId": "da4eca5b-d124",
+            "formula": "=IF('Total Price:sum'=0,0,('Total Price:sum'-'Total Cost:sum')/'Total Price:sum')"
           }
         },
         {
@@ -649,8 +650,8 @@
           "aggregator": "sum",
           "userDefinedName": "Margin Share",
           "computedBy": {
-            "formula": "='Margin:sum'",
-            "sheetId": "da4eca5b-d124"
+            "sheetId": "da4eca5b-d124",
+            "formula": "='Total Price:sum'-'Total Cost:sum'"
           },
           "display": {
             "type": "%_of_grand_total"

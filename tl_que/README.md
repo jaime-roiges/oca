@@ -1,32 +1,7 @@
-# TL Que - Fix Cost Nature Dashboard
+# TL Que 1.0.2
 
-Módulo que corrige el tablero **Cost Nature** del módulo `construction_developer`.
+Corrige el dashboard Cost Nature.
 
-## Problema
+Al actualizar el módulo se vuelve a escribir el spreadsheet y se borran las revisiones antiguas del dashboard, que si no se quedan encima del JSON nuevo.
 
-El pivot original calculaba:
-
-```
-Total Price = Suma Costes / (1 - Media de Margin %)
-```
-
-Esto es incorrecto cuando las líneas tienen márgenes diferentes, por lo que el Total Price no coincidía con el total del pedido de venta.
-
-## Solución
-
-- **Total Price**: suma directa del campo `Total Price` ya calculado correctamente por línea.
-- **Margin**: `Total Price - Total Cost`.
-- **Margin (%)**: `Margin / Total Price` (margen real ponderado).
-
-## Instalación
-
-1. Copia la carpeta `tl_que` en tu directorio de addons.
-2. Actualiza la lista de aplicaciones.
-3. Instala el módulo **TL Que - Fix Cost Nature Dashboard**.
-
-El dashboard Cost Nature se actualizará automáticamente con la versión corregida.
-
-## Dependencias
-
-- `construction_developer`
-- `spreadsheet_dashboard`
+El título del tablero debe decir `Cost Nature Break Down (TL 1.0.2)`. Si no lo ves, el módulo no se ha actualizado.

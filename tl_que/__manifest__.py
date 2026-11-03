@@ -1,6 +1,6 @@
 {
     'name': 'TL Que - Fix Cost Nature Dashboard',
-    'version': '20.0.1.0.0',
+    'version': '20.0.1.0.2',
     'category': 'Construction',
     'summary': 'Corrige el tablero Cost Nature para que el Total Price coincida con el pedido',
     'description': """
