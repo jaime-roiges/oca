@@ -20,7 +20,7 @@ class SpreadsheetDashboard(models.Model):
             "rb",
         ) as handle:
             payload = json.loads(handle.read().decode())
-        payload["revisionId"] = "tl-que-1.0.2"
+        payload["revisionId"] = "tl-que-1.0.3"
         dashboard.spreadsheet_data = json.dumps(payload)
         Revision = self.env.get("spreadsheet.revision")
         if Revision is not None and "res_id" in Revision._fields:

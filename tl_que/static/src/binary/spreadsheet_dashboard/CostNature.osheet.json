@@ -20,11 +20,11 @@
       },
       "merges": [],
       "cells": {
-        "B7": "Cost Nature Break Down (TL 1.0.2)",
+        "B7": "Cost Nature Break Down (TL 1.0.3)",
         "B8": "=PIVOT(6)",
         "B27": "Category and Product Break Down",
         "B28": "=pivot(7)",
-        "B6": "TL QUE 1.0.2"
+        "B6": "TL QUE 1.0.3"
       },
       "styles": {
         "B7:H7": 1,
@@ -474,7 +474,7 @@
       }
     }
   },
-  "revisionId": "tl-que-1.0.2",
+  "revisionId": "tl-que-1.0.3",
   "uniqueFigureIds": true,
   "settings": {
     "locale": {
@@ -879,7 +879,7 @@
           "hidden": false
         },
         {
-          "name": "price_total",
+          "name": "price_subtotal",
           "string": "Total Price",
           "hidden": false
         }
