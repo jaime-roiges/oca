@@ -57,6 +57,16 @@ class AccountMove(models.Model):
         return res
 
     def action_post(self):
+        # Recheck at posting: a manual reconciliation may have consumed the
+        # balance since the release invoice was created in draft.
+        releases = self.env["construction.certification"].search([
+            ("invoice_id", "in", self.filtered(lambda move: move.state == "draft").ids),
+            ("is_retention_liquidation", "=", True),
+            ("state", "=", "invoiced"),
+        ])
+        for cert in releases:
+            cert._check_ready_for_approval()
+            cert._check_retention_invoice_lines()
         result = super().action_post()
         posted = self.filtered(lambda move: move.state == "posted")
         reversals = posted.filtered("reversed_entry_id")
@@ -93,6 +103,12 @@ class AccountMove(models.Model):
         # Odoo 20 copies the invoice without fields marked copy=False.
         # The credit note has to keep the construction links, or the
         # standard price and account computes replace the certified amounts.
+        for move in self:
+            sources = move.line_ids.filtered(lambda line: line.construction_adjustment_type == "retention")
+            partials = sources.mapped("matched_debit_ids") | sources.mapped("matched_credit_ids")
+            related = (partials.mapped("debit_move_id") | partials.mapped("credit_move_id")) - sources
+            if related.filtered(lambda line: line.construction_adjustment_type == "retention_release"):
+                raise UserError(_("Reverse the related retention releases before reversing their original invoice."))
         return super(
             AccountMove, self.with_context(construction_keep_links=True)
         )._reverse_moves(default_values_list=default_values_list, cancel=cancel)
@@ -147,6 +163,14 @@ class AccountMove(models.Model):
                     ) % {"invoice": move.display_name})
                 reversals |= existing
                 continue
+            adjustments = move.line_ids.filtered("construction_adjustment_type")
+            partials = adjustments.mapped("matched_debit_ids") | adjustments.mapped("matched_credit_ids")
+            related = (partials.mapped("debit_move_id") | partials.mapped("credit_move_id")) - adjustments
+            if related.filtered(lambda line: line.construction_adjustment_type in ("retention_release", "advance")):
+                raise UserError(_(
+                    "This invoice has construction adjustments already applied or released. "
+                    "Reverse the related operations before cancelling the original invoice."
+                ))
             # Free the advance and retention items so the credit note can
             # close them. Existing customer payments remain allocated.
             move.line_ids.filtered("construction_adjustment_type").remove_move_reconcile()
@@ -179,6 +203,7 @@ class AccountMove(models.Model):
                 and line.construction_adjustment_type == original.construction_adjustment_type
                 and line.construction_certification_line_id == original.construction_certification_line_id
                 and line.construction_advance_application_id == original.construction_advance_application_id
+                and line.construction_retention_allocation_id == original.construction_retention_allocation_id
                 and line.construction_advance_id == original.construction_advance_id
                 and not line.reconciled
             )[:1]
@@ -246,6 +271,18 @@ class AccountMove(models.Model):
         for release in releases:
             if release.reconciled:
                 continue
+            allocation = release.construction_retention_allocation_id
+            if allocation:
+                source = allocation.source_line_id
+                if (source.reconciled or source.account_id != release.account_id
+                        or source.partner_id != release.partner_id
+                        or source.company_id != release.company_id
+                        or source.balance * release.balance >= 0):
+                    raise UserError(_("The selected retention can no longer be reconciled with its release."))
+                (release | source).reconcile()
+                if not release.reconciled:
+                    raise UserError(_("The selected retention does not cover the complete release."))
+                continue
             order = release.construction_certification_id.sale_order_id
             if not release.balance:
                 continue
@@ -257,7 +294,7 @@ class AccountMove(models.Model):
                 ("reconciled", "=", False),
                 ("partner_id", "=", release.partner_id.id),
                 ("company_id", "=", release.company_id.id),
-            ], order="date, id")
+            ], order="date_maturity, date, id")
             for candidate in candidates:
                 if release.reconciled:
                     break
@@ -294,6 +331,7 @@ class AccountMove(models.Model):
                 line.construction_adjustment_type or "",
                 line.construction_advance_application_id.id,
                 line.construction_advance_id.id,
+                line.construction_retention_allocation_id.id,
                 line.account_id.id,
             )
 

@@ -26,7 +26,7 @@ class TestCriticalConstructionFixes(TransactionCase):
             "invoice_policy": "order",
             "list_price": 100.0,
         })
-        cls.order = cls.env["sale.order"].create({"partner_id": cls.partner.id})
+        cls.order = cls.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({"partner_id": cls.partner.id})
         cls.sale_a = cls.env["sale.order.line"].create({
             "order_id": cls.order.id,
             "product_id": cls.product.id,
@@ -55,7 +55,7 @@ class TestCriticalConstructionFixes(TransactionCase):
             cert.write({"state": "measured"})
 
     def test_discount_contract_line_is_in_origin_invoice(self):
-        order = self.env["sale.order"].create({"partner_id": self.partner.id})
+        order = self.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({"partner_id": self.partner.id})
         work = self.env["sale.order.line"].create({
             "order_id": order.id, "product_id": self.product.id,
             "product_uom_qty": 10.0, "price_unit": 100.0,
@@ -88,7 +88,7 @@ class TestCriticalConstructionFixes(TransactionCase):
         ), 450.0, places=2)
 
     def test_last_cent_of_negative_contract_coefficient_is_preserved(self):
-        order = self.env["sale.order"].create({"partner_id": self.partner.id})
+        order = self.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({"partner_id": self.partner.id})
         negative = self.env["sale.order.line"].create({
             "order_id": order.id, "product_id": self.product.id,
             "product_uom_qty": 1.0, "price_unit": -100.01,

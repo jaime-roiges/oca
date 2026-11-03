@@ -21,7 +21,7 @@ class TestCertificationCorrections(TransactionCase):
             "type": "service",
             "list_price": 100.0,
         })
-        cls.sale_order = cls.env["sale.order"].create({"partner_id": cls.partner.id})
+        cls.sale_order = cls.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({"partner_id": cls.partner.id})
         cls.sale_line = cls.env["sale.order.line"].create({
             "order_id": cls.sale_order.id,
             "product_id": cls.product.id,
@@ -54,6 +54,26 @@ class TestCertificationCorrections(TransactionCase):
         self.assertEqual(later.line_ids.qty_origin, 6.0)
         self.assertEqual(later.amount_previously_invoiced, 400.0)
         self.assertEqual(later.amount_to_invoice, 200.0)
+
+    def test_invoice_uses_explicit_work_delivery_date(self):
+        cert = self._certify(
+            2.0, date="2026-06-20", work_delivery_date="2026-06-10",
+            retention_percent=0.0,
+        )
+        cert.action_measure()
+        cert.action_approve()
+        cert.action_create_invoice()
+        self.assertEqual(str(cert.invoice_id.invoice_date), "2026-06-20")
+        self.assertEqual(str(cert.invoice_id.delivery_date), "2026-06-10")
+        with self.assertRaises(UserError):
+            cert.write({"work_delivery_date": "2026-06-11"})
+
+    def test_invoice_does_not_guess_work_delivery_date(self):
+        cert = self._certify(1.0, retention_percent=0.0)
+        cert.action_measure()
+        cert.action_approve()
+        cert.action_create_invoice()
+        self.assertFalse(cert.invoice_id.delivery_date)
 
     def test_percent_is_a_ratio_and_follows_the_quantity(self):
         cert = self._certify(2.0)
@@ -94,7 +114,10 @@ class TestCertificationCorrections(TransactionCase):
     def test_liquidation_cannot_release_the_same_retention_twice(self):
         first = self._certify(5.0, retention_percent=10.0, date="2026-06-01")
         self.assertEqual(first.amount_retention, 50.0)
-        mark_invoiced(first)
+        first.action_measure()
+        first.action_approve()
+        first.action_create_invoice()
+        first.invoice_id.action_post()
         liquidation = self._certify(
             0.0,
             is_retention_liquidation=True,
@@ -117,7 +140,10 @@ class TestCertificationCorrections(TransactionCase):
 
     def test_liquidation_release_is_not_subtracted_from_later_production(self):
         first = self._certify(5.0, retention_percent=10.0, date="2026-06-01")
-        mark_invoiced(first)
+        first.action_measure()
+        first.action_approve()
+        first.action_create_invoice()
+        first.invoice_id.action_post()
         liquidation = self._certify(
             0.0,
             is_retention_liquidation=True,
@@ -130,7 +156,7 @@ class TestCertificationCorrections(TransactionCase):
         self.assertEqual(later.amount_to_invoice, 100.0)
 
     def test_sales_order_invoicing_leaves_uncertified_lines(self):
-        order = self.env["sale.order"].create({"partner_id": self.partner.id})
+        order = self.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({"partner_id": self.partner.id})
         certified_line = self.env["sale.order.line"].create({
             "order_id": order.id,
             "product_id": self.product.id,

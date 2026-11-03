@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: tl_construction_certification 20.0.1.71.0\n"
+"Project-Id-Version: tl_construction_certification 20.0.1.78.1\n"
 "PO-Revision-Date: 2026-10-31 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -169,6 +169,7 @@ msgstr "Anticipo de obras - %s"
 #: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_list
 #: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
 #: model:ir.actions.act_window,name:tl_construction_certification.action_construction_advance
+#: model:ir.ui.menu,name:tl_construction_certification.menu_construction_advance
 #: model:ir.model.fields,field_description:tl_construction_certification.field_sale_order__advance_ids
 msgid "Advances"
 msgstr "Anticipos"
@@ -184,6 +185,7 @@ msgstr ""
 #. module: tl_construction_certification
 #: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance_application__amount
 #: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_origin_invoice_document
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_retention_allocation__amount
 msgid "Amount"
 msgstr "Importe"
 
@@ -453,6 +455,7 @@ msgstr "Anticipo de obra"
 
 #. module: tl_construction_certification
 #: model:ir.model.fields,field_description:tl_construction_certification.field_res_company__construction_advance_account_id
+#: model:ir.model.fields,field_description:tl_construction_certification.field_res_config_settings__construction_advance_account_id
 msgid "Construction Advance Account"
 msgstr "Cuenta de anticipos de obra"
 
@@ -468,6 +471,7 @@ msgstr "Ajuste de precio de obra"
 
 #. module: tl_construction_certification
 #: model:ir.model.fields,field_description:tl_construction_certification.field_res_company__construction_retention_account_id
+#: model:ir.model.fields,field_description:tl_construction_certification.field_res_config_settings__construction_retention_account_id
 msgid "Construction Retention Account"
 msgstr "Cuenta de retenciones de obra"
 
@@ -500,6 +504,7 @@ msgstr "Factura rectificativa"
 
 #. module: tl_construction_certification
 #: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__partner_id
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__partner_id
 msgid "Customer"
 msgstr "Cliente"
 
@@ -1296,3 +1301,366 @@ msgstr "Retención ("
 #, python-format
 msgid "Certification %s\nCertified to Origin: %s\nPreviously Certified: %s\nAmount to Invoice: %s\nRetention (%s%%): %s\nAdvance Applied: %s\nRetention Released: %s\nFinal to Invoice: %s"
 msgstr "Certificación %s\nCertificado a origen: %s\nCertificado anteriormente: %s\nImporte a facturar: %s\nRetención (%s%%): %s\nAnticipo aplicado: %s\nRetención liberada: %s\nTotal final a facturar: %s"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_create_certification_wizard_form
+msgid "Create"
+msgstr "Crear"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_create_certification_wizard_form
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__state
+msgid "State"
+msgstr "Estado"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_form
+msgid "Create Invoice"
+msgstr "Crear factura"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.res_config_settings_view_form_construction
+msgid "Construction Accounting"
+msgstr "Contabilidad de obra"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.res_config_settings_view_form_construction
+msgid "Construction Accounts"
+msgstr "Cuentas de obra"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.res_config_settings_view_form_construction
+msgid "Configure accounts for advances and guarantee retentions for the current company."
+msgstr "Configure las cuentas de anticipos y retenciones de garantía para la compañía actual."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_sale_order__construction_retention_due_date
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__retention_due_date
+msgid "Guarantee Maturity Date"
+msgstr "Vencimiento de la garantía"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,help:tl_construction_certification.field_sale_order__construction_retention_due_date
+msgid "Default guarantee maturity for new work certifications. Existing certifications keep their own date."
+msgstr "Fecha de vencimiento de garantía predeterminada para nuevas certificaciones. Las certificaciones existentes conservan su propia fecha."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,help:tl_construction_certification.field_construction_certification__retention_due_date
+msgid "Date the guarantee retention becomes due. It is copied to the retention journal item."
+msgstr "Fecha en que vence la retención de garantía. Se copia al apunte contable de retención."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.sale_order_form_retention_due
+msgid "Construction Guarantee"
+msgstr "Garantía de obra"
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/retention_due_certification.py:0
+msgid "Set the guarantee maturity date before creating an invoice with retention."
+msgstr "Indique el vencimiento de la garantía antes de crear una factura con retención."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/retention_due_certification.py:0
+msgid "A retention with an open journal item must have a guarantee maturity date."
+msgstr "Una retención con un apunte pendiente debe tener fecha de vencimiento de garantía."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/retention_due_certification.py:0
+msgid "Only accounting managers can change the maturity date of a posted retention."
+msgstr "Solo los responsables de contabilidad pueden cambiar el vencimiento de una retención contabilizada."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "The advance must have one identifiable accounting line before it can be applied."
+msgstr "El anticipo debe tener un único apunte contable identificable antes de poder aplicarlo."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "The invoice customer does not match the original advance customer. Review the advance before applying it."
+msgstr "El cliente de la factura no coincide con el cliente del anticipo original. Revisa el anticipo antes de aplicarlo."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "Open retention entries do not match the current invoice customer. Review them before releasing the guarantee."
+msgstr "Los apuntes de retención abiertos no coinciden con el cliente o la moneda de la factura. Revísalos antes de liberar la garantía."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "Open retentions use different accounts. Release them separately after accounting review."
+msgstr "Las retenciones abiertas utilizan cuentas distintas. Revisa su liquidación con contabilidad."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/account_move.py:0
+msgid "This invoice has construction adjustments already applied or released. Reverse the related operations before cancelling the original invoice."
+msgstr "Esta factura contiene ajustes de obra ya aplicados o liberados. Revierte las operaciones relacionadas antes de cancelar la factura original."
+
+#. module: tl_construction_certification
+#: model:ir.actions.act_window,name:tl_construction_certification.action_construction_retention_open
+#: model:ir.ui.menu,name:tl_construction_certification.menu_construction_retention_open
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_retention_open_list
+msgid "Open Guarantee Retentions"
+msgstr "Retenciones de garantía pendientes"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_retention_open_list
+msgid "Outstanding balance"
+msgstr "Saldo pendiente"
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "Open retention entries have a different currency. Review them before releasing the guarantee."
+msgstr "Los apuntes de retención pendientes tienen una moneda distinta. Revísalos antes de liberar la garantía."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "There are unmatched retention credits for this order. Reconcile or review them before another release."
+msgstr "Hay abonos de retenciones sin conciliar en este pedido. Concílialos o revísalos antes de otra liberación."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__mixed_taxes_confirmed
+msgid "Mixed tax treatment reviewed"
+msgstr "Tratamiento de impuestos mixtos revisado"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,help:tl_construction_certification.field_construction_advance__mixed_taxes_confirmed
+msgid "Confirm that the selected taxes have been reviewed for this specific advance. If several tax treatments are applicable, create a separate advance for each one."
+msgstr "Confirma que se han revisado los impuestos de este anticipo. Si se aplican varios tratamientos fiscales, crea un anticipo separado para cada uno."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Review the taxes for this mixed-tax order. If necessary create one advance per tax treatment, then confirm the review."
+msgstr "Revisa los impuestos de este pedido con tratamientos mixtos. Si es necesario, crea un anticipo por cada tratamiento y confirma la revisión."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Save the advance details before confirming it."
+msgstr "Guarda los datos del anticipo antes de confirmarlo."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "Retentions can only be selected on a retention liquidation."
+msgstr "Las retenciones solo se pueden seleccionar en una liquidación de retenciones."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "The selected retentions must add up to the amount to release."
+msgstr "Las retenciones seleccionadas deben sumar el importe que se va a liberar."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "A selected retention is not an open posted retention of this order, company, customer and currency."
+msgstr "Una retención seleccionada no es un apunte abierto y contabilizado de este pedido, compañía, cliente y moneda."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "A selected retention no longer has enough unreserved balance."
+msgstr "Una retención seleccionada ya no tiene saldo suficiente sin reservar."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "The draft release invoice no longer matches its selected retentions."
+msgstr "La factura de liberación en borrador ya no coincide con las retenciones seleccionadas."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_certification.py:0
+msgid "The draft release invoice no longer matches the retention to release."
+msgstr "La factura de liberación en borrador ya no coincide con la retención que se debe liberar."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/account_move.py:0
+msgid "The selected retention can no longer be reconciled with its release."
+msgstr "La retención seleccionada ya no se puede conciliar con su liberación."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/account_move.py:0
+msgid "The selected retention does not cover the complete release."
+msgstr "La retención seleccionada no cubre la liberación completa."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/retention_allocation.py:0
+msgid "The retention allocation amount must be positive."
+msgstr "El importe asignado a la retención debe ser positivo."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/retention_allocation.py:0
+msgid "Retention allocations can only be changed on an open certification."
+msgstr "Las asignaciones de retención solo se pueden modificar en una certificación abierta."
+
+#. module: tl_construction_certification
+#: model:ir.model.constraint,message:tl_construction_certification.constraint_construction_retention_allocation_source_unique
+msgid "A retention can only be selected once per liquidation."
+msgstr "Una retención solo puede seleccionarse una vez por liquidación."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__retention_allocation_ids
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+msgid "Retentions to release"
+msgstr "Retenciones que se van a liberar"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_account_move_line__construction_retention_allocation_id
+msgid "Retention Allocation"
+msgstr "Asignación de retención"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_retention_allocation__source_line_id
+msgid "Source Line"
+msgstr "Apunte de origen"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_retention_allocation__maturity_date
+msgid "Maturity Date"
+msgstr "Fecha de vencimiento"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_certification_form
+msgid "Release"
+msgstr "Liberación"
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/account_move.py:0
+msgid "Reverse the related retention releases before reversing their original invoice."
+msgstr "Revierte las liberaciones de retención relacionadas antes de rectificar la factura original."
+
+#. module: tl_construction_certification
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Construction invoices currently support the general VAT regime only. Review these cash-basis taxes: %(taxes)s."
+msgstr "Las facturas de obra solo admiten actualmente el régimen general de IVA. Revisa estos impuestos de criterio de caja: %(taxes)s."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_certification__work_delivery_date
+msgid "Work Delivery Date"
+msgstr "Fecha de entrega de la obra"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,help:tl_construction_certification.field_construction_certification__work_delivery_date
+msgid "Actual date on which the work covered by this certification was delivered. Enter it only when known; a certification date is not automatically a delivery date. The date is copied to the standard invoice delivery date."
+msgstr "Fecha real de entrega de la obra incluida en esta certificación. Indícala solo cuando se conozca; la fecha de certificación no equivale automáticamente a la fecha de entrega. Se copia a la fecha de entrega estándar de la factura."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__collection_payment_id
+msgid "Received payment"
+msgstr "Cobro recibido"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,help:tl_construction_certification.field_construction_advance__collection_payment_id
+msgid "One recorded customer payment per advance. For partial receipts, create one advance per payment. Match the payment to the advance invoice using Odoo's standard reconciliation."
+msgstr "Un cobro registrado de cliente por anticipo. Para cobros parciales, crea un anticipo por cada cobro. Concilia el cobro con la factura del anticipo mediante la conciliación estándar de Odoo."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.view_construction_advance_form
+msgid "Reconcile received payment"
+msgstr "Conciliar cobro recibido"
+
+#. module: tl_construction_certification
+#: model:ir.model.constraint,message:tl_construction_certification.constraint_construction_advance_collection_payment_unique
+msgid "A payment can only be assigned to one construction advance."
+msgstr "Un cobro solo puede asignarse a un anticipo de obra."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Select the recorded customer payment for this advance."
+msgstr "Selecciona el cobro de cliente registrado para este anticipo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The payment must be an incoming customer payment for the same company, customer and currency."
+msgstr "El pago debe ser un cobro del mismo cliente, compañía y moneda."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The selected payment must have a posted accounting entry."
+msgstr "El cobro seleccionado debe tener un asiento contabilizado."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Match the received payment with the bank transaction before invoicing the advance."
+msgstr "Concilia el cobro con la operación bancaria antes de facturar el anticipo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The payment must contain exactly one reconcilable customer entry."
+msgstr "El cobro debe contener exactamente un apunte de cliente conciliable."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The customer payment is already allocated or its open balance differs from the payment."
+msgstr "El cobro de cliente ya está asignado o su saldo pendiente difiere del importe del pago."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The advance invoice total must equal the received payment, including taxes. Adjust the base amount or taxes before invoicing."
+msgstr "El total de la factura de anticipo debe coincidir con el cobro recibido, impuestos incluidos. Ajusta la base o los impuestos antes de facturar."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Only billing users can reconcile the advance payment."
+msgstr "Solo los usuarios de facturación pueden conciliar el cobro del anticipo."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Post the advance invoice before reconciling its payment."
+msgstr "Contabiliza la factura del anticipo antes de conciliar el cobro."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The invoice total differs from the received payment."
+msgstr "El total de la factura difiere del cobro recibido."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The invoice and payment do not share an open customer account."
+msgstr "La factura y el cobro no tienen una cuenta de cliente pendiente común."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The advance invoice was not fully reconciled with the payment."
+msgstr "La factura de anticipo no ha quedado totalmente conciliada con el cobro."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "The advance invoice must be fully reconciled with its linked received payment before applying it."
+msgstr "Antes de aplicar el anticipo, su factura debe estar totalmente conciliada con el cobro recibido vinculado."
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,field_description:tl_construction_certification.field_construction_advance__collection_date
+msgid "Actual receipt date"
+msgstr "Fecha efectiva de cobro"
+
+#. module: tl_construction_certification
+#: model:ir.model.fields,help:tl_construction_certification.field_construction_advance__collection_date
+msgid "Date the customer payment was actually received. This is not automatically inferred from the payment accounting date."
+msgstr "Fecha en la que se ha recibido efectivamente el cobro del cliente. No se deduce automáticamente de la fecha contable del pago."
+
+#. module: tl_construction_certification
+#. odoo-python
+#: code:addons/tl_construction_certification/models/construction_advance.py:0
+msgid "Enter the actual receipt date; it cannot be in the future."
+msgstr "Indica la fecha efectiva de cobro; no puede ser futura."

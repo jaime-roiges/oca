@@ -63,6 +63,22 @@ class ConstructionAdvance(models.Model):
         required=True,
         currency_field="currency_id",
     )
+    collection_payment_id = fields.Many2one(
+        "account.payment", string="Received payment", check_company=True,
+        ondelete="restrict", copy=False,
+        help="One recorded customer payment per advance. For partial receipts, "
+             "create one advance per payment. Match the payment to the advance "
+             "invoice using Odoo's standard reconciliation.",
+    )
+    collection_date = fields.Date(
+        string="Actual receipt date", copy=False,
+        help="Date the customer payment was actually received. This is not "
+             "automatically inferred from the payment accounting date.",
+    )
+    _collection_payment_unique = models.Constraint(
+        "UNIQUE(collection_payment_id)",
+        "A payment can only be assigned to one construction advance.",
+    )
     application_ids = fields.One2many(
         comodel_name="construction.advance.application",
         inverse_name="advance_id",
@@ -99,16 +115,28 @@ class ConstructionAdvance(models.Model):
     )
     notes = fields.Text(string="Notes")
 
+    mixed_taxes_confirmed = fields.Boolean(
+        string="Mixed tax treatment reviewed",
+        copy=False,
+        help="Confirm that the selected taxes have been reviewed for this specific advance. "
+             "If several tax treatments are applicable, create a separate advance for each one.",
+    )
+
+    @api.model
+    def _has_mixed_order_taxes(self, order):
+        lines = order.order_line.filtered(lambda line: not line.display_type and line.product_id)
+        return bool(lines and any(line.tax_ids != lines[0].tax_ids for line in lines))
+
     @api.model
     def _default_taxes(self, sale_order):
-        """Taxes shared by the budget, otherwise the company sale tax."""
+        """Use shared taxes only; mixed treatments require explicit review."""
         lines = sale_order.order_line.filtered(lambda line: not line.display_type and line.product_id)
         if not lines:
             return self.env["account.tax"]
         first = lines[0].tax_ids
         if all(line.tax_ids == first for line in lines):
             return first
-        return sale_order.company_id.account_sale_tax_id
+        return self.env["account.tax"]
 
     @api.onchange("sale_order_id")
     def _onchange_sale_order_id(self):
@@ -132,7 +160,7 @@ class ConstructionAdvance(models.Model):
         return super().create(vals_list)
 
     def write(self, vals):
-        economic = {"sale_order_id", "date", "amount", "tax_ids"}
+        economic = {"sale_order_id", "date", "amount", "tax_ids", "mixed_taxes_confirmed", "collection_payment_id", "collection_date"}
         if economic.intersection(vals) and any(advance.state != "draft" for advance in self):
             raise UserError(_(
                 "Confirmed, applied or cancelled advances cannot be edited. "
@@ -185,6 +213,11 @@ class ConstructionAdvance(models.Model):
                         ))
                 if new_state == "confirmed" and advance.currency_id.compare_amounts(advance.amount, 0.0) <= 0:
                     raise UserError(_("Advance amount must be strictly positive."))
+                if new_state == "confirmed" and advance.state == "draft":
+                    if economic.intersection(vals):
+                        raise UserError(_("Save the advance details before confirming it."))
+                    if advance._has_mixed_order_taxes(advance.sale_order_id) and not advance.mixed_taxes_confirmed:
+                        raise UserError(_("Review the taxes for this mixed-tax order. If necessary create one advance per tax treatment, then confirm the review."))
                 if new_state == "cancel":
                     active = advance.application_ids.filtered(
                         lambda app: app.certification_id.state != "cancel"
@@ -285,6 +318,8 @@ class ConstructionAdvance(models.Model):
                 raise UserError(_("Only draft advances can be confirmed."))
             if advance.currency_id.compare_amounts(advance.amount, 0.0) <= 0:
                 raise UserError(_("Advance amount must be strictly positive."))
+            if advance._has_mixed_order_taxes(advance.sale_order_id) and not advance.mixed_taxes_confirmed:
+                raise UserError(_("Review the taxes for this mixed-tax order. If necessary create one advance per tax treatment, then confirm the review."))
         self.write({"state": "confirmed"})
 
     def action_cancel(self):
@@ -306,12 +341,16 @@ class ConstructionAdvance(models.Model):
 
     def action_create_invoice(self):
         self.ensure_one()
+        self._check_general_vat_taxes(self.tax_ids)
+        payment, payment_line = self._check_received_payment()
         if self.state != "confirmed":
             raise UserError(_("Only confirmed advances can be invoiced."))
         if self.invoice_id and self.invoice_id.state != "cancel":
             raise UserError(_("This advance already has an invoice."))
         if not self.env.user.has_group("account.group_account_invoice"):
             raise UserError(_("Only billing users can invoice an advance."))
+        if self._has_mixed_order_taxes(self.sale_order_id) and not self.mixed_taxes_confirmed:
+            raise UserError(_("Review the taxes for this mixed-tax order. If necessary create one advance per tax treatment, then confirm the review."))
         order = self.sale_order_id
         invoice = self.env["account.move"].create({
             "move_type": "out_invoice",
@@ -321,12 +360,19 @@ class ConstructionAdvance(models.Model):
             "invoice_payment_term_id": order.payment_term_id.id,
             "document_tax_mode": "tax_excluded",
             "invoice_origin": self.name,
-            "invoice_date": self.date,
+            "invoice_date": fields.Date.context_today(self),
+            "date": self.collection_date,
+            "delivery_date": self.collection_date,
             "currency_id": self.currency_id.id,
             "company_id": self.company_id.id,
             "narration": _("Advance payment for construction works - %s") % self.name,
             "invoice_line_ids": [(0, 0, self._prepare_invoice_line_vals())],
         })
+        if self.currency_id.compare_amounts(invoice.amount_total, payment.amount):
+            raise UserError(_(
+                "The advance invoice total must equal the received payment, "
+                "including taxes. Adjust the base amount or taxes before invoicing."
+            ))
         self.invoice_id = invoice.id
         return {
             "type": "ir.actions.act_window",
@@ -334,6 +380,78 @@ class ConstructionAdvance(models.Model):
             "res_id": invoice.id,
             "view_mode": "form",
         }
+
+    def _check_received_payment(self, require_unallocated=True):
+        """Check the real Odoo payment, rather than treating a request as cash."""
+        self.ensure_one()
+        payment = self.collection_payment_id.exists()
+        if not payment:
+            raise UserError(_("Select the recorded customer payment for this advance."))
+        if not self.collection_date or self.collection_date > fields.Date.context_today(self):
+            raise UserError(_("Enter the actual receipt date; it cannot be in the future."))
+        self.env.cr.execute("SELECT id FROM account_payment WHERE id = %s FOR UPDATE", [payment.id])
+        payment.invalidate_recordset()
+        partner = self.sale_order_id.partner_invoice_id or self.partner_id
+        if (payment.payment_type != "inbound" or payment.partner_type != "customer"
+                or payment.company_id != self.company_id
+                or payment.currency_id != self.currency_id
+                or payment.partner_id.commercial_partner_id != partner.commercial_partner_id):
+            raise UserError(_("The payment must be an incoming customer payment for the same company, customer and currency."))
+        if payment.state not in ("paid", "reconciled") or not payment.move_id or payment.move_id.state != "posted":
+            raise UserError(_("The selected payment must have a posted accounting entry."))
+        if not payment.is_matched:
+            raise UserError(_("Match the received payment with the bank transaction before invoicing the advance."))
+        lines = payment.move_id.line_ids.filtered(
+            lambda line: line.account_id.account_type == "asset_receivable"
+            and line.account_id.reconcile
+        )
+        if len(lines) != 1:
+            raise UserError(_("The payment must contain exactly one reconcilable customer entry."))
+        line = lines
+        if require_unallocated:
+            residual = line.amount_residual_currency if line.currency_id == self.currency_id else line.amount_residual
+            if line.reconciled or self.currency_id.compare_amounts(-residual, payment.amount):
+                raise UserError(_("The customer payment is already allocated or its open balance differs from the payment."))
+        return payment, line
+
+    def action_reconcile_received_payment(self):
+        """Use the same outstanding-item reconciliation as the Odoo invoice widget."""
+        self.ensure_one()
+        if not self.env.user.has_group("account.group_account_invoice"):
+            raise UserError(_("Only billing users can reconcile the advance payment."))
+        invoice = self.invoice_id
+        if not invoice or invoice.state != "posted":
+            raise UserError(_("Post the advance invoice before reconciling its payment."))
+        payment, line = self._check_received_payment()
+        if self.currency_id.compare_amounts(invoice.amount_total, payment.amount):
+            raise UserError(_("The invoice total differs from the received payment."))
+        receivable = invoice.line_ids.filtered(
+            lambda item: item.account_id == line.account_id and not item.reconciled
+        )
+        if not receivable:
+            raise UserError(_("The invoice and payment do not share an open customer account."))
+        invoice.js_assign_outstanding_line(line.id)
+        invoice.invalidate_recordset()
+        if not invoice.currency_id.is_zero(invoice.amount_residual):
+            raise UserError(_("The advance invoice was not fully reconciled with the payment."))
+        return True
+
+    @api.model
+    def _check_general_vat_taxes(self, taxes):
+        """Do not silently use the special cash-basis tax workflow.
+
+        This validation is intentionally limited to construction operations;
+        it does not alter the accounting or Spanish localisation models.
+        """
+        deferred = taxes.flatten_taxes_hierarchy().filtered(
+            lambda tax: tax.tax_exigibility == "on_payment"
+        )
+        if deferred:
+            raise UserError(_(
+                "Construction invoices currently support the general VAT regime only. "
+                "Review these cash-basis taxes: %(taxes)s.",
+                taxes=", ".join(deferred.mapped("display_name")),
+            ))
 
     def _prepare_invoice_line_vals(self):
         self.ensure_one()

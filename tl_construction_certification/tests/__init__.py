@@ -5,3 +5,8 @@ from . import test_corrections
 from . import test_tax_regression
 from . import test_regression
 from . import test_critical_fixes
+from . import test_kept_cache_20
+from . import test_config_settings
+from . import test_retention_due
+from . import test_general_vat_scope
+from . import test_collected_advance

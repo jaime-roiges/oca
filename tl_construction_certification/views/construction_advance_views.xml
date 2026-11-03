@@ -27,6 +27,8 @@
                     <button name="action_create_invoice" string="Create Invoice" type="object"
                             class="btn-primary" invisible="state != 'confirmed' or invoice_id"
                             groups="account.group_account_invoice"/>
+                    <button name="action_reconcile_received_payment" string="Reconcile received payment" type="object"
+                            invisible="not invoice_id" groups="account.group_account_invoice"/>
                     <button name="action_cancel" string="Cancel" type="object"
                             invisible="state in ('cancel',)"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,applied"/>
@@ -40,10 +42,13 @@
                             <field name="sale_order_id" readonly="state != 'draft'"/>
                             <field name="partner_id"/>
                             <field name="date" readonly="state != 'draft'"/>
+                            <field name="collection_payment_id" readonly="state != 'draft'"/>
+                            <field name="collection_date" readonly="state != 'draft'"/>
                         </group>
                         <group>
                             <field name="amount" readonly="state != 'draft'"/>
                             <field name="tax_ids" widget="many2many_tags" readonly="state != 'draft'"/>
+                            <field name="mixed_taxes_confirmed" readonly="state != 'draft'"/>
                             <field name="amount_applied"/>
                             <field name="amount_pending"/>
                             <field name="currency_id" invisible="1"/>

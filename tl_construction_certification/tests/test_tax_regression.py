@@ -38,7 +38,7 @@ class TestTaxRegression(TransactionCase):
             "list_price": 100.0,
             "taxes_id": [(6, 0, [cls.tax.id])],
         })
-        cls.sale_order = cls.env["sale.order"].create({"partner_id": cls.partner.id})
+        cls.sale_order = cls.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({"partner_id": cls.partner.id})
         cls.sale_line = cls.env["sale.order.line"].create({
             "order_id": cls.sale_order.id,
             "product_id": cls.product.id,

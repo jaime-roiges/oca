@@ -41,7 +41,7 @@ class TestAllBugRegressions(TransactionCase):
             "list_price": 100.0,
             "taxes_id": [(6, 0, [cls.tax.id])],
         })
-        cls.sale_order = cls.env["sale.order"].create({"partner_id": cls.partner.id})
+        cls.sale_order = cls.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({"partner_id": cls.partner.id})
         cls.sale_line = cls.env["sale.order.line"].create({
             "order_id": cls.sale_order.id,
             "product_id": cls.product.id,
@@ -535,27 +535,15 @@ class TestAllBugRegressions(TransactionCase):
 
     def test_credited_retention_is_not_still_held(self):
         first = self._certify(4.0, date="2026-06-01", retention_percent=5.0)
-        mark_invoiced(first)
+        first.action_measure()
+        first.action_approve()
+        first.action_create_invoice()
+        first.invoice_id.action_post()
         later = self._certify(0.0, date="2026-07-01", is_retention_liquidation=True)
         self.assertAlmostEqual(later._retention_held_from_previous(), 20.0, places=2)
         invoice = first.invoice_id
-        account = self._income_account()
-        self.env["account.move"].create({
-            "move_type": "out_refund",
-            "partner_id": first.partner_id.id,
-            "invoice_date": "2026-06-15",
-            "journal_id": invoice.journal_id.id,
-            "reversed_entry_id": invoice.id,
-            "invoice_line_ids": [(0, 0, {
-                "name": "Retention returned",
-                "quantity": 1.0,
-                "price_unit": 20.0,
-                "account_id": account.id,
-                "tax_ids": [(6, 0, [])],
-                "construction_certification_id": first.id,
-                "construction_adjustment_type": "retention",
-            })],
-        }).action_post()
+        refund = invoice._reverse_moves(cancel=False)
+        refund.action_post()
         self.assertAlmostEqual(later._retention_held_from_previous(), 0.0, places=2)
 
     def test_retention_percent_can_differ_from_the_default(self):
@@ -616,8 +604,11 @@ class TestAllBugRegressions(TransactionCase):
         )
         liquidation.action_measure()
         liquidation.action_approve()
-        with self.assertRaises(UserError):
-            liquidation.action_create_invoice()
+        liquidation.action_create_invoice()
+        released = liquidation.invoice_id.invoice_line_ids.filtered(
+            lambda line: line.construction_adjustment_type == "retention_release"
+        )
+        self.assertEqual(released.account_id, retention)
         company.construction_retention_account_id = retention
         other = self.env["res.company"].create({"name": "Other construction company"})
         foreign = self.env["account.account"].create({
@@ -654,7 +645,7 @@ class TestAllBugRegressions(TransactionCase):
         with self.assertRaises(ValidationError):
             company.construction_advance_account_id = foreign
 
-    def test_deducting_an_advance_requires_the_advance_account(self):
+    def test_deduction_uses_original_account_when_company_setting_is_removed(self):
         company = self.env.company
         advance_account = company.construction_advance_account_id
         advance = self.env["construction.advance"].create({
@@ -669,8 +660,19 @@ class TestAllBugRegressions(TransactionCase):
         cert.action_measure()
         cert.action_approve()
         company.construction_advance_account_id = False
-        with self.assertRaises(UserError):
-            cert.action_create_invoice()
+        cert.action_create_invoice()
+        deduction = cert.invoice_id.invoice_line_ids.filtered(
+            lambda line: line.construction_advance_application_id.advance_id == advance
+        )
+        self.assertEqual(len(deduction), 1)
+        self.assertEqual(deduction.account_id, advance_account)
+        cert.invoice_id.action_post()
+        source = advance.invoice_id.line_ids.filtered(
+            lambda line: line.construction_advance_id == advance
+        )
+        self.assertEqual(len(source), 1)
+        self.assertTrue(source.reconciled)
+        self.assertTrue(deduction.reconciled)
         company.construction_advance_account_id = advance_account
 
     def test_invoices_use_the_company_construction_accounts(self):

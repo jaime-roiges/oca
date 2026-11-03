@@ -71,6 +71,14 @@ class ConstructionCertification(models.Model):
         default=fields.Date.context_today,
         tracking=True,
     )
+    work_delivery_date = fields.Date(
+        string="Work Delivery Date",
+        copy=False,
+        tracking=True,
+        help="Actual date on which the work covered by this certification was delivered. "
+             "Enter it only when known; a certification date is not automatically a delivery date. "
+             "The date is copied to the standard invoice delivery date.",
+    )
     certification_number = fields.Integer(
         string="Certification Number",
         readonly=True,
@@ -175,6 +183,10 @@ class ConstructionCertification(models.Model):
         help="On a normal certification this only reduces the retention withheld "
         "on the current period, and cannot exceed it. To pay back retention "
         "already invoiced, mark Retention Liquidation.",
+    )
+    retention_allocation_ids = fields.One2many(
+        "construction.retention.allocation", "certification_id",
+        string="Retentions to release", copy=False,
     )
     invoice_id = fields.Many2one(
         comodel_name="account.move",
@@ -381,9 +393,9 @@ class ConstructionCertification(models.Model):
                     if not self.env.user.has_group("account.group_account_invoice"):
                         raise UserError(_("Only billing users can mark certifications invoiced."))
         locked_fields = {
-            "sale_order_id", "date", "line_ids", "retention_percent",
+            "sale_order_id", "date", "work_delivery_date", "line_ids", "retention_percent",
             "retention_to_release", "amount_advance_applied", "application_ids",
-            "is_retention_liquidation",
+            "is_retention_liquidation", "retention_allocation_ids",
         }
         if locked_fields.intersection(vals) and any(
             cert.state in self._locked_states for cert in self
@@ -394,9 +406,9 @@ class ConstructionCertification(models.Model):
             # simultaneously: the pending values would not yet be persisted.
             # Save the editable work first, then approve in a separate write.
             simultaneous_inputs = {
-                "line_ids", "sale_order_id", "date", "retention_percent",
+                "line_ids", "sale_order_id", "date", "work_delivery_date", "retention_percent",
                 "retention_to_release", "is_retention_liquidation",
-                "amount_advance_applied", "application_ids",
+                "amount_advance_applied", "application_ids", "retention_allocation_ids",
             } & set(vals)
             if simultaneous_inputs:
                 raise UserError(_(
@@ -603,21 +615,43 @@ class ConstructionCertification(models.Model):
         return self._round(base * (self.retention_percent or 0.0) / 100.0)
 
     def _retention_held_from_previous(self):
-        """Net retention already withheld on posted certifications.
-
-        ``amount_retention`` is already net of a normal certification's own
-        release. A liquidation pays retention out without reducing that field,
-        so its release has to be subtracted once.
-        """
+        """Return the open accounting balance less draft reservations."""
         self.ensure_one()
-        held = 0.0
         previous = self._get_previous_certifications(["invoiced"])
-        for cert in previous:
-            if cert.is_retention_liquidation:
+        lines = self.env["account.move.line"].search([
+            ("construction_certification_id", "in", previous.ids),
+            ("construction_adjustment_type", "=", "retention"),
+            ("move_id.state", "=", "posted"),
+            ("move_id.move_type", "=", "out_invoice"),
+            ("company_id", "=", self.company_id.id),
+            ("reconciled", "=", False),
+        ])
+        if lines.filtered(lambda line: line.currency_id != self.currency_id):
+            raise UserError(_("Open retention entries have a different currency. Review them before releasing the guarantee."))
+        held = sum(max(line.amount_residual_currency, 0.0) for line in lines)
+        # A credit not yet matched to its withholding can otherwise make the
+        # residual appear available twice. Require accounting review first.
+        unmatched = self.env["account.move.line"].search([
+            ("construction_certification_id.sale_order_id", "=", self.sale_order_id.id),
+            ("construction_adjustment_type", "in", ["retention", "retention_release"]),
+            ("move_id.state", "=", "posted"),
+            ("company_id", "=", self.company_id.id),
+            ("reconciled", "=", False),
+            ("balance", "<", 0),
+        ])
+        if unmatched:
+            raise UserError(_("There are unmatched retention credits for this order. Reconcile or review them before another release."))
+        # Reservations count even when a later-dated liquidation was created
+        # first. Otherwise backdated liquidations can spend the same balance.
+        reservations = self.search([
+            ("sale_order_id", "=", self.sale_order_id.id),
+            ("state", "=", "invoiced"),
+            ("is_retention_liquidation", "=", True),
+            ("id", "!=", self.id),
+        ])
+        for cert in reservations:
+            if cert.invoice_id.state == "draft":
                 held -= cert.retention_to_release or 0.0
-            else:
-                held += cert.amount_retention or 0.0
-        held -= self._credited_adjustment(previous, "retention")
         return self._round(held)
 
     def _credited_adjustment(self, certifications, adjustment_type):
@@ -831,6 +865,9 @@ class ConstructionCertification(models.Model):
 
     def _check_ready_for_approval(self):
         self.ensure_one()
+        # Serialize rechecks for the same order, including RPC state changes.
+        if self.sale_order_id:
+            self.env.cr.execute("SELECT id FROM sale_order WHERE id = %s FOR UPDATE", [self.sale_order_id.id])
         # Also enforced for RPC/imports that write state='approved' directly.
         # A BC3 reimport can intentionally clear a previous draft when the
         # corrected cumulative origin no longer adds any work.
@@ -840,6 +877,8 @@ class ConstructionCertification(models.Model):
                 "cannot be measured or approved."
             ))
         self.line_ids._check_qty()
+        if self.retention_allocation_ids:
+            self._check_retention_allocations()
         currency = self.currency_id
         releasable = self._retention_releasable()
         if self.retention_to_release and currency.compare_amounts(self.retention_to_release, releasable) > 0:
@@ -931,6 +970,10 @@ class ConstructionCertification(models.Model):
     def action_create_invoice(self):
         """Create origin-based invoice (facturación a origen)."""
         self.ensure_one()
+        taxes = self.line_ids.mapped("sale_line_id.tax_ids")
+        for application in self.application_ids:
+            taxes |= application.advance_id._taxes_charged()
+        self.env["construction.advance"]._check_general_vat_taxes(taxes)
         if self.state != "approved":
             raise UserError(_("Only approved certifications can be invoiced."))
         if not self.env.user.has_group("account.group_account_invoice"):
@@ -982,6 +1025,28 @@ class ConstructionCertification(models.Model):
                       "including when the advance has no taxes.")
                     % advance.display_name
                 )
+            payment, payment_line = advance._check_received_payment(require_unallocated=False)
+            receivables = invoice.line_ids.filtered(
+                lambda line: line.account_id.account_type == "asset_receivable"
+            )
+            partials = (payment_line.matched_debit_ids | payment_line.matched_credit_ids).filtered(
+                lambda partial: (
+                    partial.debit_move_id in receivables and partial.credit_move_id == payment_line
+                ) or (
+                    partial.credit_move_id in receivables and partial.debit_move_id == payment_line
+                )
+            )
+            matched = sum(
+                partial.credit_amount_currency if partial.credit_move_id == payment_line
+                else partial.debit_amount_currency for partial in partials
+            )
+            if (not invoice.currency_id.is_zero(invoice.amount_residual)
+                    or payment not in invoice._get_reconciled_payments()
+                    or invoice.currency_id.compare_amounts(invoice.amount_total, payment.amount)
+                    or invoice.currency_id.compare_amounts(matched, payment.amount)):
+                raise UserError(_(
+                    "The advance invoice must be fully reconciled with its linked received payment before applying it."
+                ))
 
     def _check_forced_included_taxes(self):
         """Odoo 20 lets a tax ignore the invoice tax mode.
@@ -1013,7 +1078,7 @@ class ConstructionCertification(models.Model):
         elif line.construction_adjustment_type == "retention":
             amount = -(self.amount_retention or 0.0)
         elif line.construction_adjustment_type == "retention_release":
-            amount = self.retention_to_release or 0.0
+            amount = line.construction_retention_allocation_id.amount if line.construction_retention_allocation_id else self.retention_to_release or 0.0
         elif line.construction_certification_line_id:
             _qty, unit = line.construction_certification_line_id._invoice_quantity_price()
             amount = (line.quantity or _qty or 1.0) * unit
@@ -1085,22 +1150,40 @@ class ConstructionCertification(models.Model):
         for application in self.application_ids.sorted(
             lambda app: (app.advance_id.date, app.advance_id.id, app.id)
         ):
+            advance = application.advance_id
+            source = advance.invoice_id.line_ids.filtered(
+                lambda line: line.construction_advance_id == advance
+                and line.account_id.reconcile
+            )
+            if len(source) != 1:
+                raise UserError(_("The advance must have one identifiable accounting line before it can be applied."))
+            partner = self.sale_order_id.partner_invoice_id or self.sale_order_id.partner_id
+            if source.partner_id != partner:
+                raise UserError(_("The invoice customer does not match the original advance customer. Review the advance before applying it."))
             line_vals = self._prepare_adjustment_line(
                 _("Advance applied: %s") % application.advance_id.display_name,
                 -application.amount,
-                self.company_id._get_construction_advance_account(),
+                source.account_id,
                 "advance",
             )
             line_vals["construction_advance_application_id"] = application.id
             line_vals["tax_ids"] = [(6, 0, application.advance_id._taxes_charged().ids)]
             invoice_line_vals.append((0, 0, line_vals))
         if self.retention_to_release and self.is_retention_liquidation:
-            invoice_line_vals.append((0, 0, self._prepare_adjustment_line(
-                _("Retention Released"),
-                self.retention_to_release,
-                self.company_id._get_construction_retention_account(),
-                "retention_release",
-            )))
+            if self.retention_allocation_ids:
+                self._check_retention_allocations()
+                for allocation in self.retention_allocation_ids:
+                    vals = self._prepare_adjustment_line(
+                        _("Retention Released"), allocation.amount,
+                        allocation.source_line_id.account_id, "retention_release",
+                    )
+                    vals["construction_retention_allocation_id"] = allocation.id
+                    invoice_line_vals.append((0, 0, vals))
+            else:
+                invoice_line_vals.append((0, 0, self._prepare_adjustment_line(
+                    _("Retention Released"), self.retention_to_release,
+                    self._retention_release_account(), "retention_release",
+                )))
         if not invoice_line_vals:
             raise UserError(_("There are no invoiceable lines on this certification."))
 
@@ -1117,6 +1200,7 @@ class ConstructionCertification(models.Model):
             "document_tax_mode": "tax_excluded",
             "invoice_origin": self.name,
             "invoice_date": self.date,
+            **({"delivery_date": self.work_delivery_date} if self.work_delivery_date else {}),
             "currency_id": self.currency_id.id,
             "company_id": self.company_id.id,
             "narration": _(
@@ -1153,6 +1237,75 @@ class ConstructionCertification(models.Model):
             "construction_adjustment_type": adjustment_type,
             **self._analytic_vals(),
         }
+
+    def _retention_release_account(self):
+        self.ensure_one()
+        partner = self.sale_order_id.partner_invoice_id or self.sale_order_id.partner_id
+        lines = self.env["account.move.line"].search([
+            ("construction_certification_id", "in", self._get_previous_certifications(["invoiced"]).ids),
+            ("construction_adjustment_type", "=", "retention"),
+            ("move_id.state", "=", "posted"),
+            ("move_id.move_type", "=", "out_invoice"),
+            ("reconciled", "=", False),
+            ("company_id", "=", self.company_id.id),
+        ])
+        if not lines or lines.filtered(lambda line: line.partner_id != partner or line.currency_id != self.currency_id):
+            raise UserError(_("Open retention entries do not match the current invoice customer. Review them before releasing the guarantee."))
+        accounts = lines.mapped("account_id")
+        if len(accounts) != 1:
+            raise UserError(_("Open retentions use different accounts. Release them separately after accounting review."))
+        return accounts
+
+    def _check_retention_allocations(self):
+        self.ensure_one()
+        allocations = self.retention_allocation_ids
+        if not self.is_retention_liquidation:
+            raise UserError(_("Retentions can only be selected on a retention liquidation."))
+        if self.currency_id.compare_amounts(sum(allocations.mapped("amount")), self.retention_to_release):
+            raise UserError(_("The selected retentions must add up to the amount to release."))
+        source_ids = sorted(allocations.mapped("source_line_id").ids)
+        if source_ids:
+            self.env.cr.execute("SELECT id FROM account_move_line WHERE id IN %s ORDER BY id FOR UPDATE", [tuple(source_ids)])
+            allocations.mapped("source_line_id").invalidate_recordset(["amount_residual_currency", "reconciled"])
+        partner = self.sale_order_id.partner_invoice_id or self.sale_order_id.partner_id
+        previous = self._get_previous_certifications(["invoiced"])
+        for allocation in allocations:
+            source = allocation.source_line_id
+            if (source.construction_certification_id not in previous
+                    or source.construction_adjustment_type != "retention"
+                    or source.move_id.state != "posted" or source.move_id.move_type != "out_invoice"
+                    or source.company_id != self.company_id or source.partner_id != partner
+                    or source.currency_id != self.currency_id or not source.account_id.reconcile
+                    or source.reconciled):
+                raise UserError(_("A selected retention is not an open posted retention of this order, company, customer and currency."))
+            others = self.env["construction.retention.allocation"].search([
+                ("source_line_id", "=", source.id),
+                ("certification_id", "!=", self.id),
+                ("certification_id.state", "=", "invoiced"),
+                ("certification_id.invoice_id.state", "=", "draft"),
+            ])
+            available = source.amount_residual_currency - sum(others.mapped("amount"))
+            if self.currency_id.compare_amounts(allocation.amount, available) > 0:
+                raise UserError(_("A selected retention no longer has enough unreserved balance."))
+
+    def _check_retention_invoice_lines(self):
+        self.ensure_one()
+        lines = self.invoice_id.invoice_line_ids.filtered(
+            lambda line: line.construction_adjustment_type == "retention_release"
+            and line.construction_certification_id == self
+        )
+        if self.retention_allocation_ids:
+            if len(lines) != len(self.retention_allocation_ids):
+                raise UserError(_("The draft release invoice no longer matches its selected retentions."))
+            for allocation in self.retention_allocation_ids:
+                line = lines.filtered(lambda item: item.construction_retention_allocation_id == allocation)
+                if (len(line) != 1 or line.account_id != allocation.source_line_id.account_id
+                        or line.tax_ids or self.currency_id.compare_amounts(line.price_subtotal, allocation.amount)):
+                    raise UserError(_("The draft release invoice no longer matches its selected retentions."))
+        elif (len(lines) != 1 or lines.tax_ids
+                or lines.account_id != self._retention_release_account()
+                or self.currency_id.compare_amounts(lines.price_subtotal, self.retention_to_release)):
+            raise UserError(_("The draft release invoice no longer matches the retention to release."))
 
     def _analytic_vals(self):
         distribution = self._header_analytic_distribution()

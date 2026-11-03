@@ -21,7 +21,7 @@ class TestOriginInvoice(TransactionCase):
             "list_price": 100.0,
             "invoice_policy": "order",
         })
-        cls.sale_order = cls.env["sale.order"].create({
+        cls.sale_order = cls.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({
             "partner_id": cls.partner.id,
         })
         cls.sale_line = cls.env["sale.order.line"].create({

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: tl_construction_bc3 20.0.1.15.0\n"
+"Project-Id-Version: tl_construction_bc3 20.0.1.16.0\n"
 "PO-Revision-Date: 2026-10-31 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -92,6 +92,7 @@ msgstr "BC3 tiene medición"
 
 #. module: tl_construction_bc3
 #: model:ir.actions.act_window,name:tl_construction_bc3.action_bc3_import_history
+#: model:ir.ui.menu,name:tl_construction_bc3.menu_bc3_history
 #: model:ir.model.fields,field_description:tl_construction_bc3.field_sale_order__bc3_import_ids
 msgid "BC3 Import History"
 msgstr "Historial de importaciones BC3"
@@ -342,8 +343,19 @@ msgstr "Importar"
 #: model_terms:ir.ui.view,arch_db:tl_construction_bc3.sale_order_form_view_bc3
 #: model_terms:ir.ui.view,arch_db:tl_construction_bc3.bc3_import_wizard_view_form
 #: model:ir.actions.act_window,name:tl_construction_bc3.action_bc3_import_wizard
+#: model:ir.ui.menu,name:tl_construction_bc3.menu_bc3_import
 msgid "Import BC3"
 msgstr "Importar BC3"
+
+#. module: tl_construction_bc3
+#: model:ir.ui.menu,name:tl_construction_bc3.menu_bc3_catalog
+msgid "BC3 Catalogs"
+msgstr "Catálogos BC3"
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.bc3_import_wizard_view_form
+msgid "Cancel"
+msgstr "Cancelar"
 
 #. module: tl_construction_bc3
 #: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__import_mode

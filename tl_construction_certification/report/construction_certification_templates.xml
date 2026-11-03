@@ -40,9 +40,9 @@
                                     <td><span t-field="line.name"/></td>
                                     <td class="text-end"><span t-field="line.product_uom_qty"/></td>
                                     <td class="text-end"><span t-field="line.qty_period"/></td>
-                                    <td class="text-end"><t t-esc="'%.2f' % ((line.percent_period or 0.0) * 100)"/>%</td>
+                                    <td class="text-end"><t t-out="'%.2f' % ((line.percent_period or 0.0) * 100)"/>%</td>
                                     <td class="text-end"><span t-field="line.qty_origin"/></td>
-                                    <td class="text-end"><t t-esc="'%.2f' % ((line.percent_origin or 0.0) * 100)"/>%</td>
+                                    <td class="text-end"><t t-out="'%.2f' % ((line.percent_origin or 0.0) * 100)"/>%</td>
                                     <td class="text-end"><span t-field="line.amount_period" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                                     <td class="text-end"><span t-field="line.amount_origin" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                                 </tr>

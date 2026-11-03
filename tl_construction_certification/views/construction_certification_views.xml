@@ -65,6 +65,7 @@
                         </group>
                         <group>
                             <field name="date" readonly="state != 'draft'"/>
+                            <field name="work_delivery_date" readonly="state not in ('draft', 'measured')" invisible="is_retention_liquidation"/>
                             <field name="certification_number"/>
                             <field name="reversal_invoice_id" invisible="not reversal_invoice_id"/>
                             <field name="retention_percent" readonly="state not in ('draft', 'measured')"/>
@@ -109,6 +110,16 @@
                                            domain="[('sale_order_id', '=', parent.sale_order_id), ('state', 'in', ('confirmed', 'applied'))]"/>
                                     <field name="amount" sum="Applied"/>
                                     <field name="certification_state" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Retentions to release" name="retention_allocations" invisible="not is_retention_liquidation">
+                            <field name="retention_allocation_ids" readonly="state not in ('draft', 'measured')">
+                                <list editable="bottom">
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="source_line_id" domain="[('construction_certification_id.sale_order_id', '=', parent.sale_order_id), ('construction_adjustment_type', '=', 'retention'), ('parent_state', '=', 'posted'), ('reconciled', '=', False)]"/>
+                                    <field name="maturity_date"/>
+                                    <field name="amount" sum="Release"/>
                                 </list>
                             </field>
                         </page>

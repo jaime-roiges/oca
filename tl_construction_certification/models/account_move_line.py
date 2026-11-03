@@ -48,6 +48,10 @@ class AccountMoveLine(models.Model):
         string="Construction Adjustment",
         copy=False,
     )
+    construction_retention_allocation_id = fields.Many2one(
+        "construction.retention.allocation", string="Retention Allocation",
+        ondelete="restrict", copy=False, index=True,
+    )
     # Survives a recompute of price_unit. The tax engine can leave the base a
     # cent off; that cent is stored here so the next compute keeps it.
     construction_price_adjust = fields.Float(
@@ -67,6 +71,7 @@ class AccountMoveLine(models.Model):
                 "construction_certification_line_id": line.construction_certification_line_id.id,
                 "construction_advance_id": line.construction_advance_id.id,
                 "construction_advance_application_id": line.construction_advance_application_id.id,
+                "construction_retention_allocation_id": line.construction_retention_allocation_id.id,
                 "construction_adjustment_type": line.construction_adjustment_type,
                 "price_unit": line.price_unit,
                 "quantity": line.quantity,
@@ -97,8 +102,9 @@ class AccountMoveLine(models.Model):
         """
         self.ensure_one()
         field = self._fields[field_name]
-        if self.env.cache.contains(self, field):
-            value = self.env.cache.get(self, field)
+        field_cache = field._get_cache(self.env)
+        if self.id in field_cache:
+            value = field_cache[self._ids[0]]
             if field.type == "many2one" and value and not isinstance(value, int):
                 return value.id
             if field.type == "many2many" and value and not isinstance(value, (list, tuple)):
@@ -267,6 +273,7 @@ class AccountMoveLine(models.Model):
         "construction_adjustment_type",
         "construction_advance_id",
         "construction_advance_application_id",
+        "construction_retention_allocation_id",
         "construction_certification_line_id",
         "construction_certification_id",
     )
@@ -295,7 +302,17 @@ class AccountMoveLine(models.Model):
                 line.account_id = account
         for line in open_lines._construction_adjustment_lines():
             company = line.move_id.company_id or line.company_id
-            if line.construction_adjustment_type in ("advance", "advance_invoice") or line.construction_advance_application_id:
+            if line.construction_advance_application_id:
+                advance = line.construction_advance_application_id.advance_id
+                source = advance.invoice_id.line_ids.filtered(
+                    lambda item: item.construction_advance_id == advance and item.account_id.reconcile
+                )
+                account = source.account_id if len(source) == 1 else False
+            elif line.construction_retention_allocation_id:
+                account = line.construction_retention_allocation_id.source_line_id.account_id
+            elif line.construction_adjustment_type == "retention_release" and line.construction_certification_id:
+                account = line.construction_certification_id._retention_release_account()
+            elif line.construction_adjustment_type in ("advance", "advance_invoice"):
                 account = company.construction_advance_account_id
             else:
                 account = company.construction_retention_account_id
@@ -336,6 +353,8 @@ class AccountMoveLine(models.Model):
                 amount = line.construction_advance_id.amount
             elif line.construction_adjustment_type == "retention" and line.construction_certification_id:
                 amount = -(line.construction_certification_id.amount_retention or 0.0)
+            elif line.construction_retention_allocation_id:
+                amount = line.construction_retention_allocation_id.amount
             elif line.construction_adjustment_type == "retention_release" and line.construction_certification_id:
                 amount = line.construction_certification_id.retention_to_release or 0.0
             else:
@@ -352,6 +371,8 @@ class AccountMoveLine(models.Model):
         "construction_certification_line_id.qty_period",
         "construction_advance_application_id",
         "construction_advance_application_id.amount",
+        "construction_retention_allocation_id",
+        "construction_retention_allocation_id.amount",
         "construction_advance_id",
         "construction_advance_id.amount",
         "construction_adjustment_type",

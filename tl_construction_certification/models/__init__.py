@@ -1,4 +1,5 @@
 from . import res_company
+from . import res_config_settings
 from . import product_template
 from . import account_move
 from . import account_move_line
@@ -7,3 +8,7 @@ from . import construction_certification_line
 from . import construction_advance
 from . import sale_order
 from . import project_project
+from . import retention_due_order
+from . import retention_due_certification
+from . import retention_due_move_line
+from . import retention_allocation

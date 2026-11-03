@@ -13,7 +13,7 @@ class TestConstructionAdvance(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.partner = cls.env["res.partner"].create({"name": "Test Customer Advance"})
-        cls.sale_order = cls.env["sale.order"].create({
+        cls.sale_order = cls.env["sale.order"].with_context(default_construction_retention_due_date="2030-12-31").create({
             "partner_id": cls.partner.id,
         })
 
