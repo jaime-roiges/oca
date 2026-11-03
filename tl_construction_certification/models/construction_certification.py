@@ -71,6 +71,14 @@ class ConstructionCertification(models.Model):
         default=fields.Date.context_today,
         tracking=True,
     )
+    period_date_start = fields.Date(string="Period Start", copy=False, tracking=True)
+    period_date_end = fields.Date(string="Period End", copy=False, tracking=True)
+
+    @api.constrains("period_date_start", "period_date_end")
+    def _check_reporting_period(self):
+        for cert in self:
+            if cert.period_date_start and cert.period_date_end and cert.period_date_start > cert.period_date_end:
+                raise ValidationError(_("The reporting period start cannot be after its end."))
     work_delivery_date = fields.Date(
         string="Work Delivery Date",
         copy=False,
@@ -393,7 +401,7 @@ class ConstructionCertification(models.Model):
                     if not self.env.user.has_group("account.group_account_invoice"):
                         raise UserError(_("Only billing users can mark certifications invoiced."))
         locked_fields = {
-            "sale_order_id", "date", "work_delivery_date", "line_ids", "retention_percent",
+            "sale_order_id", "date", "period_date_start", "period_date_end", "work_delivery_date", "line_ids", "retention_percent",
             "retention_to_release", "amount_advance_applied", "application_ids",
             "is_retention_liquidation", "retention_allocation_ids",
         }
@@ -406,7 +414,7 @@ class ConstructionCertification(models.Model):
             # simultaneously: the pending values would not yet be persisted.
             # Save the editable work first, then approve in a separate write.
             simultaneous_inputs = {
-                "line_ids", "sale_order_id", "date", "work_delivery_date", "retention_percent",
+                "line_ids", "sale_order_id", "date", "period_date_start", "period_date_end", "work_delivery_date", "retention_percent",
                 "retention_to_release", "is_retention_liquidation",
                 "amount_advance_applied", "application_ids", "retention_allocation_ids",
             } & set(vals)
@@ -477,6 +485,45 @@ class ConstructionCertification(models.Model):
         else:
             domain.append(("date", "<=", self.date))
         return self.search(domain)
+
+    def _report_measurement_rows(self):
+        """Return contract sections and gross cumulative values as of this certificate.
+
+        Gross certified history is kept distinct from credit-note-adjusted net
+        amounts; the latter cannot be presented as an as-of snapshot without
+        also taking the dates of subsequent credit notes into account.
+        """
+        self.ensure_one()
+        previous = self._get_previous_certifications(self._committed_states)
+        past = previous.mapped("line_ids").sorted(
+            key=lambda item: (item.certification_id.date, item.certification_id.id, item.id)
+        )
+        past_by_sale = {line.sale_line_id.id: line for line in past}
+        present_by_sale = {line.sale_line_id.id: line for line in self.line_ids}
+        rows = []
+        for sale_line in self.sale_order_id.order_line.sorted(key=lambda item: (item.sequence, item.id)):
+            if sale_line.display_type:
+                if sale_line.display_type in ("line_section", "line_subsection"):
+                    rows.append({"section": True, "name": sale_line.name})
+                continue
+            current = present_by_sale.get(sale_line.id)
+            old = past_by_sale.get(sale_line.id)
+            quantity_origin = current.qty_origin if current else (old.qty_origin if old else 0.0)
+            amount_origin = current.amount_origin if current else (old.amount_origin if old else 0.0)
+            qty_period = current.qty_period if current else 0.0
+            amount_period = current.amount_period if current else 0.0
+            price = current.price_unit if current else (old.price_unit if old else sale_line.price_reduce_taxexcl)
+            rows.append({
+                "section": False, "reference": sale_line.bc3_code if "bc3_code" in sale_line._fields and sale_line.bc3_code else (sale_line.product_id.default_code or ""),
+                "name": sale_line.name, "unit": sale_line.product_uom_id.name,
+                "price": price, "budget_qty": sale_line.product_uom_qty,
+                "origin_qty": quantity_origin, "origin_amount": amount_origin,
+                "previous_qty": quantity_origin - qty_period,
+                "previous_amount": self.currency_id.round(amount_origin - amount_period),
+                "period_qty": qty_period, "period_amount": amount_period,
+                "progress": quantity_origin / sale_line.product_uom_qty if sale_line.product_uom_qty else 0.0,
+            })
+        return rows
 
     @api.depends(
         "line_ids.amount_origin",

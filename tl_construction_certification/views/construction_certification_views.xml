@@ -34,6 +34,8 @@
                     <button name="action_create_invoice" string="Create Invoice (Origin)" type="object"
                             class="btn-primary" invisible="state != 'approved'"
                             groups="account.group_account_invoice"/>
+                    <button name="action_export_bc3" string="Export certification to BC3" type="object"
+                            invisible="state not in ('approved', 'invoiced') or is_retention_liquidation"/>
                     <button name="action_cancel" string="Cancel" type="object"
                             invisible="state == 'cancel'"/>
                     <button name="action_draft" string="Set to Draft" type="object"
@@ -44,10 +46,10 @@
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_invoice" type="object"
-                                class="oe_stat_button" icon="fa-pencil-square-o"
+                                class="oe_stat_button" icon="article"
                                 invisible="not invoice_id">
                             <div class="o_stat_info">
-                                <span class="o_stat_text">Invoice</span>
+                                <span class="o_stat_text">Invoices</span>
                             </div>
                         </button>
                     </div>
@@ -65,6 +67,8 @@
                         </group>
                         <group>
                             <field name="date" readonly="state != 'draft'"/>
+                            <field name="period_date_start" readonly="state not in ('draft', 'measured')"/>
+                            <field name="period_date_end" readonly="state not in ('draft', 'measured')"/>
                             <field name="work_delivery_date" readonly="state not in ('draft', 'measured')" invisible="is_retention_liquidation"/>
                             <field name="certification_number"/>
                             <field name="reversal_invoice_id" invisible="not reversal_invoice_id"/>

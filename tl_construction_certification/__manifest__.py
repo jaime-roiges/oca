@@ -3,7 +3,7 @@
 
 {
     "name": "TL Construction Work Certifications",
-    "version": "20.0.1.80.0",
+    "version": "20.0.1.81.0",
     "category": "Construction",
     "summary": "Work certifications (Certificaciones de Obra) and origin invoicing (Facturación a Origen)",
     "author": "Tecniloop",
@@ -12,6 +12,7 @@
     "depends": [
         "construction_developer",
         "tl_construction_manual_field_compat",
+        "tl_construction_bc3",
         "sale_management",
         "account",
         "project",

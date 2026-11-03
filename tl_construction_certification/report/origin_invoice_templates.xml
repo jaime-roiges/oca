@@ -2,90 +2,32 @@
 <odoo>
     <template id="report_origin_invoice_document">
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="web.external_layout">
-                    <div class="page">
-                        <h2>Invoice by Origin</h2>
-                        <div class="row mt32 mb32">
-                            <div class="col-6">
-                                <strong>Invoice:</strong> <span t-field="doc.name"/><br/>
-                                <strong>Date:</strong> <span t-field="doc.invoice_date"/><br/>
-                                <strong>Customer:</strong> <span t-field="doc.partner_id.name"/>
-                            </div>
-                            <div class="col-6">
-                                <t t-set="cert" t-value="env['construction.certification'].search([('invoice_id', '=', doc.id)], limit=1)"/>
-                                <t t-if="cert">
-                                    <strong>Certification:</strong> <span t-field="cert.name"/><br/>
-                                    <strong>Sales Order:</strong> <span t-field="cert.sale_order_id.name"/><br/>
-                                    <strong>Project:</strong> <span t-field="cert.project_id.name"/>
-                                </t>
-                            </div>
-                        </div>
-
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th class="text-end">Quantity</th>
-                                    <th class="text-end">Unit Price</th>
-                                    <th class="text-end">Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr t-foreach="doc.invoice_line_ids" t-as="line">
-                                    <td><span t-field="line.name"/></td>
-                                    <td class="text-end"><span t-field="line.quantity"/></td>
-                                    <td class="text-end"><span t-field="line.price_unit" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                    <td class="text-end"><span t-field="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <t t-if="cert">
-                            <h3 class="mt32">Origin Breakdown</h3>
-                            <table class="table table-sm">
-                                <tr>
-                                    <td>Certified to Origin</td>
-                                    <td class="text-end"><span t-field="cert.amount_certified_origin" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                                <tr>
-                                    <td>Previously Certified</td>
-                                    <td class="text-end"><span t-field="cert.amount_previously_invoiced" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                                <tr>
-                                    <td>Amount to Invoice</td>
-                                    <td class="text-end"><span t-field="cert.amount_to_invoice" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                                <tr>
-                                    <td>Retention</td>
-                                    <td class="text-end"><span t-field="cert.amount_retention" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                                <tr>
-                                    <td>Advance Applied</td>
-                                    <td class="text-end"><span t-field="cert.amount_advance_applied" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                                <tr t-foreach="cert.application_ids" t-as="app">
-                                    <td class="ps-4"><span t-field="app.advance_id"/></td>
-                                    <td class="text-end"><span t-field="app.amount" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                                <tr>
-                                    <td>Retention Released</td>
-                                    <td class="text-end"><span t-field="cert.retention_to_release" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
-                                <tr class="border-black">
-                                    <td><strong>Final Amount</strong></td>
-                                    <td class="text-end"><strong><span t-field="cert.amount_final_to_invoice" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></strong></td>
-                                </tr>
-                            </table>
-                        </t>
-
-                        <div t-if="doc.narration" class="mt32">
-                            <strong>Notes:</strong>
-                            <p t-field="doc.narration"/>
-                        </div>
-                    </div>
-                </t>
+            <t t-foreach="docs" t-as="o">
+                <t t-set="o" t-value="o.with_context(construction_origin_report=True)"/>
+                <t t-set="print_with_payments" t-value="False"/>
+                <t t-set="proforma" t-value="False"/>
+                <t t-set="lang" t-value="o.partner_id.lang or user.lang"/>
+                <t t-call="account.report_invoice_document" t-lang="lang"/>
             </t>
         </t>
+    </template>
+    <template id="report_invoice_origin_breakdown" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='total']" position="before">
+            <t t-if="o.env.context.get('construction_origin_report')">
+                <t t-set="cert" t-value="env['construction.certification'].search([('invoice_id', '=', o.id)], limit=1)"/>
+                <div t-if="cert" class="mb-3">
+                    <strong>Origin Invoice</strong><br/>
+                    <strong>Cumulative work certification</strong><br/>
+                    <span t-field="cert.name"/> — <span t-field="cert.sale_order_id.name"/>
+                    <table class="table table-sm">
+                        <tr><td>Certified to Origin</td><td class="text-end"><span t-field="cert.amount_certified_origin"/></td></tr>
+                        <tr><td>Previously Certified</td><td class="text-end"><span t-field="cert.amount_previously_invoiced"/></td></tr>
+                        <tr><td>Amount This Period</td><td class="text-end"><span t-field="cert.amount_to_invoice"/></td></tr>
+                        <tr t-if="cert.amount_retention"><td>Guarantee Retention</td><td class="text-end"><span t-field="cert.amount_retention"/></td></tr>
+                        <tr t-if="cert.amount_advance_applied"><td>Advance Applied</td><td class="text-end"><span t-field="cert.amount_advance_applied"/></td></tr>
+                    </table>
+                </div>
+            </t>
+        </xpath>
     </template>
 </odoo>

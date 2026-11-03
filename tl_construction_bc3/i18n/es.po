@@ -206,12 +206,8 @@ msgstr "El concepto BC3 %s tiene una unidad desconocida: %s."
 #. module: tl_construction_bc3
 #. odoo-python
 #: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:583
-msgid ""
-"BC3 currency %s is different from quotation currency %s. Choose a compatible "
-"pricelist; automatic conversion is not supported."
-msgstr ""
-"La moneda BC3 %s es distinta de la moneda del presupuesto %s. Elija una "
-"tarifa compatible; no se admite conversión automática."
+msgid "BC3 currency %s is different from quotation currency %s. Choose a compatible pricelist; automatic conversion is not supported."
+msgstr "La moneda BC3 %s es distinta de la moneda del presupuesto %s. Elija una tarifa compatible; no se admite conversión automática."
 
 #. module: tl_construction_bc3
 #. odoo-python
@@ -229,9 +225,7 @@ msgstr "Archivo BC3: %s"
 #. odoo-python
 #: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1087
 msgid "BC3 import (%(mode)s): %(products)s products, %(lines)s order lines."
-msgstr ""
-"Importación BC3 (%(mode)s): %(products)s productos, %(lines)s líneas de "
-"pedido."
+msgstr "Importación BC3 (%(mode)s): %(products)s productos, %(lines)s líneas de pedido."
 
 #. module: tl_construction_bc3
 #. odoo-python
@@ -243,15 +237,13 @@ msgstr "El historial de importación BC3 no puede eliminarse desde la interfaz."
 #. odoo-python
 #: code:addons/tl_construction_bc3/models/bc3_catalog.py:96
 msgid "BC3 import history is immutable. Create a new import instead."
-msgstr ""
-"El historial de importación BC3 es inmutable. Cree una nueva importación."
+msgstr "El historial de importación BC3 es inmutable. Cree una nueva importación."
 
 #. module: tl_construction_bc3
 #. odoo-python
 #: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:471
 msgid "BC3 path %s changed concept from %s to %s. Review manually."
-msgstr ""
-"La posición BC3 %s ha cambiado de concepto de %s a %s. Revísela manualmente."
+msgstr "La posición BC3 %s ha cambiado de concepto de %s a %s. Revísela manualmente."
 
 #. module: tl_construction_bc3
 #. odoo-python
@@ -434,8 +426,7 @@ msgstr "Presupuesto de ejecución material (PEM): %s"
 #. odoo-python
 #: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:904
 msgid "Multiple products have BC3 code %s; resolve the ambiguity first."
-msgstr ""
-"Varios productos tienen el código BC3 %s; resuelva primero la ambigüedad."
+msgstr "Varios productos tienen el código BC3 %s; resuelva primero la ambigüedad."
 
 #. module: tl_construction_bc3
 #. odoo-python
@@ -533,8 +524,7 @@ msgstr "Edición de origen"
 #. odoo-python
 #: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:862
 msgid "The BC3 certificate adds no quantity above the committed net origin."
-msgstr ""
-"La certificación BC3 no añade cantidad sobre el origen neto comprometido."
+msgstr "La certificación BC3 no añade cantidad sobre el origen neto comprometido."
 
 #. module: tl_construction_bc3
 #. odoo-python
@@ -557,11 +547,8 @@ msgstr "La unidad %s en %s se ha sustituido por Unidades."
 #. module: tl_construction_bc3
 #. odoo-python
 #: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:493
-msgid ""
-"Unknown BC3 unit '%s' on %s; configure a UoM or explicitly allow a fallback."
-msgstr ""
-"Unidad BC3 desconocida '%s' en %s; configure una unidad de medida o permita "
-"expresamente una alternativa."
+msgid "Unknown BC3 unit '%s' on %s; configure a UoM or explicitly allow a fallback."
+msgstr "Unidad BC3 desconocida '%s' en %s; configure una unidad de medida o permita expresamente una alternativa."
 
 #. module: tl_construction_bc3
 #. odoo-python
@@ -604,3 +591,208 @@ msgstr "Política de validación"
 #: model:ir.model.fields,field_description:tl_construction_bc3.field_bc3_import_wizard__reimport_policy
 msgid "When order already contains BC3"
 msgstr "Cuando el pedido ya contiene BC3"
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:543
+msgid "Unmapped BC3 lines from older versions remain on the order. Review or remove them before reimporting."
+msgstr "Quedan líneas BC3 antiguas sin posición asignada en el pedido. Revísalas o elimínalas antes de volver a importar."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:644
+msgid "Some previously imported coefficient lines no longer exist in the BC3. Delete/review those lines explicitly before importing."
+msgstr "Algunas líneas de coeficientes importadas anteriormente ya no existen en el BC3. Revísalas o elimínalas expresamente antes de importar."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:856
+msgid "Approve or cancel the other draft certifications of this contract before importing a new BC3 certificate."
+msgstr "Aprueba o cancela las otras certificaciones en borrador de este contrato antes de importar una nueva certificación BC3."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:877
+msgid "BC3 origin equals the already committed origin: existing draft certification has been emptied and cannot approve obsolete quantities."
+msgstr "El origen BC3 coincide con el ya confirmado: se ha vaciado la certificación en borrador para impedir que se aprueben cantidades obsoletas."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1061
+msgid "CI %s%% | Overheads %s%% | Industrial profit %s%% | Discount %s%% | VAT %s%%"
+msgstr "CI %s%% | Gastos generales %s%% | Beneficio industrial %s%% | Baja %s%% | IVA %s%%"
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1079
+msgid "Coefficients were stored and not applied, so a price that already includes them is not counted twice."
+msgstr "Los coeficientes se han guardado sin aplicarlos para no contarlos dos veces cuando el precio ya los incluye."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:383
+msgid "Selected BC3 catalog edition differs from the import edition. Choose the matching catalog or clear Source Catalog Edition."
+msgstr "La edición del catálogo BC3 seleccionado no coincide con la edición importada. Elige el catálogo correspondiente o vacía la edición de origen."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:649
+msgid "Old BC3 coefficient section must be reviewed before import."
+msgstr "La sección antigua de coeficientes BC3 debe revisarse antes de importar."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:928
+msgid "Foreign-currency price of BC3 concept %s was NOT stored as the product's company-currency sales price."
+msgstr "El precio en moneda extranjera del concepto BC3 %s NO se ha guardado como precio de venta del producto en la moneda de la compañía."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:1017
+msgid "BC3 unit %s is archived in Odoo (%s). Activate it in Units of Measure before importing; no conversion to Units is performed."
+msgstr "La unidad BC3 %s está archivada en Odoo (%s). Actívala en Unidades de medida antes de importar; no se convierte a unidades automáticamente."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:732
+msgid "BC3 measured item %s at position %s does not uniquely match a contracted sale order line."
+msgstr "La partida medida BC3 %s en la posición %s no coincide de forma inequívoca con una línea contratada del pedido."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:742
+msgid "BC3 measurement unit changed for %s: %s versus contract %s. Do not certify quantities measured in a different unit."
+msgstr "La unidad de medición BC3 de %s ha cambiado: %s frente a %s en el contrato. No certifiques cantidades medidas en otra unidad."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:748
+msgid "BC3 price differs from contracted price for %s (BC3: %.4f, order: %.4f); contract price is kept."
+msgstr "El precio BC3 de %s difiere del precio contratado (BC3: %.4f, pedido: %.4f); se mantiene el precio contractual."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:784
+msgid "A BC3 certification with contractual coefficients must contain the cumulative measurements for all BC3 work items. Missing: %s."
+msgstr "Una certificación BC3 con coeficientes contractuales debe incluir las mediciones acumuladas de todas las partidas BC3. Faltan: %s."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:465
+msgid "Ambiguous historical BC3 code %s: migrate positions manually."
+msgstr "El código BC3 histórico %s es ambiguo: migra las posiciones manualmente."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:528
+msgid "BC3 path %s previously referenced a section, not a work item."
+msgstr "La posición BC3 %s hacía referencia a una sección, no a una partida."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:811
+msgid "BC3 coefficient %s differs from the confirmed contract (file: %s%%; contract: %s%%); contract lines are kept."
+msgstr "El coeficiente BC3 %s difiere del contrato confirmado (archivo: %s%%; contrato: %s%%); se mantienen las líneas contractuales."
+
+#. module: tl_construction_bc3
+#: code:addons/tl_construction_bc3/wizard/bc3_import_wizard.py:827
+msgid "BC3 coefficient line %s must have a positive contracted quantity."
+msgstr "La línea de coeficiente BC3 %s debe tener una cantidad contratada positiva."
+
+#. module: tl_construction_bc3
+#: model_terms:ir.ui.view,arch_db:tl_construction_bc3.bc3_import_wizard_view_form
+msgid "Preview using the button below"
+msgstr "Utiliza el botón inferior para obtener una vista previa"
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_sale_order_line__bc3_path
+msgid "Stable FIEBDC hierarchical POSICION, e.g. 2.1.3. Distinguishes repeated concept codes within an order."
+msgstr "POSICIÓN jerárquica FIEBDC estable, por ejemplo 2.1.3. Distingue códigos de concepto repetidos en un pedido."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_sale_order_line__bc3_measurement_data
+msgid "Original ~M/~N dimensions, comments and BIM references."
+msgstr "Dimensiones, comentarios y referencias BIM originales de ~M/~N."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_sale_order_line__bc3_label
+msgid "Measurement label (etiqueta) from the ~M record."
+msgstr "Etiqueta de medición del registro ~M."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_sale_order_line__bc3_measured_qty
+msgid "Quantity taken from the BC3 measurement. On a certification file this is the quantity to date, which can be lower than the contract quantity."
+msgstr "Cantidad tomada de la medición BC3. En una certificación es la cantidad acumulada, que puede ser inferior a la contratada."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_catalog__edition
+msgid "Optional human-approved edition of the source price base. A code may be reused in different editions with different prices."
+msgstr "Edición opcional de la base de precios validada por una persona. Un código puede reutilizarse con precios distintos en otras ediciones."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_history__file_data
+msgid "Original bytes as received; never rewritten by subsequent imports."
+msgstr "Contenido original tal como se recibió; no se sobrescribe en importaciones posteriores."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_sale_order__bc3_import_summary
+msgid "Updated on each BC3 import, without changing standard sale terms."
+msgstr "Se actualiza en cada importación BC3 sin modificar las condiciones de venta."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_product_template__bc3_catalog_id
+msgid "Allows the same concept code to exist in different price catalogs."
+msgstr "Permite que el mismo código de concepto exista en distintos catálogos de precios."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_product_template__bc3_code
+msgid "Concept code from a FIEBDC-3 file, without the chapter marks # and ##."
+msgstr "Código de concepto del archivo FIEBDC-3, sin las marcas de capítulo # y ##."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_product_template__bc3_concept_type
+msgid "FIEBDC concept type: 0 unclassified, 1 labor, 2 machinery, 3 material, 4 waste component, 5 waste classification. Other codes from the price-revision annexes are kept as-is."
+msgstr "Tipo de concepto FIEBDC: 0 sin clasificar, 1 mano de obra, 2 maquinaria, 3 material, 4 componente de residuo y 5 clasificación de residuos. Los demás códigos se conservan."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_product_template__bc3_unit
+msgid "Unit of measure as written in the BC3 file."
+msgstr "Unidad de medida tal como figura en el archivo BC3."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__update_existing
+msgid "Only updates products already tagged with the same BC3 code. Never reuses an ordinary product solely because its internal reference matches."
+msgstr "Solo actualiza productos ya identificados con el mismo código BC3. No reutiliza un producto ordinario solo porque coincida su referencia interna."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__import_breakdown
+msgid "Also create products for materials, labor and machinery that only appear inside a work-item decomposition. They are not added as sales order lines."
+msgstr "Crea también productos para materiales, mano de obra y maquinaria que solo aparecen en la descomposición de una partida. No se añaden como líneas de venta."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__prefer_decomposition_price
+msgid "Default follows FIEBDC (~D price prevails); uncheck to retain ~C contract prices. Price discrepancies are logged."
+msgstr "Por defecto sigue FIEBDC (prevalece el precio ~D); desmárcalo para conservar los precios contractuales ~C. Las diferencias quedan registradas."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__apply_coefficients
+msgid "Add indirect costs, award discount, overheads and industrial profit as extra lines. Leave it unchecked when the work-item prices already include them. VAT is never added as a line."
+msgstr "Añade costes indirectos, baja, gastos generales y beneficio industrial como líneas adicionales. Déjalo desmarcado si las partidas ya los incluyen. El IVA no se añade como línea."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__create_certification
+msgid "When the file is a certification (information type 3) and the work-certification module is installed, create a draft certification with the measured-to-date quantities."
+msgstr "Cuando el archivo sea una certificación (tipo 3) y esté instalado el módulo de certificaciones de obra, crea un borrador con las cantidades medidas a origen."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__validation_mode
+msgid "Strict mode checks ~D/~M and detailed measurement totals, and requires traceable ~M work-item measurements. Compatible mode reports inconsistencies but never silently assigns a wrong position."
+msgstr "El modo estricto comprueba ~D/~M y los totales de medición detallados y exige mediciones ~M trazables. El modo compatible informa de inconsistencias sin asignar una posición incorrecta silenciosamente."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__price_scope
+msgid "Price tariff index in ~C and ~K. 1 is the first listed price."
+msgstr "Índice de tarifa de precios en ~C y ~K. El 1 corresponde al primer precio."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__catalog_edition
+msgid "Optional explicit BC3 price-list edition (e.g. 2026-Q3). A new edition creates its own product namespace. Do not change this for routine reimports or work certificates of the same contract."
+msgstr "Edición opcional de la tarifa BC3 (por ejemplo, 2026-Q3). Cada edición tiene su espacio de productos. No la cambies en reimportaciones o certificaciones del mismo contrato."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__bc3_catalog_id
+msgid "Isolate identical concept codes belonging to different BC3 bases. If omitted, uses the order catalog or a catalog identified by the source document's publisher/name."
+msgstr "Aísla códigos de concepto iguales pertenecientes a distintas bases BC3. Si se omite, usa el catálogo del pedido o el identificado por el editor o nombre del documento."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__reimport_policy
+msgid "Update BC3-tagged lines by their hierarchical path; never duplicate them. Old lines absent from the new file block the operation."
+msgstr "Actualiza las líneas BC3 por su posición jerárquica sin duplicarlas. Las líneas antiguas ausentes del nuevo archivo bloquean la operación."
+
+#. module: tl_construction_bc3
+#: model:ir.model.fields,help:tl_construction_bc3.field_bc3_import_wizard__allow_unknown_units
+msgid "Use Units for unknown BC3 measures. Quantities/prices may not be comparable: only enable after checking the source file."
+msgstr "Usa Unidades para medidas BC3 desconocidas. Las cantidades y precios podrían no ser comparables: actívalo solo tras revisar el archivo."

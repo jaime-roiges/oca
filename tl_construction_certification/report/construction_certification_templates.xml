@@ -5,86 +5,70 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <h2>Work Certification</h2>
-                        <div class="row mt32 mb32">
+                        <h2><span>Work Certification</span> <span t-field="doc.certification_number"/> — <span>Cumulative</span></h2>
+                        <div class="row mb-3">
                             <div class="col-6">
                                 <strong>Reference:</strong> <span t-field="doc.name"/><br/>
-                                <strong>Date:</strong> <span t-field="doc.date"/><br/>
-                                <strong>Sales Order:</strong> <span t-field="doc.sale_order_id.name"/><br/>
-                                <strong>Project:</strong> <span t-field="doc.project_id.name"/>
+                                <strong>Project:</strong> <span t-field="doc.project_id.name"/><br/>
+                                <strong>Sales Order:</strong> <span t-field="doc.sale_order_id.name"/>
                             </div>
                             <div class="col-6">
                                 <strong>Customer:</strong> <span t-field="doc.partner_id.name"/><br/>
-                                <strong>Status:</strong> <span t-field="doc.state"/><br/>
-                                <strong>Approver:</strong> <span t-field="doc.progress_approver_id.name"/>
+                                <strong>Certification Date:</strong> <span t-field="doc.date"/><br/>
+                                <t t-if="doc.period_date_start"><strong>Period Start:</strong> <span t-field="doc.period_date_start"/><br/></t>
+                                <t t-if="doc.period_date_end"><strong>Period End:</strong> <span t-field="doc.period_date_end"/><br/></t>
+                                <t t-set="previous_cert" t-value="doc._get_previous_certifications(doc._committed_states)[:1]"/>
+                                <t t-if="previous_cert"><strong>Previous Certification:</strong> <span t-field="previous_cert.name"/><br/></t>
+                                <strong>Status:</strong> <span t-field="doc.state"/>
                             </div>
                         </div>
-
-                        <table class="table table-sm o_main_table">
-                            <thead>
-                                <tr>
-                                    <th>Ref</th>
-                                    <th>Description</th>
-                                    <th class="text-end">Budget Qty</th>
-                                    <th class="text-end">Period Qty</th>
-                                    <th class="text-end">% Period</th>
-                                    <th class="text-end">Origin Qty</th>
-                                    <th class="text-end">% Origin</th>
-                                    <th class="text-end">Amount Period</th>
-                                    <th class="text-end">Amount Origin</th>
-                                </tr>
-                            </thead>
+                        <t t-set="quantity_digits" t-value="max(env['decimal.precision'].precision_get('Product Unit of Measure') or 2, env['decimal.precision'].precision_get('Product Unit') or 2)"/>
+                        <t t-set="price_digits" t-value="env['decimal.precision'].precision_get('Product Price') or 2"/>
+                        <table class="table table-sm table-bordered" style="font-size:9px; width:100%; table-layout:fixed;">
+                            <thead><tr>
+                                <th style="width:7%">Code</th><th style="width:18%">Description</th>
+                                <th style="width:4%">Unit</th><th class="text-end" style="width:7%">Unit Price</th>
+                                <th class="text-end" style="width:7%">Budget Qty</th>
+                                <th class="text-end" style="width:7%">Origin Qty</th><th class="text-end" style="width:8%">Origin Amount</th>
+                                <th class="text-end" style="width:7%">Previous Qty</th><th class="text-end" style="width:8%">Previous Amount</th>
+                                <th class="text-end" style="width:7%">Period Qty</th><th class="text-end" style="width:9%">Period Amount</th>
+                                <th class="text-end" style="width:7%">Progress %</th>
+                            </tr></thead>
                             <tbody>
-                                <tr t-foreach="doc.line_ids" t-as="line">
-                                    <td><span t-field="line.reference"/></td>
-                                    <td><span t-field="line.name"/></td>
-                                    <td class="text-end"><span t-field="line.product_uom_qty"/></td>
-                                    <td class="text-end"><span t-field="line.qty_period"/></td>
-                                    <td class="text-end"><t t-out="'%.2f' % ((line.percent_period or 0.0) * 100)"/>%</td>
-                                    <td class="text-end"><span t-field="line.qty_origin"/></td>
-                                    <td class="text-end"><t t-out="'%.2f' % ((line.percent_origin or 0.0) * 100)"/>%</td>
-                                    <td class="text-end"><span t-field="line.amount_period" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                    <td class="text-end"><span t-field="line.amount_origin" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                </tr>
+                                <t t-foreach="doc._report_measurement_rows()" t-as="row">
+                                    <tr t-if="row['section']" class="table-secondary"><td colspan="12"><strong t-out="row['name']"/></td></tr>
+                                    <tr t-else="">
+                                        <td t-out="row['reference']"/><td t-out="row['name']"/><td t-out="row['unit']"/>
+                                        <td class="text-end" t-out="row['price']" t-options="{'widget':'float','precision':price_digits}"/>
+                                        <td class="text-end" t-out="row['budget_qty']" t-options="{'widget':'float','precision':quantity_digits}"/>
+                                        <td class="text-end" t-out="row['origin_qty']" t-options="{'widget':'float','precision':quantity_digits}"/>
+                                        <td class="text-end" t-out="row['origin_amount']" t-options="{'widget':'monetary','display_currency':doc.currency_id}"/>
+                                        <td class="text-end" t-out="row['previous_qty']" t-options="{'widget':'float','precision':quantity_digits}"/>
+                                        <td class="text-end" t-out="row['previous_amount']" t-options="{'widget':'monetary','display_currency':doc.currency_id}"/>
+                                        <td class="text-end" t-out="row['period_qty']" t-options="{'widget':'float','precision':quantity_digits}"/>
+                                        <td class="text-end" t-out="row['period_amount']" t-options="{'widget':'monetary','display_currency':doc.currency_id}"/>
+                                        <td class="text-end"><t t-out="'%.2f' % (100 * row['progress'])"/>%</td>
+                                    </tr>
+                                </t>
                             </tbody>
+                            <tfoot><tr>
+                                <td colspan="6"><strong>Total certification</strong></td>
+                                <td class="text-end"><strong t-field="doc.amount_certified_origin"/></td>
+                                <td/><td class="text-end"><strong t-field="doc.amount_previously_invoiced"/></td>
+                                <td/><td class="text-end"><strong t-field="doc.amount_to_invoice"/></td><td/>
+                            </tr></tfoot>
                         </table>
-
-                        <div class="row mt32">
-                            <div class="col-6"/>
-                            <div class="col-6">
-                                <table class="table table-sm">
-                                    <tr>
-                                        <td><strong>Certified to Origin</strong></td>
-                                        <td class="text-end"><span t-field="doc.amount_certified_origin" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Previously Certified</td>
-                                        <td class="text-end"><span t-field="doc.amount_previously_invoiced" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Amount to Invoice</td>
-                                        <td class="text-end"><span t-field="doc.amount_to_invoice" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Retention (<span t-field="doc.retention_percent"/>%)</td>
-                                        <td class="text-end"><span t-field="doc.amount_retention" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Advance Applied</td>
-                                        <td class="text-end"><span t-field="doc.amount_advance_applied" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
-                                    </tr>
-                                    <tr class="border-black">
-                                        <td><strong>Final to Invoice</strong></td>
-                                        <td class="text-end"><strong><span t-field="doc.amount_final_to_invoice" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></strong></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div t-if="doc.notes" class="mt32">
-                            <strong>Notes:</strong>
-                            <p t-field="doc.notes"/>
-                        </div>
+                        <div class="row"><div class="col-7"/><div class="col-5"><table class="table table-sm">
+                            <tr><td>Certified to Origin</td><td class="text-end"><span t-field="doc.amount_certified_origin"/></td></tr>
+                            <tr><td>Previously Certified</td><td class="text-end"><span t-field="doc.amount_previously_invoiced"/></td></tr>
+                            <tr><td>Amount This Period</td><td class="text-end"><span t-field="doc.amount_to_invoice"/></td></tr>
+                            <tr t-if="doc.amount_retention"><td>Guarantee Retention</td><td class="text-end"><span t-field="doc.amount_retention"/></td></tr>
+                            <tr t-if="doc.amount_advance_applied"><td>Advance Applied</td><td class="text-end"><span t-field="doc.amount_advance_applied"/></td></tr>
+                            <tr t-if="doc.retention_to_release"><td>Retention Released</td><td class="text-end"><span t-field="doc.retention_to_release"/></td></tr>
+                            <tr><td><strong>Net certification amount</strong></td><td class="text-end"><strong t-field="doc.amount_final_to_invoice"/></td></tr>
+                        </table></div></div>
+                        <p class="text-muted" style="font-size:8px">Cumulative certified quantities are gross and do not subtract subsequent credit notes.</p>
+                        <div t-if="doc.notes"><strong>Notes:</strong><div t-field="doc.notes"/></div>
                     </div>
                 </t>
             </t>

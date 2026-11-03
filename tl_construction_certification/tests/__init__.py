@@ -10,3 +10,5 @@ from . import test_config_settings
 from . import test_retention_due
 from . import test_general_vat_scope
 from . import test_collected_advance
+
+from . import test_reports_bc3

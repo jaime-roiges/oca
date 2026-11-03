@@ -7,6 +7,6 @@
         <field name="report_name">tl_construction_certification.report_origin_invoice_document</field>
         <field name="binding_model_id" ref="account.model_account_move"/>
         <field name="binding_type">report</field>
-        <field name="print_report_name">'Origin Invoice - %s' % (object.name)</field>
+        <field name="print_report_name">'Factura a origen - %s' % (object.name)</field>
     </record>
 </odoo>

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="paperformat_construction_certification" model="report.paperformat">
+        <field name="name">Construction Certification Landscape</field>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">20</field><field name="margin_bottom">15</field>
+        <field name="margin_left">7</field><field name="margin_right">7</field>
+        <field name="header_spacing">10</field><field name="dpi">90</field>
+    </record>
     <record id="action_report_construction_certification" model="ir.actions.report">
         <field name="name">Work Certification</field>
         <field name="model">construction.certification</field>
         <field name="report_type">qweb-pdf</field>
+        <field name="paperformat_id" ref="paperformat_construction_certification"/>
         <field name="report_name">tl_construction_certification.report_certification_document</field>
         <field name="binding_model_id" ref="model_construction_certification"/>
         <field name="binding_type">report</field>
