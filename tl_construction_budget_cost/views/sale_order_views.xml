@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record id="view_sale_order_budget_cost" model="ir.ui.view">
+  <field name="name">sale.order.form.construction.budget.cost</field>
+  <field name="model">sale.order</field>
+  <field name="inherit_id" ref="sale.view_order_form"/>
+  <field name="arch" type="xml">
+   <xpath expr="//sheet/notebook" position="inside">
+    <page string="Costes de obra" name="tl_budget_costs" groups="sales_team.group_sale_manager">
+     <div class="alert alert-info" role="alert">Costes por unidad de la línea de venta. El coste presupuestado no cambia el coste del producto ni la valoración del inventario. Guarda el presupuesto antes de añadir recursos.</div>
+     <group><group>
+      <field name="tl_office_percent" readonly="state not in ('draft', 'sent')"/>
+      <field name="tl_direct_cost"/><field name="tl_office_cost"/><field name="tl_budget_total"/><field name="tl_budget_margin"/><field name="tl_unestimated_count"/>
+     </group><group invisible="not tl_snapshot_recorded"><field name="tl_snapshot_recorded" invisible="1"/><field name="tl_snapshot_direct"/><field name="tl_snapshot_office"/></group></group>
+     <button name="action_tl_import_bom_resources" type="object" string="Cargar recursos desde listas de materiales" class="btn-secondary" invisible="state not in ('draft', 'sent')"/>
+     <button name="action_tl_apply_budget_costs" type="object" string="Aplicar costes al margen de venta" class="btn-secondary" invisible="state not in ('draft', 'sent')"/>
+     <field name="tl_resource_ids" readonly="state not in ('draft', 'sent')" context="{'default_order_id': id}">
+      <list editable="bottom">
+       <field name="sequence" widget="handle"/><field name="sale_line_id" domain="[('order_id', '=', parent.id), ('display_type', '=', False)]"/>
+       <field name="product_id"/><field name="name"/><field name="category"/><field name="uom_id"/><field name="quantity"/><field name="unit_cost"/><field name="amount_unit"/><field name="currency_id" column_invisible="True"/>
+      </list>
+     </field>
+    </page>
+   </xpath>
+  </field>
+ </record>
+</odoo>

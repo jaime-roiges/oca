@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_tl_budget_resource_manager,tl.budget.resource.manager,tl.construction.budget.resource,sales_team.group_sale_manager,crud,
+tl_budget_resource_company,tl.budget.resource.company,tl.construction.budget.resource,,crud,"[('company_id', 'in', company_ids)]"

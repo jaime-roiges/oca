@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: es\n"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_office_percent
+msgid "Office overhead (%)"
+msgstr "Gastos de oficina (%)"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__product_id
+msgid "Resource"
+msgstr "Recurso"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__quantity
+msgid "Quantity per sale unit"
+msgstr "Cantidad por unidad de venta"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__unit_cost
+msgid "Budgeted unit cost"
+msgstr "Coste unitario presupuestado"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__amount_unit
+msgid "Cost per sale unit"
+msgstr "Coste por unidad de venta"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields.selection,name:tl_construction_budget_cost.selection__tl_construction_budget_resource__category__material
+msgid "Materials"
+msgstr "Materiales"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields.selection,name:tl_construction_budget_cost.selection__tl_construction_budget_resource__category__labor
+msgid "Labour"
+msgstr "Mano de obra"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields.selection,name:tl_construction_budget_cost.selection__tl_construction_budget_resource__category__equipment
+msgid "Equipment"
+msgstr "Equipos"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields.selection,name:tl_construction_budget_cost.selection__tl_construction_budget_resource__category__subcontract
+msgid "Subcontracting"
+msgstr "Subcontratación"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields.selection,name:tl_construction_budget_cost.selection__tl_construction_budget_resource__category__other
+msgid "Other direct costs"
+msgstr "Otros costes directos"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__source_bom_line_id
+msgid "Source BoM line"
+msgstr "Línea de lista de materiales de origen"
+
+msgid "Budget resources"
+msgstr "Recursos presupuestados"
+
+msgid "Budgeted direct cost per unit"
+msgstr "Coste directo presupuestado por unidad"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_direct_cost
+msgid "Direct budgeted cost"
+msgstr "Coste directo presupuestado"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_office_cost
+msgid "Budgeted office overhead"
+msgstr "Gastos de oficina presupuestados"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_budget_total
+msgid "Total budgeted cost"
+msgstr "Coste total presupuestado"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_budget_margin
+msgid "Estimated margin"
+msgstr "Margen estimado"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_unestimated_count
+msgid "Sales lines without resources"
+msgstr "Líneas de venta sin recursos"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_snapshot_direct
+msgid "Approved direct cost"
+msgstr "Coste directo aprobado"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_snapshot_office
+msgid "Approved office overhead"
+msgstr "Gastos de oficina aprobados"
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_snapshot_recorded
+msgid "Cost snapshot recorded"
+msgstr "Coste aprobado guardado"
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Resource quantities and costs must not be negative."
+msgstr "Las cantidades y los costes de los recursos no pueden ser negativos."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Choose a sales line with a product."
+msgstr "Selecciona una línea de venta con producto."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Resources can only be edited on a quotation."
+msgstr "Los recursos solo se pueden editar en un presupuesto."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "The selected sales line must belong to the quotation."
+msgstr "La línea de venta seleccionada debe pertenecer al presupuesto."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Resources cannot be moved to another quotation."
+msgstr "No se pueden trasladar recursos a otro presupuesto."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "No sales lines with an available bill of materials and an empty resource list were found."
+msgstr "No hay líneas con lista de materiales y sin recursos presupuestados."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "The bill of materials and sales line must use the same unit and the BoM quantity must be positive."
+msgstr "La lista de materiales y la línea de venta deben usar la misma unidad; la cantidad de la lista debe ser positiva."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "A bill of materials contains operations. Enter its resource costs manually to avoid omitting operations."
+msgstr "Una lista de materiales contiene operaciones. Introduce sus recursos manualmente para no omitirlas."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "A bill of materials has no components."
+msgstr "Una lista de materiales no tiene componentes."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "A BoM component uses a different unit than its product. Enter it manually."
+msgstr "Un componente usa una unidad distinta a la de su producto. Introdúcelo manualmente."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Cannot determine the unit of a BoM component."
+msgstr "No se puede determinar la unidad de un componente."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Office overhead must be between 0 and 100 percent."
+msgstr "Los gastos de oficina deben estar entre el 0 y el 100 por ciento."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Office overhead can only be changed on a quotation."
+msgstr "El porcentaje de oficina solo se puede modificar en un presupuesto."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Costs can only be applied on a quotation."
+msgstr "Los costes solo pueden aplicarse en un presupuesto."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "Add at least one resource to a positive sales line."
+msgstr "Añade al menos un recurso a una línea de venta con cantidad positiva."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "The sales price changed while applying costs. The operation was stopped."
+msgstr "El precio de venta ha cambiado al aplicar los costes. Se ha detenido la operación."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/budget_cost.py:0
+msgid "A sales manager must confirm quotations containing budget resources."
+msgstr "Un responsable de ventas debe confirmar los presupuestos con recursos presupuestados."
+
+
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__uom_id
+msgid "Resource unit"
+msgstr "Unidad del recurso"
