@@ -12,22 +12,36 @@
         </t>
     </template>
     <template id="report_invoice_origin_breakdown" inherit_id="account.report_invoice_document">
-        <xpath expr="//div[@id='total']" position="before">
-            <t t-if="o.env.context.get('construction_origin_report')">
-                <t t-set="cert" t-value="env['construction.certification'].search([('invoice_id', '=', o.id)], limit=1)"/>
-                <div t-if="cert" class="mb-3">
-                    <strong>Origin Invoice</strong><br/>
-                    <strong>Cumulative work certification</strong><br/>
-                    <span t-field="cert.name"/> — <span t-field="cert.sale_order_id.name"/>
-                    <table class="table table-sm">
-                        <tr><td>Certified to Origin</td><td class="text-end"><span t-field="cert.amount_certified_origin"/></td></tr>
-                        <tr><td>Previously Certified</td><td class="text-end"><span t-field="cert.amount_previously_invoiced"/></td></tr>
-                        <tr><td>Amount This Period</td><td class="text-end"><span t-field="cert.amount_to_invoice"/></td></tr>
-                        <tr t-if="cert.amount_retention"><td>Guarantee Retention</td><td class="text-end"><span t-field="cert.amount_retention"/></td></tr>
-                        <tr t-if="cert.amount_advance_applied"><td>Advance Applied</td><td class="text-end"><span t-field="cert.amount_advance_applied"/></td></tr>
-                    </table>
-                </div>
-            </t>
+        <!-- The standard invoice remains available for unrelated or modified documents. -->
+        <xpath expr="//table[@name='invoice_line_table']" position="before">
+            <t t-set="origin_certs" t-value="o.env['construction.certification'].search([('invoice_id', '=', o.id)], limit=2) if o.env.context.get('construction_origin_report') else o.env['construction.certification']"/>
+            <t t-set="origin_cert" t-value="origin_certs if len(origin_certs) == 1 else False"/>
+            <t t-set="origin_summary" t-value="origin_cert and o.move_type == 'out_invoice' and not origin_cert.is_retention_liquidation and o.currency_id.is_zero(o.amount_untaxed - origin_cert.amount_final_to_invoice) and o.invoice_line_ids and all(line.display_type == 'product' and line.construction_certification_id == origin_cert for line in o.invoice_line_ids)"/>
+            <div t-if="origin_summary" class="mb-3">
+                <h4>Construction Origin Invoice</h4>
+                <p><strong>Work:</strong> <span t-field="origin_cert.project_id.name"/> — <span t-field="origin_cert.sale_order_id.name"/><br/>
+                   <strong>Certification reference:</strong> <span t-field="origin_cert.name"/></p>
+                <table class="table table-sm table-bordered" style="font-size:10px; width:100%; table-layout:fixed;">
+                    <thead><tr>
+                        <th style="width:28%">Concept</th>
+                        <th class="text-end">Amount to Origin</th><th class="text-end">Previous Amount</th>
+                        <th class="text-end">Period Amount</th><th class="text-end">Retention</th>
+                        <th class="text-end">Net amount before taxes</th>
+                    </tr></thead>
+                    <tbody><tr>
+                        <td>Work certification according to attached detail</td>
+                        <td class="text-end"><span t-field="origin_cert.amount_certified_origin"/></td>
+                        <td class="text-end"><span t-field="origin_cert.amount_previously_invoiced"/></td>
+                        <td class="text-end"><span t-field="origin_cert.amount_to_invoice"/></td>
+                        <td class="text-end"><span t-field="origin_cert.amount_retention"/></td>
+                        <td class="text-end"><span t-field="origin_cert.amount_final_to_invoice"/></td>
+                    </tr></tbody>
+                </table>
+                <p t-if="origin_cert.amount_advance_applied" class="mb-1"><strong>Advance Applied:</strong> <span t-field="origin_cert.amount_advance_applied"/></p>
+            </div>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']" position="attributes">
+            <attribute name="t-if">not origin_summary</attribute>
         </xpath>
     </template>
 </odoo>

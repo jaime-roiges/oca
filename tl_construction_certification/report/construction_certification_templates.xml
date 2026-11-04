@@ -38,7 +38,7 @@
                                 <t t-foreach="doc._report_measurement_rows()" t-as="row">
                                     <tr t-if="row['section']" class="table-secondary"><td colspan="12"><strong t-out="row['name']"/></td></tr>
                                     <tr t-else="">
-                                        <td t-out="row['reference']"/><td t-out="row['name']"/><td t-out="row['unit']"/>
+                                        <td><span t-out="row['reference'] or ''"/></td><td><span t-out="row['name'] or ''"/></td><td><span t-out="row['unit'] or ''"/></td>
                                         <td class="text-end" t-out="row['price']" t-options="{'widget':'float','precision':price_digits}"/>
                                         <td class="text-end" t-out="row['budget_qty']" t-options="{'widget':'float','precision':quantity_digits}"/>
                                         <td class="text-end" t-out="row['origin_qty']" t-options="{'widget':'float','precision':quantity_digits}"/>

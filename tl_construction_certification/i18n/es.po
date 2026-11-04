@@ -2065,3 +2065,38 @@ msgstr "El inicio del periodo no puede ser posterior a su fin."
 #: code:addons/tl_construction_certification/models/bc3_export.py:0
 msgid "The certified price differs from the current contract at BC3 position %(position)s."
 msgstr "El precio certificado difiere del contrato actual en la posición BC3 %(position)s."
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_invoice_origin_breakdown
+msgid "Construction Origin Invoice"
+msgstr "Factura a origen"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_invoice_origin_breakdown
+msgid "Work:"
+msgstr "Obra:"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_invoice_origin_breakdown
+msgid "Certification reference:"
+msgstr "Referencia de certificación:"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_invoice_origin_breakdown
+msgid "Concept"
+msgstr "Concepto"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_invoice_origin_breakdown
+msgid "Net amount before taxes"
+msgstr "Líquido antes de impuestos"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_invoice_origin_breakdown
+msgid "Work certification according to attached detail"
+msgstr "Certificación de obra según detalle adjunto"
+
+#. module: tl_construction_certification
+#: model_terms:ir.ui.view,arch_db:tl_construction_certification.report_invoice_origin_breakdown
+msgid "Advance Applied:"
+msgstr "Anticipo aplicado:"
