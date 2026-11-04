@@ -63,9 +63,14 @@ msgstr "Otros costes directos"
 msgid "Source BoM line"
 msgstr "Línea de lista de materiales de origen"
 
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order__tl_resource_ids
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order_line__tl_resource_ids
 msgid "Budget resources"
 msgstr "Recursos presupuestados"
 
+#. module: tl_construction_budget_cost
+#: model:ir.model.fields,field_description:tl_construction_budget_cost.field_sale_order_line__tl_direct_unit_cost
 msgid "Budgeted direct cost per unit"
 msgstr "Coste directo presupuestado por unidad"
 

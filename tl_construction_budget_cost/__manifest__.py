@@ -1,6 +1,6 @@
 {
     'name': 'Construction Budget Costs',
-    'version': '20.0.1.0.0',
+    'version': '20.0.1.0.1',
     'category': 'Construction',
     'summary': 'Per-quotation work item resource costs and indirect overhead',
     'author': 'Tecniloop',
