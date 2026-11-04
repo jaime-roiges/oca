@@ -75,3 +75,39 @@ class TestBudgetCost(TransactionCase):
         self.env['tl.construction.budget.resource'].create({'sale_line_id': line.id, 'product_id': self.resource.id, 'name': 'Resource', 'quantity': 0.001, 'unit_cost': 2})
         self.assertAlmostEqual(line.tl_direct_unit_cost, 0.002, places=5)
         self.assertAlmostEqual(order.tl_direct_cost, 2.0, places=2)
+
+    def test_confirmation_synchronizes_latest_resource_cost_and_overhead(self):
+        order, line = self.make_order()
+        resource = self.env['tl.construction.budget.resource'].create({
+            'sale_line_id': line.id, 'product_id': self.resource.id,
+            'name': 'Resource', 'quantity': 3, 'unit_cost': 10,
+        })
+        order.action_tl_apply_budget_costs()
+        resource.unit_cost = 12
+        order.tl_office_percent = 10
+        original_price = line.price_unit
+        order.action_confirm()
+        self.assertAlmostEqual(line.purchase_price, 39.6, places=2)
+        self.assertEqual(line.price_unit, original_price)
+        self.assertAlmostEqual(order.tl_snapshot_direct, 72, places=2)
+        self.assertAlmostEqual(order.tl_snapshot_office, 7.2, places=2)
+        self.assertEqual(self.resource.standard_price, 20)
+
+    def test_project_standard_estimate_uses_synchronized_line(self):
+        if 'estimated_cost' not in self.env['project.project']._fields:
+            self.skipTest('sale_project_margin is not installed')
+        order, line = self.make_order()
+        self.env['tl.construction.budget.resource'].create({
+            'sale_line_id': line.id, 'product_id': self.resource.id,
+            'name': 'Resource', 'quantity': 3, 'unit_cost': 10,
+        })
+        order.action_confirm()
+        project = self.env['project.project'].create({
+            'name': 'Budget estimate integration test',
+            'allow_billable': True, 'sale_line_id': line.id,
+        })
+        lines = project._fetch_sale_order_items({'project.task': [('is_closed', '=', False)]})
+        self.assertIn(line, lines)
+        expected = sum(item.purchase_price * item.product_uom_qty for item in lines)
+        self.assertAlmostEqual(project.estimated_cost, expected, places=2)
+        self.assertAlmostEqual(line.purchase_price, 33.9, places=2)

@@ -187,5 +187,8 @@ class SaleOrder(models.Model):
             if has_resources:
                 if not is_manager:
                     raise UserError(_('A sales manager must confirm quotations containing budget resources.'))
+                # Synchronize the latest quotation costs before confirming so
+                # the standard sale/project margin uses the approved budget.
+                order.action_tl_apply_budget_costs()
                 order.write({'tl_snapshot_direct': order.tl_direct_cost, 'tl_snapshot_office': order.tl_office_cost, 'tl_snapshot_recorded': True})
         return super().action_confirm()
