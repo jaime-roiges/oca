@@ -14,8 +14,11 @@ class IrModelFields(models.Model):
         if not (
             not self.pool.loaded
             and field_data.get("state") == "manual"
-            and field_data.get("model") == "sale.order"
-            and field_data.get("name") == "x_total_discount_amount"
+            and (field_data.get("model"), field_data.get("name")) in {
+                ("sale.order", "x_total_discount_amount"),
+                ("mrp.bom", "x_bom_cost"),
+            }
+            and not field_data.get("related")
             and field_data.get("ttype") == "monetary"
             and field_data.get("currency_field") == "currency_id"
         ):

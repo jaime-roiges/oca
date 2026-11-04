@@ -1,6 +1,6 @@
 {
     "name": "TL Construction Manual Field Compatibility (QA)",
-    "version": "20.0.1.0.0",
+    "version": "20.0.1.0.1",
     "summary": "Experimental Industry manual monetary field registry compatibility",
     "author": "Tecniloop",
     "website": "https://www.tecniloop.es",
