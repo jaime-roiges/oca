@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="construction_developer.spreadsheet_dashboard_cost_nature" model="spreadsheet.dashboard">
-        <field name="name">Cost Nature</field>
+        <field name="name">Naturaleza de coste</field>
         <field name="spreadsheet_binary_data" type="bytes"
                file="tl_que/static/src/binary/spreadsheet_dashboard/CostNature.osheet.json"/>
     </record>
-
-    <!-- Runs on every install and module upgrade, so a new JSON is not ignored. -->
+    <record id="construction_developer.spreadsheet_dashboard_progress_report" model="spreadsheet.dashboard">
+        <field name="name">Informe de avance</field>
+        <field name="spreadsheet_binary_data" type="bytes"
+               file="tl_que/static/src/binary/spreadsheet_dashboard/Progress.osheet.json"/>
+    </record>
     <function model="spreadsheet.dashboard" name="_tl_que_reload_cost_nature"/>
 </odoo>

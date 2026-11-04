@@ -3,7 +3,7 @@
   "sheets": [
     {
       "id": "c4236b3e-e0fd",
-      "name": "Dashboard",
+      "name": "Tablero",
       "colNumber": 9,
       "rowNumber": 166,
       "rows": {},
@@ -20,11 +20,10 @@
       },
       "merges": [],
       "cells": {
-        "B7": "Cost Nature Break Down (TL 1.0.3)",
+        "B7": "Desglose por naturaleza de coste",
         "B8": "=PIVOT(6)",
-        "B27": "Category and Product Break Down",
-        "B28": "=pivot(7)",
-        "B6": "TL QUE 1.0.3"
+        "B27": "Desglose por categoría y producto",
+        "B28": "=pivot(7)"
       },
       "styles": {
         "B7:H7": 1,
@@ -51,12 +50,12 @@
           "tag": "chart",
           "data": {
             "dataSource": {
-              "labelRange": "'Cost Nature & Totals'!A:A",
+              "labelRange": "'Naturaleza de coste y totales'!A:A",
               "type": "range",
               "dataSets": [
                 {
                   "dataSetId": "5d4c5266-fed5",
-                  "dataRange": "'Cost Nature & Totals'!C:C"
+                  "dataRange": "'Naturaleza de coste y totales'!C:C"
                 }
               ],
               "dataSetsHaveTitle": true
@@ -64,7 +63,7 @@
             "dataSetStyles": {},
             "legendPosition": "bottom",
             "title": {
-              "text": "Cost Break Down"
+              "text": "Desglose de costes"
             },
             "type": "pie",
             "aggregated": false,
@@ -87,12 +86,12 @@
           "tag": "chart",
           "data": {
             "dataSource": {
-              "labelRange": "'Cost Nature & Totals'!A:A",
+              "labelRange": "'Naturaleza de coste y totales'!A:A",
               "type": "range",
               "dataSets": [
                 {
                   "dataSetId": "43efe65f-7199",
-                  "dataRange": "'Cost Nature & Totals'!G:G"
+                  "dataRange": "'Naturaleza de coste y totales'!G:G"
                 }
               ],
               "dataSetsHaveTitle": false
@@ -100,7 +99,7 @@
             "dataSetStyles": {},
             "legendPosition": "bottom",
             "title": {
-              "text": "Margin Break Down"
+              "text": "Desglose del margen"
             },
             "type": "pie",
             "aggregated": false,
@@ -124,9 +123,9 @@
           "data": {
             "background": "#FFF2CC",
             "type": "scorecard",
-            "keyValue": "'Cost Nature & Totals'!K5",
+            "keyValue": "'Naturaleza de coste y totales'!K5",
             "title": {
-              "text": "Margin (%)"
+              "text": "Margen (%)"
             },
             "baselineMode": "text",
             "baselineColorUp": "#43C5B1",
@@ -149,9 +148,9 @@
           "data": {
             "background": "#FCE5CD",
             "type": "scorecard",
-            "keyValue": "'Cost Nature & Totals'!K4",
+            "keyValue": "'Naturaleza de coste y totales'!K4",
             "title": {
-              "text": "Total Margin"
+              "text": "Margen total"
             },
             "baselineMode": "text",
             "baselineColorUp": "#43C5B1",
@@ -174,9 +173,9 @@
           "data": {
             "background": "#D9EAD3",
             "type": "scorecard",
-            "keyValue": "'Cost Nature & Totals'!K3",
+            "keyValue": "'Naturaleza de coste y totales'!K3",
             "title": {
-              "text": "Total Price"
+              "text": "Precio total"
             },
             "baselineMode": "text",
             "baselineColorUp": "#43C5B1",
@@ -199,9 +198,9 @@
           "data": {
             "background": "#C9DAF8",
             "type": "scorecard",
-            "keyValue": "'Cost Nature & Totals'!K2",
+            "keyValue": "'Naturaleza de coste y totales'!K2",
             "title": {
-              "text": "Total Costs"
+              "text": "Costes totales"
             },
             "baselineMode": "text",
             "baselineColorUp": "#43C5B1",
@@ -230,7 +229,7 @@
     },
     {
       "id": "fef07338-0e81",
-      "name": "Sales Order Line (List #2)",
+      "name": "Línea de pedido (Lista 2)",
       "colNumber": 13,
       "rowNumber": 100000,
       "rows": {},
@@ -307,7 +306,7 @@
     },
     {
       "id": "a4755882-3570",
-      "name": "Bill of Material Line (List #1)",
+      "name": "Línea de lista de materiales (Lista 1)",
       "colNumber": 13,
       "rowNumber": 100000,
       "rows": {},
@@ -363,7 +362,7 @@
     },
     {
       "id": "7f50a450-d391",
-      "name": "List concatenation",
+      "name": "Concatenación",
       "colNumber": 13,
       "rowNumber": 100000,
       "rows": {},
@@ -406,7 +405,7 @@
     },
     {
       "id": "5307c2be-66b1",
-      "name": "Cost Nature & Totals",
+      "name": "Naturaleza de coste y totales",
       "colNumber": 12,
       "rowNumber": 7,
       "rows": {},
@@ -418,10 +417,10 @@
       "merges": [],
       "cells": {
         "A1": "=pivot(6,,0,0)",
-        "J2": "Total Cost",
-        "J3": "Total Price",
-        "J4": "Total Margin",
-        "J5": "Margin %",
+        "J2": "Coste total",
+        "J3": "Precio total",
+        "J4": "Margen total",
+        "J5": "Margen %",
         "K2": "=sum(B:B)",
         "K3": {
           "R": "D:D"
@@ -474,7 +473,7 @@
       }
     }
   },
-  "revisionId": "tl-que-1.0.3",
+  "revisionId": "595bdfa9-4eff-4567-a3b2-a29cd504d4d8",
   "uniqueFigureIds": true,
   "settings": {
     "locale": {
@@ -503,36 +502,36 @@
       "columns": [],
       "rows": [
         {
-          "fieldName": "Cost Nature",
+          "fieldName": "Naturaleza de coste",
           "order": "asc"
         }
       ],
       "measures": [
         {
           "id": "Total Cost:sum",
-          "fieldName": "Total Cost",
+          "fieldName": "Coste total",
           "aggregator": "sum"
         },
         {
           "id": "Total Cost:sum:2",
-          "fieldName": "Total Cost",
+          "fieldName": "Coste total",
           "aggregator": "sum",
-          "userDefinedName": "Cost Share",
+          "userDefinedName": "Peso del coste",
           "display": {
             "type": "%_of_grand_total"
           }
         },
         {
           "id": "Total Price:sum",
-          "fieldName": "Total Price",
+          "fieldName": "Precio total",
           "aggregator": "sum",
-          "userDefinedName": "Total Price"
+          "userDefinedName": "Precio total"
         },
         {
           "id": "Margin:sum",
-          "fieldName": "Margin",
+          "fieldName": "Margen",
           "aggregator": "sum",
-          "userDefinedName": "Margin",
+          "userDefinedName": "Margen",
           "computedBy": {
             "sheetId": "c4236b3e-e0fd",
             "formula": "='Total Price:sum'-'Total Cost:sum'"
@@ -540,9 +539,9 @@
         },
         {
           "id": "Margin (%):computed",
-          "fieldName": "Margin (%)",
+          "fieldName": "Margen (%)",
           "aggregator": "avg",
-          "userDefinedName": "Margin (%)",
+          "userDefinedName": "Margen (%)",
           "computedBy": {
             "sheetId": "c4236b3e-e0fd",
             "formula": "=IF('Total Price:sum'=0,0,('Total Price:sum'-'Total Cost:sum')/'Total Price:sum')"
@@ -550,9 +549,9 @@
         },
         {
           "id": "Margin Share:sum",
-          "fieldName": "Margin Share",
+          "fieldName": "Peso del margen",
           "aggregator": "sum",
-          "userDefinedName": "Margin Share",
+          "userDefinedName": "Peso del margen",
           "computedBy": {
             "sheetId": "c4236b3e-e0fd",
             "formula": "='Total Price:sum'-'Total Cost:sum'"
@@ -564,7 +563,7 @@
       ],
       "filters": [
         {
-          "fieldName": "Cost",
+          "fieldName": "Coste",
           "filterType": "criterion",
           "type": "isNotEqual",
           "values": [
@@ -572,7 +571,7 @@
           ]
         }
       ],
-      "name": "Cost Nature",
+      "name": "Naturaleza de coste",
       "type": "SPREADSHEET",
       "style": {
         "tableStyleId": "PivotTableStyleLight20",
@@ -595,40 +594,40 @@
       "columns": [],
       "rows": [
         {
-          "fieldName": "Product Category",
+          "fieldName": "Categoría de producto",
           "order": "asc"
         },
         {
-          "fieldName": "Description",
+          "fieldName": "Descripción",
           "order": "asc"
         }
       ],
       "measures": [
         {
           "id": "Total Cost:sum",
-          "fieldName": "Total Cost",
+          "fieldName": "Coste total",
           "aggregator": "sum"
         },
         {
           "id": "Total Cost:sum:2",
-          "fieldName": "Total Cost",
+          "fieldName": "Coste total",
           "aggregator": "sum",
-          "userDefinedName": "Cost Share",
+          "userDefinedName": "Peso del coste",
           "display": {
             "type": "%_of_grand_total"
           }
         },
         {
           "id": "Total Price:sum",
-          "fieldName": "Total Price",
+          "fieldName": "Precio total",
           "aggregator": "sum",
-          "userDefinedName": "Total Price"
+          "userDefinedName": "Precio total"
         },
         {
           "id": "Margin:sum",
-          "fieldName": "Margin",
+          "fieldName": "Margen",
           "aggregator": "sum",
-          "userDefinedName": "Margin",
+          "userDefinedName": "Margen",
           "computedBy": {
             "sheetId": "da4eca5b-d124",
             "formula": "='Total Price:sum'-'Total Cost:sum'"
@@ -636,9 +635,9 @@
         },
         {
           "id": "Margin (%):computed",
-          "fieldName": "Margin (%)",
+          "fieldName": "Margen (%)",
           "aggregator": "avg",
-          "userDefinedName": "Margin (%)",
+          "userDefinedName": "Margen (%)",
           "computedBy": {
             "sheetId": "da4eca5b-d124",
             "formula": "=IF('Total Price:sum'=0,0,('Total Price:sum'-'Total Cost:sum')/'Total Price:sum')"
@@ -646,9 +645,9 @@
         },
         {
           "id": "Margin Share:sum",
-          "fieldName": "Margin Share",
+          "fieldName": "Peso del margen",
           "aggregator": "sum",
-          "userDefinedName": "Margin Share",
+          "userDefinedName": "Peso del margen",
           "computedBy": {
             "sheetId": "da4eca5b-d124",
             "formula": "='Total Price:sum'-'Total Cost:sum'"
@@ -660,7 +659,7 @@
       ],
       "filters": [
         {
-          "fieldName": "Cost",
+          "fieldName": "Coste",
           "filterType": "criterion",
           "type": "isNotEqual",
           "values": [
@@ -668,7 +667,7 @@
           ]
         }
       ],
-      "name": "Category / Product",
+      "name": "Categoría / Producto",
       "type": "SPREADSHEET",
       "style": {
         "tableStyleId": "PivotTableStyleLight20",
@@ -685,14 +684,14 @@
   "globalFilters": [
     {
       "id": "08c94503-8cfe",
-      "label": "Sales Order",
+      "label": "Pedido de venta",
       "type": "relation",
       "modelName": "sale.order",
       "domainOfAllowedValues": []
     },
     {
       "id": "dee41e99-beff",
-      "label": "Project",
+      "label": "Proyecto",
       "type": "relation",
       "modelName": "project.project",
       "domainOfAllowedValues": []
@@ -701,20 +700,20 @@
   "lists": {
     "1": {
       "model": "mrp.bom.line",
-      "name": "Bill of Material Line",
+      "name": "Línea de lista de materiales",
       "columns": [
         {
           "name": "bom_id.x_original_sol_id.order_id",
-          "string": "Order Reference",
+          "string": "Referencia del pedido",
           "hidden": false
         },
         {
           "name": "product_id",
-          "string": "Description"
+          "string": "Descripción"
         },
         {
           "name": "Total Quantity",
-          "string": "Total Quantity",
+          "string": "Cantidad total",
           "computedBy": {
             "sheetId": "a4755882-3570",
             "formula": "='bom_id.x_original_sol_id.product_uom_qty'*product_qty"
@@ -723,16 +722,16 @@
         },
         {
           "name": "uom_id",
-          "string": "Unit"
+          "string": "Unidad"
         },
         {
           "name": "product_id.standard_price",
-          "string": "Cost",
+          "string": "Coste",
           "hidden": false
         },
         {
           "name": "Total Cost",
-          "string": "Total Cost",
+          "string": "Coste total",
           "computedBy": {
             "sheetId": "a4755882-3570",
             "formula": "='Total Quantity'*'product_id.standard_price'"
@@ -741,12 +740,12 @@
         },
         {
           "name": "bom_id.x_original_sol_id.product_uom_qty",
-          "string": "Quantity",
+          "string": "Cantidad",
           "hidden": true
         },
         {
           "name": "product_qty",
-          "string": "Quantity",
+          "string": "Cantidad",
           "hidden": true
         },
         {
@@ -761,32 +760,32 @@
         },
         {
           "name": "product_id.categ_id",
-          "string": "Product Category",
+          "string": "Categoría de producto",
           "hidden": false
         },
         {
           "name": "bom_product_tmpl_id",
-          "string": "Work Item",
+          "string": "Partida",
           "hidden": true
         },
         {
           "name": "product_id.categ_id.x_cost_nature",
-          "string": "Cost Nature",
+          "string": "Naturaleza de coste",
           "hidden": false
         },
         {
           "name": "bom_id.x_original_sol_id.order_id.project_id",
-          "string": "Project",
+          "string": "Proyecto",
           "hidden": false
         },
         {
           "name": "bom_id.x_original_sol_id.margin_percent",
-          "string": "Margin (%)",
+          "string": "Margen (%)",
           "hidden": false
         },
         {
           "name": "Total Price",
-          "string": "Total Price",
+          "string": "Precio total",
           "computedBy": {
             "sheetId": "a4755882-3570",
             "formula": "='Total Cost'/(1-'bom_id.x_original_sol_id.margin_percent')"
@@ -816,23 +815,23 @@
     },
     "2": {
       "model": "sale.order.line",
-      "name": "Sales Order Line",
+      "name": "Línea de pedido",
       "columns": [
         {
           "name": "order_id",
-          "string": "Order Reference"
+          "string": "Referencia del pedido"
         },
         {
           "name": "name",
-          "string": "Description"
+          "string": "Descripción"
         },
         {
           "name": "product_uom_qty",
-          "string": "Total Quantity"
+          "string": "Cantidad total"
         },
         {
           "name": "product_uom_id",
-          "string": "Unit"
+          "string": "Unidad"
         },
         {
           "name": "x_bom_id.id",
@@ -841,12 +840,12 @@
         },
         {
           "name": "purchase_price",
-          "string": "Unit Cost",
+          "string": "Coste unitario",
           "hidden": false
         },
         {
           "name": "Total cost",
-          "string": "Total cost",
+          "string": "Coste total",
           "computedBy": {
             "sheetId": "fef07338-0e81",
             "formula": "=purchase_price*product_uom_qty"
@@ -855,32 +854,32 @@
         },
         {
           "name": "price_unit",
-          "string": "Unit Price",
+          "string": "Precio unitario",
           "hidden": true
         },
         {
           "name": "categ_id",
-          "string": "Product Category",
+          "string": "Categoría de producto",
           "hidden": false
         },
         {
           "name": "categ_id.x_cost_nature",
-          "string": "Cost Nature",
+          "string": "Naturaleza de coste",
           "hidden": false
         },
         {
           "name": "order_id.project_id",
-          "string": "Project",
+          "string": "Proyecto",
           "hidden": false
         },
         {
           "name": "margin_percent",
-          "string": "Margin (%)",
+          "string": "Margen (%)",
           "hidden": false
         },
         {
           "name": "price_subtotal",
-          "string": "Total Price",
+          "string": "Precio total",
           "hidden": false
         }
       ],

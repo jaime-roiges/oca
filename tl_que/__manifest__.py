@@ -1,19 +1,11 @@
 {
-    'name': 'TL Que - Fix Cost Nature Dashboard',
-    'version': '20.0.1.0.3',
+    'name': 'Tableros de construcción',
+    'version': '20.0.1.0.4',
     'category': 'Construction',
-    'summary': 'Corrige el tablero Cost Nature para que el Total Price coincida con el pedido',
+    'summary': 'Tableros de construcción en español y precio total alineado con el pedido',
     'description': """
-Corrige el dashboard Cost Nature del módulo construction_developer.
-
-Problema original:
-- El pivot recalculaba Total Price como Coste / (1 - media de márgenes)
-- Esto provocaba que el Total Price no coincidiera con el total del pedido de venta
-
-Solución:
-- Total Price se suma directamente del campo ya calculado correctamente por línea
-- Margin = Total Price - Total Cost
-- Margin (%) = Margin / Total Price (margen real ponderado)
+Traduce al español los tableros Naturaleza de coste e Informe de avance.
+El precio total suma el importe sin impuestos de cada línea, para que coincida con el pedido.
     """,
     'author': 'TL',
     'depends': [

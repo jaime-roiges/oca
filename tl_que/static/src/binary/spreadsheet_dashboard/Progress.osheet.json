@@ -1,0 +1,1226 @@
+{
+  "version": "19.5.1",
+  "sheets": [
+    {
+      "id": "834d44ac-7041",
+      "name": "Informe de avance",
+      "colNumber": 19,
+      "rowNumber": 1000,
+      "rows": {
+        "8": {
+          "size": 41
+        },
+        "103": {
+          "size": 39
+        }
+      },
+      "cols": {
+        "0": {
+          "size": 28
+        },
+        "1": {
+          "size": 64
+        },
+        "2": {
+          "size": 64
+        },
+        "3": {
+          "size": 382
+        },
+        "4": {
+          "size": 74
+        },
+        "5": {
+          "size": 68
+        },
+        "6": {
+          "size": 75
+        },
+        "7": {
+          "size": 71
+        },
+        "8": {
+          "size": 71
+        },
+        "9": {
+          "size": 71
+        },
+        "10": {
+          "size": 71
+        },
+        "11": {
+          "size": 71
+        },
+        "12": {
+          "size": 71
+        },
+        "13": {
+          "size": 71
+        },
+        "14": {
+          "size": 71
+        },
+        "15": {
+          "size": 71
+        },
+        "16": {
+          "isHidden": true,
+          "size": 33
+        },
+        "17": {
+          "isHidden": true,
+          "size": 158
+        },
+        "18": {
+          "size": 28
+        }
+      },
+      "merges": [
+        "N4:P4",
+        "N5:O5",
+        "N6:O6",
+        "N7:O7"
+      ],
+      "cells": {
+        "B2": "Informe de avance",
+        "B4": "=Detalles!A16",
+        "B5:B7": {
+          "R": "+R1"
+        },
+        "B9": "=ODOO.LIST(1,)",
+        "D4": "=Detalles!B16",
+        "D5:D7": {
+          "R": "+R1"
+        },
+        "K4": "Fecha",
+        "K5": "Importe pedido total",
+        "K6": "Importe facturado total",
+        "K7": "Importe pendiente de facturar",
+        "N4": "=now()",
+        "N5": "=sum($I10:$I1000)",
+        "N6": {
+          "R": "$L10:$L1000"
+        },
+        "N7": {
+          "R": "$P10:$P1000"
+        },
+        "P6": "=N6/N5",
+        "P7": {
+          "R": "+R1|="
+        }
+      },
+      "styles": {
+        "A1": 1,
+        "A3": 1,
+        "A5:A8": 1,
+        "A10:A1000": 1,
+        "Q1:R1": 1,
+        "Q3:R3": 1,
+        "Q5:R8": 1,
+        "Q10:R1000": 1,
+        "A2": 2,
+        "Q2:R2": 2,
+        "A4": 3,
+        "Q4:R4": 3,
+        "A9": 4,
+        "Q9:R9": 4,
+        "B2": 5,
+        "S2": 5,
+        "D6:H6": 6,
+        "I7:L7": 7,
+        "N7:O7": 7,
+        "I73:M76": 8,
+        "M4:M7": 9,
+        "P1:P2": 10,
+        "P6": 10,
+        "P9:P10": 10,
+        "S4": 10,
+        "P17": 11,
+        "S9": 12
+      },
+      "formats": {
+        "B4:B6": 1,
+        "D3": 2,
+        "D6": 2,
+        "E4:E7": 2,
+        "N4": 2,
+        "I4:I7": 3,
+        "L4:L7": 3,
+        "N5:N7": 4,
+        "P6:P7": 5
+      },
+      "borders": {
+        "B2:P2": 1,
+        "B9:P9": 2,
+        "B10:P10": 3,
+        "B11:P1000": 4
+      },
+      "conditionalFormats": [
+        {
+          "id": "4837f843-27d4",
+          "rule": {
+            "type": "CellIsRule",
+            "operator": "customFormula",
+            "style": {
+              "fillColor": "#D9D9D9",
+              "bold": true,
+              "textColor": "#000000"
+            },
+            "values": [
+              "=$Q1=\"line_section\""
+            ]
+          },
+          "ranges": [
+            "B:P"
+          ]
+        },
+        {
+          "id": "7ca2de1c-8596",
+          "rule": {
+            "type": "CellIsRule",
+            "operator": "customFormula",
+            "style": {
+              "fillColor": "#D9D9D9",
+              "bold": false,
+              "textColor": "#000000"
+            },
+            "values": [
+              "=$Q1=\"line_subsection\""
+            ]
+          },
+          "ranges": [
+            "B:P"
+          ]
+        },
+        {
+          "id": "2ed5ae38-edc0",
+          "rule": {
+            "type": "CellIsRule",
+            "operator": "isEqual",
+            "style": {
+              "fillColor": "",
+              "textColor": "#D9D9D9"
+            },
+            "values": [
+              "0"
+            ]
+          },
+          "ranges": [
+            "B:P"
+          ]
+        }
+      ],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [
+        {
+          "range": "B9",
+          "type": "dynamic",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": false,
+            "bandedColumns": false,
+            "styleId": "TableStyleLight6",
+            "automaticAutofill": false
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "isVisible": true,
+      "isLocked": false,
+      "backgroundColor": "",
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      },
+      "defaultFormat": {
+        "colDefault": {
+          "2": 1,
+          "8": 4,
+          "11": 4,
+          "15": 4
+        },
+        "rowDefault": {},
+        "sheetDefault": 3
+      },
+      "defaultStyle": {
+        "colDefault": {
+          "12": 7,
+          "15": 7
+        },
+        "rowDefault": {
+          "0": 8,
+          "1": 8,
+          "2": 8,
+          "3": 14,
+          "4": 8,
+          "5": 8,
+          "6": 8,
+          "7": 8,
+          "8": 11
+        },
+        "sheetDefault": 13
+      },
+      "comments": {}
+    },
+    {
+      "id": "6bb2e9b1-0a45",
+      "name": "Detalles",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {
+        "0": {
+          "size": 101
+        }
+      },
+      "merges": [],
+      "cells": {
+        "A2": "Proyecto",
+        "A3": "Cliente",
+        "A4": "Referencia del pedido",
+        "A5": "Fecha del pedido",
+        "A6": "=if(COUNTA('Proyecto (Lista 2)'!A:A)>2,\"\",'Proyecto (Lista 2)'!D1)",
+        "A8": "Referencia del pedido",
+        "A9": "Fecha del pedido",
+        "A10": "Cliente",
+        "A12": "Modo",
+        "A14": "Resultados",
+        "A16": "=if($B$12=\"Proyecto\",A3,\"\")&if($B$12=\"Pedido\",A10,\"\")",
+        "A17": {
+          "S": [
+            "=",
+            "=",
+            "=",
+            "="
+          ],
+          "R": "=|+R1|=|-R2"
+        },
+        "A18": {
+          "S": [
+            "=",
+            "=",
+            "=",
+            "="
+          ],
+          "R": "=|+R1|=|+R1"
+        },
+        "A19": "=if(and($B$12=\"Proyecto\",not(B6=\"\")),A6,\"\")",
+        "B2": "=if(COUNTA('Proyecto (Lista 2)'!A:A)>2,\"\",'Proyecto (Lista 2)'!A2)",
+        "B3": {
+          "N": "=",
+          "S": [
+            "="
+          ],
+          "R": "=|+C1"
+        },
+        "B4": {
+          "N": "=",
+          "S": [
+            "="
+          ],
+          "R": "=|+C3"
+        },
+        "B5": {
+          "N": "=",
+          "S": [
+            "="
+          ],
+          "R": "=|+C1"
+        },
+        "B6": {
+          "N": "=",
+          "S": [
+            "="
+          ],
+          "R": "=|-C2"
+        },
+        "B8": {
+          "N": "=",
+          "S": [
+            "="
+          ],
+          "R": "'Pedido de venta (Lista 3)'!A:A|'Pedido de venta (Lista 3)'!A2"
+        },
+        "B9:B10": {
+          "N": "=",
+          "S": [
+            "="
+          ],
+          "R": "=|+C1"
+        },
+        "B12": "=if(B2=\"\",if(B8=\"\",\"Análisis\",\"Pedido\"),\"Proyecto\")",
+        "B16": "=if($B$12=\"Proyecto\",B3,\"\")&if($B$12=\"Pedido\",B10,\"\")",
+        "B17": {
+          "S": [
+            "=",
+            "=",
+            "=",
+            "="
+          ],
+          "R": "=|+R1|=|-R2"
+        },
+        "B18": "=if($B$12=\"Análisis\",\"\",if($B$12=\"Proyecto\",B5,0)+if($B$12=\"Pedido\",B9,0))",
+        "B19": "=if($B$12=\"Proyecto\",B6,\"\")"
+      },
+      "styles": {
+        "A2": 7,
+        "A8": 7,
+        "A12": 7,
+        "A14": 7
+      },
+      "formats": {
+        "B5": 2,
+        "B9": 2,
+        "B18": 2
+      },
+      "borders": {},
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [],
+      "areGridLinesVisible": true,
+      "isVisible": false,
+      "isLocked": false,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      },
+      "defaultFormat": {
+        "colDefault": {},
+        "rowDefault": {
+          "4": 6,
+          "5": 6
+        }
+      },
+      "comments": {}
+    },
+    {
+      "id": "cdee71d1-64cf",
+      "name": "Proyecto (Lista 2)",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {
+        "0": {
+          "size": 161
+        },
+        "1": {
+          "size": 76
+        },
+        "2": {
+          "size": 112
+        },
+        "3": {
+          "size": 117
+        },
+        "4": {
+          "size": 104
+        },
+        "5": {
+          "size": 153
+        }
+      },
+      "merges": [],
+      "cells": {
+        "A1": "=ODOO.LIST(2,80)"
+      },
+      "styles": {},
+      "formats": {},
+      "borders": {},
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [
+        {
+          "range": "A1",
+          "type": "dynamic",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "styleId": "TableStyleMedium5",
+            "automaticAutofill": false
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "isVisible": false,
+      "isLocked": false,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      },
+      "comments": {}
+    },
+    {
+      "id": "73737fd0-9218",
+      "name": "Pedido de venta (Lista 3)",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {
+        "0": {
+          "size": 55
+        },
+        "1": {
+          "size": 153
+        },
+        "2": {
+          "size": 107
+        },
+        "3": {
+          "size": 112
+        },
+        "4": {
+          "size": 63
+        },
+        "5": {
+          "size": 80
+        },
+        "6": {
+          "size": 113
+        }
+      },
+      "merges": [],
+      "cells": {
+        "A1": "=ODOO.LIST(3,80)"
+      },
+      "styles": {},
+      "formats": {},
+      "borders": {},
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [
+        {
+          "range": "A1",
+          "type": "dynamic",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "styleId": "TableStyleMedium5",
+            "automaticAutofill": false
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "isVisible": false,
+      "isLocked": false,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      },
+      "comments": {}
+    },
+    {
+      "id": "8f74ddbe-d5dc",
+      "name": "Orden de fabricación (Lista 4)",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {
+        "0": {
+          "size": 240
+        },
+        "1": {
+          "size": 226
+        },
+        "2": {
+          "size": 154
+        },
+        "3": {
+          "size": 199
+        },
+        "4": {
+          "size": 83
+        },
+        "5": {
+          "size": 52
+        },
+        "6": {
+          "size": 117
+        },
+        "7": {
+          "size": 57
+        },
+        "8": {
+          "size": 38
+        },
+        "9": {
+          "size": 74
+        },
+        "10": {
+          "size": 180
+        },
+        "11": {
+          "size": 205
+        }
+      },
+      "merges": [],
+      "cells": {
+        "A1": "=ODOO.LIST(4,80)"
+      },
+      "styles": {},
+      "formats": {},
+      "borders": {},
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [
+        {
+          "range": "A1",
+          "type": "dynamic",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "styleId": "TableStyleMedium5",
+            "automaticAutofill": false
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "isVisible": false,
+      "isLocked": false,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      },
+      "comments": {}
+    },
+    {
+      "id": "6e63f2cf-f908",
+      "name": "Selección de campos (Lista 6)",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {
+        "0": {
+          "size": 66
+        },
+        "1": {
+          "size": 370
+        },
+        "2": {
+          "size": 106
+        },
+        "3": {
+          "size": 221
+        }
+      },
+      "merges": [],
+      "cells": {
+        "A1": "=ODOO.LIST(6,80)"
+      },
+      "styles": {},
+      "formats": {},
+      "borders": {},
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [
+        {
+          "range": "A1",
+          "type": "dynamic",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "styleId": "TableStyleMedium5",
+            "automaticAutofill": false
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "isVisible": false,
+      "isLocked": false,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      },
+      "comments": {}
+    }
+  ],
+  "styles": {
+    "1": {
+      "fillColor": ""
+    },
+    "2": {
+      "verticalAlign": "bottom",
+      "textColor": "#01666b",
+      "bold": true,
+      "fontSize": 16,
+      "fillColor": ""
+    },
+    "3": {
+      "bold": false,
+      "fillColor": ""
+    },
+    "4": {
+      "fillColor": "",
+      "textColor": ""
+    },
+    "5": {
+      "verticalAlign": "bottom",
+      "textColor": "#01666b",
+      "bold": true,
+      "fontSize": 16
+    },
+    "6": {
+      "align": "left"
+    },
+    "7": {
+      "bold": true
+    },
+    "8": {
+      "verticalAlign": "top"
+    },
+    "9": {
+      "align": "right"
+    },
+    "10": {
+      "bold": false
+    },
+    "11": {
+      "verticalAlign": "top",
+      "textColor": "#000000",
+      "wrapping": "wrap"
+    },
+    "12": {
+      "textColor": ""
+    },
+    "13": {},
+    "14": {
+      "bold": true,
+      "verticalAlign": "top",
+      "textColor": "#01666B"
+    }
+  },
+  "formats": {
+    "1": "@",
+    "2": "mm/dd/yyyy",
+    "3": "#,##0.00",
+    "4": "#,##0.00[$€]",
+    "5": "0.0%",
+    "6": ""
+  },
+  "borders": {
+    "1": {
+      "bottom": {
+        "style": "medium",
+        "color": "#D9D9D9"
+      }
+    },
+    "2": {
+      "left": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "top": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "right": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "bottom": {
+        "style": "medium",
+        "color": "#D9D9D9"
+      }
+    },
+    "3": {
+      "left": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "right": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "bottom": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      }
+    },
+    "4": {
+      "left": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "top": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "right": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      },
+      "bottom": {
+        "style": "thin",
+        "color": "#EFEFEF"
+      }
+    }
+  },
+  "revisionId": "4155d3eb-2ed5-4622-8709-2890c436fd8c",
+  "uniqueFigureIds": true,
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "mm/dd/yyyy",
+      "timeFormat": "hh:mm:ss a",
+      "formulaArgSeparator": ",",
+      "weekStart": 7,
+      "digitGrouping": "[3,0]"
+    }
+  },
+  "pivots": {},
+  "pivotNextId": 2,
+  "customTableStyles": {},
+  "namedRanges": {},
+  "globalFilters": [
+    {
+      "id": "73b6da1d-6563",
+      "label": "Proyecto",
+      "type": "relation",
+      "modelName": "project.project",
+      "domainOfAllowedValues": []
+    },
+    {
+      "id": "da8d70c7-bbd3",
+      "label": "Pedido de venta",
+      "type": "relation",
+      "modelName": "sale.order",
+      "domainOfAllowedValues": []
+    }
+  ],
+  "lists": {
+    "1": {
+      "model": "sale.order.line",
+      "name": "Línea de pedido",
+      "columns": [
+        {
+          "name": "product_id",
+          "string": "Producto",
+          "hidden": true
+        },
+        {
+          "name": "order_id",
+          "string": "Pedido"
+        },
+        {
+          "name": "x_item_number",
+          "string": "#",
+          "hidden": false
+        },
+        {
+          "name": "order_partner_id",
+          "string": "Cliente",
+          "hidden": true
+        },
+        {
+          "name": "name",
+          "string": "Descripción",
+          "hidden": true
+        },
+        {
+          "name": "Product Description",
+          "string": "Descripción del producto",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "=if(len(display_type)>0,name,product_id&if(and(len(product_id)>0,len(name)>0),\"\n\",\"\")&name)"
+          },
+          "hidden": false
+        },
+        {
+          "name": "product_uom_id",
+          "string": "Unidad"
+        },
+        {
+          "name": "price_unit",
+          "string": "Precio unitario",
+          "hidden": false
+        },
+        {
+          "name": "tax_ids",
+          "string": "Impuestos",
+          "hidden": false
+        },
+        {
+          "name": "x_production_ids.x_increment_percent",
+          "string": "% incremento",
+          "hidden": true
+        },
+        {
+          "name": "x_production_ids.x_cumulated_percent",
+          "string": "% acumulado",
+          "hidden": true
+        },
+        {
+          "name": "Increment (%)",
+          "string": "Incremento (%)",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "=TRIM(REGEXEXTRACT('x_production_ids.x_increment_percent', \"[^,]+$\"))*1"
+          },
+          "hidden": true
+        },
+        {
+          "name": "Cumulated (%)",
+          "string": "Acumulado (%)",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "=TRIM(REGEXEXTRACT('x_production_ids.x_cumulated_percent', \"[^,]+$\"))/100\n"
+          },
+          "hidden": true
+        },
+        {
+          "name": "order_id.project_id",
+          "string": "Proyecto",
+          "hidden": true
+        },
+        {
+          "name": "product_uom_qty",
+          "string": "Cantidad pedida",
+          "hidden": false
+        },
+        {
+          "name": "price_total",
+          "string": "Importe pedido",
+          "hidden": false
+        },
+        {
+          "name": "qty_delivered",
+          "string": "Cantidad entregada",
+          "hidden": false
+        },
+        {
+          "name": "qty_invoiced",
+          "string": "Cantidad facturada",
+          "hidden": false
+        },
+        {
+          "name": "amount_invoiced",
+          "string": "Importe facturado",
+          "hidden": false
+        },
+        {
+          "name": "Increment Quantity",
+          "string": "Cantidad de incremento",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "=sumifs('Orden de fabricación (Lista 4)'!F:F,'Orden de fabricación (Lista 4)'!G:G,id)\n"
+          },
+          "hidden": false
+        },
+        {
+          "name": "Cumulated Quantity",
+          "string": "Cantidad acumulada",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "=qty_delivered+'Increment Quantity'"
+          },
+          "hidden": false
+        },
+        {
+          "name": "To Invoice Quantity",
+          "string": "Cantidad a facturar",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "=max(0, qty_delivered-qty_invoiced)+'Increment Quantity'"
+          },
+          "hidden": false
+        },
+        {
+          "name": "To Invoice Amount",
+          "string": "Importe a facturar",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "='To Invoice Quantity'/if(product_uom_qty=0, 1, product_uom_qty)*price_total"
+          },
+          "hidden": false
+        },
+        {
+          "name": "display_type",
+          "string": "Tipo de línea",
+          "hidden": true
+        },
+        {
+          "name": "Display Type Value",
+          "string": "Valor del tipo de línea",
+          "computedBy": {
+            "sheetId": "834d44ac-7041",
+            "formula": "=XLOOKUP(display_type, 'Selección de campos (Lista 6)'!D:D, 'Selección de campos (Lista 6)'!C:C, \"\")"
+          },
+          "hidden": false
+        },
+        {
+          "name": "id",
+          "string": "ID",
+          "hidden": false
+        }
+      ],
+      "domain": [],
+      "context": {},
+      "orderBy": [
+        {
+          "name": "order_id",
+          "asc": false
+        },
+        {
+          "name": "sequence",
+          "asc": true
+        },
+        {
+          "name": "id",
+          "asc": true
+        }
+      ],
+      "fieldMatching": {
+        "73b6da1d-6563": {
+          "chain": "order_id.project_id",
+          "type": "many2one"
+        },
+        "da8d70c7-bbd3": {
+          "chain": "order_id",
+          "type": "many2one"
+        }
+      }
+    },
+    "2": {
+      "model": "project.project",
+      "name": "Proyecto",
+      "columns": [
+        {
+          "name": "name",
+          "string": "Nombre"
+        },
+        {
+          "name": "partner_id",
+          "string": "Cliente"
+        },
+        {
+          "name": "user_id",
+          "string": "Responsable del proyecto"
+        },
+        {
+          "name": "last_update_status",
+          "string": "Estado",
+          "hidden": true
+        },
+        {
+          "name": "stage_id",
+          "string": "Etapa",
+          "hidden": true
+        },
+        {
+          "name": "x_progress_approver",
+          "string": "Aprobador del avance",
+          "hidden": false
+        },
+        {
+          "name": "sale_order_id",
+          "string": "Referencia del pedido",
+          "hidden": false
+        },
+        {
+          "name": "sale_order_id.date_order",
+          "string": "Fecha del pedido",
+          "hidden": false
+        }
+      ],
+      "domain": [],
+      "context": {},
+      "orderBy": [],
+      "fieldMatching": {
+        "73b6da1d-6563": {
+          "chain": "id",
+          "type": "integer"
+        },
+        "da8d70c7-bbd3": {}
+      }
+    },
+    "3": {
+      "model": "sale.order",
+      "name": "Pedido de venta",
+      "columns": [
+        {
+          "name": "name",
+          "string": "Número"
+        },
+        {
+          "name": "date_order",
+          "string": "Fecha del pedido"
+        },
+        {
+          "name": "partner_id",
+          "string": "Cliente"
+        },
+        {
+          "name": "user_id",
+          "string": "Comercial"
+        },
+        {
+          "name": "activity_ids",
+          "string": "Actividades"
+        },
+        {
+          "name": "amount_total",
+          "string": "Total"
+        },
+        {
+          "name": "invoice_status",
+          "string": "Estado de facturación"
+        }
+      ],
+      "domain": [],
+      "context": {},
+      "orderBy": [],
+      "fieldMatching": {
+        "da8d70c7-bbd3": {
+          "chain": "id",
+          "type": "integer"
+        },
+        "73b6da1d-6563": {
+          "chain": "project_id",
+          "type": "many2one"
+        }
+      }
+    },
+    "4": {
+      "model": "mrp.production",
+      "name": "Orden de fabricación",
+      "columns": [
+        {
+          "name": "name",
+          "string": "Referencia"
+        },
+        {
+          "name": "product_id",
+          "string": "Producto"
+        },
+        {
+          "name": "product_qty",
+          "string": "Cantidad"
+        },
+        {
+          "name": "uom_id",
+          "string": "Unidad"
+        },
+        {
+          "name": "state",
+          "string": "Estado"
+        },
+        {
+          "name": "In Progress Increment Qty",
+          "string": "Cantidad de incremento en curso",
+          "computedBy": {
+            "sheetId": "8f74ddbe-d5dc",
+            "formula": "=if(XLOOKUP('state', 'Selección de campos (Lista 6)'!D:D, 'Selección de campos (Lista 6)'!C:C)=\"progress\",qty_producing,0)"
+          },
+          "hidden": false
+        },
+        {
+          "name": "sale_line_id.id",
+          "string": "ID",
+          "hidden": false
+        },
+        {
+          "name": "qty_producing",
+          "string": "Cantidad en producción",
+          "hidden": false
+        }
+      ],
+      "domain": [],
+      "context": {},
+      "orderBy": [],
+      "fieldMatching": {
+        "73b6da1d-6563": {
+          "chain": "sale_line_id.order_id.project_id",
+          "type": "many2one"
+        },
+        "da8d70c7-bbd3": {
+          "chain": "sale_line_id.order_id",
+          "type": "many2one"
+        }
+      }
+    },
+    "6": {
+      "model": "ir.model.fields.selection",
+      "name": "Selección de campos",
+      "columns": [
+        {
+          "name": "sequence",
+          "string": "Secuencia"
+        },
+        {
+          "name": "field_id",
+          "string": "Campo"
+        },
+        {
+          "name": "value",
+          "string": "Valor"
+        },
+        {
+          "name": "name",
+          "string": "Nombre"
+        }
+      ],
+      "domain": [
+        "|",
+        "&",
+        [
+          "field_id.model",
+          "=",
+          "mrp.production"
+        ],
+        [
+          "field_id.name",
+          "=",
+          "state"
+        ],
+        "&",
+        [
+          "field_id.model",
+          "=",
+          "sale.order.line"
+        ],
+        [
+          "field_id.name",
+          "=",
+          "display_type"
+        ]
+      ],
+      "context": {},
+      "orderBy": [],
+      "fieldMatching": {}
+    }
+  },
+  "listNextId": 7,
+  "odooLinkReferences": {}
+}
