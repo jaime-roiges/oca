@@ -204,3 +204,53 @@ msgstr "Un responsable de ventas debe confirmar los presupuestos con recursos pr
 #: model:ir.model.fields,field_description:tl_construction_budget_cost.field_tl_construction_budget_resource__uom_id
 msgid "Resource unit"
 msgstr "Unidad del recurso"
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/bom_cost.py:0
+msgid "Open the quotation-specific bill of materials from a draft sales order."
+msgstr "Abre la lista de materiales específica desde un presupuesto en borrador."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/bom_cost.py:0
+msgid "Only a sales manager can edit quotation costs."
+msgstr "Solo un responsable de ventas puede editar los costes del presupuesto."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/bom_cost.py:0
+msgid "This sales line already has manual or unrelated resources. Reconcile them in the budget tab before preparing the bill of materials."
+msgstr "Esta línea ya tiene recursos manuales o de otra lista. Revísalos en Costes de obra antes de preparar la lista."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/bom_cost.py:0
+msgid "More than one budget resource refers to the same BoM component."
+msgstr "Hay más de un recurso presupuestado vinculado al mismo componente."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/bom_cost.py:0
+msgid "A budgeted component cannot change product or unit. Remove its budget resource first."
+msgstr "No se puede cambiar el producto o unidad de un componente presupuestado. Elimina antes su recurso presupuestado."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/ir_actions.py:0
+msgid "A sales manager must update lines containing budget resources."
+msgstr "Un responsable de ventas debe actualizar las líneas con recursos presupuestados."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/ir_actions.py:0
+msgid "Budget resources belong to a different bill of materials. Review them before updating costs."
+msgstr "Hay recursos de otra lista de materiales. Revísalos antes de actualizar los costes."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/ir_actions.py:0
+msgid "The Construction Developer cost action has been modified. Review it before updating costs."
+msgstr "La acción de costes de Construction Developer ha sido modificada. Revísala antes de actualizar costes."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/ir_actions.py:0
+msgid "The Construction Developer cost window action has been modified. Review it before updating costs."
+msgstr "La acción de la ventana de costes de Construction Developer ha sido modificada. Revísala antes de actualizar costes."
+
+#. module: tl_construction_budget_cost
+#: code:addons/tl_construction_budget_cost/models/ir_actions.py:0
+msgid "A budgeted sales line must have a positive quantity."
+msgstr "Una línea de venta presupuestada debe tener una cantidad positiva."

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record id="view_sale_line_cost_update_budget" model="ir.ui.view">
+  <field name="name">sale.order.line.construction.budget.cost.comparison</field>
+  <field name="model">sale.order.line</field>
+  <field name="inherit_id" ref="construction_developer.view_sale_order_line_bom_list"/>
+  <field name="mode">extension</field>
+  <field name="arch" type="xml">
+   <xpath expr="//field[@name='purchase_price']" position="attributes">
+    <attribute name="decoration-danger">x_different_bom_cost</attribute>
+    <attribute name="decoration-warning"/>
+   </xpath>
+   <xpath expr="//field[@name='x_bom_cost']" position="attributes">
+    <attribute name="string">Coste estándar LdM</attribute>
+   </xpath>
+   <xpath expr="//field[@name='x_bom_cost']" position="after">
+    <field name="tl_has_budget_resources" string="Desglose propio" readonly="1" groups="sales_team.group_sale_manager"/>
+    <field name="tl_effective_bom_cost" string="Coste previsto con oficina" readonly="1" invisible="not tl_has_budget_resources" groups="sales_team.group_sale_manager"/>
+   </xpath>
+  </field>
+ </record>
+</odoo>

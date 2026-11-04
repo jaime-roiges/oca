@@ -20,8 +20,8 @@ class ConstructionBudgetResource(models.Model):
     name = fields.Char(string='Description', required=True)
     uom_id = fields.Many2one('uom.uom', string='Resource unit', required=True, help='Unit for the entered quantity and budgeted unit cost.')
     quantity = fields.Float(string='Quantity per sale unit', digits='Product Unit of Measure', required=True, default=1.0)
-    unit_cost = fields.Float(string='Budgeted unit cost', digits='Product Price', required=True)
-    amount_unit = fields.Float(string='Cost per sale unit', compute='_compute_amount_unit', store=True, digits='Product Price')
+    unit_cost = fields.Float(string='Budgeted unit cost', digits=(16, 6), required=True)
+    amount_unit = fields.Float(string='Cost per sale unit', compute='_compute_amount_unit', store=True, digits=(16, 8))
     category = fields.Selection([('material', 'Materials'), ('labor', 'Labour'), ('equipment', 'Equipment'), ('subcontract', 'Subcontracting'), ('other', 'Other direct costs')], default='material', required=True)
 
     @api.depends('quantity', 'unit_cost', 'currency_id')
@@ -92,7 +92,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     tl_resource_ids = fields.One2many('tl.construction.budget.resource', 'sale_line_id', string='Budget resources', copy=True, groups='sales_team.group_sale_manager')
-    tl_direct_unit_cost = fields.Float(string='Budgeted direct cost per unit', compute='_compute_tl_direct_unit_cost', digits='Product Price', groups='sales_team.group_sale_manager')
+    tl_direct_unit_cost = fields.Float(string='Budgeted direct cost per unit', compute='_compute_tl_direct_unit_cost', digits=(16, 8), groups='sales_team.group_sale_manager')
 
     @api.depends('tl_resource_ids.amount_unit')
     def _compute_tl_direct_unit_cost(self):
@@ -176,10 +176,7 @@ class SaleOrder(models.Model):
         if not lines:
             raise UserError(_('Add at least one resource to a positive sales line.'))
         for line in lines:
-            old_price = line.price_unit
-            line.write({'purchase_price': line.tl_direct_unit_cost * (1 + self.tl_office_percent / 100.0)})
-            if self.currency_id.compare_amounts(line.price_unit, old_price):
-                raise UserError(_('The sales price changed while applying costs. The operation was stopped.'))
+            line._tl_apply_cost_preserving_price(line._tl_effective_budget_cost())
         return True
 
     def action_confirm(self):
