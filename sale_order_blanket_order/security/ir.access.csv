@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_sale_order_deliver_remaining_wizard,access_sale_order_deliver_remaining_wizard,sale.order.deliver.remaining.wizard,base.group_user,crud,
+access_sale_order_deliver_remaining_wizard_line,access_sale_order_deliver_remaining_wizard_line,sale.order.deliver.remaining.wizard.line,base.group_user,crud,

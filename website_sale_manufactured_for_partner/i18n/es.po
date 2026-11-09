@@ -1,0 +1,27 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: website_sale_manufactured_for_partner 20.0\n"
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Website allowed customers"
+msgstr "Clientes autorizados en la web"
+
+msgid "One or more variants are reserved for named customers."
+msgstr "Una o varias variantes están reservadas para clientes concretos."
+
+msgid "This product is not available for your customer account."
+msgstr "Este producto no está disponible para su cuenta de cliente."
+
+msgid "Your order belongs to a different customer account."
+msgstr "El pedido pertenece a otra cuenta de cliente."
+
+msgid "This customer account cannot confirm this order."
+msgstr "Esta cuenta de cliente no puede confirmar el pedido."
+
+msgid "A product in this order is not authorized for this customer."
+msgstr "Uno de los productos del pedido no está autorizado para este cliente."
+
+msgid "This product variant is not available to your customer account."
+msgstr "Esta variante de producto no está disponible para su cuenta de cliente."

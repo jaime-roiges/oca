@@ -1,0 +1,618 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * sale_order_blanket_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 15:27+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#. module: sale_order_blanket_order
+msgid "<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title=\"Arrow\"/>"
+msgstr "<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title=\"Arrow\"/>"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "A blanket order cannot have a blanket order."
+msgstr "Un pedido marco no puede tener otro pedido marco."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "A call off order should have at least one product."
+msgstr "Un pedido de liberación debe tener al menos un producto."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "A call-off order must have a blanket order."
+msgstr "Un pedido de liberación debe tener un pedido marco."
+
+#. module: sale_order_blanket_order
+msgid "Allow Blanket Order Overlap"
+msgstr "Permitir solapamiento de pedidos marco"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "An order cannot have a blanket order."
+msgstr "Un pedido ordinario no puede tener un pedido marco."
+
+#. module: sale_order_blanket_order
+msgid "At Call-off"
+msgstr "En la liberación"
+
+#. module: sale_order_blanket_order
+msgid "Blanket Eol Strategy"
+msgstr "Estrategia de fin de vigencia del pedido marco"
+
+#. module: sale_order_blanket_order
+msgid "Blanket Order"
+msgstr "Pedido marco"
+
+#. module: sale_order_blanket_order
+msgid "Blanket Order Domain"
+msgstr "Dominio de pedidos marco"
+
+#. module: sale_order_blanket_order
+msgid "Blanket Order Line"
+msgstr "Línea del pedido marco"
+
+#. module: sale_order_blanket_order
+msgid "Blanket Orders"
+msgstr "Pedidos marco"
+
+#. module: sale_order_blanket_order
+msgid "Blanket orders"
+msgstr "Pedidos marco"
+
+#. module: sale_order_blanket_order
+msgid "Call Off Orders"
+msgstr "Pedidos de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Call Off Sale Line"
+msgstr "Línea de venta de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Call-off Order"
+msgstr "Pedido de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Call-off Order Count"
+msgstr "Número de pedidos de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Call-off Order Lines"
+msgstr "Líneas de pedidos de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Call-off Orders"
+msgstr "Pedidos de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Call-off lines"
+msgstr "Líneas de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Call-offs"
+msgstr "Liberaciones"
+
+#. module: sale_order_blanket_order
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sale_order_blanket_order
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: sale_order_blanket_order
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: sale_order_blanket_order
+msgid "Create Call Off From So If Possible"
+msgstr "Crear liberación desde el pedido si es posible"
+
+#. module: sale_order_blanket_order
+msgid "Create Call-Off from SO if possible"
+msgstr "Crear liberación desde el pedido si es posible"
+
+#. module: sale_order_blanket_order
+msgid "Create Call-off Order"
+msgstr "Crear pedido de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Create Call-off Sale Order"
+msgstr "Crear pedido de venta de liberación"
+
+#. module: sale_order_blanket_order
+msgid "Create Call-off Sale Order for remaining products"
+msgstr "Crear pedido de liberación para los productos pendientes"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "Create call-off sale order for products still to be delivered"
+msgstr "Crear pedido de liberación para productos aún no entregados"
+
+#. module: sale_order_blanket_order
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sale_order_blanket_order
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: sale_order_blanket_order
+msgid "Current Blanket Orders"
+msgstr "Pedidos marco vigentes"
+
+#. module: sale_order_blanket_order
+msgid "Deliver Remaining Quantity"
+msgstr "Entregar cantidad pendiente"
+
+#. module: sale_order_blanket_order
+msgid "Deliver remaining"
+msgstr "Entregar pendiente"
+
+#. module: sale_order_blanket_order
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: sale_order_blanket_order
+msgid "Finalize expired sale blanket orders"
+msgstr "Finalizar pedidos marco vencidos"
+
+#. module: sale_order_blanket_order
+msgid "From"
+msgstr "Desde"
+
+#. module: sale_order_blanket_order
+msgid ""
+"Generate a call-off order from a sales order if possible when the sales order is "
+"confirmed."
+msgstr ""
+"Generar un pedido de liberación a partir del pedido de venta, si es posible, al "
+"confirmarlo."
+
+#. module: sale_order_blanket_order
+msgid "ID"
+msgstr "ID"
+
+#. module: sale_order_blanket_order
+msgid ""
+"If checked, the system will enforce that the products are called off with the same "
+"packaging as the one defined on the blanket order lines. If not checked, the system "
+"will not take care of the packaging defined on the blanket order lines when calling off"
+" products nor the one on the call-off order lines."
+msgstr ""
+"Si está marcado, los productos deberán liberarse con el mismo embalaje definido en las "
+"líneas del pedido marco. Si no está marcado, el embalaje no se tendrá en cuenta en las "
+"liberaciones."
+
+#. module: sale_order_blanket_order
+msgid ""
+"If checked, when a sales order is confirmed and some lines refer to a blanket order, "
+"these lines will be automatically moved to a new call-off order."
+msgstr ""
+"Si se activa, al confirmar un pedido de venta las líneas vinculadas a un pedido marco "
+"se trasladarán automáticamente a un pedido de liberación."
+
+#. module: sale_order_blanket_order
+msgid ""
+"If enabled, blanket orders for this product can have overlapping validityperiods. By "
+"default, overlap is not allowed, ensuring only one active blanket order applies at a "
+"time."
+msgstr ""
+"Si se activa, un producto puede tener pedidos marco con periodos de vigencia solapados."
+" Por defecto se prohíbe el solapamiento para garantizar un único pedido marco activo "
+"cada vez."
+
+#. module: sale_order_blanket_order
+msgid ""
+"If the blanket order does not have enough available quantity, the call-off order will "
+"be generated with the available quantity and the original sale order line will be split"
+" into two lines: one line with the available quantity and one line with the remaining "
+"quantity. All the lines related to\n"
+"                            a blanket order will be moved to a new call-off order and "
+"the new call-off order will be confirmed."
+msgstr ""
+"Si el pedido marco no tiene suficiente cantidad disponible, se generará una liberación "
+"por la cantidad disponible y la línea original se dividirá en dos: cantidad disponible "
+"y cantidad restante. Las líneas vinculadas al pedido marco se trasladarán al nuevo "
+"pedido de liberación, que se confirmará."
+
+#. module: sale_order_blanket_order
+msgid ""
+"If this option is enabled, a call-off order will be generated from a sale order if the "
+"sale order contains products\n"
+"                            that are part of an open blanket order. The call-off order "
+"will be generated with the same products and quantities as the\n"
+"                            sale order provided that the blanket order has enough "
+"available quantity."
+msgstr ""
+"Si se activa, los productos de un pedido de venta que pertenezcan a un pedido marco "
+"abierto generarán un pedido de liberación con las mismas referencias y cantidades, "
+"siempre que haya suficiente cantidad pendiente."
+
+#. module: sale_order_blanket_order
+msgid ""
+"Indicates if the blanket order needs to be finalized. This field is a technical field "
+"used to manage the end-of-life of the blanket orders. To avoid costly operations to "
+"determine if the blanket order needs to be finalized once the validity period is "
+"reached, the system will set this field to True when a blanket order is confirmed. To "
+"know if a blanket order needs to be finalized, the system will search for the blanket "
+"orders with this field set to True and the validity period reached.Once the blanket "
+"order is finalized, the system will set this field to False. In this way, the DB will "
+"always contain less records to search with this field set to True."
+msgstr ""
+"Indica si el pedido marco está pendiente de finalizar. Es un campo técnico que gestiona"
+" el fin de vigencia de los pedidos marco. Para evitar cálculos costosos, se activa al "
+"confirmar el pedido y permite localizar los pedidos cuya vigencia ha terminado. Cuando "
+"se finaliza el pedido marco, se desactiva. Así se reduce el número de registros que "
+"debe revisar el sistema."
+
+#. module: sale_order_blanket_order
+msgid ""
+"Indicates if the end-of-life strategy can be edited. By default, the end-of-life "
+"strategy can be edited while the blanket order is not finalized."
+msgstr ""
+"Indica si puede modificarse la estrategia de fin de vigencia. Se puede editar mientras "
+"no se haya finalizado el pedido marco."
+
+#. module: sale_order_blanket_order
+msgid "Indicates if the reservation strategy can be edited."
+msgstr "Indica si se puede modificar la estrategia de reserva."
+
+#. module: sale_order_blanket_order
+msgid "Is Blanket Eol Strategy Editable"
+msgstr "Se puede editar la estrategia de fin de vigencia"
+
+#. module: sale_order_blanket_order
+msgid "Is Blanket Reservation Strategy Editable"
+msgstr "Se puede editar la estrategia de reserva"
+
+#. module: sale_order_blanket_order
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: sale_order_blanket_order
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: sale_order_blanket_order
+msgid "Need to be Finalized"
+msgstr "Pendiente de finalizar"
+
+#. module: sale_order_blanket_order
+msgid "Normal Orders"
+msgstr "Pedidos normales"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "Only blanket orders can be confirmed as blanket orders."
+msgstr "Solo se pueden confirmar como pedidos marco los pedidos de tipo marco."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "Only call-off orders can be confirmed as call-off orders."
+msgstr "Solo se pueden confirmar como liberaciones los pedidos de liberación."
+
+#. module: sale_order_blanket_order
+msgid "Order"
+msgstr "Pedido"
+
+#. module: sale_order_blanket_order
+msgid "Order Type"
+msgstr "Tipo de pedido"
+
+#. module: sale_order_blanket_order
+msgid "Picking moves"
+msgstr "Movimientos de albarán"
+
+#. module: sale_order_blanket_order
+msgid "Product"
+msgstr "Producto"
+
+#. module: sale_order_blanket_order
+msgid "Products to Deliver"
+msgstr "Productos para entregar"
+
+#. module: sale_order_blanket_order
+msgid "Quantity remaining for Call-off"
+msgstr "Cantidad pendiente de liberar"
+
+#. module: sale_order_blanket_order
+msgid "Quantity to Deliver"
+msgstr "Cantidad para entregar"
+
+#. module: sale_order_blanket_order
+msgid "Remaining Quantity"
+msgstr "Cantidad pendiente"
+
+#. module: sale_order_blanket_order
+msgid "Remaining product to deliver"
+msgstr "Producto pendiente de entregar"
+
+#. module: sale_order_blanket_order
+msgid "Reservation Strategy"
+msgstr "Estrategia de reserva"
+
+#. module: sale_order_blanket_order
+msgid "Sale Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: sale_order_blanket_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: sale_order_blanket_order
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: sale_order_blanket_order
+msgid "Show Deliver Remaining"
+msgstr "Mostrar entrega pendiente"
+
+#. module: sale_order_blanket_order
+msgid ""
+"Specifies the end-of-life strategy for the blanket order. At the end of the validity "
+"period, in any case if a reserved quantity remains, the system will release the "
+"reservation. If the strategy is 'Deliver Remaining Quantity', the system will "
+"automaticaly create a delivery order for the remaining quantity."
+msgstr ""
+"Define qué sucede al vencer el pedido marco. Si queda cantidad reservada, se liberará "
+"la reserva. Con la estrategia «Entregar cantidad pendiente» se creará automáticamente "
+"un albarán para la cantidad restante."
+
+#. module: sale_order_blanket_order
+msgid "Specifies the type of sale order: Order, Blanket, or Call-off."
+msgstr "Indica el tipo de pedido de venta: normal, marco o liberación."
+
+#. module: sale_order_blanket_order
+msgid ""
+"Specifies when the stock should be reserved for the blanket order.  When the strategy "
+"is 'At Order Confirmation', the stock is reserved when the blanket order is confirmed. "
+"When the strategy is 'At Call-off', the stock is reserved when the call-off order is "
+"confirmed."
+msgstr ""
+"Indica cuándo se reservan las existencias del pedido marco. Con «Al confirmar el "
+"pedido» se reservan al confirmar el pedido marco; con «En la liberación» se reservan al"
+" confirmar el pedido de liberación."
+
+#. module: sale_order_blanket_order
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: sale_order_blanket_order
+msgid "Stock Moves on Blanket Order"
+msgstr "Movimientos de existencias del pedido marco"
+
+#. module: sale_order_blanket_order
+msgid "Stock Rule"
+msgstr "Regla de abastecimiento"
+
+#. module: sale_order_blanket_order
+msgid "Strict Packaging"
+msgstr "Embalaje estricto"
+
+#. module: sale_order_blanket_order
+msgid "Strict Packaging ?"
+msgstr "¿Embalaje estricto?"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "The 'Quantity to Deliver' cannot be greater than the 'Remaining Quantity'."
+msgstr "La cantidad para entregar no puede superar la cantidad pendiente."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "The 'Quantity to Deliver' cannot be negative."
+msgstr "La cantidad para entregar no puede ser negativa."
+
+#. module: sale_order_blanket_order
+msgid "The blanket order line corresponding to this call-off order line."
+msgstr "Línea del pedido marco correspondiente a esta línea de liberación."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "The blanket order must be confirmed before creating a call-off order."
+msgstr "Debe confirmarse el pedido marco antes de crear una liberación."
+
+#. module: sale_order_blanket_order
+msgid "The blanket order that this call-off order is related to."
+msgstr "Pedido marco al que pertenece esta liberación."
+
+#. module: sale_order_blanket_order
+msgid "The call-off order lines linked to this blanket order line."
+msgstr "Líneas de liberación vinculadas a esta línea del pedido marco."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "The call-off order must be within the validity period of the blanket order."
+msgstr "El pedido de liberación debe estar dentro del periodo de vigencia del pedido marco."
+
+#. module: sale_order_blanket_order
+msgid "The call-off orders related to this blanket order."
+msgstr "Pedidos de liberación vinculados a este pedido marco."
+
+#. module: sale_order_blanket_order
+msgid "The domain to search for the blanket order candidates."
+msgstr "Dominio de búsqueda de pedidos marco candidatos."
+
+#. module: sale_order_blanket_order
+msgid "The end date of the validity period for the blanket order."
+msgstr "Fecha final de vigencia del pedido marco."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid "The end-of-life strategy cannot be modified on order %(order)s."
+msgstr "No se puede modificar la estrategia de fin de vigencia del pedido %(order)s."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid ""
+"The forecasted quantity cannot be less than the quantity already called by call-off "
+"orders."
+msgstr ""
+"La cantidad prevista no puede ser inferior a la cantidad ya solicitada mediante "
+"liberaciones."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid ""
+"The line %(line)s has been created from order %(order)s. (Qty moved: "
+"%(qty_deliverable)s)"
+msgstr ""
+"La línea %(line)s se ha creado a partir del pedido %(order)s. (Cantidad trasladada: "
+"%(qty_deliverable)s)"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid "The line %(line)s has been moved from order %(order)s."
+msgstr "La línea %(line)s se ha trasladado desde el pedido %(order)s."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid "The line %(line)s has been moved to a new call-off order %(call_off)s."
+msgstr "La línea %(line)s se ha trasladado al nuevo pedido de liberación %(call_off)s."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid ""
+"The line %(line)s has been partially moved to a new call-off order %(call_off)s. (Qty "
+"moved: %(qty_deliverable)s)"
+msgstr ""
+"La línea %(line)s se ha trasladado parcialmente al nuevo pedido de liberación "
+"%(call_off)s. (Cantidad trasladada: %(qty_deliverable)s)"
+
+#. module: sale_order_blanket_order
+msgid "The number of call-off orders related to this blanket order."
+msgstr "Número de pedidos de liberación asociados al pedido marco."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid ""
+"The price of a call-off order line must be 0.0. (Order: '%(order)s', Product: "
+"'%(product)s')"
+msgstr ""
+"El precio de una línea de liberación debe ser 0,0. (Pedido: «%(order)s», Producto: "
+"«%(product)s»)"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid "The product '%(product_name)s' is already part of another blanket order %(order_name)s."
+msgstr "El producto «%(product_name)s» ya forma parte de otro pedido marco %(order_name)s."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid ""
+"The product is not part of linked blanket order. (Product: '%(product)s', Order: "
+"'%(order)s', Blanket Order: '%(blanket_order)s')"
+msgstr ""
+"El producto no pertenece al pedido marco vinculado. (Producto: «%(product)s», Pedido: "
+"«%(order)s», Pedido marco: «%(blanket_order)s»)"
+
+#. module: sale_order_blanket_order
+msgid ""
+"The quantity remaining to consume by call-off orders in case of a blanket order. This "
+"quantity is the difference between the quantity not yet delivered or part of a pending "
+"delivery and the ordered quantity."
+msgstr ""
+"Cantidad pendiente de consumir mediante liberaciones de un pedido marco. Se calcula "
+"teniendo en cuenta la cantidad pedida y la ya entregada o pendiente de entrega."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid ""
+"The quantity to procure is greater than the quantity remaining to deliver in the linked"
+" blanket order for this product. (Product: '%(product)s', Order: '%(order)s', Blanket "
+"Order: '%(blanket_order)s')"
+msgstr ""
+"La cantidad a aprovisionar supera la cantidad pendiente del pedido marco para este "
+"producto. (Producto: «%(product)s», Pedido: «%(order)s», Pedido marco: "
+"«%(blanket_order)s»)"
+
+#. module: sale_order_blanket_order
+#. odoo-python
+#, python-format
+msgid "The reservation strategy cannot be modified on order %(order)s."
+msgstr "No se puede modificar la estrategia de reserva del pedido %(order)s."
+
+#. module: sale_order_blanket_order
+msgid "The start date of the validity period for the blanket order."
+msgstr "Fecha inicial de vigencia del pedido marco."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "The validity end date is required for a blanket order."
+msgstr "La fecha final de vigencia es obligatoria en los pedidos marco."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "The validity end date must be greater than the validity start date."
+msgstr "La fecha final de vigencia debe ser posterior a la fecha inicial."
+
+#. module: sale_order_blanket_order
+#. odoo-python
+msgid "The validity start date is required for a blanket order."
+msgstr "La fecha inicial de vigencia es obligatoria en los pedidos marco."
+
+#. module: sale_order_blanket_order
+msgid "To"
+msgstr "Hasta"
+
+#. module: sale_order_blanket_order
+msgid "To Call-off"
+msgstr "Para liberar"
+
+#. module: sale_order_blanket_order
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: sale_order_blanket_order
+msgid "Validity End Date"
+msgstr "Fecha fin de vigencia"
+
+#. module: sale_order_blanket_order
+msgid "Validity Start Date"
+msgstr "Fecha inicio de vigencia"
+
+#. module: sale_order_blanket_order
+msgid "Validity period"
+msgstr "Periodo de vigencia"
+
+#. module: sale_order_blanket_order
+msgid "Values set here are company-specific."
+msgstr "Los valores definidos aquí son específicos de cada compañía."
+
+#. module: sale_order_blanket_order
+msgid ""
+"When this option is enabled, the system will automatically create call-off orders when "
+"a sales order is confirmed and some lines refer to a blanket order."
+msgstr ""
+"Al activar esta opción, se crearán automáticamente pedidos de liberación al confirmar "
+"pedidos de venta cuyas líneas estén vinculadas a un pedido marco."
+
+#. module: sale_order_blanket_order
+msgid "Whether to show the 'deliver remaining' button or not"
+msgstr "Indica si se muestra el botón «Entregar pendiente»."
+
+#. module: sale_order_blanket_order
+msgid "Wizard"
+msgstr "Asistente"
+

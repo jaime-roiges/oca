@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tl_dimpal_website_contract_checkout 20.0\n"
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Contract releases must be requested from the customer portal."
+msgstr "Las entregas de contratos deben solicitarse desde el portal de clientes."
+
+msgid "This product has an active supply contract. Request its delivery in My Account / Supply Contracts."
+msgstr "Este producto tiene un contrato de suministro activo. Solicite su entrega en Mi cuenta / Contratos de suministro."
+
+msgid "Sign in to place an order on credit."
+msgstr "Inicie sesión para realizar un pedido a crédito."
+
+msgid "This customer is not authorized for credit checkout."
+msgstr "Este cliente no está autorizado para realizar pedidos a crédito."
+
+msgid "The shopping cart is not valid for this website."
+msgstr "La cesta no es válida para este sitio web."

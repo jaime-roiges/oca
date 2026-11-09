@@ -1,0 +1,31 @@
+<odoo>
+  <record id="view_dimpal_release_request_list" model="ir.ui.view">
+    <field name="name">tl.dimpal.release.request.list</field>
+    <field name="model">tl.dimpal.release.request</field>
+    <field name="arch" type="xml"><list string="Call-off requests" create="0">
+      <field name="blanket_order_id"/><field name="line_id"/><field name="partner_id"/><field name="quantity"/>
+      <field name="state"/><field name="sale_order_id"/>
+    </list></field>
+  </record>
+  <record id="view_dimpal_release_request_form" model="ir.ui.view">
+    <field name="name">tl.dimpal.release.request.form</field>
+    <field name="model">tl.dimpal.release.request</field>
+    <field name="arch" type="xml"><form string="Customer call-off request">
+      <header>
+        <button name="action_approve" type="object" string="Approve and create OCA call-off" class="btn-primary" invisible="state != 'pending'"/>
+        <button name="action_reject" type="object" string="Reject" invisible="state != 'pending'"/>
+        <field name="state" widget="statusbar"/>
+      </header>
+      <sheet><group><field name="blanket_order_id" readonly="1"/><field name="line_id" readonly="1"/>
+        <field name="partner_id" readonly="1"/><field name="quantity" readonly="1"/>
+        <field name="sale_order_id" readonly="1"/><field name="notes" readonly="1"/></group></sheet>
+    </form></field>
+  </record>
+  <record id="action_dimpal_release_requests" model="ir.actions.act_window">
+    <field name="name">Customer call-off requests</field><field name="res_model">tl.dimpal.release.request</field>
+    <field name="view_mode">list,form</field>
+  </record>
+  <menuitem id="menu_dimpal_release_requests" name="Customer call-off requests"
+    parent="tl_dimpal_blanket_management.menu_dimpal_root" action="action_dimpal_release_requests"
+    groups="sales_team.group_sale_salesman" sequence="15"/>
+</odoo>

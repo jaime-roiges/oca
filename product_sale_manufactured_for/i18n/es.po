@@ -1,0 +1,12 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: product_sale_manufactured_for 20.0\n"
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Manufactured for"
+msgstr "Fabricado para"
+
+msgid "When empty the product is available to every customer. When set, website sales are limited to these contacts and their companies."
+msgstr "Si está vacío, el producto está disponible para todos los clientes. Si está informado, la venta web se limita a los contactos y empresas indicados."

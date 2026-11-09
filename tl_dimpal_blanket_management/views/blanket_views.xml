@@ -1,0 +1,20 @@
+<odoo>
+  <record id="sale_order_dimpal_blanket_form" model="ir.ui.view">
+    <field name="name">sale.order.dimpal.blanket.form</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="Dimpal supply" name="dimpal_supply_page" invisible="order_type != 'blanket'">
+          <group>
+            <field name="dimpal_portal_visible"/>
+            <field name="dimpal_purchase_count" readonly="1"/>
+            <button name="action_dimpal_view_purchases" type="object" string="Related purchases" class="btn-secondary"/>
+          </group>
+          <field name="dimpal_purchase_ids" readonly="1"/>
+        </page>
+      </xpath>
+    </field>
+  </record>
+  <menuitem id="menu_dimpal_root" name="Dimpal" sequence="85"/>
+</odoo>
