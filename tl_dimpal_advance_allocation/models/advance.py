@@ -7,11 +7,11 @@ class ResCompany(models.Model):
 
     dimpal_customer_advance_account_id = fields.Many2one(
         'account.account', string='Customer advances (438)', check_company=True,
-        domain="[('deprecated', '=', False)]",
+        domain="[('active', '=', True), ('account_type', '=', 'liability_current')]",
     )
     dimpal_supplier_advance_account_id = fields.Many2one(
         'account.account', string='Supplier advances (407)', check_company=True,
-        domain="[('deprecated', '=', False)]",
+        domain="[('active', '=', True), ('account_type', '=', 'asset_current')]",
     )
     dimpal_auto_allocate_sales = fields.Boolean(
         string='Proportionally allocate advance to customer delivery invoices', default=False,

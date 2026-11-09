@@ -1,7 +1,7 @@
 {
     'name': 'Dimpal - Fiscal Advances and Partial Allocation',
     'summary': 'Customer and vendor advance invoices, 438/407 and proportional deduction',
-    'version': '20.0.2.0.0',
+    'version': '20.0.2.0.1',
     'category': 'Accounting/Accounting',
     'license': 'AGPL-3',
     'author': 'Tecniloop',
