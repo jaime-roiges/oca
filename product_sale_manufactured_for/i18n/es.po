@@ -5,8 +5,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. module: product_sale_manufactured_for
+#: model:ir.model.fields,field_description:product_sale_manufactured_for.field_product_product__manufactured_for_partner_ids
 msgid "Manufactured for"
 msgstr "Fabricado para"
 
+#. module: product_sale_manufactured_for
+#: model:ir.model.fields,help:product_sale_manufactured_for.field_product_product__manufactured_for_partner_ids
 msgid "When empty the product is available to every customer. When set, website sales are limited to these contacts and their companies."
 msgstr "Si está vacío, el producto está disponible para todos los clientes. Si está informado, la venta web se limita a los contactos y empresas indicados."

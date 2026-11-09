@@ -5,23 +5,37 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. module: website_sale_manufactured_for_partner
+#: model:ir.model.fields,field_description:website_sale_manufactured_for_partner.field_product_template__website_manufactured_for_partner_ids
 msgid "Website allowed customers"
 msgstr "Clientes autorizados en la web"
 
+#. module: website_sale_manufactured_for_partner
+#: model:ir.model.fields,help:website_sale_manufactured_for_partner.field_product_template__website_manufactured_restricted
 msgid "One or more variants are reserved for named customers."
 msgstr "Una o varias variantes están reservadas para clientes concretos."
 
+#. module: website_sale_manufactured_for_partner
+#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
 msgid "This product is not available for your customer account."
 msgstr "Este producto no está disponible para su cuenta de cliente."
 
+#. module: website_sale_manufactured_for_partner
+#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
 msgid "Your order belongs to a different customer account."
 msgstr "El pedido pertenece a otra cuenta de cliente."
 
+#. module: website_sale_manufactured_for_partner
+#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
 msgid "This customer account cannot confirm this order."
 msgstr "Esta cuenta de cliente no puede confirmar el pedido."
 
+#. module: website_sale_manufactured_for_partner
+#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
 msgid "A product in this order is not authorized for this customer."
 msgstr "Uno de los productos del pedido no está autorizado para este cliente."
 
+#. module: website_sale_manufactured_for_partner
+#: code:addons/website_sale_manufactured_for_partner/models/product_template.py:0
 msgid "This product variant is not available to your customer account."
 msgstr "Esta variante de producto no está disponible para su cuenta de cliente."

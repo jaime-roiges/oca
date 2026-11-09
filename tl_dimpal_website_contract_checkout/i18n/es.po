@@ -5,17 +5,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. module: tl_dimpal_website_contract_checkout
+#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "Contract releases must be requested from the customer portal."
 msgstr "Las entregas de contratos deben solicitarse desde el portal de clientes."
 
+#. module: tl_dimpal_website_contract_checkout
+#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "This product has an active supply contract. Request its delivery in My Account / Supply Contracts."
 msgstr "Este producto tiene un contrato de suministro activo. Solicite su entrega en Mi cuenta / Contratos de suministro."
 
+#. module: tl_dimpal_website_contract_checkout
+#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "Sign in to place an order on credit."
 msgstr "Inicie sesión para realizar un pedido a crédito."
 
+#. module: tl_dimpal_website_contract_checkout
+#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "This customer is not authorized for credit checkout."
 msgstr "Este cliente no está autorizado para realizar pedidos a crédito."
 
+#. module: tl_dimpal_website_contract_checkout
+#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "The shopping cart is not valid for this website."
 msgstr "La cesta no es válida para este sitio web."
