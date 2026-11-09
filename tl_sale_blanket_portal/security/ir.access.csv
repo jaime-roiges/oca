@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_tl_release_request_sales,Sales delivery requests,tl.sale.release.request,sales_team.group_sale_salesman,cru,
+access_tl_release_request_manager,Manager delivery requests,tl.sale.release.request,sales_team.group_sale_manager,crud,
+rule_tl_release_company,Delivery request company restriction,tl.sale.release.request,,crud,"[('company_id','in',company_ids)]"

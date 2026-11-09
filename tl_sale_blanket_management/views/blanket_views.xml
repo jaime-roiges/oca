@@ -1,0 +1,20 @@
+<odoo>
+  <record id="sale_blanket_order_supply_form" model="ir.ui.view">
+    <field name="name">sale.blanket.order.supply.form</field>
+    <field name="model">sale.blanket.order</field>
+    <field name="inherit_id" ref="sale_blanket_order.view_blanket_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+        <page name="tl_supply_page" string="Supply and customer portal">
+          <group>
+            <field name="tl_portal_visible"/>
+            <field name="tl_purchase_count" readonly="1"/>
+            <button name="action_tl_view_purchases" type="object"
+                    string="Related purchases" class="btn-secondary"/>
+          </group>
+          <field name="tl_purchase_ids" readonly="1"/>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>

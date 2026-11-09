@@ -1,5 +1,0 @@
-id,name,model_id,group_id/id,operation,domain
-access_dimpal_release_request_portal,Portal call-off requests (read),tl.dimpal.release.request,base.group_portal,r,"[('partner_id','child_of',[user.commercial_partner_id.id])]"
-access_dimpal_release_request_sales,Sales call-off requests,tl.dimpal.release.request,sales_team.group_sale_salesman,cru,
-access_dimpal_release_request_manager,Manager call-off requests,tl.dimpal.release.request,sales_team.group_sale_manager,crud,
-dimpal_request_company_rule,Call-off request company restriction,tl.dimpal.release.request,,crud,"[('company_id','in',company_ids)]"

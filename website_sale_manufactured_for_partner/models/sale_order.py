@@ -10,7 +10,7 @@ from .visibility import commercial_customer_matches
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    def _dimpal_website_visitor(self):
+    def _tl_website_visitor(self):
         """Resolve the real portal visitor even if Odoo handles the cart in sudo."""
         try:
             user = request.env.user
@@ -20,10 +20,10 @@ class SaleOrder(models.Model):
             pass
         return False
 
-    def _dimpal_validate_manufactured_products(self):
+    def _tl_validate_manufactured_products(self):
         """Central authority for backend, XML-RPC, portal and website confirmation."""
         for order in self:
-            visitor = order._dimpal_website_visitor() if order.website_id else False
+            visitor = order._tl_website_visitor() if order.website_id else False
             if visitor and not visitor._is_public():
                 if not commercial_customer_matches(visitor.partner_id, order.partner_id):
                     raise AccessError(_("This customer account cannot confirm this order."))
@@ -45,11 +45,11 @@ class SaleOrder(models.Model):
                     )
         return True
 
-    def _dimpal_check_cart_product(self, product):
+    def _tl_check_cart_product(self, product):
         self.ensure_one()
         if not self.website_id:
             return
-        visitor = self._dimpal_website_visitor()
+        visitor = self._tl_website_visitor()
         partner = (
             visitor.partner_id if visitor and not visitor._is_public()
             else self.env["res.partner"]
@@ -64,22 +64,22 @@ class SaleOrder(models.Model):
     def _cart_add(self, product_id, quantity=1.0, *, uom_id=None, **kwargs):
         if self.website_id and quantity > 0:
             product = self.env["product.product"].browse(int(product_id)).exists()
-            self._dimpal_check_cart_product(product)
+            self._tl_check_cart_product(product)
         return super()._cart_add(product_id, quantity=quantity, uom_id=uom_id, **kwargs)
 
     def _cart_update_line_quantity(self, line_id, quantity, **kwargs):
         if self.website_id and quantity > 0:
             line = self.order_line.filtered(lambda l: l.id == line_id)
             if line:
-                self._dimpal_check_cart_product(line.product_id)
+                self._tl_check_cart_product(line.product_id)
         return super()._cart_update_line_quantity(line_id, quantity, **kwargs)
 
     def action_confirm(self):
-        self._dimpal_validate_manufactured_products()
+        self._tl_validate_manufactured_products()
         return super().action_confirm()
 
     def write(self, vals):
         result = super().write(vals)
         if "partner_id" in vals:
-            self.filtered(lambda order: order.state in ("sale", "done"))._dimpal_validate_manufactured_products()
+            self.filtered(lambda order: order.state in ("sale", "done"))._tl_validate_manufactured_products()
         return result

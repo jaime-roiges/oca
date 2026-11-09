@@ -1,0 +1,12 @@
+id,name,model_id,group_id/id,operation,domain
+access_sale_blanket_order,Blanket Order sales,sale.blanket.order,sales_team.group_sale_salesman,cru,
+access_sale_blanket_order_line,Blanket Order line sales,sale.blanket.order.line,sales_team.group_sale_salesman,crud,
+access_sale_blanket_order_manager,Blanket Order manager,sale.blanket.order,sales_team.group_sale_manager,crud,
+access_sale_blanket_order_line_manager,Blanket Order line manager,sale.blanket.order.line,sales_team.group_sale_manager,crud,
+access_sale_blanket_order_accountant,Blanket Order accountant,sale.blanket.order,account.group_account_user,ru,
+access_sale_blanket_order_line_accountant,Blanket Order line accountant,sale.blanket.order.line,account.group_account_user,ru,
+access_sale_blanket_order_line_user,Blanket Order line user,sale.blanket.order.line,base.group_user,r,
+access_sale_blanket_order_wizard_user,Blanket Order wizard,sale.blanket.order.wizard,base.group_user,crud,
+access_sale_blanket_order_wizard_line_user,Blanket Order wizard lines,sale.blanket.order.wizard.line,base.group_user,crud,
+rule_sale_blanket_order_company,Blanket Order company restriction,sale.blanket.order,,crud,"[('company_id','in',company_ids)]"
+rule_sale_blanket_order_line_company,Blanket Order line company restriction,sale.blanket.order.line,,crud,"[('company_id','in',company_ids)]"

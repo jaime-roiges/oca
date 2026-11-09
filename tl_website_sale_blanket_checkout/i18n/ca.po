@@ -1,0 +1,91 @@
+# Translation of Odoo Server.
+# Source addon: tl_website_sale_blanket_checkout. Generated for Supply Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "Contract releases must be requested from the customer portal."
+msgstr "Els lliuraments del contracte s’han de sol·licitar des del portal del client."
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Mis contratos de suministro"
+msgstr "Els meus contractes de subministrament"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "No se ha podido confirmar el pedido"
+msgstr "No s’ha pogut confirmar la comanda"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Revisa la autorización de crédito y los productos del carrito o contacta con el departamento comercial."
+msgstr "Reviseu l’autorització de crèdit i els productes de la cistella o contacteu amb el departament comercial."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "Sign in to place an order on credit."
+msgstr "Inicieu la sessió per fer una comanda a crèdit."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "The shopping cart is not valid for this website."
+msgstr "La cistella no és vàlida per a aquest lloc web."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "This customer is not authorized for credit checkout."
+msgstr "Aquest client no està autoritzat a confirmar compres a crèdit."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "This product has an active supply contract. Request its delivery in My Account / Supply Contracts."
+msgstr "Aquest producte té un contracte de subministrament actiu. Sol·liciteu-ne el lliurament a El meu compte / Contractes de subministrament."
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Volver al carrito"
+msgstr "Torna a la cistella"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Credit checkout denied"
+msgstr "Compra a crèdit no autoritzada"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Mis contratos"
+msgstr ""
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "More than one active blanket contract covers this product. Request it through My Contracts, or ask a salesperson to select the contract."
+msgstr "Hi ha diversos contractes marc per a aquest producte. Demaneu-lo des d’Els meus contractes o contacteu amb un comercial."
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Revisa tu autorización de crédito y los productos del carrito."
+msgstr ""
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "Shopping cart does not belong to this website/company."
+msgstr "La cistella no correspon a aquest web o companyia."

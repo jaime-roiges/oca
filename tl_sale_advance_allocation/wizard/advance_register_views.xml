@@ -1,0 +1,14 @@
+<odoo>
+  <record id="view_tl_advance_register_wizard_form" model="ir.ui.view">
+    <field name="name">tl.sale.advance.register.wizard.form</field>
+    <field name="model">tl.sale.advance.register.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Register fiscal advance invoice">
+        <group><field name="invoice_id" readonly="1"/><field name="blanket_order_id"/>
+          <field name="invoice_line_id"/></group>
+        <footer><button name="action_register" type="object" string="Register advance" class="btn-primary"/>
+          <button string="Cancel" special="cancel"/></footer>
+      </form>
+    </field>
+  </record>
+</odoo>

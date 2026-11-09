@@ -1,0 +1,34 @@
+<odoo>
+  <record id="view_tl_release_request_list" model="ir.ui.view">
+    <field name="name">tl.sale.release.request.list</field>
+    <field name="model">tl.sale.release.request</field>
+    <field name="arch" type="xml"><list string="Contract delivery requests" create="0">
+      <field name="blanket_order_id"/><field name="line_id"/><field name="partner_id"/>
+      <field name="quantity"/><field name="state"/><field name="sale_order_id"/>
+    </list></field>
+  </record>
+  <record id="view_tl_release_request_form" model="ir.ui.view">
+    <field name="name">tl.sale.release.request.form</field>
+    <field name="model">tl.sale.release.request</field>
+    <field name="arch" type="xml"><form string="Customer delivery request">
+      <header>
+        <button name="action_approve" type="object" string="Add to draft sales order"
+          class="btn-primary" invisible="state != 'pending'"/>
+        <button name="action_reject" type="object" string="Reject" invisible="state != 'pending'"/>
+        <field name="state" widget="statusbar"/>
+      </header>
+      <sheet><group><field name="blanket_order_id" readonly="1"/>
+        <field name="line_id" readonly="1"/><field name="partner_id" readonly="1"/>
+        <field name="quantity" readonly="1"/><field name="sale_order_id"/>
+        <field name="notes" readonly="1"/></group></sheet>
+    </form></field>
+  </record>
+  <record id="action_tl_release_requests" model="ir.actions.act_window">
+    <field name="name">Customer delivery requests</field>
+    <field name="res_model">tl.sale.release.request</field>
+    <field name="view_mode">list,form</field>
+  </record>
+  <menuitem id="menu_tl_release_requests" name="Customer delivery requests"
+    parent="sale.sale_order_menu" action="action_tl_release_requests"
+    groups="sales_team.group_sale_salesman" sequence="23"/>
+</odoo>

@@ -1,0 +1,84 @@
+# Translation of Odoo Server.
+# Source addon: tl_sale_blanket_management. Generated for Supply Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_sale_blanket_management
+#: model:ir.model.fields,field_description:tl_sale_blanket_management.field_purchase_order__tl_blanket_order_id
+msgid "Customer blanket order"
+msgstr "Pedido marco del cliente"
+
+#. module: tl_sale_blanket_management
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_management.sale_order_tl_blanket_form
+msgid "Supply contract"
+msgstr "Suministro Supply"
+
+#. module: tl_sale_blanket_management
+#: model:ir.model.fields,help:tl_sale_blanket_management.field_sale_order__tl_portal_visible
+msgid "Only relevant for OCA blanket orders; customer access rules still apply."
+msgstr "Solo se aplica a pedidos marco OCA; las reglas de acceso del cliente siguen vigentes."
+
+#. module: tl_sale_blanket_management
+#. odoo-python
+#: code:addons/tl_sale_blanket_management/models/purchase_order.py:0
+msgid "Purchase must reference a blanket order in the same company."
+msgstr "La compra debe estar vinculada a un pedido marco de la misma empresa."
+
+#. module: tl_sale_blanket_management
+#: model:ir.model.fields,field_description:tl_sale_blanket_management.field_sale_order__tl_purchase_ids
+msgid "Purchases for blanket order"
+msgstr "Compras del pedido marco"
+
+#. module: tl_sale_blanket_management
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_management.sale_order_tl_blanket_form
+msgid "Related purchases"
+msgstr "Compras relacionadas"
+
+#. module: tl_sale_blanket_management
+#. odoo-python
+#: code:addons/tl_sale_blanket_management/models/blanket_order.py:0
+msgid "Select a blanket sales order."
+msgstr "Seleccione un pedido marco de venta."
+
+#. module: tl_sale_blanket_management
+#: model:ir.model.fields,field_description:tl_sale_blanket_management.field_sale_order__tl_portal_visible
+msgid "Show supply contract in customer portal"
+msgstr "Mostrar pedido marco en el portal Supply"
+
+#. module: tl_sale_blanket_management
+#. odoo-python
+#: code:addons/tl_sale_blanket_management/models/blanket_order.py:0
+msgid "Supplier orders for blanket"
+msgstr "Pedidos de proveedor del pedido marco"
+
+#. module: tl_sale_blanket_management
+#: model:ir.ui.menu,name:tl_sale_blanket_management.menu_tl_root
+msgid "Supply contracts"
+msgstr "Contratos de suministro"
+
+#. module: tl_sale_blanket_management
+#. odoo-python
+#: code:addons/tl_sale_blanket_management/models/sale_order.py:0
+msgid "Blanket contract belongs to another customer company."
+msgstr "El contrato marco pertenece a otra empresa cliente."
+
+#. module: tl_sale_blanket_management
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_management.sale_blanket_order_supply_form
+msgid "Supply and customer portal"
+msgstr "Suministro y portal de clientes"
+
+#. module: tl_sale_blanket_management
+#. odoo-python
+#: code:addons/tl_sale_blanket_management/models/purchase_order.py:0
+msgid "The purchase and blanket contract must belong to the same company."
+msgstr "La compra y el contrato marco deben ser de la misma compañía."

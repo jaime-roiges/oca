@@ -1,0 +1,17 @@
+<odoo>
+  <record id="view_tl_carrier_compare_wizard" model="ir.ui.view">
+    <field name="name">tl.sale.carrier.compare.wizard.form</field>
+    <field name="model">tl.sale.carrier.compare.wizard</field>
+    <field name="arch" type="xml"><form string="Compare delivery prices">
+      <group><field name="order_id" readonly="1"/><field name="currency_id" invisible="1"/></group>
+      <field name="quote_ids" readonly="1">
+        <list create="0" delete="0" decoration-success="success" decoration-danger="not success">
+          <field name="carrier_id"/><field name="price"/><field name="currency_id" column_invisible="True"/>
+          <field name="success"/><field name="message"/>
+          <button name="action_choose" type="object" string="Select" icon="fa-check" invisible="not success"/>
+        </list>
+      </field>
+      <footer><button name="action_compare" type="object" string="Refresh quotes" class="btn-primary"/><button special="cancel" string="Close"/></footer>
+    </form></field>
+  </record>
+</odoo>

@@ -1,0 +1,91 @@
+# Translation of Odoo Server.
+# Source addon: tl_website_sale_blanket_checkout. Generated for Supply Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "Contract releases must be requested from the customer portal."
+msgstr "Las entregas del contrato deben solicitarse desde el portal del cliente."
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Mis contratos de suministro"
+msgstr "Mis contratos de suministro"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "No se ha podido confirmar el pedido"
+msgstr "No se ha podido confirmar el pedido"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Revisa la autorización de crédito y los productos del carrito o contacta con el departamento comercial."
+msgstr "Revisa la autorización de crédito y los productos del carrito o contacta con el departamento comercial."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "Sign in to place an order on credit."
+msgstr "Inicie sesión para realizar pedidos a crédito."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "The shopping cart is not valid for this website."
+msgstr "El carrito no es válido para este sitio web."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "This customer is not authorized for credit checkout."
+msgstr "Este cliente no está autorizado a finalizar compras a crédito."
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "This product has an active supply contract. Request its delivery in My Account / Supply Contracts."
+msgstr "Este producto tiene un contrato de suministro activo. Solicite la entrega en Mi cuenta / Contratos de suministro."
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Volver al carrito"
+msgstr "Volver al carrito"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Credit checkout denied"
+msgstr "Compra a crédito no autorizada"
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Mis contratos"
+msgstr ""
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "More than one active blanket contract covers this product. Request it through My Contracts, or ask a salesperson to select the contract."
+msgstr "Hay varios contratos marco para este producto. Solicítelo desde Mis contratos o contacte con un comercial."
+
+#. module: tl_website_sale_blanket_checkout
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_checkout.checkout_denied
+msgid "Revisa tu autorización de crédito y los productos del carrito."
+msgstr ""
+
+#. module: tl_website_sale_blanket_checkout
+#. odoo-python
+#: code:addons/tl_website_sale_blanket_checkout/models/sale_order.py:0
+msgid "Shopping cart does not belong to this website/company."
+msgstr "El carrito no corresponde a esta web o compañía."

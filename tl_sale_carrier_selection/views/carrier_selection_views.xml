@@ -1,0 +1,25 @@
+<odoo>
+  <record id="view_tl_sale_order_carrier_button" model="ir.ui.view">
+    <field name="name">sale.order.form.supply.carrier.compare</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//header" position="inside">
+        <button name="action_tl_compare_carriers" type="object" string="Compare transport" groups="sales_team.group_sale_salesman" invisible="state not in ('draft','sent')"/>
+      </xpath>
+    </field>
+  </record>
+  <record id="view_tl_carrier_config" model="ir.ui.view">
+    <field name="name">res.company.supply.carrier.config</field><field name="model">res.company</field>
+    <field name="arch" type="xml"><form string="Carrier selection settings">
+      <sheet><group><field name="name" readonly="1"/><field name="tl_auto_web_cheapest"/>
+        <field name="tl_auto_sale_cheapest"/></group></sheet>
+    </form></field>
+  </record>
+  <record id="action_tl_carrier_config" model="ir.actions.act_window">
+    <field name="name">Carrier comparison settings</field><field name="res_model">res.company</field>
+    <field name="view_mode">list,form</field><field name="view_id" ref="view_tl_carrier_config"/>
+  </record>
+  <menuitem id="menu_tl_carrier_root" name="Transport" parent="sale.menu_sale_config" groups="sales_team.group_sale_manager" sequence="90"/>
+  <menuitem id="menu_tl_carrier_config" name="Carrier settings" parent="menu_tl_carrier_root" action="action_tl_carrier_config" groups="base.group_system" sequence="95"/>
+</odoo>

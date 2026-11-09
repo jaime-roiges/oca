@@ -1,0 +1,9 @@
+id,name,model_id,group_id/id,operation,domain
+access_tl_advance_account,Invoiced advance accounting,tl.sale.advance,account.group_account_user,cru,
+access_tl_advance_manager,Invoiced advance manager,tl.sale.advance,account.group_account_manager,crud,
+access_tl_allocation_account,Advance allocations accounting,tl.sale.advance.allocation,account.group_account_user,cru,
+access_tl_allocation_manager,Advance allocations manager,tl.sale.advance.allocation,account.group_account_manager,crud,
+access_tl_register_wizard,Advance register wizard,tl.sale.advance.register.wizard,account.group_account_user,crud,
+access_tl_apply_wizard,Advance apply wizard,tl.sale.advance.apply.wizard,account.group_account_user,crud,
+advance_company_rule,Advance company restriction,tl.sale.advance,,crud,"[('company_id','in',company_ids)]"
+allocation_company_rule,Advance allocation company restriction,tl.sale.advance.allocation,,crud,"[('company_id','in',company_ids)]"

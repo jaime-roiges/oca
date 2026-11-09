@@ -1,0 +1,10 @@
+<odoo>
+    <template id="checkout_denied" name="Credit checkout denied">
+        <t t-call="website.layout"><div class="container my-5">
+            <h1>No se ha podido confirmar el pedido</h1>
+            <p>Revisa tu autorización de crédito y los productos del carrito.</p>
+            <a href="/shop/cart" class="btn btn-primary">Volver al carrito</a>
+            <a href="/my/contracts" class="btn btn-outline-secondary">Mis contratos</a>
+        </div></t>
+    </template>
+</odoo>

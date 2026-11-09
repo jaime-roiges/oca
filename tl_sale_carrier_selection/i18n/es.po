@@ -1,0 +1,105 @@
+# Translation of Odoo Server.
+# Source addon: tl_sale_carrier_selection. Generated for Supply Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_sale_carrier_selection
+#: model:ir.model.fields,field_description:tl_sale_carrier_selection.field_res_company__tl_auto_sale_cheapest
+msgid "Add cheapest eligible carrier on confirming backend quotations"
+msgstr "Asignar el transportista más económico disponible al confirmar presupuestos desde backoffice"
+
+#. module: tl_sale_carrier_selection
+#: model:ir.model,name:tl_sale_carrier_selection.model_tl_tl_carrier_quote
+msgid "Carrier Rate Proposal"
+msgstr "Propuesta de tarifa de transporte"
+
+#. module: tl_sale_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_sale_carrier_selection.view_tl_carrier_config
+msgid "Carrier selection settings"
+msgstr "Configuración de selección de transportista"
+
+#. module: tl_sale_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_sale_carrier_selection.view_tl_carrier_compare_wizard
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: tl_sale_carrier_selection
+#. odoo-python
+#: code:addons/tl_sale_carrier_selection/models/sale_order.py:0
+msgid "Compare carrier rates"
+msgstr "Comparar tarifas de transportista"
+
+#. module: tl_sale_carrier_selection
+#. odoo-python
+#: code:addons/tl_sale_carrier_selection/models/sale_order.py:0
+msgid "Compare carriers before confirming the order."
+msgstr "Compare los transportistas antes de confirmar el pedido."
+
+#. module: tl_sale_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_sale_carrier_selection.view_tl_carrier_compare_wizard
+msgid "Compare delivery prices"
+msgstr "Comparar precios de envío"
+
+#. module: tl_sale_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_sale_carrier_selection.view_tl_sale_order_carrier_button
+msgid "Compare transport"
+msgstr "Comparar transportistas"
+
+#. module: tl_sale_carrier_selection
+#: model:ir.model,name:tl_sale_carrier_selection.model_tl_tl_carrier_compare_wizard
+msgid "Comparison of Freight Rates"
+msgstr "Comparación de tarifas de transporte"
+
+#. module: tl_sale_carrier_selection
+#. odoo-python
+#: code:addons/tl_sale_carrier_selection/wizard/carrier_compare.py:0
+msgid "Only quotations can be compared."
+msgstr "Solo pueden compararse presupuestos."
+
+#. module: tl_sale_carrier_selection
+#: model:ir.model.fields,field_description:tl_sale_carrier_selection.field_res_company__tl_auto_web_cheapest
+msgid "Prefer cheapest eligible carrier at website checkout"
+msgstr "Priorizar el transportista más económico disponible al finalizar la compra web"
+
+#. module: tl_sale_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_sale_carrier_selection.view_tl_carrier_compare_wizard
+msgid "Refresh quotes"
+msgstr "Actualizar tarifas"
+
+#. module: tl_sale_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_sale_carrier_selection.view_tl_carrier_compare_wizard
+msgid "Select"
+msgstr "Seleccionar"
+
+#. module: tl_sale_carrier_selection
+#. odoo-python
+#: code:addons/tl_sale_carrier_selection/wizard/carrier_compare.py:0
+msgid "Set the shipping address and order lines first."
+msgstr "Configure primero la dirección de envío y las líneas de pedido."
+
+#. module: tl_sale_carrier_selection
+#. odoo-python
+#: code:addons/tl_sale_carrier_selection/wizard/carrier_compare.py:0
+msgid "The quote cannot be selected."
+msgstr "No puede seleccionarse esta tarifa."
+
+#. module: tl_sale_carrier_selection
+#. odoo-python
+#: code:addons/tl_sale_carrier_selection/wizard/carrier_compare.py:0
+msgid "The selected carrier is no longer available."
+msgstr "El transportista seleccionado ya no está disponible."
+
+#. module: tl_sale_carrier_selection
+#: model:ir.ui.menu,name:tl_sale_carrier_selection.menu_tl_carrier_root
+msgid "Transport"
+msgstr "Transporte"

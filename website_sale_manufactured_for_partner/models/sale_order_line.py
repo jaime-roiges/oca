@@ -11,5 +11,5 @@ class SaleOrderLine(models.Model):
         if {"product_id", "order_id", "product_uom_qty"}.intersection(vals):
             self.mapped("order_id").filtered(
                 lambda order: order.state in ("sale", "done")
-            )._dimpal_validate_manufactured_products()
+            )._tl_validate_manufactured_products()
         return result

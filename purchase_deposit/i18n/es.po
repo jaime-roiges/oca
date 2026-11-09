@@ -1,5 +1,5 @@
 # Translation of Odoo Server.
-# Source addon: purchase_deposit. Generated for Dimpal Odoo 20 QA.
+# Source addon: purchase_deposit. Reviewed for Odoo 20 distribution.
 # IMPORTANT: keep Odoo #: source comments when editing these catalogs.
 msgid ""
 msgstr ""

@@ -1,9 +1,0 @@
-id,name,model_id,group_id/id,operation,domain
-access_dimpal_advance_account,Invoiced advance accounting,tl.dimpal.advance,account.group_account_user,cru,
-access_dimpal_advance_manager,Invoiced advance manager,tl.dimpal.advance,account.group_account_manager,crud,
-access_dimpal_allocation_account,Advance allocations accounting,tl.dimpal.advance.allocation,account.group_account_user,cru,
-access_dimpal_allocation_manager,Advance allocations manager,tl.dimpal.advance.allocation,account.group_account_manager,crud,
-access_dimpal_register_wizard,Advance register wizard,tl.dimpal.advance.register.wizard,account.group_account_user,crud,
-access_dimpal_apply_wizard,Advance apply wizard,tl.dimpal.advance.apply.wizard,account.group_account_user,crud,
-advance_company_rule,Advance company restriction,tl.dimpal.advance,,crud,"[('company_id','in',company_ids)]"
-allocation_company_rule,Advance allocation company restriction,tl.dimpal.advance.allocation,,crud,"[('company_id','in',company_ids)]"
