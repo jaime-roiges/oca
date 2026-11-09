@@ -1,0 +1,276 @@
+# Translation of Odoo Server.
+# Source addon: purchase_deposit. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_advance_payment_inv
+msgid "%"
+msgstr "%"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_advance_payment_inv
+msgid "<span invisible=\"advance_payment_method != 'percentage'\" class=\"oe_inline\">%</span>"
+msgstr "<span invisible=\"advance_payment_method != 'percentage'\" class=\"oe_inline\">%</span>"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,help:purchase_deposit.field_purchase_advance_payment_inv__deposit_account_id
+msgid "Account used for deposits"
+msgstr "Compte utilitzat per a les bestretes"
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "Advance: %(date)s"
+msgstr "Bestreta: %(date)s"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_advance_payment_inv
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#. module: purchase_deposit
+#: model:ir.model,name:purchase_deposit.model_res_company
+msgid "Companies"
+msgstr "Empreses"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_advance_payment_inv
+msgid "Create Bill"
+msgstr "Crea factura de proveïdor"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_advance_payment_inv
+msgid "Create and View bills"
+msgstr "Crea i consulta les factures de proveïdor"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__create_date
+msgid "Created on"
+msgstr "Creat el"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,help:purchase_deposit.field_res_company__purchase_deposit_product_id
+#: model:ir.model.fields,help:purchase_deposit.field_res_config_settings__purchase_deposit_product_id
+msgid "Default product used for payment advances."
+msgstr "Producte predeterminat utilitzat per a les bestretes."
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "Deposit Payment"
+msgstr "Pagament de bestreta"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__amount
+msgid "Deposit Payment Amount"
+msgstr "Import de la bestreta"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__purchase_deposit_product_id
+msgid "Deposit Payment Product"
+msgstr "Producte de bestreta"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.res_config_settings_view_form_purchase
+msgid "Deposit Payments"
+msgstr "Pagaments de bestretes"
+
+#. module: purchase_deposit
+#: model:ir.model.fields.selection,name:purchase_deposit.selection__purchase_advance_payment_inv__advance_payment_method__fixed
+msgid "Deposit payment (fixed amount)"
+msgstr "Bestreta (import fix)"
+
+#. module: purchase_deposit
+#: model:ir.model.fields.selection,name:purchase_deposit.selection__purchase_advance_payment_inv__advance_payment_method__percentage
+msgid "Deposit payment (percentage)"
+msgstr "Bestreta (percentatge)"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,help:purchase_deposit.field_purchase_order_line__is_deposit
+msgid "Deposit payments are made when creating bills from a purchase order. They are not copied when duplicating a purchase order."
+msgstr "Les bestretes es registren en crear factures de proveïdor des de la comanda de compra. No es copien en duplicar una comanda."
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_account_move__display_name
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__display_name
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_company__display_name
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nom de visualització"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__deposit_account_id
+msgid "Expense Account"
+msgstr "Compte de despeses"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_account_move__id
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__id
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_order__id
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_order_line__id
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_company__id
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: purchase_deposit
+#: model:ir.actions.act_window,name:purchase_deposit.action_view_purchase_advance_payment_inv
+msgid "Invoice Order"
+msgstr "Factura la comanda"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_advance_payment_inv
+msgid "Invoice Purchases Order"
+msgstr "Factura les compres"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_advance_payment_inv
+msgid "Invoices will be created in draft so that you can review them before validation."
+msgstr "Les factures es crearan en esborrany perquè les pugueu revisar abans de validar-les."
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_order_line__is_deposit
+msgid "Is a deposit payment"
+msgstr "És un pagament de bestreta"
+
+#. module: purchase_deposit
+#: model:ir.model,name:purchase_deposit.model_account_move
+msgid "Journal Entry"
+msgstr "Assentament comptable"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__write_uid
+msgid "Last Updated by"
+msgstr "Darrera actualització per"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__write_date
+msgid "Last Updated on"
+msgstr "Darrera actualització el"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_company__purchase_deposit_limit_order_total
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_config_settings__purchase_deposit_limit_order_total
+msgid "Limit Deposits to Order Total"
+msgstr "Limita les bestretes al total de la comanda"
+
+#. module: purchase_deposit
+#: model:ir.model,name:purchase_deposit.model_res_config_settings
+msgid "Procurement purchase grouping settings"
+msgstr "Configuració d’agrupació de compres"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.res_config_settings_view_form_purchase
+msgid "Product used for deposit payments"
+msgstr "Producte utilitzat per a les bestretes"
+
+#. module: purchase_deposit
+#: model:ir.model,name:purchase_deposit.model_purchase_advance_payment_inv
+msgid "Purchase Advance Payment Invoice"
+msgstr "Factura de bestreta de compra"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_company__purchase_deposit_product_id
+#: model:ir.model.fields,field_description:purchase_deposit.field_res_config_settings__purchase_deposit_product_id
+msgid "Purchase Deposit Product"
+msgstr "Producte de bestreta de compra"
+
+#. module: purchase_deposit
+#: model:ir.model,name:purchase_deposit.model_purchase_order
+msgid "Purchase Order"
+msgstr "Comanda de compra"
+
+#. module: purchase_deposit
+#: model:ir.model,name:purchase_deposit.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línia de comanda de compra"
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.res_config_settings_view_form_purchase
+msgid "Refuse a deposit when the deposits already invoiced, plus the one being registered, exceed the purchase order total"
+msgstr "Impedeix registrar una bestreta si la suma de les ja facturades i la nova supera el total de la comanda de compra"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,help:purchase_deposit.field_res_company__purchase_deposit_limit_order_total
+#: model:ir.model.fields,help:purchase_deposit.field_res_config_settings__purchase_deposit_limit_order_total
+msgid "Refuse a deposit when the deposits already invoiced, plus the one being registered, exceed the purchase order total."
+msgstr "Impedeix registrar una bestreta si la suma de les ja facturades i la nova supera el total de la comanda de compra."
+
+#. module: purchase_deposit
+#: model_terms:ir.ui.view,arch_db:purchase_deposit.view_purchase_order_form_inherit
+msgid "Register Deposit"
+msgstr "Registra la bestreta"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,help:purchase_deposit.field_purchase_advance_payment_inv__deposit_taxes_id
+msgid "Taxes used for deposits"
+msgstr "Impostos aplicats a les bestretes"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,help:purchase_deposit.field_purchase_advance_payment_inv__amount
+msgid "The amount to be invoiced in advance, taxes excluded."
+msgstr "Import de la bestreta que s’ha de facturar, sense impostos."
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "The deposits of %(order)s would add up to %(deposit)s, more than its total amount of %(total)s."
+msgstr "Les bestretes de %(order)s sumarien %(deposit)s, una quantitat superior al total de %(total)s."
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "The percentage of the deposit must be not over 100"
+msgstr "El percentatge de bestreta no pot superar el 100 %"
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "The product used to invoice a down payment should be of type \"Service\". Please use another product or update this product."
+msgstr "El producte utilitzat per facturar una bestreta ha de ser de tipus «Servei». Utilitzeu un altre producte o actualitzeu aquest."
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "The product used to invoice a down payment should have an invoice policy set to \"Ordered quantities\". Please update your deposit product to be able to create a deposit invoice."
+msgstr "El producte de bestreta ha de tenir la política de facturació «Quantitats demanades». Actualitzeu-lo per poder crear la factura de bestreta."
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "The value of the deposit must be positive."
+msgstr "L’import de la bestreta ha de ser positiu."
+
+#. module: purchase_deposit
+#. odoo-python
+#: code:addons/purchase_deposit/wizard/purchase_make_invoice_advance.py:0
+msgid "There is no purchase account defined for this product: %(product)s.\nYou may have to install a chart of account from Accounting app, settings menu."
+msgstr "No hi ha cap compte de compres definit per al producte %(product)s.\nPotser cal instal·lar un pla comptable des de Configuració de l’aplicació Comptabilitat."
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__deposit_taxes_id
+msgid "Vendor Taxes"
+msgstr "Impostos de proveïdor"
+
+#. module: purchase_deposit
+#: model:ir.model.fields,field_description:purchase_deposit.field_purchase_advance_payment_inv__advance_payment_method
+msgid "What do you want to invoice?"
+msgstr "Què voleu facturar?"

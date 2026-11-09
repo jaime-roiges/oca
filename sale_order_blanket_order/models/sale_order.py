@@ -31,7 +31,7 @@ class SaleOrder(models.Model):
         help="The blanket order that this call-off order is related to.",
         index="btree_not_null",
     )
-    blanket_order_id_domain = fields.Binary(
+    blanket_order_id_domain = fields.Json(
         string="Blanket Order Domain",
         compute="_compute_blanket_order_id_domain",
         help="The domain to search for the blanket order candidates.",
@@ -239,10 +239,10 @@ class SaleOrder(models.Model):
                     )
                 )
 
-    @api.depends("order_type", "commitment_date", "partner_id")
+    @api.depends("order_type", "commitment_date", "date_order", "partner_id", "partner_shipping_id")
     def _compute_blanket_order_id_domain(self):
         for order in self:
-            if order.order_type == "call_off" and self.partner_id:
+            if order.order_type == "call_off" and order.partner_id:
                 domain = order._get_single_blanket_order_candidates_domain()
             else:
                 domain = list(Domain.FALSE)

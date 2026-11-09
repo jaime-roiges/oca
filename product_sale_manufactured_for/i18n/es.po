@@ -1,9 +1,17 @@
+# Translation of Odoo Server.
+# Source addon: product_sale_manufactured_for. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
 msgid ""
 msgstr ""
-"Project-Id-Version: product_sale_manufactured_for 20.0\n"
-"Language: es\n"
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: product_sale_manufactured_for
 #: model:ir.model.fields,field_description:product_sale_manufactured_for.field_product_product__manufactured_for_partner_ids
@@ -13,4 +21,4 @@ msgstr "Fabricado para"
 #. module: product_sale_manufactured_for
 #: model:ir.model.fields,help:product_sale_manufactured_for.field_product_product__manufactured_for_partner_ids
 msgid "When empty the product is available to every customer. When set, website sales are limited to these contacts and their companies."
-msgstr "Si está vacío, el producto está disponible para todos los clientes. Si está informado, la venta web se limita a los contactos y empresas indicados."
+msgstr "Si se deja vacío, el producto está disponible para todos los clientes. Si se asignan contactos, las ventas web se limitan a estos contactos y sus empresas."

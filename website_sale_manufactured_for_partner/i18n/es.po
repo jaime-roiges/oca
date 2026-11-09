@@ -1,41 +1,54 @@
+# Translation of Odoo Server.
+# Source addon: website_sale_manufactured_for_partner. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
 msgid ""
 msgstr ""
-"Project-Id-Version: website_sale_manufactured_for_partner 20.0\n"
-"Language: es\n"
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: website_sale_manufactured_for_partner
-#: model:ir.model.fields,field_description:website_sale_manufactured_for_partner.field_product_template__website_manufactured_for_partner_ids
-msgid "Website allowed customers"
-msgstr "Clientes autorizados en la web"
+#. odoo-python
+#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
+msgid "A product in this order is not authorized for this customer."
+msgstr "Este pedido contiene un producto no autorizado para este cliente."
 
 #. module: website_sale_manufactured_for_partner
 #: model:ir.model.fields,help:website_sale_manufactured_for_partner.field_product_template__website_manufactured_restricted
 msgid "One or more variants are reserved for named customers."
-msgstr "Una o varias variantes están reservadas para clientes concretos."
+msgstr "Una o varias variantes están reservadas para determinados clientes."
 
 #. module: website_sale_manufactured_for_partner
-#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
-msgid "This product is not available for your customer account."
-msgstr "Este producto no está disponible para su cuenta de cliente."
-
-#. module: website_sale_manufactured_for_partner
-#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
-msgid "Your order belongs to a different customer account."
-msgstr "El pedido pertenece a otra cuenta de cliente."
-
-#. module: website_sale_manufactured_for_partner
+#. odoo-python
 #: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
 msgid "This customer account cannot confirm this order."
 msgstr "Esta cuenta de cliente no puede confirmar el pedido."
 
 #. module: website_sale_manufactured_for_partner
+#. odoo-python
 #: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
-msgid "A product in this order is not authorized for this customer."
-msgstr "Uno de los productos del pedido no está autorizado para este cliente."
+msgid "This product is not available for your customer account."
+msgstr "Este producto no está disponible para su cuenta de cliente."
 
 #. module: website_sale_manufactured_for_partner
+#. odoo-python
 #: code:addons/website_sale_manufactured_for_partner/models/product_template.py:0
 msgid "This product variant is not available to your customer account."
-msgstr "Esta variante de producto no está disponible para su cuenta de cliente."
+msgstr "Esta variante no está disponible para su cuenta de cliente."
+
+#. module: website_sale_manufactured_for_partner
+#: model:ir.model.fields,field_description:website_sale_manufactured_for_partner.field_product_template__website_manufactured_for_partner_ids
+msgid "Website allowed customers"
+msgstr "Clientes autorizados en el sitio web"
+
+#. module: website_sale_manufactured_for_partner
+#. odoo-python
+#: code:addons/website_sale_manufactured_for_partner/models/sale_order.py:0
+msgid "Your order belongs to a different customer account."
+msgstr "Su pedido pertenece a otra cuenta de cliente."

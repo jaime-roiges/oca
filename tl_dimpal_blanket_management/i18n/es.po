@@ -1,0 +1,62 @@
+# Translation of Odoo Server.
+# Source addon: tl_dimpal_blanket_management. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_dimpal_blanket_management
+#: model:ir.model.fields,field_description:tl_dimpal_blanket_management.field_purchase_order__dimpal_blanket_order_id
+msgid "Customer blanket order"
+msgstr "Pedido marco del cliente"
+
+#. module: tl_dimpal_blanket_management
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_blanket_management.sale_order_dimpal_blanket_form
+msgid "Dimpal supply"
+msgstr "Suministro Dimpal"
+
+#. module: tl_dimpal_blanket_management
+#: model:ir.model.fields,help:tl_dimpal_blanket_management.field_sale_order__dimpal_portal_visible
+msgid "Only relevant for OCA blanket orders; customer access rules still apply."
+msgstr "Solo se aplica a pedidos marco OCA; las reglas de acceso del cliente siguen vigentes."
+
+#. module: tl_dimpal_blanket_management
+#. odoo-python
+#: code:addons/tl_dimpal_blanket_management/models/purchase_order.py:0
+msgid "Purchase must reference a blanket order in the same company."
+msgstr "La compra debe estar vinculada a un pedido marco de la misma empresa."
+
+#. module: tl_dimpal_blanket_management
+#: model:ir.model.fields,field_description:tl_dimpal_blanket_management.field_sale_order__dimpal_purchase_ids
+msgid "Purchases for blanket order"
+msgstr "Compras del pedido marco"
+
+#. module: tl_dimpal_blanket_management
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_blanket_management.sale_order_dimpal_blanket_form
+msgid "Related purchases"
+msgstr "Compras relacionadas"
+
+#. module: tl_dimpal_blanket_management
+#. odoo-python
+#: code:addons/tl_dimpal_blanket_management/models/blanket_order.py:0
+msgid "Select a blanket sales order."
+msgstr "Seleccione un pedido marco de venta."
+
+#. module: tl_dimpal_blanket_management
+#: model:ir.model.fields,field_description:tl_dimpal_blanket_management.field_sale_order__dimpal_portal_visible
+msgid "Show blanket order in Dimpal portal"
+msgstr "Mostrar pedido marco en el portal Dimpal"
+
+#. module: tl_dimpal_blanket_management
+#. odoo-python
+#: code:addons/tl_dimpal_blanket_management/models/blanket_order.py:0
+msgid "Supplier orders for blanket"
+msgstr "Pedidos de proveedor del pedido marco"

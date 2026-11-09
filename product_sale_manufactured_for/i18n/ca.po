@@ -1,0 +1,24 @@
+# Translation of Odoo Server.
+# Source addon: product_sale_manufactured_for. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: product_sale_manufactured_for
+#: model:ir.model.fields,field_description:product_sale_manufactured_for.field_product_product__manufactured_for_partner_ids
+msgid "Manufactured for"
+msgstr "Fabricat per a"
+
+#. module: product_sale_manufactured_for
+#: model:ir.model.fields,help:product_sale_manufactured_for.field_product_product__manufactured_for_partner_ids
+msgid "When empty the product is available to every customer. When set, website sales are limited to these contacts and their companies."
+msgstr "Si es deixa buit, el producte està disponible per a tots els clients. Si s’indiquen contactes, les vendes web queden limitades a aquests contactes i a les seves empreses."

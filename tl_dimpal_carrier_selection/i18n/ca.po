@@ -1,0 +1,100 @@
+# Translation of Odoo Server.
+# Source addon: tl_dimpal_carrier_selection. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_dimpal_carrier_selection
+#: model:ir.model.fields,field_description:tl_dimpal_carrier_selection.field_res_company__dimpal_auto_sale_cheapest
+msgid "Add cheapest eligible carrier on confirming backend quotations"
+msgstr "Assigna el transportista elegible més econòmic en confirmar els pressupostos de backoffice"
+
+#. module: tl_dimpal_carrier_selection
+#: model:ir.model,name:tl_dimpal_carrier_selection.model_tl_dimpal_carrier_quote
+msgid "Carrier Rate Proposal"
+msgstr "Proposta de tarifa de transport"
+
+#. module: tl_dimpal_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_carrier_selection.view_dimpal_carrier_config
+msgid "Carrier selection settings"
+msgstr "Configuració de selecció de transportista"
+
+#. module: tl_dimpal_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_carrier_selection.view_dimpal_carrier_compare_wizard
+msgid "Close"
+msgstr "Tanca"
+
+#. module: tl_dimpal_carrier_selection
+#. odoo-python
+#: code:addons/tl_dimpal_carrier_selection/models/sale_order.py:0
+msgid "Compare carrier rates"
+msgstr "Compara tarifes de transportista"
+
+#. module: tl_dimpal_carrier_selection
+#. odoo-python
+#: code:addons/tl_dimpal_carrier_selection/models/sale_order.py:0
+msgid "Compare carriers before confirming the order."
+msgstr "Compareu els transportistes abans de confirmar la comanda."
+
+#. module: tl_dimpal_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_carrier_selection.view_dimpal_carrier_compare_wizard
+msgid "Compare delivery prices"
+msgstr "Compara preus de lliurament"
+
+#. module: tl_dimpal_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_carrier_selection.view_dimpal_sale_order_carrier_button
+msgid "Compare transport"
+msgstr "Compara transport"
+
+#. module: tl_dimpal_carrier_selection
+#: model:ir.model,name:tl_dimpal_carrier_selection.model_tl_dimpal_carrier_compare_wizard
+msgid "Comparison of Freight Rates"
+msgstr "Comparació de tarifes de transport"
+
+#. module: tl_dimpal_carrier_selection
+#. odoo-python
+#: code:addons/tl_dimpal_carrier_selection/wizard/carrier_compare.py:0
+msgid "Only quotations can be compared."
+msgstr "Només es poden comparar pressupostos."
+
+#. module: tl_dimpal_carrier_selection
+#: model:ir.model.fields,field_description:tl_dimpal_carrier_selection.field_res_company__dimpal_auto_web_cheapest
+msgid "Prefer cheapest eligible carrier at website checkout"
+msgstr "Prioritza el transportista elegible més econòmic en finalitzar la compra web"
+
+#. module: tl_dimpal_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_carrier_selection.view_dimpal_carrier_compare_wizard
+msgid "Refresh quotes"
+msgstr "Actualitza les tarifes"
+
+#. module: tl_dimpal_carrier_selection
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_carrier_selection.view_dimpal_carrier_compare_wizard
+msgid "Select"
+msgstr "Selecciona"
+
+#. module: tl_dimpal_carrier_selection
+#. odoo-python
+#: code:addons/tl_dimpal_carrier_selection/wizard/carrier_compare.py:0
+msgid "Set the shipping address and order lines first."
+msgstr "Configureu primer l’adreça de lliurament i les línies de comanda."
+
+#. module: tl_dimpal_carrier_selection
+#. odoo-python
+#: code:addons/tl_dimpal_carrier_selection/wizard/carrier_compare.py:0
+msgid "The quote cannot be selected."
+msgstr "No es pot seleccionar aquesta tarifa."
+
+#. module: tl_dimpal_carrier_selection
+#. odoo-python
+#: code:addons/tl_dimpal_carrier_selection/wizard/carrier_compare.py:0
+msgid "The selected carrier is no longer available."
+msgstr "El transportista seleccionat ja no està disponible."

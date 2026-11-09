@@ -1,0 +1,268 @@
+# Translation of Odoo Server.
+# Source addon: tl_dimpal_advance_allocation. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/wizard/advance_apply.py:0
+#: code:addons/tl_dimpal_advance_allocation/wizard/advance_register.py:0
+msgid "Accounting access is required."
+msgstr "Cal tenir permisos de comptabilitat."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Accounting permissions are required to allocate an advance."
+msgstr "Calen permisos de comptabilitat per imputar una bestreta."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Advance and invoice have different contracts or partners."
+msgstr "La bestreta i la factura corresponen a contractes o contactes diferents."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Advance and invoice must be in the same currency."
+msgstr "La bestreta i la factura han de tenir la mateixa moneda."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "Advance invoice base must be positive."
+msgstr "La base imposable de la factura de bestreta ha de ser positiva."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Advance invoice must use the configured account and a positive base."
+msgstr "La factura de bestreta ha d’utilitzar el compte configurat i tenir una base positiva."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "Advance invoice type, company, line or currency mismatch."
+msgstr "No coincideixen el tipus, l’empresa, la línia o la moneda de la factura de bestreta."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "Advance must reference an OCA blanket order."
+msgstr "La bestreta ha de fer referència a una comanda marc OCA."
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model,name:tl_dimpal_advance_allocation.model_tl_dimpal_advance_allocation
+msgid "Allocation of Invoiced Advance to Contract Delivery Invoice"
+msgstr "Imputació de bestreta facturada a la factura de lliurament del contracte"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Amount exceeds remaining positive lines with matching taxes."
+msgstr "L’import supera les línies positives pendents amb impostos coincidents."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Amount exceeds the remaining invoiced advance."
+msgstr "L’import supera el saldo de bestreta facturada pendent."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "An advance invoice must be posted and paid before allocation."
+msgstr "La factura de bestreta ha d’estar comptabilitzada i cobrada o pagada abans de la imputació."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Application of advance %s"
+msgstr "Aplicació de la bestreta %s"
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model,name:tl_dimpal_advance_allocation.model_tl_dimpal_advance_apply_wizard
+msgid "Apply Fiscal Advance to Partial Invoice"
+msgstr "Aplica bestreta fiscal a una factura parcial"
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_apply_wizard
+msgid "Apply advance"
+msgstr "Aplica la bestreta"
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.account_move_form_dimpal
+msgid "Apply contract advance"
+msgstr "Aplica la bestreta del contracte"
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_apply_wizard
+msgid "Apply invoiced advance"
+msgstr "Aplica la bestreta facturada"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Apply invoiced advances"
+msgstr "Aplica les bestretes facturades"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Bill Dimpal purchase contracts separately to preserve advance allocations."
+msgstr "Factura els contractes de compra Dimpal per separat per conservar la imputació de bestretes."
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_apply_wizard
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_register_wizard_form
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Choose a draft customer/vendor invoice linked to a Dimpal contract."
+msgstr "Seleccioneu una factura esborrany de client o proveïdor vinculada a un contracte Dimpal."
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_list
+msgid "Contract advances"
+msgstr "Bestretes de contracte"
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model.fields.selection,name:tl_dimpal_advance_allocation.selection__tl_dimpal_advance__kind__customer
+msgid "Customer"
+msgstr "Client"
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model.fields,field_description:tl_dimpal_advance_allocation.field_res_company__dimpal_customer_advance_account_id
+msgid "Customer advances (438)"
+msgstr "Bestretes de clients (438)"
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_account_config
+msgid "Dimpal advance configuration"
+msgstr "Configuració de bestretes Dimpal"
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model,name:tl_dimpal_advance_allocation.model_tl_dimpal_advance
+msgid "Fiscal Advance Invoice Linked to Contract"
+msgstr "Factura fiscal de bestreta vinculada a contracte"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "Invalid advance allocation: incompatible invoice or amount."
+msgstr "Imputació de bestreta no vàlida: factura o import incompatibles."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/wizard/advance_register.py:0
+msgid "Invoice must be linked to a blanket sales order."
+msgstr "La factura ha d’estar vinculada a una comanda marc de venda."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/wizard/advance_apply.py:0
+msgid "Invoice with applied advance"
+msgstr "Factura amb bestreta aplicada"
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_form
+msgid "Invoiced advance"
+msgstr "Bestreta facturada"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Link the invoice to a Dimpal contract first."
+msgstr "Vinculeu primer la factura a un contracte Dimpal."
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model.fields,field_description:tl_dimpal_advance_allocation.field_res_company__dimpal_auto_allocate_sales
+msgid "Proportionally allocate advance to customer delivery invoices"
+msgstr "Imputa proporcionalment la bestreta a les factures de lliurament del client"
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.account_move_form_dimpal
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_register_wizard_form
+msgid "Register advance"
+msgstr "Registra la bestreta"
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model,name:tl_dimpal_advance_allocation.model_tl_dimpal_advance_register_wizard
+msgid "Register an Existing Fiscal Advance Invoice"
+msgstr "Registra una factura fiscal de bestreta existent"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Register existing advance invoice"
+msgstr "Registra una factura de bestreta existent"
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_register_wizard_form
+msgid "Register fiscal advance invoice"
+msgstr "Registra una factura fiscal de bestreta"
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model.fields.selection,name:tl_dimpal_advance_allocation.selection__tl_dimpal_advance__kind__supplier
+msgid "Supplier"
+msgstr "Proveïdor"
+
+#. module: tl_dimpal_advance_allocation
+#: model:ir.model.fields,field_description:tl_dimpal_advance_allocation.field_res_company__dimpal_supplier_advance_account_id
+msgid "Supplier advances (407)"
+msgstr "Bestretes a proveïdors (407)"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/account_integration.py:0
+msgid "Target must be a compatible draft invoice."
+msgstr "La factura de destinació ha de ser un esborrany compatible."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "The advance line must use the configured 438/407 account."
+msgstr "La línia de bestreta ha d’utilitzar el compte 438/407 configurat."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "The customer is not the contract customer."
+msgstr "El client no és el titular del contracte."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "The fiscal advance account has the wrong accounting type."
+msgstr "El compte de bestreta fiscal té un tipus comptable incorrecte."
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/wizard/advance_register.py:0
+msgid "This advance line has already been registered."
+msgstr "Aquesta línia de bestreta ja està registrada."
+
+#. module: tl_dimpal_advance_allocation
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_advance_allocation.view_dimpal_advance_form
+msgid "View invoice"
+msgstr "Consulta la factura"
+
+#. module: tl_dimpal_advance_allocation
+#. odoo-python
+#: code:addons/tl_dimpal_advance_allocation/models/advance.py:0
+msgid "You cannot remove allocations from posted invoices. Use a credit note."
+msgstr "No es poden eliminar imputacions de factures comptabilitzades. Utilitzeu una factura rectificativa."

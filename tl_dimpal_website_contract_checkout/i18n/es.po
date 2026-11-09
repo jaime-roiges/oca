@@ -1,31 +1,64 @@
+# Translation of Odoo Server.
+# Source addon: tl_dimpal_website_contract_checkout. Generated for Dimpal Odoo 20 QA.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
 msgid ""
 msgstr ""
-"Project-Id-Version: tl_dimpal_website_contract_checkout 20.0\n"
-"Language: es\n"
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: tl_dimpal_website_contract_checkout
+#. odoo-python
 #: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "Contract releases must be requested from the customer portal."
-msgstr "Las entregas de contratos deben solicitarse desde el portal de clientes."
+msgstr "Las entregas del contrato deben solicitarse desde el portal del cliente."
 
 #. module: tl_dimpal_website_contract_checkout
-#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
-msgid "This product has an active supply contract. Request its delivery in My Account / Supply Contracts."
-msgstr "Este producto tiene un contrato de suministro activo. Solicite su entrega en Mi cuenta / Contratos de suministro."
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_website_contract_checkout.checkout_denied
+msgid "Mis contratos de suministro"
+msgstr "Mis contratos de suministro"
 
 #. module: tl_dimpal_website_contract_checkout
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_website_contract_checkout.checkout_denied
+msgid "No se ha podido confirmar el pedido"
+msgstr "No se ha podido confirmar el pedido"
+
+#. module: tl_dimpal_website_contract_checkout
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_website_contract_checkout.checkout_denied
+msgid "Revisa la autorización de crédito y los productos del carrito o contacta con el departamento comercial."
+msgstr "Revisa la autorización de crédito y los productos del carrito o contacta con el departamento comercial."
+
+#. module: tl_dimpal_website_contract_checkout
+#. odoo-python
 #: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "Sign in to place an order on credit."
-msgstr "Inicie sesión para realizar un pedido a crédito."
+msgstr "Inicie sesión para realizar pedidos a crédito."
 
 #. module: tl_dimpal_website_contract_checkout
-#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
-msgid "This customer is not authorized for credit checkout."
-msgstr "Este cliente no está autorizado para realizar pedidos a crédito."
-
-#. module: tl_dimpal_website_contract_checkout
+#. odoo-python
 #: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
 msgid "The shopping cart is not valid for this website."
-msgstr "La cesta no es válida para este sitio web."
+msgstr "El carrito no es válido para este sitio web."
+
+#. module: tl_dimpal_website_contract_checkout
+#. odoo-python
+#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
+msgid "This customer is not authorized for credit checkout."
+msgstr "Este cliente no está autorizado a finalizar compras a crédito."
+
+#. module: tl_dimpal_website_contract_checkout
+#. odoo-python
+#: code:addons/tl_dimpal_website_contract_checkout/models/sale_order.py:0
+msgid "This product has an active supply contract. Request its delivery in My Account / Supply Contracts."
+msgstr "Este producto tiene un contrato de suministro activo. Solicite la entrega en Mi cuenta / Contratos de suministro."
+
+#. module: tl_dimpal_website_contract_checkout
+#: model_terms:ir.ui.view,arch_db:tl_dimpal_website_contract_checkout.checkout_denied
+msgid "Volver al carrito"
+msgstr "Volver al carrito"

@@ -70,6 +70,25 @@ class TestFakeSaleBlanketOrder(SaleOrderBlanketOrderCase):
 
 
 class TestSaleBlanketOrder(SaleOrderBlanketOrderCase):
+    def test_blanket_order_dynamic_domain_is_json_odoo20(self):
+        """Dynamic domain fields must contain JSON data, not binary content."""
+        # Compute on a draft call-off without invoking inventory workflows.
+        call_off = self.env["sale.order"].new({
+            "order_type": "call_off",
+            "partner_id": self.partner.id,
+        })
+        self.assertIsInstance(call_off.blanket_order_id_domain, list)
+        self.assertTrue(call_off.blanket_order_id_domain)
+        self.assertIn(
+            ("partner_id", "=", self.partner.id),
+            call_off.blanket_order_id_domain,
+        )
+        normal = self.env["sale.order"].new({
+            "order_type": "order",
+            "partner_id": self.partner.id,
+        })
+        self.assertIsInstance(normal.blanket_order_id_domain, list)
+
     def test_action_view_call_off_orders_addresses(self):
         partner_invoice = self.env["res.partner"].create(
             {
