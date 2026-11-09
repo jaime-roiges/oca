@@ -215,7 +215,7 @@ msgstr "Sol·licituds de lliurament de contractes"
 #. module: tl_sale_blanket_portal
 #: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_form
 msgid "Customer delivery request"
-msgstr ""
+msgstr "Sol·licitud de lliurament del client"
 
 #. module: tl_sale_blanket_portal
 #: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
@@ -232,7 +232,7 @@ msgstr "Només es poden aprovar sol·licituds pendents de contractes oberts."
 #. odoo-python
 #: code:addons/tl_sale_blanket_portal/models/release_request.py:0
 msgid "Only pending requests may be rejected."
-msgstr ""
+msgstr "Només es poden rebutjar les sol·licituds pendents."
 
 #. module: tl_sale_blanket_portal
 #: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
@@ -249,13 +249,13 @@ msgstr "La quantitat restant del contracte és insuficient."
 #. odoo-python
 #: code:addons/tl_sale_blanket_portal/models/release_request.py:0
 msgid "Request line must belong to the selected contract."
-msgstr ""
+msgstr "La línia sol·licitada ha de pertànyer al contracte seleccionat."
 
 #. module: tl_sale_blanket_portal
 #. odoo-python
 #: code:addons/tl_sale_blanket_portal/models/release_request.py:0
 msgid "Requesting customer does not match the contract customer."
-msgstr ""
+msgstr "El client sol·licitant no coincideix amb el del contracte."
 
 #. module: tl_sale_blanket_portal
 #. odoo-python
@@ -273,3 +273,160 @@ msgstr "Sol·licitades"
 #: code:addons/tl_sale_blanket_portal/models/release_request.py:0
 msgid "The contract line changed during order generation."
 msgstr "La línia contractual ha canviat en generar la comanda."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Estado del contrato"
+msgstr "Estat del contracte"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Todos los productos"
+msgstr "Tots els productes"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Filtrar"
+msgstr "Filtrar"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Limpiar"
+msgstr "Netejar"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Contratos encontrados:"
+msgstr "Contractes trobats:"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Productos"
+msgstr "Productes"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "No hay contratos con estos filtros."
+msgstr "No hi ha contractes amb aquests filtres."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Paginación de contratos"
+msgstr "Paginació de contractes"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Anterior"
+msgstr "Anterior"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Siguiente"
+msgstr "Següent"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Filtrar líneas por producto"
+msgstr "Filtrar línies per producte"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "El consumo corresponde a pedidos confirmados. Los presupuestos pendientes se muestran por separado y reducen temporalmente la disponibilidad contractual."
+msgstr "El consum correspon a comandes confirmades. Els pressupostos pendents es mostren per separat i redueixen temporalment la disponibilitat contractual."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Consumidas (pedidos confirmados)"
+msgstr "Consumides (comandes confirmades)"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "% consumido"
+msgstr "% consumit"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Pendientes en presupuestos"
+msgstr "Pendents en pressupostos"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Disponible"
+msgstr "Disponible"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Solicitar entrega"
+msgstr "Sol·licitar lliurament"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Este contrato es de solo consulta y no admite nuevas solicitudes."
+msgstr "Aquest contracte és només de consulta i no admet noves sol·licituds."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Estado:"
+msgstr "Estat:"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Borrador"
+msgstr "Esborrany"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Abierto"
+msgstr "Obert"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Completado"
+msgstr "Completat"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Caducado"
+msgstr "Caducat"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Cancelado"
+msgstr "Cancel·lat"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Abiertos"
+msgstr "Oberts"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Cancelados"
+msgstr "Cancel·lats"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Completados"
+msgstr "Completats"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Caducados"
+msgstr "Caducats"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Todos"
+msgstr "Tots"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields,field_description:tl_sale_blanket_portal.field_sale_blanket_order__tl_portal_cancelled
+msgid "Cancelled contract"
+msgstr "Contracte cancel·lat"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields,help:tl_sale_blanket_portal.field_sale_blanket_order__tl_portal_cancelled
+msgid "Set when the contract is explicitly cancelled, rather than expired by date."
+msgstr "S’activa quan el contracte es cancel·la expressament, en lloc de caducar per data."
