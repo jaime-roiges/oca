@@ -100,6 +100,14 @@
                     readonly="state in ['cancel', 'sale']"
                 />
             </field>
+            <!-- order_type is a field on sale.order.line, not a value inherited
+                 from the parent sale.order form context. -->
+            <xpath
+                expr="//page[@name='order_lines']//field[@name='order_line']/form/field[@name='display_type']"
+                position="after"
+            >
+                <field name="order_type" invisible="1" />
+            </xpath>
             <xpath
                 expr="//page[@name='order_lines']//form//div[@name='ordered_qty']"
                 position="after"
@@ -111,7 +119,7 @@
                 />
             </xpath>
             <xpath
-                expr="//page[@name='order_lines']//form//div[@name='invoice_lines']"
+                expr="//page[@name='order_lines']//field[@name='order_line']/form//div[@name='invoiced_qty']"
                 position="after"
             >
                 <div
