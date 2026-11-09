@@ -49,7 +49,7 @@ inner join (
     from sale_order_line as sol
     left join stock_move as sm on (
         sm.state != 'cancel'
-        and sm.scrap_id is null
+        AND NOT COALESCE(sm.is_scrap, FALSE)
         and sol.product_id = sm.product_id
         and sm.sale_line_id = sol.id
         )
