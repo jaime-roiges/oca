@@ -1,15 +1,22 @@
-import {WebsiteSale} from "@website_sale/interactions/website_sale";
-import {patch} from "@web/core/utils/patch";
+import {Interaction} from "@web/public/interaction";
+import {registry} from "@web/core/registry";
 import {rpc} from "@web/core/network/rpc";
 
-patch(WebsiteSale.prototype, {
+export class WebsiteSaleBrandFilter extends Interaction {
+    static selector = 'form[data-brand-filter-mode]';
+    dynamicContent = {
+        'input[name="brand"]': {'t-on-change': this.onChangeAttribute},
+        'input[name="brand_ids"]': {'t-on-change': this.onChangeAttribute},
+    };
+
     start() {
-        super.start(...arguments);
+        this.brandFilterForm = this.el;
         this.setupBrandFilter();
-    },
+    }
 
     setupBrandFilter() {
-        this.brandFilterForm = this.el.querySelector("form[data-brand-filter-mode]");
+        this.brandFilterForm = this.el.matches("form[data-brand-filter-mode]")
+            ? this.el : this.el.querySelector("form[data-brand-filter-mode]");
         if (!this.brandFilterForm) {
             return;
         }
@@ -35,7 +42,7 @@ patch(WebsiteSale.prototype, {
         )) {
             this.loadBrandLetter({currentTarget: openedLetter});
         }
-    },
+    }
 
     getBrandRpcParams(extraParams = {}) {
         const url = new URL(window.location.href);
@@ -49,7 +56,7 @@ patch(WebsiteSale.prototype, {
             ],
             ...extraParams,
         };
-    },
+    }
 
     async loadMoreBrands(ev) {
         const button = ev.currentTarget;
@@ -75,7 +82,7 @@ patch(WebsiteSale.prototype, {
         } else {
             button.remove();
         }
-    },
+    }
 
     async loadBrandLetter(ev) {
         const panel = ev.currentTarget;
@@ -105,7 +112,7 @@ patch(WebsiteSale.prototype, {
             button.addEventListener("click", onClick);
             this.registerCleanup(() => button.removeEventListener("click", onClick));
         }
-    },
+    }
 
     async loadMoreBrandLetter(ev, panel) {
         const button = ev.currentTarget;
@@ -132,7 +139,7 @@ patch(WebsiteSale.prototype, {
         } else {
             button.remove();
         }
-    },
+    }
 
     onChangeAttribute(ev) {
         const container =
@@ -140,7 +147,9 @@ patch(WebsiteSale.prototype, {
             ev.currentTarget.closest(".oe_website_sale") ||
             document;
         const filters = container.querySelectorAll(
-            "form.js_attributes input:checked, form.js_attributes select"
+            'form.js_attributes input:checked, form.js_attributes select, '
+            + 'form[data-brand-filter-mode] input[name="brand"]:checked, '
+            + 'form[data-brand-filter-mode] input[name="brand_ids"]:checked' 
         );
         const attributeValues = new Map();
         const tags = new Set();
@@ -182,5 +191,9 @@ patch(WebsiteSale.prototype, {
         }
 
         window.location.assign(`${url.pathname}?${searchParams.toString()}`);
-    },
-});
+    }
+}
+
+registry.category('public.interactions').add(
+    'website_sale_product_brand.brand_filter', WebsiteSaleBrandFilter
+);

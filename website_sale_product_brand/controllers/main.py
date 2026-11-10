@@ -68,7 +68,9 @@ class WebsiteSale(WebsiteSaleBase):
                 yield {"loc": loc}
 
     def _get_shop_path(self, category=None, page=0):
-        path = WebsiteSaleBase._get_shop_path(category=category, page=page)
+        path = category.website_url if category else SHOP_PATH
+        if page:
+            path += f"/page/{page}"
         brand = self._get_current_brand()
         if brand:
             path = f"{SHOP_PATH}/brand/{request.env['ir.http']._slug(brand)}"
@@ -293,13 +295,14 @@ class WebsiteSale(WebsiteSaleBase):
         return res
 
     def _get_shop_domain(
-        self, search, category, attribute_value_dict, search_in_description=True
+        self, search, category, attribute_value_dict, search_in_description=True, tags=None
     ):
         domain = super()._get_shop_domain(
             search,
             category,
             attribute_value_dict,
             search_in_description=search_in_description,
+            tags=tags,
         )
         brand_ids = request.env.context.get("brand_ids") or self._get_brand_ids(
             request.httprequest.args

@@ -43,7 +43,7 @@
                                                 t-att-alt="o.name"
                                             />
                                             <div class="card-body border-0">
-                                                <span t-out="o.name" />
+                                                <span t-esc="o.name" />
                                             </div>
                                         </a>
                                     </div>

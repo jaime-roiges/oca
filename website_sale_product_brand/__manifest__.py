@@ -22,11 +22,7 @@
     "assets": {
         "web.assets_frontend": [
             "/website_sale_product_brand/static/src/scss/website_sale_product_brand.scss",
-            (
-                "after",
-                "website_sale/static/src/interactions/website_sale.js",
-                "/website_sale_product_brand/static/src/interactions/website_sale_brand_filter.esm.js",
-            ),
+            "/website_sale_product_brand/static/src/interactions/website_sale_brand_filter.esm.js",
         ],
         "website.website_builder_assets": [
             "website_sale_product_brand/static/src/website_builder/brand_filter_option.xml",

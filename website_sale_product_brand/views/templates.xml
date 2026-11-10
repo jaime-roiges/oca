@@ -130,6 +130,9 @@
         </xpath>
     </template>
 
+    <!-- Odoo 20: the former Clear Filters link is no longer a stable node of
+         website_sale.products. Add a brand-aware reset in the existing sidebar
+         rail instead of modifying an element that might not exist. -->
     <template
         id="website_sale_filter_brand_clear_filters"
         inherit_id="website_sale.products"
@@ -138,20 +141,15 @@
         priority="999"
     >
         <xpath
-            expr="//aside[@id='products_grid_before']//a[contains(@t-att-href, 'keep(attribute_values=0')]"
-            position="attributes"
+            expr="//aside[@id='products_grid_before']//div[hasclass('o_wsale_products_grid_before_rail')]"
+            position="inside"
         >
-            <attribute
-                name="t-att-href"
-            >keep(attribute_values=0, tags=0, min_price=0, max_price=0, brand=0, brand_ids=0)</attribute>
-        </xpath>
-        <xpath
-            expr="//aside[@id='products_grid_before']//div[hasclass('py-3', 'border-bottom')][@t-if]"
-            position="attributes"
-        >
-            <attribute
-                name="t-if"
-            >attrib_values or tags or brand_ids or selected_brand_ids or (show_price_filter and isFilteringByPrice)</attribute>
+            <div t-if="selected_brand_ids" class="o_wsale_brand_clear_filters pb-2 mb-2">
+                <a
+                    class="btn btn-link p-0"
+                    t-att-href="keep(attribute_values=0, tags=0, min_price=0, max_price=0, brand=0, brand_ids=0)"
+                >Clear filters</a>
+            </div>
         </xpath>
     </template>
 
