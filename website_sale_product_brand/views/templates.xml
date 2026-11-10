@@ -153,14 +153,17 @@
         </xpath>
     </template>
 
+    <!-- Odoo 20: website_sale.search delegates the form to
+         website.website_search_box_input. Insert brand values inside the
+         actual GET form, never next to a t-set variable in the caller. -->
     <template
         id="search_brands"
         name="Search Box keeps brands"
-        inherit_id="website_sale.search"
+        inherit_id="website.website_search_box_input"
     >
-        <xpath expr="//t[@t-set='action']" position="after">
-            <t t-if="brand_ids">
-                <t t-foreach="brand_ids" t-as="brand">
+        <xpath expr="//form" position="inside">
+            <t t-if="search_type == 'products'">
+                <t t-foreach="request.env.context.get('brand_ids') or request.httprequest.args.getlist('brand') or request.httprequest.args.getlist('brand_ids')" t-as="brand">
                     <input type="hidden" name="brand" t-att-value="brand" />
                 </t>
             </t>
