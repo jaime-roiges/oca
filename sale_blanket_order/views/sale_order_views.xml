@@ -12,13 +12,13 @@
                 <attribute name="context">{'from_sale_order': True}</attribute>
             </xpath>
             <xpath
-                expr="//field[@name='order_line']//list/field[@name='product_template_id']"
+                expr="//field[@name='order_line']/list[@name='sol_list']/column[@name='product_and_description']"
                 position="after"
             >
                 <field
                     name="blanket_order_line"
                     context="{'from_sale_order': True}"
-                    optional="show"
+                    column_invisible="not parent.blanket_order_id"
                 />
             </xpath>
         </field>
