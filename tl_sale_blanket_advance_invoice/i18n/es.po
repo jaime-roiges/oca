@@ -1,0 +1,80 @@
+# Translation of Odoo Server.
+# Source addon: tl_sale_blanket_advance_invoice
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: tl_sale_blanket_advance_invoice
+#: code:addons/tl_sale_blanket_advance_invoice/wizard/customer_advance_invoice.py:29
+msgid "Accounting permissions are required."
+msgstr "Se necesitan permisos de Contabilidad."
+
+#. module: tl_sale_blanket_advance_invoice
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_advance_invoice.view_tl_customer_contract_advance_wizard
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#. module: tl_sale_blanket_advance_invoice
+#: code:addons/tl_sale_blanket_advance_invoice/wizard/customer_advance_invoice.py:35
+msgid "Configure a current-liability advance account (438)."
+msgstr "Configure una cuenta de anticipos de clientes (438) del pasivo corriente."
+
+#. module: tl_sale_blanket_advance_invoice
+#: code:addons/tl_sale_blanket_advance_invoice/wizard/customer_advance_invoice.py:33
+msgid "Confirm the blanket contract first."
+msgstr "Confirme primero el contrato marco."
+
+#. module: tl_sale_blanket_advance_invoice
+#: code:addons/tl_sale_blanket_advance_invoice/wizard/customer_advance_invoice.py:62
+msgid "Could not create the fiscal advance invoice line."
+msgstr "No se ha podido crear la línea fiscal de la factura de anticipo."
+
+#. module: tl_sale_blanket_advance_invoice
+#: code:addons/tl_sale_blanket_advance_invoice/wizard/customer_advance_invoice.py:74
+msgid "Customer advance invoice"
+msgstr "Factura de anticipo de cliente"
+
+#. module: tl_sale_blanket_advance_invoice
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_advance_invoice.view_tl_sale_blanket_customer_advance_button
+msgid "Factura de anticipo"
+msgstr "Factura de anticipo"
+
+#. module: tl_sale_blanket_advance_invoice
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_advance_invoice.view_tl_customer_contract_advance_wizard
+msgid "Factura de anticipo de cliente"
+msgstr "Factura de anticipo de cliente"
+
+#. module: tl_sale_blanket_advance_invoice
+#: model:ir.actions.act_window,name:tl_sale_blanket_advance_invoice.action_tl_customer_contract_advance
+msgid "Factura de anticipo del contrato"
+msgstr "Factura de anticipo del contrato"
+
+#. module: tl_sale_blanket_advance_invoice
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_advance_invoice.view_tl_customer_contract_advance_wizard
+msgid "Generar factura de anticipo"
+msgstr "Generar factura de anticipo"
+
+#. module: tl_sale_blanket_advance_invoice
+#: model:ir.model.fields,field_description:tl_sale_blanket_advance_invoice.field_tl_sale_blanket_advance_invoice_wizard__tax_ids
+msgid "Sales VAT"
+msgstr "IVA repercutido"
+
+#. module: tl_sale_blanket_advance_invoice
+#: code:addons/tl_sale_blanket_advance_invoice/wizard/customer_advance_invoice.py:42
+msgid "Select sales taxes of the contract company."
+msgstr "Seleccione impuestos de venta de la empresa del contrato."
+
+#. module: tl_sale_blanket_advance_invoice
+#: model:ir.model.fields,field_description:tl_sale_blanket_advance_invoice.field_tl_sale_blanket_advance_invoice_wizard__amount_base
+msgid "Taxable advance base"
+msgstr "Base imponible del anticipo"
+
+#. module: tl_sale_blanket_advance_invoice
+#: code:addons/tl_sale_blanket_advance_invoice/wizard/customer_advance_invoice.py:37
+msgid "The taxable advance base must be positive."
+msgstr "La base imponible del anticipo debe ser positiva."
+

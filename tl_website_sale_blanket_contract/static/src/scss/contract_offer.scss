@@ -1,0 +1,32 @@
+// Shop tiles: in Odoo 20 the current price appears before the <del>.
+// Reorder only *customer contractual offers* without affecting other discounts.
+.product_price[data-tl-contract-offer="1"] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    > del {
+        order: -1;
+        line-height: 1.2;
+    }
+    > .fw-bold {
+        order: 0;
+    }
+}
+
+// Product page: the standard Odoo 20 product_price template renders
+// .oe_price and .oe_default_price, already updated by variant interactions.
+.o_wsale_product_page .product_price
+    [name="product_price_container"][data-tl-contract-offer="1"] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    > .oe_default_price {
+        order: -1;
+        line-height: 1.2;
+    }
+    > .oe_price {
+        order: 0;
+    }
+}

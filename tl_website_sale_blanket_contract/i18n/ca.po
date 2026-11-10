@@ -1,0 +1,151 @@
+# Translation of Odoo Server.
+# Source addon: tl_website_sale_blanket_contract
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:159
+msgid "A contractual product must use its active contract."
+msgstr "Un producte amb contracte ha d'utilitzar el contracte vigent."
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "Añadir al carrito"
+msgstr "Afegir a la cistella"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "Comprar desde contrato"
+msgstr "Comprar des del contracte"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.portal_choose_contract
+msgid "Comprar por contrato"
+msgstr "Comprar per contracte"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "Disponible:"
+msgstr "Disponible:"
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:41
+msgid "Invalid contract selection."
+msgstr "Selecció de contracte no vàlida."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:80
+msgid "Invalid unit of measure for the selected product."
+msgstr "Unitat de mesura no vàlida per al producte seleccionat."
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "Mis contratos"
+msgstr "Els meus contractes"
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:96
+msgid "Refresh your cart: its contract is no longer available."
+msgstr "Actualitzeu la cistella: el contracte ja no està disponible."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:48
+msgid "Several active contracts exist for this product. Select the contract explicitly from My Contracts."
+msgstr "Hi ha diversos contractes vigents per a aquest producte. Seleccioneu-ne un a Els meus contractes."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:20
+msgid "The cart does not belong to this customer."
+msgstr "La cistella no pertany a aquest client."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:120
+msgid "The contract on this cart line has expired."
+msgstr "El contracte d'aquesta línia de la cistella ha caducat."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:74
+msgid "The requested product no longer exists."
+msgstr "El producte sol·licitat ja no existeix."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:54
+msgid "The requested quantity exceeds the available contract balance."
+msgstr "La quantitat sol·licitada supera el saldo disponible del contracte."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:35
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:44
+msgid "The selected contract is not available for this customer."
+msgstr "El contracte seleccionat no està disponible per a aquest client."
+
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.tl_contract_availability_product_page
+msgid "Available by contract"
+msgstr "Disponible per contracte"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.tl_contract_availability_product_page
+msgid "Contract balance, not physical stock."
+msgstr "Saldo contractual, no existències físiques."
+
+#. module: tl_website_sale_blanket_contract
+#: code:addons/tl_website_sale_blanket_contract/models/sale_order.py:17
+msgid "This contract requires complete packages of %(packaging)s. Enter a positive whole number of packages."
+msgstr "Aquest contracte exigeix embalatges complets de %(packaging)s. Introduïu un nombre enter positiu d'embalatges."
+
+#. module: tl_website_sale_blanket_contract
+#: model:ir.model.fields,field_description:tl_website_sale_blanket_contract.field_product_template__tl_contract_whole_pack_only
+msgid "Whole packages for contractual website sales"
+msgstr "Embalatges complets en les vendes web per contracte"
+
+#. module: tl_website_sale_blanket_contract
+#: model:ir.model.fields,help:tl_website_sale_blanket_contract.field_product_template__tl_contract_whole_pack_only
+msgid "For contracted eCommerce orders, packaging units (boxes/pallets) must be purchased in whole numbers. Individual units are unaffected."
+msgstr "En les comandes web amb contracte, els embalatges (caixes/palets) es compren en quantitats enteres. Les unitats individuals no es veuen afectades."
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.view_product_template_contract_packaging
+msgid "Contractual eCommerce packagings"
+msgstr "Embalatges del comerç electrònic contractual"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "Sales packaging"
+msgstr "Embalatge de venda"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.tl_contract_availability_product_page
+msgid "complete packages"
+msgstr "embalatges complets"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.tl_contract_availability_product_page
+msgid "remainder:"
+msgstr "sobrant:"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.tl_contract_availability_product_page
+msgid "Equivalent:"
+msgstr "Equivalent:"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "available"
+msgstr "disponibles"
+
+#. module: tl_website_sale_blanket_contract
+#: model_terms:ir.ui.view,arch_db:tl_website_sale_blanket_contract.contract_purchase_form
+msgid "Select a packaging above; the contract balance will be validated before adding to cart."
+msgstr "Seleccioneu un embalatge; es comprovarà el saldo del contracte abans d'afegir-lo a la cistella."

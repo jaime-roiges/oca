@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="tl_contract_availability_product_page"
+            inherit_id="website_sale.product_price"
+            name="Available quantity by customer blanket contract">
+    <xpath expr="//div[@name='product_price_container']" position="after">
+      <section t-attf-class="tl_contract_availability border-top mt-3 pt-3 #{'d-none' if not combination_info.get('tl_contract_availabilities') else ''}"
+               data-tl-contract-availability="1">
+        <div class="fw-semibold mb-1">Available by contract</div>
+        <ul class="list-unstyled mb-1" data-tl-contract-list="1">
+          <t t-foreach="combination_info.get('tl_contract_availabilities', [])" t-as="contract_balance">
+            <li class="py-2 border-bottom">
+              <div class="d-flex justify-content-between gap-3">
+                <a t-if="contract_balance['quantity'] &gt; 0"
+                   t-att-href="'/shop/blanket/contract/%s' % contract_balance['id']"
+                   t-out="contract_balance['contract_name']"/>
+                <span t-else="" t-out="contract_balance['contract_name']"/>
+                <span class="text-nowrap fw-semibold">
+                  <t t-out="contract_balance['quantity_display']"/>
+                  <t t-out="contract_balance['uom_name']"/>
+                </span>
+              </div>
+              <small t-if="contract_balance.get('is_packaging')" class="text-muted d-block mt-1">
+                <t t-out="contract_balance['full_packages_display']"/>
+                <t t-out="contract_balance['selected_uom_name']"/>
+                <span>complete packages</span> (1 =
+                <t t-out="contract_balance['package_size_display']"/>
+                <t t-out="contract_balance['main_uom_name']"/>);
+                <span>remainder:</span>
+                <t t-out="contract_balance['leftover_base_display']"/>
+                <t t-out="contract_balance['main_uom_name']"/>
+              </small>
+              <small t-elif="contract_balance.get('show_equivalent')" class="text-muted d-block mt-1">
+                <span>Equivalent:</span>
+                <t t-out="contract_balance['available_selected_display']"/>
+                <t t-out="contract_balance['selected_uom_name']"/>
+              </small>
+            </li>
+          </t>
+        </ul>
+        <small class="text-muted">Contract balance, not physical stock.</small>
+      </section>
+    </xpath>
+  </template>
+</odoo>

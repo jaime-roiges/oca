@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Odoo 20: product_tile_templates.xml / website_sale.products_item -->
+    <template id="tl_contract_offer_product_tile"
+              inherit_id="website_sale.products_item"
+              name="Contract offer layout on shop tiles">
+        <xpath expr="//div[hasclass('product_price')]" position="attributes">
+            <attribute name="t-att-data-tl-contract-offer">'1' if template_price_vals.get('tl_contract_offer') else None</attribute>
+        </xpath>
+    </template>
+
+    <!-- Odoo 20: product_page_templates.xml / website_sale.product_price -->
+    <template id="tl_contract_offer_product_page"
+              inherit_id="website_sale.product_price"
+              name="Contract offer layout on product pages">
+        <xpath expr="//div[@name='product_price_container']" position="attributes">
+            <attribute name="t-att-data-tl-contract-offer">'1' if combination_info.get('tl_contract_offer') else None</attribute>
+        </xpath>
+    </template>
+</odoo>

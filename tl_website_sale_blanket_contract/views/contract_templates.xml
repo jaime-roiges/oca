@@ -1,0 +1,44 @@
+<odoo>
+  <template id="contract_purchase_form" name="Purchase from customer blanket contract">
+    <t t-call="website.layout">
+      <div class="container my-5">
+        <h2>Comprar desde contrato</h2>
+        <div class="alert alert-info">
+          <strong><t t-out="agreement_line.order_id.name"/></strong>
+          <p><t t-out="agreement_line.product_id.display_name"/></p>
+          <p>Disponible: <t t-out="max_qty"/> <t t-out="agreement_line.product_uom.name"/></p>
+        </div>
+        <form method="POST" action="/shop/blanket/contract/add">
+          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+          <input type="hidden" name="line_id" t-att-value="agreement_line.id"/>
+          <label for="tl_contract_uom" class="form-label">Sales packaging</label>
+          <select id="tl_contract_uom" name="uom_id" required="required" class="form-select mb-3">
+            <option t-foreach="packaging_options" t-as="option"
+                    t-att-value="option['selected_uom_id']">
+              <t t-out="option['selected_uom_name']"/>:
+              <t t-out="option['full_packages_display'] if option['is_packaging'] else option['available_selected_display']"/>
+              <t t-if="option['is_packaging']"> complete packages</t>
+              available
+            </option>
+          </select>
+          <label for="tl_contract_qty" class="form-label">Cantidad</label>
+          <input name="quantity" id="tl_contract_qty" type="number" step="any" min="0.001"
+                 required="required" class="form-control mb-3"/>
+          <small class="text-muted d-block mb-3">
+            Select a packaging above; the contract balance will be validated before adding to cart.
+          </small>
+          <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+          <a href="/my/contracts" class="btn btn-outline-secondary">Mis contratos</a>
+        </form>
+      </div>
+    </t>
+  </template>
+  <template id="portal_choose_contract" inherit_id="tl_sale_blanket_portal.portal_contract_detail"
+            name="Buy from a selected blanket line">
+    <xpath expr="//tr[@t-foreach='contract_lines']/td[last()]" position="inside">
+      <a t-if="can_request and line.remaining_uom_qty &gt; 0"
+         t-att-href="'/shop/blanket/contract/%s' % line.id"
+         class="btn btn-outline-secondary btn-sm mt-1">Comprar por contrato</a>
+    </xpath>
+  </template>
+</odoo>

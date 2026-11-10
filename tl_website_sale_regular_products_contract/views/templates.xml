@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2026 Tecniloop
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Hide the link for anonymous visitors without changing the OCA views. -->
+    <template id="regular_products_private_category_menu"
+        inherit_id="website_sale_menu_partner_top_selling.products_categories_top_user_selling"
+        priority="1000">
+        <xpath expr="//li[a[@href='/shop/my_regular_products']]" position="attributes">
+            <attribute name="t-if">not request.env.user._is_public()</attribute>
+        </xpath>
+    </template>
+    <template id="regular_products_private_filmstrip"
+        inherit_id="website_sale_menu_partner_top_selling.filmstrip_categories_top_user_selling"
+        priority="1000">
+        <xpath expr="//li[a[@href='/shop/my_regular_products']]" position="attributes">
+            <attribute name="t-if">not request.env.user._is_public()</attribute>
+        </xpath>
+    </template>
+</odoo>

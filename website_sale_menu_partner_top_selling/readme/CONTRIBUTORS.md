@@ -1,0 +1,2 @@
+- Tecnativa - Pilar Vargas (original OCA development)
+- OCA e-commerce 20.0 migration PR #1369 (migration candidate)
