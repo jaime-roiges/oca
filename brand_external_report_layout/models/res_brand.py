@@ -64,6 +64,22 @@ class ResBrand(models.Model):
         ],
         default="Lato",
     )
+    # In Odoo 20 report table styling is distinct from the external layout.
+    # Keep this field on res.brand because reports render the brand as `company`.
+    report_tables_id = fields.Selection(
+        [
+            ("light", "Light"),
+            ("boxed", "Boxed"),
+            ("bold", "Bold"),
+            ("striped", "Striped"),
+            ("bubble", "Bubble"),
+            ("column", "Column"),
+            ("compact", "Compact"),
+        ],
+        string="Report Table Style",
+        default="light",
+        required=True,
+    )
     primary_color = fields.Char()
     secondary_color = fields.Char()
     company_details = fields.Html(
@@ -120,7 +136,7 @@ class ResBrand(models.Model):
 
     @api.model
     def _get_style_fields(self):
-        return {"external_report_layout_id", "font", "primary_color", "secondary_color"}
+        return {"external_report_layout_id", "report_tables_id", "font", "primary_color", "secondary_color"}
 
     @api.model_create_multi
     def create(self, vals_list):

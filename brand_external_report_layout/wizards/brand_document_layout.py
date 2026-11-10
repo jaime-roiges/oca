@@ -26,6 +26,7 @@ class BrandDocumentLayout(models.TransientModel):
         related="brand_id.external_report_layout_id", readonly=False
     )
 
+    report_tables_id = fields.Selection(related="brand_id.report_tables_id", readonly=False, required=True)
     font = fields.Selection(related="brand_id.font", readonly=False)
     primary_color = fields.Char(related="brand_id.primary_color", readonly=False)
     secondary_color = fields.Char(related="brand_id.secondary_color", readonly=False)
@@ -59,6 +60,7 @@ class BrandDocumentLayout(models.TransientModel):
             wizard.paperformat_id = wizard.brand_id.paperformat_id
             wizard.external_report_layout_id = wizard.brand_id.external_report_layout_id
             wizard.font = wizard.brand_id.font
+            wizard.report_tables_id = wizard.brand_id.report_tables_id
             wizard.primary_color = wizard.brand_id.primary_color
             wizard.secondary_color = wizard.brand_id.secondary_color
             wizard_layout = wizard.env["report.layout"].search(
@@ -98,6 +100,7 @@ class BrandDocumentLayout(models.TransientModel):
 
     @api.depends(
         "report_layout_id",
+        "report_tables_id",
         "logo",
         "font",
         "primary_color",
