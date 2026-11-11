@@ -1,7 +1,9 @@
 <odoo>
-  <template id="tl_portal_home_entry" inherit_id="portal.portal_my_home" name="Customer blanket contracts">
-    <xpath expr="//div[contains(@class, 'o_portal_docs')]" position="inside">
-      <div class="mt-3 border rounded p-3"><a href="/my/contracts">Mis contratos de suministro</a></div>
+  <!-- Keep this view's XML ID during upgrades, but stop rendering its legacy
+       link: Odoo 20 renders portal home cards from portal.entry records. -->
+  <template id="tl_portal_home_entry" inherit_id="portal.portal_my_home" name="Customer blanket contracts (legacy entry)">
+    <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+      <t t-if="False"/>
     </xpath>
   </template>
 
@@ -42,7 +44,7 @@
         <div class="table-responsive">
           <table class="table table-hover">
             <thead><tr>
-              <th>Contrato</th><th>Estado</th><th>Productos</th><th>Inicio</th><th>Fin</th>
+              <th>Contrato</th><th>Estado</th><th>Productos</th><th>Inicio</th><th>Fin</th><th>Anticipo disponible (sin IVA)</th>
             </tr></thead>
             <tbody>
               <tr t-foreach="contracts" t-as="contract">
@@ -51,6 +53,7 @@
                 <td><t t-out="contract_products.get(contract.id, '')"/></td>
                 <td><t t-out="contract.validity_start_date or ''"/></td>
                 <td><t t-out="contract.validity_date or ''"/></td>
+                <td><t t-out="advance_available_by_contract.get(contract.id, 0.0)"/> <t t-out="contract.currency_id.symbol"/></td>
               </tr>
             </tbody>
           </table>
@@ -140,13 +143,48 @@
           </table>
         </div>
         <div t-if="not can_request" class="alert alert-secondary">Este contrato es de solo consulta y no admite nuevas solicitudes.</div>
-        <h4>Anticipos de cliente (bases imponibles)</h4>
+        <h4>Anticipos de cliente (bases imponibles, sin IVA)</h4>
+        <p class="text-muted small">El saldo disponible solo incluye facturas de anticipo contabilizadas y totalmente cobradas. Las aplicaciones en facturas borrador están reservadas, pero aún no son definitivas. El IVA se consulta en cada factura fiscal.</p>
         <dl class="row">
-          <dt class="col-sm-5">Facturado</dt><dd class="col-sm-7"><t t-out="advance_base"/> <t t-out="contract.currency_id.name"/></dd>
-          <dt class="col-sm-5">Cobrado</dt><dd class="col-sm-7"><t t-out="advance_paid_base"/> <t t-out="contract.currency_id.name"/></dd>
-          <dt class="col-sm-5">Aplicado</dt><dd class="col-sm-7"><t t-out="advance_applied"/> <t t-out="contract.currency_id.name"/></dd>
-          <dt class="col-sm-5">Pendiente de aplicar</dt><dd class="col-sm-7"><t t-out="advance_remaining"/> <t t-out="contract.currency_id.name"/></dd>
+          <dt class="col-sm-6">Base de anticipos facturados</dt><dd class="col-sm-6"><t t-out="advance_info['invoiced']"/> <t t-out="contract.currency_id.name"/></dd>
+          <dt class="col-sm-6">Base de anticipos totalmente cobrados</dt><dd class="col-sm-6"><t t-out="advance_info['fully_paid']"/> <t t-out="contract.currency_id.name"/></dd>
+          <dt class="col-sm-6">Aplicado en facturas contabilizadas</dt><dd class="col-sm-6"><t t-out="advance_info['posted_applied']"/> <t t-out="contract.currency_id.name"/></dd>
+          <dt class="col-sm-6">Reservado en facturas borrador</dt><dd class="col-sm-6"><t t-out="advance_info['draft_reserved']"/> <t t-out="contract.currency_id.name"/></dd>
+          <dt class="col-sm-6">Pendiente de cobro completo</dt><dd class="col-sm-6"><t t-out="advance_info['awaiting_payment']"/> <t t-out="contract.currency_id.name"/></dd>
+          <dt class="col-sm-6"><strong>Anticipo disponible para aplicar</strong></dt><dd class="col-sm-6"><strong><t t-out="advance_info['available']"/> <t t-out="contract.currency_id.name"/></strong></dd>
         </dl>
+        <h5>Detalle de facturas de anticipo y aplicaciones</h5>
+        <div class="table-responsive">
+          <table class="table table-sm table-striped">
+            <thead><tr>
+              <th>Factura de anticipo</th><th>Fecha</th><th>Estado de cobro</th>
+              <th>Base</th><th>Aplicado contabilizado</th><th>Reservado en borradores</th><th>Disponible</th>
+            </tr></thead>
+            <tbody>
+              <t t-foreach="advance_info['rows']" t-as="adv">
+                <tr>
+                  <td><t t-out="adv['invoice_name']"/></td><td><t t-out="adv['invoice_date']"/></td>
+                  <td><t t-out="adv['payment_state_label']"/></td>
+                  <td><t t-out="adv['base']"/></td><td><t t-out="adv['posted_applied']"/></td>
+                  <td><t t-out="adv['draft_reserved']"/></td><td><t t-out="adv['available']"/></td>
+                </tr>
+                <tr t-if="adv['allocations']">
+                  <td colspan="7" class="ps-4">
+                    <strong>Aplicaciones a facturas de entrega:</strong>
+                    <ul class="mb-0">
+                      <li t-foreach="adv['allocations']" t-as="allocated">
+                        <t t-out="allocated['invoice_name']"/>
+                        <span class="text-muted">(<t t-out="allocated['invoice_date']"/>, <t t-out="allocated['state_label']"/>)</span>:
+                        <t t-out="allocated['amount']"/> <t t-out="contract.currency_id.name"/>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </t>
+              <tr t-if="not advance_info['rows']"><td colspan="7">No hay anticipos contabilizados para este contrato.</td></tr>
+            </tbody>
+          </table>
+        </div>
         <h4>Solicitudes</h4>
         <table class="table table-sm">
           <thead><tr><th>Producto</th><th>Cantidad</th><th>Estado</th></tr></thead>

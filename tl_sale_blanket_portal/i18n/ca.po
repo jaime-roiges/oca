@@ -102,6 +102,7 @@ msgstr "Inici"
 #. module: tl_sale_blanket_portal
 #: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.tl_portal_home_entry
 #: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+#: model:portal.entry,name:tl_sale_blanket_portal.portal_entry_supply_contracts
 msgid "Mis contratos de suministro"
 msgstr "Els meus contractes de subministrament"
 
@@ -430,3 +431,157 @@ msgstr "Contracte cancel·lat"
 #: model:ir.model.fields,help:tl_sale_blanket_portal.field_sale_blanket_order__tl_portal_cancelled
 msgid "Set when the contract is explicitly cancelled, rather than expired by date."
 msgstr "S’activa quan el contracte es cancel·la expressament, en lloc de caducar per data."
+#. module: tl_sale_blanket_portal
+#: model:ir.model,name:tl_sale_blanket_portal.model_tl_sale_release_request
+msgid "Customer Request Against Blanket Contract"
+msgstr "Sol·licitud del client vinculada al contracte marc"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields,help:tl_sale_blanket_portal.field_tl_sale_release_request__sale_order_id
+msgid "Optional draft order to append this contract release to."
+msgstr "Comanda esborrany opcional on afegir aquesta sol·licitud de lliurament."
+
+#. module: tl_sale_blanket_portal
+#: model:ir.actions.act_window,name:tl_sale_blanket_portal.action_tl_release_requests
+msgid "Customer delivery requests"
+msgstr "Sol·licituds de lliurament de clients"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Anticipo disponible (sin IVA)"
+msgstr "Bestreta disponible (sense IVA)"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Anticipos de cliente (bases imponibles, sin IVA)"
+msgstr "Bestretes de client (bases imposables, sense IVA)"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "El saldo disponible solo incluye facturas de anticipo contabilizadas y totalmente cobradas. Las aplicaciones en facturas borrador están reservadas, pero aún no son definitivas. El IVA se consulta en cada factura fiscal."
+msgstr "El saldo disponible només inclou factures de bestreta comptabilitzades i cobrades íntegrament. Les aplicacions en factures esborrany estan reservades, però encara no són definitives. L'IVA es consulta en cada factura fiscal."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Base de anticipos facturados"
+msgstr "Base de bestretes facturades"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Base de anticipos totalmente cobrados"
+msgstr "Base de bestretes cobrades íntegrament"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Aplicado en facturas contabilizadas"
+msgstr "Aplicat a factures comptabilitzades"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Reservado en facturas borrador"
+msgstr "Reservat a factures esborrany"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Pendiente de cobro completo"
+msgstr "Pendent de cobrament íntegre"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Anticipo disponible para aplicar"
+msgstr "Bestreta disponible per aplicar"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Detalle de facturas de anticipo y aplicaciones"
+msgstr "Detall de factures de bestreta i aplicacions"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Factura de anticipo"
+msgstr "Factura de bestreta"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Fecha"
+msgstr "Data"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Estado de cobro"
+msgstr "Estat del cobrament"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Base"
+msgstr "Base"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Aplicado contabilizado"
+msgstr "Aplicat i comptabilitzat"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Reservado en borradores"
+msgstr "Reservat en esborranys"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Aplicaciones a facturas de entrega:"
+msgstr "Aplicacions a factures de lliurament:"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "No hay anticipos contabilizados para este contrato."
+msgstr "No hi ha bestretes comptabilitzades per a aquest contracte."
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Paid"
+msgstr "Pagada"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Unpaid"
+msgstr "Pendent de pagament"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Partially paid"
+msgstr "Pagada parcialment"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Payment in progress"
+msgstr "Pagament en curs"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Reversed"
+msgstr "Revertida"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Blocked"
+msgstr "Bloquejada"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Legacy status"
+msgstr "Estat heretat"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Draft"
+msgstr "Esborrany"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Posted"
+msgstr "Comptabilitzada"
+
+#. module: tl_sale_blanket_portal
+#: model:portal.entry,description:tl_sale_blanket_portal.portal_entry_supply_contracts
+msgid "Consulta tus contratos, su consumo y las entregas pendientes."
+msgstr "Consulta els teus contractes, el consum i els lliuraments pendents."

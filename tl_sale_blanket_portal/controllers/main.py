@@ -12,9 +12,27 @@ from odoo import _, http
 from odoo.http import request
 from odoo.tools import float_compare, float_round
 
+from .advance_summary import advance_portal_summary
+
 
 STATUS_OPTIONS = ("open", "cancelled", "done", "expired", "all")
 PAGE_SIZE = 30
+
+
+def portal_contract_domain(env):
+    """Match portal documents to the current user and active website company.
+
+    The domain is shared by the list/detail controllers and the portal card's
+    asynchronous counter. Do not take either ID from HTTP query parameters.
+    """
+    commercial = env.user.partner_id.commercial_partner_id
+    website_company = env.website.company_id
+    return [
+        ("tl_portal_visible", "=", True),
+        ("confirmed", "=", True),
+        ("partner_id", "child_of", commercial.id),
+        ("company_id", "=", website_company.id),
+    ]
 
 
 def status_domain(status):
@@ -65,14 +83,7 @@ def line_consumption(line, precision_digits=2):
 
 class SupplyBlanketPortal(http.Controller):
     def _contract_domain(self):
-        commercial = request.env.user.partner_id.commercial_partner_id
-        company = request.website.company_id
-        return [
-            ("tl_portal_visible", "=", True),
-            ("confirmed", "=", True),
-            ("partner_id", "child_of", commercial.id),
-            ("company_id", "=", company.id),
-        ]
+        return portal_contract_domain(request.env)
 
     def _contract(self, contract_id):
         if request.env.user._is_public():
@@ -83,6 +94,24 @@ class SupplyBlanketPortal(http.Controller):
         if not contract:
             raise NotFound()
         return contract
+
+    @staticmethod
+    def _advance_labels(advance_info):
+        payment_labels = {
+            "paid": _("Paid"),
+            "not_paid": _("Unpaid"),
+            "partial": _("Partially paid"),
+            "in_payment": _("Payment in progress"),
+            "reversed": _("Reversed"),
+            "blocked": _("Blocked"),
+            "legacy": _("Legacy status"),
+        }
+        application_labels = {"draft": _("Draft"), "posted": _("Posted")}
+        for row in advance_info["rows"]:
+            row["payment_state_label"] = payment_labels.get(row["payment_state"], row["payment_state"])
+            for application in row["allocations"]:
+                application["state_label"] = application_labels.get(application["state"], application["state"])
+        return advance_info
 
     def _status_labels(self):
         return {
@@ -116,8 +145,23 @@ class SupplyBlanketPortal(http.Controller):
         contracts = contract_model.search(
             domain, order="id desc", offset=(page - 1) * PAGE_SIZE, limit=PAGE_SIZE
         )
+        # Batch the fiscal advance lookup for the currently visible contracts.
+        # Never fetch a wider scope than contracts validated by _contract_domain.
+        visible_advances = request.env["tl.sale.advance"].sudo().search([
+            ("blanket_order_id", "in", contracts.ids),
+            ("kind", "=", "customer"),
+            ("invoice_id.state", "=", "posted"),
+        ]) if contracts else request.env["tl.sale.advance"]
+        advances_by_contract = {c.id: [] for c in contracts}
+        for advance in visible_advances:
+            advances_by_contract[advance.blanket_order_id.id].append(advance)
+        advance_available_by_contract = {
+            c.id: advance_portal_summary(advances_by_contract[c.id], c.currency_id)["available"]
+            for c in contracts
+        }
         labels = self._status_labels()
         return request.render("tl_sale_blanket_portal.portal_contracts", {
+            "advance_available_by_contract": advance_available_by_contract,
             "contracts": contracts,
             "status": status,
             "product_id": product_id,
@@ -153,6 +197,9 @@ class SupplyBlanketPortal(http.Controller):
             ("blanket_order_id", "=", contract.id),
             ("kind", "=", "customer"), ("invoice_id.state", "=", "posted"),
         ])
+        advance_info = self._advance_labels(
+            advance_portal_summary(advances, contract.currency_id)
+        )
         release_requests = request.env["tl.sale.release.request"].sudo().search([
             ("blanket_order_id", "=", contract.id),
             ("partner_id", "child_of", request.env.user.partner_id.commercial_partner_id.id),
@@ -178,10 +225,7 @@ class SupplyBlanketPortal(http.Controller):
             "line_usage": usage,
             "contract_status": labels["cancelled" if contract.tl_portal_cancelled else contract.state],
             "can_request": contract.state == "open" and not contract.tl_portal_cancelled,
-            "advance_base": sum(advances.mapped("amount_base")),
-            "advance_paid_base": sum(a.amount_base for a in advances if a.payment_state == "paid"),
-            "advance_applied": sum(advances.mapped("amount_applied")),
-            "advance_remaining": sum(a.amount_remaining for a in advances if a.payment_state == "paid"),
+            "advance_info": advance_info,
             "release_requests": release_requests,
             "page_name": "tl_contract_detail",
         })

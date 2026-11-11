@@ -1,0 +1,587 @@
+# Translation of Odoo Server.
+# Source addon: tl_sale_blanket_portal. Updated for Contractes V20 QA v6.
+# IMPORTANT: keep Odoo #: source comments when editing these catalogs.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Anticipos de cliente (bases imponibles)"
+msgstr "Acomptes clients (bases hors taxes)"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Aplicado"
+msgstr "Imputé"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_form
+msgid "Approve and create OCA call-off"
+msgstr "Approuver et créer l'appel de livraison OCA"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields.selection,name:tl_sale_blanket_portal.selection__tl_tl_release_request__state__approved
+msgid "Approved"
+msgstr "Approuvée"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_list
+msgid "Call-off requests"
+msgstr "Demandes d'appel de livraison"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Cantidad"
+msgstr "Quantité"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Cobrado"
+msgstr "Encaissé"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Contratadas"
+msgstr "Contractées"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Contrato"
+msgstr "Contrat"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Contrato marco de suministro. Las cantidades pendientes dependen de las liberaciones OCA confirmadas."
+msgstr "Contrat-cadre de fourniture. Les quantités restantes dépendent des appels de livraison OCA confirmés."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_form
+msgid "Customer call-off request"
+msgstr "Demande d'appel de livraison du client"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model,name:tl_sale_blanket_portal.model_tl_tl_release_request
+msgid "Customer request for OCA blanket call-off"
+msgstr "Demande du client pour un appel de livraison OCA"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Entregadas"
+msgstr "Livrées"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Estado"
+msgstr "État"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Facturado"
+msgstr "Facturé"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Fin"
+msgstr "Fin"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Inicio"
+msgstr "Début"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.tl_portal_home_entry
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+#: model:portal.entry,name:tl_sale_blanket_portal.portal_entry_supply_contracts
+msgid "Mis contratos de suministro"
+msgstr "Mes contrats de fourniture"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "No hay contratos disponibles."
+msgstr "Aucun contrat disponible."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Only pending requests can be rejected."
+msgstr "Seules les demandes en attente peuvent être rejetées."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Only pending requests on confirmed blanket orders can be approved."
+msgstr "Seules les demandes en attente de contrats-cadres confirmés peuvent être approuvées."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Pendiente de aplicar"
+msgstr "Restant à imputer"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Pendiente de liberación"
+msgstr "En attente d'appel de livraison"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields.selection,name:tl_sale_blanket_portal.selection__tl_tl_release_request__state__pending
+msgid "Pending"
+msgstr "En attente"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Producto"
+msgstr "Produit"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_form
+msgid "Reject"
+msgstr "Rejeter"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields.selection,name:tl_sale_blanket_portal.selection__tl_tl_release_request__state__rejected
+msgid "Rejected"
+msgstr "Rejetée"
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Request line must belong to a blanket order."
+msgstr "La ligne demandée doit appartenir à un contrat-cadre."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Requested quantity must be positive."
+msgstr "La quantité demandée doit être positive."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Requesting partner does not match blanket customer."
+msgstr "Le partenaire demandeur ne correspond pas au client du contrat-cadre."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Sales permissions are required."
+msgstr "Des droits commerciaux sont nécessaires."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Solicitar"
+msgstr "Demander"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Solicitudes"
+msgstr "Demandes"
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "The remaining contractual quantity is insufficient."
+msgstr "La quantité contractuelle restante est insuffisante."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Volver a contratos"
+msgstr "Retour aux contrats"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.tl_portal_home_entry
+msgid "Customer supply contracts"
+msgstr "Contrats de fourniture clients"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_form
+msgid "Add to draft sales order"
+msgstr "Ajouter à la commande de vente en brouillon"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_list
+msgid "Contract delivery requests"
+msgstr "Demandes de livraison contractuelles"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.view_tl_release_request_form
+msgid "Customer delivery request"
+msgstr "Demande de livraison du client"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Las solicitudes requieren autorización del equipo comercial."
+msgstr "Les demandes nécessitent une autorisation de l'équipe commerciale."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Only pending requests for open contracts can be approved."
+msgstr "Seules les demandes en attente des contrats ouverts peuvent être approuvées."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Only pending requests may be rejected."
+msgstr "Seules les demandes en attente peuvent être rejetées."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Pendiente"
+msgstr "En attente"
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Remaining blanket quantity is insufficient."
+msgstr "La quantité restante du contrat-cadre est insuffisante."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Request line must belong to the selected contract."
+msgstr "La ligne demandée doit appartenir au contrat sélectionné."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Requesting customer does not match the contract customer."
+msgstr "Le client demandeur ne correspond pas au client du contrat."
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "Selected draft order has incompatible customer, company or currency."
+msgstr "La commande en brouillon sélectionnée présente un client, une société ou une devise incompatible."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Solicitadas"
+msgstr "Demandées"
+
+#. module: tl_sale_blanket_portal
+#. odoo-python
+#: code:addons/tl_sale_blanket_portal/models/release_request.py:0
+msgid "The contract line changed during order generation."
+msgstr "La ligne du contrat a changé pendant la création de la commande."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Estado del contrato"
+msgstr "État du contrat"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Todos los productos"
+msgstr "Tous les produits"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Filtrar"
+msgstr "Filtrer"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Limpiar"
+msgstr "Effacer"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Contratos encontrados:"
+msgstr "Contrats trouvés :"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Productos"
+msgstr "Produits"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "No hay contratos con estos filtros."
+msgstr "Aucun contrat ne correspond à ces filtres."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Paginación de contratos"
+msgstr "Pagination des contrats"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Anterior"
+msgstr "Précédent"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Siguiente"
+msgstr "Suivant"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Filtrar líneas por producto"
+msgstr "Filtrer les lignes par produit"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "El consumo corresponde a pedidos confirmados. Los presupuestos pendientes se muestran por separado y reducen temporalmente la disponibilidad contractual."
+msgstr "La consommation correspond aux commandes confirmées. Les devis en attente sont affichés séparément et réduisent temporairement la disponibilité contractuelle."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Consumidas (pedidos confirmados)"
+msgstr "Consommées (commandes confirmées)"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "% consumido"
+msgstr "% consommé"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Pendientes en presupuestos"
+msgstr "Réservées dans les devis"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Disponible"
+msgstr "Disponible"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Solicitar entrega"
+msgstr "Demander une livraison"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Este contrato es de solo consulta y no admite nuevas solicitudes."
+msgstr "Ce contrat est en consultation seule et n'accepte pas de nouvelles demandes."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Estado:"
+msgstr "État :"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Borrador"
+msgstr "Brouillon"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Abierto"
+msgstr "Ouvert"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Completado"
+msgstr "Terminé"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Caducado"
+msgstr "Expiré"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Cancelado"
+msgstr "Annulé"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Abiertos"
+msgstr "Ouverts"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Cancelados"
+msgstr "Annulés"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Completados"
+msgstr "Terminés"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Caducados"
+msgstr "Expirés"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Todos"
+msgstr "Tous"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields,field_description:tl_sale_blanket_portal.field_sale_blanket_order__tl_portal_cancelled
+msgid "Cancelled contract"
+msgstr "Contrat annulé"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields,help:tl_sale_blanket_portal.field_sale_blanket_order__tl_portal_cancelled
+msgid "Set when the contract is explicitly cancelled, rather than expired by date."
+msgstr "À cocher lorsque le contrat a été explicitement annulé, et non expiré par date."
+#. module: tl_sale_blanket_portal
+#: model:ir.model,name:tl_sale_blanket_portal.model_tl_sale_release_request
+msgid "Customer Request Against Blanket Contract"
+msgstr "Demande client relative à un contrat-cadre"
+
+#. module: tl_sale_blanket_portal
+#: model:ir.model.fields,help:tl_sale_blanket_portal.field_tl_sale_release_request__sale_order_id
+msgid "Optional draft order to append this contract release to."
+msgstr "Commande en brouillon facultative à laquelle ajouter cet appel de livraison."
+
+#. module: tl_sale_blanket_portal
+#: model:ir.actions.act_window,name:tl_sale_blanket_portal.action_tl_release_requests
+msgid "Customer delivery requests"
+msgstr "Demandes de livraison client"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contracts
+msgid "Anticipo disponible (sin IVA)"
+msgstr "Acompte disponible (hors TVA)"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Anticipos de cliente (bases imponibles, sin IVA)"
+msgstr "Acomptes clients (bases imposables, hors TVA)"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "El saldo disponible solo incluye facturas de anticipo contabilizadas y totalmente cobradas. Las aplicaciones en facturas borrador están reservadas, pero aún no son definitivas. El IVA se consulta en cada factura fiscal."
+msgstr "Le solde disponible ne comprend que les factures d'acompte comptabilisées et entièrement réglées. Les imputations dans les factures en brouillon sont réservées, mais non définitives. Consultez la TVA sur chaque facture fiscale."
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Base de anticipos facturados"
+msgstr "Base des acomptes facturés"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Base de anticipos totalmente cobrados"
+msgstr "Base des acomptes entièrement encaissés"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Aplicado en facturas contabilizadas"
+msgstr "Imputé sur des factures comptabilisées"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Reservado en facturas borrador"
+msgstr "Réservé dans des factures en brouillon"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Pendiente de cobro completo"
+msgstr "En attente de règlement intégral"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Anticipo disponible para aplicar"
+msgstr "Acompte disponible à imputer"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Detalle de facturas de anticipo y aplicaciones"
+msgstr "Détail des factures d'acompte et des imputations"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Factura de anticipo"
+msgstr "Facture d'acompte"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Fecha"
+msgstr "Date"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Estado de cobro"
+msgstr "État du règlement"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Base"
+msgstr "Base"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Aplicado contabilizado"
+msgstr "Imputé et comptabilisé"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Reservado en borradores"
+msgstr "Réservé dans les brouillons"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "Aplicaciones a facturas de entrega:"
+msgstr "Imputations sur les factures de livraison :"
+
+#. module: tl_sale_blanket_portal
+#: model_terms:ir.ui.view,arch_db:tl_sale_blanket_portal.portal_contract_detail
+msgid "No hay anticipos contabilizados para este contrato."
+msgstr "Aucun acompte comptabilisé pour ce contrat."
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Paid"
+msgstr "Payé"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Unpaid"
+msgstr "Non payé"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Partially paid"
+msgstr "Partiellement payé"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Payment in progress"
+msgstr "Paiement en cours"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Reversed"
+msgstr "Extourné"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Blocked"
+msgstr "Bloqué"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Legacy status"
+msgstr "Ancien statut"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: tl_sale_blanket_portal
+#: code:addons/tl_sale_blanket_portal/controllers/main.py:0
+msgid "Posted"
+msgstr "Comptabilisé"
+
+#. module: tl_sale_blanket_portal
+#: model:portal.entry,description:tl_sale_blanket_portal.portal_entry_supply_contracts
+msgid "Consulta tus contratos, su consumo y las entregas pendientes."
+msgstr "Consultez vos contrats, leur consommation et les livraisons en attente."
