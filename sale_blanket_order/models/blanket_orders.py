@@ -18,7 +18,7 @@ class BlanketOrder(models.Model):
         return (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("account.use_invoice_terms")
+            .get_bool("account.use_invoice_terms")
             and self.env.company.invoice_terms
             or ""
         )
@@ -192,7 +192,7 @@ class BlanketOrder(models.Model):
     def _compute_state(self):
         today = fields.Date.today()
         precision = self.env["decimal.precision"].precision_get(
-            "Product Unit"
+            "Product Unit of Measure"
         )
         for order in self:
             if not order.confirmed:
@@ -427,7 +427,7 @@ class BlanketOrderLine(models.Model):
     )
     date_schedule = fields.Date(string="Scheduled Date")
     original_uom_qty = fields.Float(
-        string="Original quantity", default=1, digits="Product Unit"
+        string="Original quantity", default=1, digits="Product Unit of Measure"
     )
     ordered_uom_qty = fields.Float(
         string="Ordered quantity", compute="_compute_quantities", store=True
@@ -538,7 +538,7 @@ class BlanketOrderLine(models.Model):
     @api.onchange("product_id", "original_uom_qty")
     def onchange_product(self):
         precision = self.env["decimal.precision"].precision_get(
-            "Product Unit"
+            "Product Unit of Measure"
         )
         if self.product_id:
             name = self.product_id.name

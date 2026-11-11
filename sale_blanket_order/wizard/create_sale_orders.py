@@ -47,7 +47,7 @@ class BlanketOrderWizard(models.TransientModel):
     @api.model
     def _check_valid_blanket_order_line(self, bo_lines):
         precision = self.env["decimal.precision"].precision_get(
-            "Product Unit"
+            "Product Unit of Measure"
         )
         company_id = False
 

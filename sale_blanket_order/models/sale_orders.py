@@ -12,17 +12,9 @@ class SaleOrder(models.Model):
 
     blanket_order_id = fields.Many2one(
         "sale.blanket.order",
-        string="Origin blanket order (single)",
-        compute="_compute_blanket_order_id",
+        string="Origin blanket order",
+        related="order_line.blanket_order_line.order_id",
     )
-
-    @api.depends("order_line.blanket_order_line")
-    def _compute_blanket_order_id(self):
-        # A sales order may contain several different blanket contracts.
-        # The header is display-only; the authoritative link is on each line.
-        for order in self:
-            contracts = order.order_line.mapped("blanket_order_line.order_id")
-            order.blanket_order_id = contracts if len(contracts) == 1 else False
     disable_adding_lines = fields.Boolean(
         compute="_compute_disable_adding_lines",
     )
@@ -61,16 +53,15 @@ class SaleOrder(models.Model):
                 )
             )
 
-    @api.depends("order_line.blanket_order_line")
+    @api.depends("blanket_order_id")
     @api.depends_context("uid")
     def _compute_disable_adding_lines(self):
-        restrictive = self.env.user.has_group(
+        self.disable_adding_lines = False
+        if self.env.user.has_group(
             "sale_blanket_order.blanket_orders_disable_adding_lines"
-        )
-        for order in self:
-            order.disable_adding_lines = bool(
-                restrictive and order.order_line.filtered("blanket_order_line")
-            )
+        ):
+            for order in self:
+                order.disable_adding_lines = order.blanket_order_id
 
 
 class SaleOrderLine(models.Model):
@@ -83,7 +74,6 @@ class SaleOrderLine(models.Model):
         compute="_compute_blanket_order_line",
         store=True,
         precompute=True,
-        readonly=False,
     )
 
     def _get_assigned_bo_line(self, bo_lines):
@@ -112,7 +102,6 @@ class SaleOrderLine(models.Model):
             ("product_id", "=", self.product_id.id),
             ("remaining_qty", ">=", base_qty),
             ("currency_id", "=", self.order_id.currency_id.id),
-            ("company_id", "=", self.order_id.company_id.id),
             ("order_id.state", "=", "open"),
             "|",
             ("order_id.validity_start_date", "=", False),
