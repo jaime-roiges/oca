@@ -1,7 +1,7 @@
 {
     "name": "Demo Sales, Purchase and CRM Generator",
     "summary": "Generate traceable sample sales, purchases, CRM opportunities and activities",
-    "version": "20.0.1.0.2",
+    "version": "20.0.1.0.3",
     "category": "Extra Tools",
     "website": "https://www.odoo.com",
     "author": "Tecniloop",

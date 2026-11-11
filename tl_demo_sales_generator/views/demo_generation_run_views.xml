@@ -130,7 +130,7 @@
                         domain="[('state', 'in', ('queued', 'running'))]"/>
                 <filter name="failed_runs" string="Errors"
                         domain="[('state', 'in', ('failed', 'done_with_errors'))]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter name="by_state" string="State" context="{'group_by': 'state'}"/>
                     <filter name="by_company" string="Company" context="{'group_by': 'company_id'}"/>
                 </group>

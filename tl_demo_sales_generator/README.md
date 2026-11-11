@@ -119,7 +119,7 @@ Se especifican tablas relacionales independientes para los filtros Many2many de 
 
 En una instalacion fallida, sustituir el codigo del addon, reiniciar Odoo, actualizar la lista de aplicaciones y volver a instalar. No es necesario borrar la base de datos.
 
-## Odoo 20 security format (20.0.1.0.2)
+## Odoo 20 security format (20.0.1.0.3)
 
 Odoo 20 uses `ir.access` instead of `ir.model.access` / `ir.rule`. This addon
 ships `security/ir.access.csv` with `model_id`, `group_id/id`, `operation` and
@@ -129,3 +129,12 @@ The fix for all eight unique Many2many relation tables in 20.0.1.0.1 remains.
 
 **Note:** Python compilation, XML/CSV structural verification and archive tests
 do not substitute for an installation on a live Odoo 20 database.
+
+## Compatibility note - Odoo 20 search views (20.0.1.0.3)
+
+The grouping filters on the batch search view use a plain `<group>` tag.
+Odoo 20 does not accept legacy `expand` or `string` attributes on a
+search-view `<group>`. This is independent of the previous fixes to
+Many2many relation tables and `ir.access` permissions.
+The included `tools/check_odoo20_static.py` checks XML and this rule
+without requiring an Odoo database.

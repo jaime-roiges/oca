@@ -1,6 +1,6 @@
 # Guía de instalación y uso - Odoo 20
 
-**Módulo:** `tl_demo_sales_generator` (20.0.1.0.2)
+**Módulo:** `tl_demo_sales_generator` (20.0.1.0.3)
 
 ## Configuración predeterminada
 
@@ -63,7 +63,7 @@ Se especifican tablas relacionales independientes para los filtros Many2many de 
 
 En una instalacion fallida, sustituir el codigo del addon, reiniciar Odoo, actualizar la lista de aplicaciones y volver a instalar. No es necesario borrar la base de datos.
 
-## Corrección 20.0.1.0.2 (Odoo 20)
+## Corrección 20.0.1.0.3 (Odoo 20)
 
 Odoo 20 elimina los modelos `ir.model.access` e `ir.rule`, y unifica el
 control de acceso en `ir.access`. Se sustituye el fichero antiguo
@@ -81,3 +81,13 @@ No hay que borrar tablas ni registros de la base de datos.
 
 No se ha podido instalar el módulo en un servidor Odoo 20 desde este entorno;
 las comprobaciones realizadas son estáticas.
+
+## Correccion 20.0.1.0.3 (vista de busqueda Odoo 20)
+
+Se han eliminado los atributos obsoletos `expand` y `string` del
+grupo de filtros de la vista de busqueda de lotes. Odoo 20 exige
+utilizar `<group>` sin esos atributos en una vista `<search>`.
+El paquete mantiene las correcciones de relaciones Many2many
+y permisos `ir.access` de versiones anteriores.
+Antes de reinstalar, sustituya completamente la carpeta anterior
+y reinicie el servicio Odoo.
