@@ -1,6 +1,6 @@
 {
     'name': 'Blanket Contracts - Customer Portal and Release Requests',
-    'version': '20.0.1.4.0',
+    'version': '20.0.1.4.1',
     'summary': 'Customer sees OCA blanket balances and requests delivery on shared sales orders',
     'category': 'Website/Website',
     'license': 'AGPL-3',

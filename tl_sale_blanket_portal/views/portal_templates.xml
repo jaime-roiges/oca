@@ -118,7 +118,7 @@
                   <div><t t-out="usage['percentage_display']"/></div>
                   <div class="progress" style="height: 0.5rem;">
                     <div class="progress-bar" role="progressbar"
-                         t-att-style="'width: %.1f%%' % usage['progress_width']"
+                         t-att-style="'width: {:.1f}%'.format(usage['progress_width'])"
                          t-att-aria-valuenow="usage['progress_width']"
                          aria-valuemin="0" aria-valuemax="100"/>
                   </div>
