@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- Odoo 20 portal homepage cards are records, not t-call fragments.
-       The placeholder counter dynamically hides the card when no visible
-       contract exists for this customer and website. -->
+  <!-- Odoo 20 uses portal.entry cards. Keep this navigation card visible even
+       when the customer has no contracts; portal routes still enforce access.
+       Reuse the standard Odoo Sales pictogram rather than a custom copy. -->
   <record id="portal_entry_supply_contracts" model="portal.entry">
     <field name="name">Mis contratos de suministro</field>
     <field name="description">Consulta tus contratos, su consumo y las entregas pendientes.</field>
     <field name="url">/my/contracts</field>
+    <field name="image" type="bytes" file="sale/static/src/img/bag.svg"/>
     <field name="placeholder_count">tl_supply_contract_count</field>
     <field name="sequence" eval="45"/>
   </record>
