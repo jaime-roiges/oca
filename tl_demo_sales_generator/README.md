@@ -118,3 +118,14 @@ business-flow testing require a running Odoo 20 staging instance.
 Se especifican tablas relacionales independientes para los filtros Many2many de clientes, proveedores, productos y usuarios, tanto en el asistente como en el modelo de lotes. Corrige el error de instalacion de Odoo 20 `Many2many fields tl.demo.generation.run.vendor_ids and tl.demo.generation.run.customer_ids use the same table and columns`.
 
 En una instalacion fallida, sustituir el codigo del addon, reiniciar Odoo, actualizar la lista de aplicaciones y volver a instalar. No es necesario borrar la base de datos.
+
+## Odoo 20 security format (20.0.1.0.2)
+
+Odoo 20 uses `ir.access` instead of `ir.model.access` / `ir.rule`. This addon
+ships `security/ir.access.csv` with `model_id`, `group_id/id`, `operation` and
+`domain` and keeps the manager-only policy (`base.group_system`). The run model
+allows `cru` (no delete) and the transient wizard allows `crud`.
+The fix for all eight unique Many2many relation tables in 20.0.1.0.1 remains.
+
+**Note:** Python compilation, XML/CSV structural verification and archive tests
+do not substitute for an installation on a live Odoo 20 database.

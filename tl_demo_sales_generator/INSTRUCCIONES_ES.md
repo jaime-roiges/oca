@@ -1,6 +1,6 @@
 # Guía de instalación y uso - Odoo 20
 
-**Módulo:** `tl_demo_sales_generator` (20.0.1.0.1)
+**Módulo:** `tl_demo_sales_generator` (20.0.1.0.2)
 
 ## Configuración predeterminada
 
@@ -62,3 +62,22 @@ real de Odoo 20.
 Se especifican tablas relacionales independientes para los filtros Many2many de clientes, proveedores, productos y usuarios, tanto en el asistente como en el modelo de lotes. Corrige el error de instalacion de Odoo 20 `Many2many fields tl.demo.generation.run.vendor_ids and tl.demo.generation.run.customer_ids use the same table and columns`.
 
 En una instalacion fallida, sustituir el codigo del addon, reiniciar Odoo, actualizar la lista de aplicaciones y volver a instalar. No es necesario borrar la base de datos.
+
+## Corrección 20.0.1.0.2 (Odoo 20)
+
+Odoo 20 elimina los modelos `ir.model.access` e `ir.rule`, y unifica el
+control de acceso en `ir.access`. Se sustituye el fichero antiguo
+`security/ir.model.access.csv` por `security/ir.access.csv` y se adapta
+el manifiesto. Los permisos mantienen el alcance original:
+
+- `tl.demo.generation.run`: `cru` para `base.group_system` (sin borrado).
+- `tl.demo.generation.wizard`: `crud` para `base.group_system`.
+
+La corrección de relaciones Many2many introducida en 20.0.1.0.1 se conserva.
+Para instalaciones fallidas: sustituir *toda* la carpeta del módulo
+(sin mezclar archivos), reiniciar el servicio Odoo, actualizar aplicaciones e
+instalar de nuevo. Verificar que NO queda `security/ir.model.access.csv`.
+No hay que borrar tablas ni registros de la base de datos.
+
+No se ha podido instalar el módulo en un servidor Odoo 20 desde este entorno;
+las comprobaciones realizadas son estáticas.

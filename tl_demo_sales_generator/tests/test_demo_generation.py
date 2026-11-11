@@ -51,6 +51,23 @@ class TestDemoGeneration(TransactionCase):
         base.update(values)
         return self.env["tl.demo.generation.run"].create(base)
 
+    def test_odoo20_ir_access_permissions(self):
+        access = self.env["ir.access"].sudo()
+        admin_group = self.env.ref("base.group_system")
+        for model_name, expected_operations in (
+            ("tl.demo.generation.run", "cru"),
+            ("tl.demo.generation.wizard", "crud"),
+        ):
+            grants = access.search([
+                ("model_id.model", "=", model_name),
+                ("group_id", "=", admin_group.id),
+            ])
+            self.assertIn(
+                expected_operations,
+                grants.mapped("operation"),
+                "Odoo 20 ir.access rights are missing for %s" % model_name,
+            )
+
     def test_filter_many2many_relations_are_independent(self):
         for model_name in ("tl.demo.generation.run", "tl.demo.generation.wizard"):
             model = self.env[model_name]
