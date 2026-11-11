@@ -1,0 +1,12 @@
+<odoo>
+    <menuitem id="menu_tl_demo_data_root" name="Demo Data Generator"
+              sequence="80" groups="base.group_system"/>
+    <menuitem id="menu_tl_demo_data_generate" name="Generate data"
+              parent="menu_tl_demo_data_root"
+              action="action_tl_demo_generation_wizard" sequence="10"
+              groups="base.group_system"/>
+    <menuitem id="menu_tl_demo_data_runs" name="Generation batches"
+              parent="menu_tl_demo_data_root"
+              action="action_tl_demo_generation_runs" sequence="20"
+              groups="base.group_system"/>
+</odoo>

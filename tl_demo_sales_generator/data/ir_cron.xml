@@ -1,0 +1,11 @@
+<odoo>
+    <record id="ir_cron_tl_demo_generation" model="ir.cron">
+        <field name="name">Demo data generator - process batches</field>
+        <field name="model_id" ref="model_tl_demo_generation_run"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_process_runs()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

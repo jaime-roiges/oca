@@ -1,0 +1,72 @@
+<odoo>
+    <record id="view_tl_demo_generation_wizard_form" model="ir.ui.view">
+        <field name="name">tl.demo.generation.wizard.form</field>
+        <field name="model">tl.demo.generation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create synthetic demo data">
+                <sheet>
+                    <div class="alert alert-warning" role="alert">
+                        Only for disposable test databases. Confirming orders can
+                        generate stock movements, procurements or other side effects.
+                        Emails and notifications from custom modules are not guaranteed to be suppressed.
+                    </div>
+                    <group>
+                        <group string="Company and period">
+                            <field name="company_id" options="{'no_create': True}"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="random_seed"/>
+                            <field name="batch_size"/>
+                        </group>
+                        <group string="Documents to generate">
+                            <field name="sale_count"/>
+                            <field name="confirm_sales" invisible="sale_count == 0"/>
+                            <field name="purchase_count"/>
+                            <field name="confirm_purchases" invisible="purchase_count == 0"/>
+                            <field name="opportunity_count"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Sales and purchase lines">
+                            <field name="min_lines"/>
+                            <field name="max_lines"/>
+                            <field name="min_qty"/>
+                            <field name="max_qty"/>
+                        </group>
+                        <group string="Purchases and CRM">
+                            <field name="purchase_percent_min"/>
+                            <field name="purchase_percent_max"/>
+                            <field name="min_activities"/>
+                            <field name="max_activities"/>
+                        </group>
+                    </group>
+                    <group string="Optional filters (leave empty to use all eligible records)">
+                        <field name="customer_ids" widget="many2many_tags"
+                               options="{'no_create': True}"/>
+                        <field name="vendor_ids" widget="many2many_tags"
+                               options="{'no_create': True}"/>
+                        <field name="product_ids" widget="many2many_tags"
+                               options="{'no_create': True}"/>
+                        <field name="user_ids" widget="many2many_tags"
+                               options="{'no_create': True}"/>
+                    </group>
+                    <group>
+                        <field name="acknowledge"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_queue_generation" string="Start generation"
+                            type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tl_demo_generation_wizard" model="ir.actions.act_window">
+        <field name="name">Generate demo data</field>
+        <field name="res_model">tl.demo.generation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

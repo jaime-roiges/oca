@@ -1,0 +1,149 @@
+<odoo>
+    <record id="view_tl_demo_generation_run_list" model="ir.ui.view">
+        <field name="name">tl.demo.generation.run.list</field>
+        <field name="model">tl.demo.generation.run</field>
+        <field name="arch" type="xml">
+            <list string="Demo generation batches" create="false" delete="false"
+                  decoration-success="state == 'done'"
+                  decoration-danger="state == 'failed'">
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="target_total"/>
+                <field name="processed_total"/>
+                <field name="created_sales"/>
+                <field name="created_purchases"/>
+                <field name="created_opportunities"/>
+                <field name="created_activities"/>
+                <field name="progress_percent" widget="progressbar"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_tl_demo_generation_run_form" model="ir.ui.view">
+        <field name="name">tl.demo.generation.run.form</field>
+        <field name="model">tl.demo.generation.run</field>
+        <field name="arch" type="xml">
+            <form string="Demo generation batch" create="false" delete="false">
+                <header>
+                    <button name="action_process_one_batch" type="object"
+                            string="Process one batch" class="btn-primary"
+                            invisible="state not in ('queued', 'running')"/>
+                    <button name="action_cancel_generation" type="object"
+                            string="Cancel" invisible="state not in ('queued', 'running')"/>
+                    <button name="action_resume_generation" type="object"
+                            string="Resume" class="btn-primary"
+                            invisible="state not in ('failed', 'cancelled')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="queued,running,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_sales" type="object"
+                                class="oe_stat_button" icon="fa-shopping-cart">
+                            <field name="created_sales" widget="statinfo" string="Sales"/>
+                        </button>
+                        <button name="action_view_purchases" type="object"
+                                class="oe_stat_button" icon="fa-truck">
+                            <field name="created_purchases" widget="statinfo" string="Purchases"/>
+                        </button>
+                        <button name="action_view_opportunities" type="object"
+                                class="oe_stat_button" icon="fa-line-chart">
+                            <field name="created_opportunities" widget="statinfo" string="CRM"/>
+                        </button>
+                    </div>
+                    <h1><field name="name" readonly="1"/></h1>
+                    <group>
+                        <group string="Scope">
+                            <field name="company_id"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="random_seed"/>
+                            <field name="batch_size"/>
+                            <field name="started_at"/>
+                            <field name="finished_at"/>
+                        </group>
+                        <group string="Progress">
+                            <field name="target_total"/>
+                            <field name="processed_total"/>
+                            <field name="progress_percent" widget="progressbar"/>
+                            <field name="created_activities"/>
+                            <field name="error_streak"/>
+                        </group>
+                    </group>
+                    <group string="Requested / created / failed" col="4">
+                        <group string="Sales">
+                            <field name="sale_count"/>
+                            <field name="created_sales"/>
+                            <field name="failed_sales"/>
+                            <field name="confirm_sales"/>
+                        </group>
+                        <group string="Purchases">
+                            <field name="purchase_count"/>
+                            <field name="created_purchases"/>
+                            <field name="failed_purchases"/>
+                            <field name="confirm_purchases"/>
+                        </group>
+                        <group string="CRM">
+                            <field name="opportunity_count"/>
+                            <field name="created_opportunities"/>
+                            <field name="failed_opportunities"/>
+                            <field name="min_activities"/>
+                            <field name="max_activities"/>
+                        </group>
+                    </group>
+                    <group string="Order parameters" col="4">
+                        <group>
+                            <field name="min_lines"/>
+                            <field name="max_lines"/>
+                            <field name="min_qty"/>
+                            <field name="max_qty"/>
+                        </group>
+                        <group>
+                            <field name="purchase_percent_min"/>
+                            <field name="purchase_percent_max"/>
+                        </group>
+                    </group>
+                    <group string="Optional selection filters">
+                        <field name="customer_ids" widget="many2many_tags"/>
+                        <field name="vendor_ids" widget="many2many_tags"/>
+                        <field name="product_ids" widget="many2many_tags"/>
+                        <field name="user_ids" widget="many2many_tags"/>
+                    </group>
+                    <group string="Last error" invisible="not last_error">
+                        <field name="last_error" nolabel="1" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tl_demo_generation_run_search" model="ir.ui.view">
+        <field name="name">tl.demo.generation.run.search</field>
+        <field name="model">tl.demo.generation.run</field>
+        <field name="arch" type="xml">
+            <search string="Demo batches">
+                <field name="name"/>
+                <filter name="active_runs" string="Pending"
+                        domain="[('state', 'in', ('queued', 'running'))]"/>
+                <filter name="failed_runs" string="Errors"
+                        domain="[('state', 'in', ('failed', 'done_with_errors'))]"/>
+                <group expand="0" string="Group By">
+                    <filter name="by_state" string="State" context="{'group_by': 'state'}"/>
+                    <filter name="by_company" string="Company" context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_tl_demo_generation_runs" model="ir.actions.act_window">
+        <field name="name">Generation batches</field>
+        <field name="res_model">tl.demo.generation.run</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No demo generation batches yet.</p>
+        </field>
+    </record>
+</odoo>
