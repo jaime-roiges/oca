@@ -55,7 +55,7 @@ class WebsiteSale(WebsiteSaleBase):
         return brand.can_access_from_current_website()
 
     def sitemap_brands(env, rule, qs):
-        website = env["website"].get_current_website()
+        website = env.website
         if website and website.ecommerce_access == "logged_in" and not qs:
             return
 
@@ -194,7 +194,7 @@ class WebsiteSale(WebsiteSaleBase):
         return [letters[letter] for letter in sorted(letters)]
 
     def _get_brand_filter_values(self, domain, selected_brand_ids):
-        mode = request.website.brand_filter_display_mode
+        mode = self.env.website.brand_filter_display_mode
         brands, brand_counts = self._get_available_brands(domain, selected_brand_ids)
         values = {
             "brand_filter_display_mode": mode,
@@ -454,7 +454,7 @@ class WebsiteSale(WebsiteSaleBase):
     ):
         brand = self._get_brand_from_slug(brand_slug)
 
-        if not request.website.has_ecommerce_access():
+        if not self.env.website.has_ecommerce_access():
             return request.redirect(f"/web/login?redirect={request.httprequest.path}")
         if not self._brand_visible_on_website(brand):
             raise request.not_found()
