@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tl_advance_company_settings_form" model="ir.ui.view">
+        <field name="name">tl.advance.company.settings.form</field>
+        <field name="model">tl.advance.company.settings</field>
+        <field name="arch" type="xml">
+            <form string="Advance accounting settings">
+                <sheet>
+                    <group>
+                        <field name="company_id" required="1" options="{'no_create': True}"/>
+                    </group>
+                    <group string="Advance accounts">
+                        <field name="tl_customer_advance_account_id"
+                               domain="[('account_type', '=', 'liability_current'), ('company_ids', 'in', [company_id])]"
+                               options="{'no_create': True}"/>
+                        <field name="tl_supplier_advance_account_id"
+                               domain="[('account_type', 'in', ['asset_current', 'asset_prepayments']), ('company_ids', 'in', [company_id])]"
+                               options="{'no_create': True}"/>
+                    </group>
+                    <group string="Advance allocation">
+                        <field name="tl_auto_allocate_sales"/>
+                    </group>
+                    <div class="text-muted">
+                        Accounts are stored on the selected company. Existing
+                        advance records and OCA modules are not modified.
+                    </div>
+                </sheet>
+                <footer>
+                    <button string="Save" name="action_save" type="object"
+                            class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Keep the original action and its views intact. Redirect only the
+         existing Advance settings menu to this company-aware form. -->
+    <record id="action_tl_advance_company_settings" model="ir.actions.act_window">
+        <field name="name">Advance accounting settings</field>
+        <field name="res_model">tl.advance.company.settings</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_tl_advance_company_settings_form"/>
+        <field name="target">current</field>
+        <field name="context">{}</field>
+    </record>
+    <record id="tl_sale_advance_allocation.menu_tl_adv_config" model="ir.ui.menu">
+        <field name="action" eval="'ir.actions.act_window,%d' % ref('action_tl_advance_company_settings')"/>
+    </record>
+</odoo>

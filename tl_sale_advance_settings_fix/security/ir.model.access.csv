@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tl_advance_company_settings_account_manager,tl.advance.company.settings account manager,model_tl_advance_company_settings,account.group_account_manager,1,1,1,1
+access_tl_advance_company_settings_system,tl.advance.company.settings system,model_tl_advance_company_settings,base.group_system,1,1,1,1
