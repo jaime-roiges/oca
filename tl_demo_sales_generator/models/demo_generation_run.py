@@ -47,10 +47,29 @@ class DemoGenerationRun(models.Model):
     batch_size = fields.Integer(readonly=True)
     random_seed = fields.Integer(readonly=True)
 
-    customer_ids = fields.Many2many("res.partner", string="Selected customers", readonly=True)
-    vendor_ids = fields.Many2many("res.partner", string="Selected vendors", readonly=True)
-    product_ids = fields.Many2many("product.product", string="Selected products", readonly=True)
-    user_ids = fields.Many2many("res.users", string="Selected users", readonly=True)
+    # Each M2M field uses its own relation table. In particular, customer_ids
+    # and vendor_ids both point to res.partner: an implicit relation would
+    # result in the same table/columns, which Odoo 20 explicitly disallows.
+    customer_ids = fields.Many2many(
+        "res.partner", relation="tl_demo_run_customer_rel",
+        column1="run_id", column2="partner_id",
+        string="Selected customers", readonly=True,
+    )
+    vendor_ids = fields.Many2many(
+        "res.partner", relation="tl_demo_run_vendor_rel",
+        column1="run_id", column2="partner_id",
+        string="Selected vendors", readonly=True,
+    )
+    product_ids = fields.Many2many(
+        "product.product", relation="tl_demo_run_product_rel",
+        column1="run_id", column2="product_id",
+        string="Selected products", readonly=True,
+    )
+    user_ids = fields.Many2many(
+        "res.users", relation="tl_demo_run_user_rel",
+        column1="run_id", column2="user_id",
+        string="Selected users", readonly=True,
+    )
 
     created_sales = fields.Integer(string="Created sales", readonly=True, default=0)
     created_purchases = fields.Integer(string="Created purchases", readonly=True, default=0)

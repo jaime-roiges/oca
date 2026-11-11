@@ -51,6 +51,18 @@ class TestDemoGeneration(TransactionCase):
         base.update(values)
         return self.env["tl.demo.generation.run"].create(base)
 
+    def test_filter_many2many_relations_are_independent(self):
+        for model_name in ("tl.demo.generation.run", "tl.demo.generation.wizard"):
+            model = self.env[model_name]
+            fields_to_check = (
+                model._fields["customer_ids"], model._fields["vendor_ids"],
+                model._fields["product_ids"], model._fields["user_ids"],
+            )
+            relations = [(field.relation, field.column1, field.column2)
+                         for field in fields_to_check]
+            self.assertEqual(len(set(relations)), len(relations))
+            self.assertTrue(all(rel[0] for rel in relations))
+
     def test_run_creates_sales_purchases_crm_and_activities(self):
         run = self._create_run()
         processed = run._process_batch()

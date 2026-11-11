@@ -112,3 +112,9 @@ supplier, sellable product, purchasable product and internal CRM user:
 
 This package was syntax/XML-checked outside Odoo; final installation and
 business-flow testing require a running Odoo 20 staging instance.
+
+## Correccion 20.0.1.0.1
+
+Se especifican tablas relacionales independientes para los filtros Many2many de clientes, proveedores, productos y usuarios, tanto en el asistente como en el modelo de lotes. Corrige el error de instalacion de Odoo 20 `Many2many fields tl.demo.generation.run.vendor_ids and tl.demo.generation.run.customer_ids use the same table and columns`.
+
+En una instalacion fallida, sustituir el codigo del addon, reiniciar Odoo, actualizar la lista de aplicaciones y volver a instalar. No es necesario borrar la base de datos.

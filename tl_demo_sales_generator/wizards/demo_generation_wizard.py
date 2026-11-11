@@ -41,20 +41,30 @@ class DemoGenerationWizard(models.TransientModel):
     batch_size = fields.Integer(string="Documents per batch", default=20, required=True)
     random_seed = fields.Integer(string="Seed (0 for random)", default=0)
 
+    # Separate relation tables are mandatory for the two res.partner M2M
+    # fields. Define all relations explicitly to avoid future collisions.
     customer_ids = fields.Many2many(
-        "res.partner", string="Customers (blank = all)",
+        "res.partner", relation="tl_demo_wizard_customer_rel",
+        column1="wizard_id", column2="partner_id",
+        string="Customers (blank = all)",
         domain="[('customer_rank', '>', 0)]",
     )
     vendor_ids = fields.Many2many(
-        "res.partner", string="Vendors (blank = all)",
+        "res.partner", relation="tl_demo_wizard_vendor_rel",
+        column1="wizard_id", column2="partner_id",
+        string="Vendors (blank = all)",
         domain="[('supplier_rank', '>', 0)]",
     )
     product_ids = fields.Many2many(
-        "product.product", string="Products (blank = all)",
+        "product.product", relation="tl_demo_wizard_product_rel",
+        column1="wizard_id", column2="product_id",
+        string="Products (blank = all)",
         domain="['|', ('sale_ok', '=', True), ('purchase_ok', '=', True)]",
     )
     user_ids = fields.Many2many(
-        "res.users", string="CRM users (blank = internal users)",
+        "res.users", relation="tl_demo_wizard_user_rel",
+        column1="wizard_id", column2="user_id",
+        string="CRM users (blank = internal users)",
         domain="[('share', '=', False), ('active', '=', True)]",
     )
     acknowledge = fields.Boolean(
