@@ -1,7 +1,7 @@
 # Deducción proporcional de facturas de anticipo — Odoo 20
 
 **Módulo:** `tl_sale_downpayment_proportional`  
-**Versión:** `20.0.1.0.0`  
+**Versión:** `20.0.1.0.1`  
 **Licencia:** AGPL-3  
 **Dependencias:** `sale` (y dependencias estándar de Odoo)
 
@@ -51,3 +51,18 @@ Pruebas de integración incluidas: porcentajes, anticipo fijo, varios anticipos,
 - No modifique manualmente las deducciones ni sus datos fiscales sin revisar la trazabilidad y el saldo: el módulo no intercepta esas modificaciones posteriores.
 
 La prueba automática de cálculo sin Odoo se entrega en el archivo independiente `offline_qa.py` en la carpeta de documentación adjunta al ZIP de distribución.
+
+## Corrección 20.0.1.0.1 — 12/11/2026
+
+- Corregidos los comentarios de origen de cada entrada de `i18n/es.po` a
+  `#. module: tl_sale_downpayment_proportional`, `#. odoo-python` y
+  `#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0`.
+  El importador de Odoo 20 exige esa referencia para resolver el módulo.
+- Sin cambios en la lógica del anticipo en esta revisión.
+- Permisos Odoo 20: el módulo solo hereda `sale.order`, sin crear modelos
+  ni reglas de seguridad. Por eso no necesita `security/ir.access.csv`.
+  No debe incluirse el formato obsoleto `ir.model.access.csv`.
+
+**Si la instalación anterior falló:** reemplazar la carpeta del módulo
+por esta versión, reiniciar Odoo si corresponde y volver a instalar.
+No crear permisos nuevos de forma artificial para resolver este error.

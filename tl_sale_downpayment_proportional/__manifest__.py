@@ -5,7 +5,7 @@
     "summary": (
         "Apply standard down payment invoices proportionally to partial invoices"
     ),
-    "version": "20.0.1.0.0",
+    "version": "20.0.1.0.1",
     "category": "Sales/Sales",
     "website": "https://www.tecniloop.es",
     "author": "Tecniloop",

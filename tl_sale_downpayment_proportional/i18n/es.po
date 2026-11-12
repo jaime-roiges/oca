@@ -1,37 +1,67 @@
-# Translation of tl_sale_downpayment_proportional to Spanish.
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * tl_sale_downpayment_proportional
 # Copyright 2026 Tecniloop
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Addons 20.0\n"
+"Project-Id-Version: Odoo Server 20.0\n"
+"MIME-Version: 1.0\n"
 "Language: es\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "Cannot prorate an invoice line linked to several sales orders. Create separate invoice lines for each order."
 msgstr "No se puede prorratear una línea de factura vinculada a varios pedidos de venta. Cree líneas de factura separadas por pedido."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "The invoice and sales order currencies differ. The advance cannot be deducted proportionally."
 msgstr "La moneda de la factura y del pedido de venta es distinta. No se puede deducir proporcionalmente el anticipo."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "The sales order has no positive untaxed base on which to calculate the proportional advance deduction."
 msgstr "El pedido no tiene una base imponible positiva para calcular la deducción proporcional del anticipo."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "The new invoice has no positive product amount against which to deduct the down payment."
 msgstr "La nueva factura no contiene un importe positivo de productos al que aplicar la deducción del anticipo."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "The new invoice has no positive tax-included product amount against which to deduct the down payment."
 msgstr "La nueva factura no contiene un importe positivo de productos, impuestos incluidos, al que aplicar la deducción del anticipo."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "The down payment invoice line must be linked to one standard sales-order advance line."
 msgstr "La línea de deducción del anticipo debe estar vinculada a una única línea de anticipo estándar del pedido."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "Invalid down payment deduction on the invoice."
 msgstr "La deducción del anticipo en la factura no es válida."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "Invalid tax-included down payment deduction."
 msgstr "La deducción del anticipo con impuestos incluidos no es válida."
 
+#. module: tl_sale_downpayment_proportional
+#. odoo-python
+#: code:addons/tl_sale_downpayment_proportional/models/sale_order.py:0
 msgid "The prorated down payment differs from its expected untaxed amount. Check the invoice's tax configuration."
 msgstr "El anticipo prorrateado difiere de la base imponible esperada. Revise la configuración fiscal de la factura."
